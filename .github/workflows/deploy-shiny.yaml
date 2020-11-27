@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - master
+
+name: deploy-shiny
+
+jobs:
+  deploy-shiny:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@master
+      - name: Install Curl
+        run: sudo apt install libcurl4-openssl-dev libssl-dev
+      - name: Restore renv snapshot
+        shell: Rscript {0}
+        run: |
+          if (!require('renv')) install.packages('renv')
+          renv::restore()
+      - name: Push to shiny.io
+        run: >
+          Rscript
+          -e "rsconnect::setAccountInfo(name='department-for-education', token='${{secrets.SHINYAPPS_TOKEN}}', secret='${{secrets.SHINYAPPS_SECRET}}')"
+          -e "rsconnect::deployApp()"
