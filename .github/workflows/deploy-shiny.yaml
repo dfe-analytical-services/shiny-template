@@ -18,6 +18,10 @@ jobs:
         run: |
           if (!require('renv')) install.packages('renv')
           renv::restore()
+          
+      #Tokens are stored as secrets in github to make sure only DfE analysts can publish apps in our shiny.io area
+      #Navigate to Settings > Secrets to add and view secrets. These can also be things like admin login and passwords for SQL databases.
+      #Get in touch with the Stats Development team if you need to add the below secrets to publish to shiny.io
       - name: Push to shiny.io
         run: >
           Rscript
