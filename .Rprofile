@@ -9,7 +9,7 @@ source("renv/activate.R")
 
 
 
-#### Do we want to keep these? 
+#### Do we want to keep these?
 
 
 tidy_code <- function() {
