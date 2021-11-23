@@ -16,28 +16,41 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: windows-latest, r: 'release'}
+        # Running on mac as it's quicker to build
+          - {os: macOS-latest, r: 'release'}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: ${{ matrix.config.rspm }}
+      RENV_PATHS_ROOT: ~/.local/share/renv
 
     steps:
-      - name: Windows git setup
-        if: runner.os == 'Windows'
-        run:
-          git config --global core.autocrlf false
-
       - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-r@master
         with:
           r-version: ${{ matrix.config.r }}
 
+      - name: Cache R packages
+        if: runner.os != 'Windows'
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+
+      - name: Cache renv packages
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.RENV_PATHS_ROOT }}
+          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv-
+        
       - name: Restore renv snapshot
         shell: Rscript {0}
         run: |
-          if (!require('renv')) install.packages('renv')
+          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
           renv::restore()
       - name: Find PhantomJS path
         id: phantomjs

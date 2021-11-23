@@ -12,6 +12,8 @@ library(shinyjs)
 library(tools)
 library(testthat)
 library(shinytest)
+library(shinydashboard)
+library(shinyWidgets)
 
 # Functions ---------------------------------------------------------------------------------
 
@@ -26,7 +28,7 @@ cs_num <- function(value) {
 
 
 
-#### Not sure if we want to keep this or if it's too much to expect people to do this level of testing? 
+#### Not sure if we want to keep this or if it's too much to expect people to do this level of testing?
 
 
 # tidy_code_function -------------------------------------------------------------------------------
@@ -36,13 +38,10 @@ tidy_code_function <- function() {
   message("App scripts")
   message("----------------------------------------")
   app_scripts <- eval(styler::style_dir(recursive = FALSE)$changed)
-  message("R scripts")
-  message("----------------------------------------")
-  r_scripts <- eval(styler::style_dir("R/")$changed)
   message("Test scripts")
   message("----------------------------------------")
   test_scripts <- eval(styler::style_dir("tests/", filetype = "r")$changed)
-  script_changes <- c(app_scripts, r_scripts, test_scripts)
+  script_changes <- c(app_scripts, test_scripts)
   return(script_changes)
 }
 
@@ -51,7 +50,7 @@ tidy_code_function <- function() {
 
 # Source any scripts here
 
-#source("R/filename.r")
+# source("R/filename.r")
 
 
 
