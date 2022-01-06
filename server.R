@@ -1,6 +1,12 @@
 # ---------------------------------------------------------
-# This is the server file...
-# Use it to..
+# This is the server file.
+# Use it to create interactive elements like tables, charts and text for your app.
+#
+# Anything you create in the server file won't appear in your app until you call it in the UI file.
+# This server script gives an example of a plot and value box that updates on slider input.
+# There are many other elements you can add in too, and you can play around with their reactivity.
+# The "outputs" section of the shiny cheatsheet has a few examples of render calls you can use:
+# https://shiny.rstudio.com/images/shiny-cheatsheet.pdf
 #
 #
 # This is the server logic of a Shiny web application. You can run the
