@@ -1,6 +1,9 @@
 # ---------------------------------------------------------
-# This is the global file...
-# Use it to.. store functions, library calls, source files etc
+# This is the global file.
+# Use it to store functions, library calls, source files etc.
+# Moving these out of the server file and into here improves performance
+# The global file is run only once when the app launches,
+# whereas the server and UI files are constantly interacting and responsive to user input.
 #
 # ---------------------------------------------------------
 
@@ -27,11 +30,8 @@ cs_num <- function(value) {
 }
 
 
-
-#### Not sure if we want to keep this or if it's too much to expect people to do this level of testing?
-
-
 # tidy_code_function -------------------------------------------------------------------------------
+# Code to tidy up the scripts.
 
 tidy_code_function <- function() {
   message("----------------------------------------")
@@ -48,10 +48,10 @@ tidy_code_function <- function() {
 
 # Source scripts ---------------------------------------------------------------------------------
 
-# Source any scripts here
+# Source any scripts here. Scripts may be needed to process data before it gets to the server file.
+# It's best to do this here instead of the server file, to improve performance.
 
 # source("R/filename.r")
-
 
 
 # appLoadingCSS ----------------------------------------------------------------------------
