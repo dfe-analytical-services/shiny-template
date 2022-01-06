@@ -1,4 +1,4 @@
-Fixes #(issue number here)
+Give a general description of the change being made, include issue number(s) being fixed if relevant
 
 Changes in this pull request:
 - Outline
