@@ -10,12 +10,12 @@
 # - Contact information
 #
 # Other elements like charts, navigation bars etc. are completely up to you to decide what goes in.
-# However, every element should meet accessibility requirements and user needs. 
+# However, every element should meet accessibility requirements and user needs.
 #
 # This file uses a slider input, but other inputs are available like date selections, multiple choice dropdowns etc.
 # Use the shiny cheatsheet to explore more options: https://shiny.rstudio.com/images/shiny-cheatsheet.pdf
 #
-# Likewise, this template uses the navbar layout. 
+# Likewise, this template uses the navbar layout.
 # We have used this as it meets accessibility requirements, but you are free to use another layout if it does too.
 #
 # This is the user-interface definition of a Shiny web application. You can
@@ -34,7 +34,6 @@ ui <- function(input, output, session) {
     useShinydashboard(),
 
     # Application title -----------------------------------------------------------------------------------
-
     title = "Title of app here",
     footer = p(
       HTML("&nbsp;"),
