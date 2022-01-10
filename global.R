@@ -2,7 +2,7 @@
 # This is the global file.
 # Use it to store functions, library calls, source files etc.
 # Moving these out of the server file and into here improves performance
-# The global file is run only once when the app launches,
+# The global file is run only once when the app launches and stays consistent across users
 # whereas the server and UI files are constantly interacting and responsive to user input.
 #
 # ---------------------------------------------------------
@@ -29,7 +29,6 @@ cs_num <- function(value) {
   format(value, big.mark = ",", trim = TRUE)
 }
 
-
 # tidy_code_function -------------------------------------------------------------------------------
 # Code to tidy up the scripts.
 
@@ -44,7 +43,6 @@ tidy_code_function <- function() {
   script_changes <- c(app_scripts, test_scripts)
   return(script_changes)
 }
-
 
 # Source scripts ---------------------------------------------------------------------------------
 
