@@ -4,6 +4,14 @@ Shiny template app
   <br>
 </h1>
 
+This template repository is for making accessible apps for published statistics in DfE. It includes a basic accessible shiny app with DfE styling, as well as templates for additional best practice documents like this README script, pull request templates and codes of conduct for contributing.
+
+To use this template, click the green "use this template" button at the top of the repo. This will create a copy for you to work off of. 
+
+Please delete this header section when you are writing up the README file for your own app.
+
+Please contact statistics.DEVELOPMENT@education.gov.uk if you have any questions, or raise an issue on here if you have spotted something specific that we should change.
+
 <p align="center">
   <a href="#introduction">Introduction</a> |
   <a href="#requirements">Requirements</a> |

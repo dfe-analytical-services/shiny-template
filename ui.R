@@ -1,6 +1,22 @@
 # ---------------------------------------------------------
-# This is the ui file...
-# Use it to...
+# This is the ui file.
+# Use it to call elements created in your server file into the app, and define where they are placed.
+# Also use this file to define inputs.
+#
+# Every UI file should contain:
+# - A title for the app
+# - A call to a CSS file to define the styling
+# - An accessibility statement
+# - Contact information
+#
+# Other elements like charts, navigation bars etc. are completely up to you to decide what goes in.
+# However, every element should meet accessibility requirements and user needs.
+#
+# This file uses a slider input, but other inputs are available like date selections, multiple choice dropdowns etc.
+# Use the shiny cheatsheet to explore more options: https://shiny.rstudio.com/images/shiny-cheatsheet.pdf
+#
+# Likewise, this template uses the navbar layout.
+# We have used this as it meets accessibility requirements, but you are free to use another layout if it does too.
 #
 # This is the user-interface definition of a Shiny web application. You can
 # run the application by clicking 'Run App' above.
@@ -13,15 +29,11 @@
 
 ui <- function(input, output, session) {
   navbarPage(
-    # theme = "acalat_theme.css",    # Need to update this to whichever style we want dept stuff to go out in.
-
     useShinyjs(),
     includeCSS("www/shiny_gov_style.css"),
     useShinydashboard(),
 
     # Application title -----------------------------------------------------------------------------------
-
-    # Might as well keep this in the template too, as good practice
     title = "Title of app here",
     footer = p(
       HTML("&nbsp;"),
