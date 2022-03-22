@@ -76,7 +76,7 @@ ui <- function(input, output, session) {
           plotOutput("distPlot"),
           br(),
           # add box to show user input
-          valueBoxOutput("box_info", width = 6),
+          valueBoxOutput("box_info", width = 6)
         )
       )
     ),
