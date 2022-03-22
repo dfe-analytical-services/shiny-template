@@ -1,2 +1,2 @@
 library(shinytest)
-shinytest::testApp("../")
+expect_pass(testApp("../", compareImages = grepl("^macOS", utils::osVersion)))
