@@ -1,7 +1,6 @@
 {
   "input": {
-    "bins": 30,
-    "tab-9416-3": false
+    "bins": 30
   },
   "output": {
     "box_info": {
@@ -9,44 +8,6 @@
       "deps": [
 
       ]
-    },
-    "distPlot": {
-      "src": "[image data sha1: febed1c22d2e4e69b7553505efc1cfd93e267918]",
-      "width": 797,
-      "height": 400,
-      "alt": "Plot object",
-      "coordmap": {
-        "panels": [
-          {
-            "domain": {
-              "left": 40.88,
-              "right": 98.12,
-              "bottom": -1.08,
-              "top": 28.08
-            },
-            "range": {
-              "left": 59.0400074077801,
-              "right": 766.759996205771,
-              "bottom": 325.559981639995,
-              "top": 58.0400147600037
-            },
-            "log": {
-              "x": null,
-              "y": null
-            },
-            "mapping": {
-
-            }
-          }
-        ],
-        "dims": {
-          "width": 797,
-          "height": 400
-        }
-      }
     }
-  },
-  "export": {
-
   }
 }
