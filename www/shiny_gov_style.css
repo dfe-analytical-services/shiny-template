@@ -94,3 +94,7 @@ a {
 .help-block{
   color: #ffffff;
 }
+
+.irs-min, .irs-max, .irs-grid-text {
+  color: white;}
+

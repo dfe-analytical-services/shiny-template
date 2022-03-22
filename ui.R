@@ -112,5 +112,5 @@ ui <- function(input, output, session) {
         a(href = "mailto:email@education.gov.uk", "email@education.gov.uk")
       )
     ) # End of accessibility tab
-  ) # End of ui
+  ) # End of navBarPage
 } # End of ui
