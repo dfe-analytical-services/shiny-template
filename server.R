@@ -51,7 +51,7 @@ server <- function(input, output, session) {
       input$bins,
       # add subtitle to explain what it's hsowing
       paste0("Number that user has inputted"),
-      color = "purple"
+      color = "blue"
     )
   })
 

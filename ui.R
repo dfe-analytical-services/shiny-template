@@ -27,32 +27,104 @@
 #
 # ---------------------------------------------------------
 
-ui <- function(input, output, session) {
-  navbarPage(
-    useShinyjs(),
-    includeCSS("www/shiny_gov_style.css"),
-    useShinydashboard(),
+fluidPage(
+  shinyjs::useShinyjs(),
+  includeCSS("www/dfe_shiny_gov_style.css"),
+  title = "DfE Analytical Services R-Shiny Template",
+  # use_tota11y(), # accessibility layer for local testing
+  
+  # Set metadata for browser ==================================================
+  
+  tags$html(lang = "en"),
+  # meta_general(
+  #   application_name = "DfE Analytical Services R-Shiny Template",
+  #   description = "R-Shiny template for use by DfE external data dashboards",
+  #   robots = "index,follow",
+  #   generator = "R-Shiny",
+  #   subject = "Education data dashboards",
+  #   rating = "General",
+  #   referrer = "no-referrer"
+  # ),
+  
+  # Set title for search engines
+  HTML("<title>DfE Analytical Services R-Shiny Template</title>"),
+  
+  # Navbar ====================================================================
+  
+  # This CSS sets the 4th item on the navbar to the right
+  tagList(
+    tags$head(tags$style(HTML("
+                           .navbar-nav {
+                           float: none !important;
+                           }
+                           .navbar-nav > li:nth-child(4) {
+                           float: right;
+                           }
+                           ")))
+  ),
+  navbarPage("",
+             id = "navbar",
+             
+             # Homepage tab ============================================================
+             
+             tabPanel(
+               "Homepage",
+               fluidPage(
+                 fluidRow(
+                   column(
+                     12,
+                     h1("DfE Analytical Services R-Shiny data dashboard template"),
 
-    # Application title -----------------------------------------------------------------------------------
-    title = "Title of app here",
-    footer = p(
-      HTML("&nbsp;"),
-      img(src = "dfe_logo.svg", height = 100, width = 150, alt = "Department for Education logo"),
-      br(),
-      p(
-        HTML("&nbsp;"), "Link back to relevant statistics on ", a(href = "https://explore-education-statistics.service.gov.uk/", "EES."),
-        br(),
-        HTML("&nbsp;"), "If you would like to provide feedback on this dashboard, please complete our ",
-        a(href = "https://forms.office.com/", "online survey"),
-        br(),
-        HTML("&nbsp;"), "Underlying code for this application can be found in ", a(href = "https://github.com/dfe-analytical-services/shiny-template", "our online repo."),
-      )
-    ),
-
-    # App code goes here -----------------------------------------------------------------------------------
-
-    # Create first tab--------------------------------------------------------------------------------------
-
+                     p("This app demonstrates the DfE Analytical Services R-Shiny data dashboard template."),
+                     br(),
+                     br()
+                   ),
+                   
+                   ## Left panel -------------------------------------------------------
+                   
+                   column(
+                     6,
+                     div(
+                       div(
+                         class = "panel panel-info",
+                         div(
+                           class = "panel-heading",
+                           style = "color: white;font-size: 18px;font-style: bold; background-color: #1d70b8;",
+                           h2("Contents")
+                         ),
+                         div(
+                           class = "panel-body",
+                           tags$div(
+                             title = "This section is useful if you want to understand how well different industries retain graduates.",
+                             h3(actionLink("link_to_industryFlow_tab", "App Content"))
+                           ),
+                           br()
+                         )
+                       )
+                     ),
+                   ),
+                   
+                   ## Right panel ------------------------------------------------------
+                   
+                   column(
+                     6,
+                     div(
+                       div(
+                         class = "panel panel-info",
+                         div(
+                           class = "panel-heading",
+                           style = "color: white;font-size: 18px;font-style: bold; background-color: #1d70b8;",
+                           h2("Background Info")
+                         ),
+                         div(
+                           class = "panel-body",
+                         )
+                       )
+                     )
+                   )
+                 )
+               )
+             ),
     tabPanel(
       "App content",
 
@@ -73,10 +145,10 @@ ui <- function(input, output, session) {
         # Show a plot of the generated distribution
         mainPanel(
           width = 10,
+          valueBoxOutput("box_info", width = 6),
           plotOutput("distPlot"),
-          br(),
+          br()
           # add box to show user input
-          valueBoxOutput("box_info", width = 6)
         )
       )
     ),
@@ -111,6 +183,16 @@ ui <- function(input, output, session) {
         "If you have any feedback on how we could further improve the accessibility of this application, please contact us at",
         a(href = "mailto:email@education.gov.uk", "email@education.gov.uk")
       )
-    ) # End of accessibility tab
+    ), # End of accessibility tab
+    # Support links ===========================================================
+    
+    tabPanel(
+      "Support and feedback",
+      support_links() # defined in R/supporting_links.R
+    ),
+  # Footer ====================================================================
+    
+    shinyGovstyle::footer(TRUE)
+    
   ) # End of navBarPage
-} # End of ui
+)
