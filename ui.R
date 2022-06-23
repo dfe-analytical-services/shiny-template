@@ -28,7 +28,7 @@
 # ---------------------------------------------------------
 
 ui <- function(input, output, session) {
-  tags$head(includeHTML(("google-analytics.Rhtml")))
+  tags$head(includeHTML(("google-analytics.html")))
   navbarPage(
     useShinyjs(),
     includeCSS("www/shiny_gov_style.css"),
