@@ -30,7 +30,7 @@
 ui <- function(input, output, session) {
   navbarPage(
     useShinyjs(),
-    tags$head(includeHTML(("google-analytics.Rhtml"))),
+    tags$head(includeHTML(("google-analytics.html"))),
     includeCSS("www/shiny_gov_style.css"),
     useShinydashboard(),
 
