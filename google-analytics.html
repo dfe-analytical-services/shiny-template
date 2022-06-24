@@ -10,5 +10,14 @@
     $(document).on('click', 'Accessibility', function(e) {
     ga('send', 'event', 'TabsetPanel', 'Tab Viewed', $(this).attr('data-value'));
   });
+  
+  $(document).on('change', 'select', function(e) {
+  ga('send', 'event', 'widget', 'select data', $(e.currentTarget).val());
+});
+  
+   $(document).on('change', 'select', function(e) {
+    ga('send', 'event', 'category', 'action', 'label', value);
+  });
+  
   </script>
       
