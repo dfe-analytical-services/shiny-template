@@ -6,9 +6,9 @@
     gtag('js', new Date());
     
     gtag('config', 'G-Z967JJVQQX');
-    
-    $(document).on('click', 'tab-pane', function() {
-      ga('send', 'event', 'tab-pane', 'Accessibility');
-    });
+
+    $(document).on('click', 'Accessibility', function(e) {
+    ga('send', 'event', 'TabsetPanel', 'Tab Viewed', $(this).attr('data-value'));
+  });
   </script>
       
