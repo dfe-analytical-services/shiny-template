@@ -383,9 +383,9 @@
     "renv": {
       "Package": "renv",
       "Version": "0.15.5",
-      "Source": "Repository",
+      "OS_type": NA,
       "Repository": "CRAN",
-      "Hash": "6a38294e7d12f5d8e656b08c5bd8ae34"
+      "Source": "Repository"
     },
     "rlang": {
       "Package": "rlang",
