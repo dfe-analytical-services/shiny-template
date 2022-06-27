@@ -19,5 +19,9 @@
     ga('send', 'event', 'category', 'action', 'label', value);
   });
   
+    $(document).on('change', '#bins', function(e) {
+    ga('send', 'event', 'widget', 'select bins', $(e.currentTarget).val());
+  });
+  
   </script>
       
