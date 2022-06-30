@@ -28,10 +28,11 @@
 # ---------------------------------------------------------
 
 ui <- function(input, output, session) {
+  fluidPage(
     useShinyjs(),
-    tags$head(includeHTML(("google-analytics.html"))),
-    includeCSS("www/dfe_shiny_gov_style.css"),
-    useShinydashboard(),
+  tags$head(includeHTML(("google-analytics.html"))),
+  includeCSS("www/dfe_shiny_gov_style.css"),
+  useShinydashboard(),
   # use_tota11y(), # accessibility layer for local testing
   
   # Set metadata for browser ==================================================
@@ -197,4 +198,5 @@ ui <- function(input, output, session) {
     shinyGovstyle::footer(TRUE)
     
   ) # End of navBarPage
-)
+  )
+  }
