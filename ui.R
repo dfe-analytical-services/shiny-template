@@ -29,6 +29,7 @@
 
 fluidPage(
   shinyjs::useShinyjs(),
+  useShinydashboard(),
   includeCSS("www/dfe_shiny_gov_style.css"),
   title = "DfE Analytical Services R-Shiny Template",
   # use_tota11y(), # accessibility layer for local testing
@@ -96,7 +97,7 @@ fluidPage(
                            class = "panel-body",
                            tags$div(
                              title = "This section is useful if you want to understand how well different industries retain graduates.",
-                             h3(actionLink("link_to_industryFlow_tab", "App Content"))
+                             h3(actionLink("link_to_app_content_tab", "App Content"))
                            ),
                            br()
                          )
@@ -126,6 +127,7 @@ fluidPage(
                )
              ),
     tabPanel(
+      value='app_content',
       "App content",
 
       # Define UI for application that draws a histogram
