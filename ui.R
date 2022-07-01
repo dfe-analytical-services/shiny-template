@@ -30,7 +30,7 @@
 ui <- function(input, output, session) {
   fluidPage(
     useShinyjs(),
-    #tags$head(includeHTML(("google-analytics.html"))),
+    # tags$head(includeHTML(("google-analytics.html"))),
     # somewhere inside the UI
     shiny::tags$head(
       shiny::tags$script(
