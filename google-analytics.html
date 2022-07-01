@@ -6,18 +6,6 @@
     gtag('js', new Date());
     
     gtag('config', 'G-Z967JJVQQX');
-
-    $(document).on('click', 'Accessibility', function(e) {
-    ga('send', 'event', 'TabsetPanel', 'Tab Viewed', $(this).attr('data-value'));
-  });
-  
-  $(document).on('change', 'select', function(e) {
-  ga('send', 'event', 'widget', 'select data', $(e.currentTarget).val());
-});
-  
-   $(document).on('change', 'select', function(e) {
-    ga('send', 'event', 'category', 'action', 'label', value);
-  });
   
     $(document).on('change', '#bins', function(e) {
     ga('send', 'event', 'widget', 'select bins', $(e.currentTarget).val());
