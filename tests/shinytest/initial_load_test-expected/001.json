@@ -3,11 +3,6 @@
     "bins": 30
   },
   "output": {
-    "box_info": {
-      "html": "<div class=\"small-box bg-purple\">\n  <div class=\"inner\">\n    <h3>30<\/h3>\n    <p>Number that user has inputted<\/p>\n  <\/div>\n<\/div>",
-      "deps": [
 
-      ]
-    }
   }
 }

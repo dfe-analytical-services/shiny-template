@@ -17,6 +17,7 @@ library(testthat)
 library(shinytest)
 library(shinydashboard)
 library(shinyWidgets)
+library(shinyGovstyle)
 
 # Functions ---------------------------------------------------------------------------------
 
@@ -68,3 +69,5 @@ appLoadingCSS <- "
   color: #FFFFFF;
 }
 "
+
+source("R/support_links.R")

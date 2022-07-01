@@ -611,6 +611,19 @@
         "xtable"
       ]
     },
+    "shinyGovstyle": {
+      "Package": "shinyGovstyle",
+      "Version": "0.0.8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "a593ce187f4a7830392e0843041e3ea8",
+      "Requirements": [
+        "htmltools",
+        "jsonlite",
+        "shiny",
+        "shinyjs"
+      ]
+    },
     "shinyWidgets": {
       "Package": "shinyWidgets",
       "Version": "0.7.0",
