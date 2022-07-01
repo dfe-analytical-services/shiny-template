@@ -30,17 +30,7 @@
 ui <- function(input, output, session) {
   fluidPage(
     useShinyjs(),
-    # tags$head(includeHTML(("google-analytics.html"))),
-    # somewhere inside the UI
-    shiny::tags$head(
-      shiny::tags$script(
-        src = "https://www.googletagmanager.com/gtag/js?id=G-Z967JJVQQX",
-        async = ""
-      ),
-      shiny::tags$script(
-        src = "google-analytics.js"
-      )
-    ),
+    tags$head(includeHTML(("google-analytics.html"))),
     includeCSS("www/dfe_shiny_gov_style.css"),
     useShinydashboard(),
     # use_tota11y(), # accessibility layer for local testing
