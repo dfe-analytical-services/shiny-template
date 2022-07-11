@@ -90,7 +90,7 @@ The function run_tests_locally() is created in the Rprofile script and is availa
 
 ### Deployment
 
-- The app is deployed to the department's shinyapps.io subscription using GitHub actions, to [https://department-for-education.shinyapps.io/la-school-places-scorecards](https://department-for-education.shinyapps.io/la-school-places-scorecards). The yaml file for this can be found in the .github/workflows folder.
+- The app is deployed to the department's shinyapps.io subscription using GitHub actions. The yaml file for this can be found in the .github/workflows folder.
 
 ### Navigation
 
