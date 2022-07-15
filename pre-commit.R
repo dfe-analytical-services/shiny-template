@@ -25,7 +25,9 @@ for (file in current_files$files){
       if (!file %in% ign_files$filename){
         cat("Error:", file, "is not logged as published or reference data in datafiles_log.csv and is not found in .gitignore.\n\n")
         cat("If the file contains published or reference data then update its entry in datafiles_log.csv.\n\n")
-        cat("If the file contains unpublished data then add it to the .gitignore file.\n\n")      }
+        cat("If the file contains unpublished data then add it to the .gitignore file.\n\n")
+        error_flag <- TRUE
+      }
     }
   }
 }
