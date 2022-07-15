@@ -4,25 +4,25 @@ shhh(library(dplyr))
 
 error_flag <- FALSE
 
-datalog   <- "datafiles_log.csv"
+datalog <- "datafiles_log.csv"
 log_files <- read.csv(datalog)
-ign_files <- read.csv(".gitignore",header=FALSE)
+ign_files <- read.csv(".gitignore", header = FALSE)
 colnames(ign_files)[1] <- "filename"
 
-suffixes  <- "xlsx$|dat$|csv$|tex$|pdf$"
+suffixes <- "xlsx$|dat$|csv$|tex$|pdf$"
 
-current_files <- data.frame(files=list.files("./",recursive = TRUE)) %>% 
-  filter(grepl(suffixes,files),!grepl("renv|datafiles_log.csv",files))
+current_files <- data.frame(files = list.files("./", recursive = TRUE)) %>%
+  filter(grepl(suffixes, files), !grepl("renv|datafiles_log.csv", files))
 
-for (file in current_files$files){
-  if (!file %in% log_files$filename){
+for (file in current_files$files) {
+  if (!file %in% log_files$filename) {
     cat("Error:", file, "is not recorded in datafiles_log.csv.\n\n")
     cat("Please add an entry to datafiles_log.csv for this file and mark it as unpublished, published or reference.\n\n")
     error_flag <- TRUE
   } else {
-    file_status <- (log_files %>% filter(filename==file))$status
-    if (!file_status %in% c("published","Published","reference","Reference")){
-      if (!file %in% ign_files$filename){
+    file_status <- (log_files %>% filter(filename == file))$status
+    if (!file_status %in% c("published", "Published", "reference", "Reference")) {
+      if (!file %in% ign_files$filename) {
         cat("Error:", file, "is not logged as published or reference data in datafiles_log.csv and is not found in .gitignore.\n\n")
         cat("If the file contains published or reference data then update its entry in datafiles_log.csv.\n\n")
         cat("If the file contains unpublished data then add it to the .gitignore file.\n\n")
@@ -32,7 +32,7 @@ for (file in current_files$files){
   }
 }
 
-if ( error_flag ){
+if (error_flag) {
   cat("Warning, aborting commit. Unrecognised data files found, please update .gitignore or datafiles_log.csv.\n")
   quit(save = "no", status = 1, runLast = FALSE)
 }
