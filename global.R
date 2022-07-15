@@ -18,6 +18,7 @@ library(shinytest)
 library(shinydashboard)
 library(shinyWidgets)
 library(shinyGovstyle)
+library(dplyr)
 
 # Functions ---------------------------------------------------------------------------------
 
