@@ -21,7 +21,7 @@ for (file in current_files$files) {
     error_flag <- TRUE
   } else {
     file_status <- (log_files %>% filter(filename == file))$status
-    if (!file_status %in% c("published", "Published", "reference", "Reference")) {
+    if (!file_status %in% c("published", "Published", "reference", "Reference", "dummy", "Dummy")) {
       if (!file %in% ign_files$filename) {
         cat("Error:", file, "is not logged as published or reference data in datafiles_log.csv and is not found in .gitignore.\n\n")
         cat("If the file contains published or reference data then update its entry in datafiles_log.csv.\n\n")
