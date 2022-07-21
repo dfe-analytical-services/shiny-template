@@ -1,8 +1,0 @@
-﻿col_name,col_type,label,indicator_grouping,indicator_unit,indicator_dp,filter_hint,filter_grouping_column
-Phase-type_grouping,Filter,School type,,,,Filter by school type,
-gender,Filter,Pupil gender,,,,Pupil gender (Boys/girls),
-age,Filter,Pupil age,,,,Age at start of academic year (31st Aug),
-full_time,Indicator,Full time pupils,Pupil counts,,0,,
-part_time,Indicator,Part time pupils,Pupil counts,,0,,
-headcount,Indicator,Headcount,Pupil counts,,0,,
-fte,Indicator,Full time equivalent,Pupil counts,,0,,
