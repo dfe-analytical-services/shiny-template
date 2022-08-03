@@ -1,2 +1,4 @@
 filename,status
-data/la_maintained_schools_revenue_reserve_final.csv,unpublished
+data/la_maintained_schools_revenue_reserve_final.csv,published
+data/date_format.csv,published
+data/date_format.meta.csv,published
