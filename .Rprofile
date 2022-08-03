@@ -33,3 +33,6 @@ run_tests_locally <- function() {
   message("")
   message("================================================================================")
 }
+
+# Install commit-hooks locally
+file.copy(".hooks/pre-commit.R",".git/hooks/pre-commit",overwrite=TRUE)
