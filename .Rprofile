@@ -8,6 +8,8 @@
 #
 # ---------------------------------------------------------
 
+cat("Sourcing .Rprofile.")
+
 source("renv/activate.R")
 
 # Tidy code function

@@ -1,4 +1,5 @@
 #!/usr/bin/env Rscript
+cat("Running commit hooks...",fill=TRUE)
 shhh <- suppressPackageStartupMessages # It's a library, so shhh!
 shhh(library(dplyr))
 
