@@ -7,11 +7,15 @@
     
     gtag('config', 'G-Z967JJVQQX');
   
-    $(document).on('change', '#bins :slider', function(e) {
+    $(document).on('change', '#bins :Slider', function(e) {
       gtag('event', 'action', {
         'event_label': 'select_bins',
         'value': $(e.currentTarget).val()
       });
+  });
+  
+    $(document).on('change', '#bins :Slider', function(e) {
+     ga('send', 'event', 'widget', 'select_bins2', $(e.currentTarget).val());
   });
   
   </script>
