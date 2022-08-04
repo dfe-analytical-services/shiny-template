@@ -141,7 +141,10 @@ ui <- function(input, output, session) {
               min = 1,
               max = 50,
               value = 30
-            )
+            ),
+            selectInput(inputId = "dataset",
+                        label = "Choose a dataset:",
+                        choices = c("rock", "pressure", "cars"))
           ),
 
           # Show a plot of the generated distribution

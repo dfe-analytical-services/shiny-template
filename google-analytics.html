@@ -8,7 +8,7 @@
     gtag('config', 'G-Z967JJVQQX');
   
     $(document).on('change', '#bins :Slider', function(e) {
-      gtag('event', 'action', {
+      gtag('event', 'widget', {
         'event_label': 'select_bins',
         'value': $(e.currentTarget).val()
       });
@@ -19,7 +19,7 @@
   });
   
      $(#bins).on('change', function(e) {
-      gtag('event', 'action', {
+      gtag('event', 'widget', {
         'event_label': 'select_bins3',
         'value': $(e.currentTarget).val()
       });
@@ -27,6 +27,12 @@
   
   $(document).on('click', '#navbar', function() {
     ga('send', 'event', 'widget', 'navbar click');
+  });
+  
+   $(document).on('change', 'select#dataset', function(e) {
+    gtag('event', 'change', {'event_category' : 'choose dataset',
+    'event_label' : document.querySelector('select#dataset').value
+    });
   });
   
   </script>
