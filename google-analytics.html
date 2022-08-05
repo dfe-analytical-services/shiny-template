@@ -13,9 +13,9 @@
     });
   });
   
-    $(document).on('click', '#navbar', function(e) {
+  $(document).on('click', '#navbar', function(e) {
     gtag('event', 'navbar', {'event_category' : 'navbar click',
-    'event_label' : document.querySelector('#navbar').value
+    'event_label' : document.querySelector('#tab-pane active').value
     });
   });
   
