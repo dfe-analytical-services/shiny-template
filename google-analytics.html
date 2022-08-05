@@ -13,5 +13,11 @@
     });
   });
   
+  $(document).on('change', 'select#navbar', function(e) {
+    gtag('event', 'navbar change', {'event_category' : 'choose navbar page',
+    'event_label' : document.querySelector('select#navbar').value
+    });
+  });
+  
 </script>
       
