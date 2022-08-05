@@ -13,5 +13,11 @@
     });
   });
   
+  $(document).on('click', '#navbar', function(e) {
+    gtag('event', 'navbar', {'event_category' : 'navbar click',
+    'event_label' : document.querySelector('#navbar').value
+    });
+  });
+  
 </script>
       
