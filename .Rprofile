@@ -8,7 +8,7 @@
 #
 # ---------------------------------------------------------
 
-cat("Sourcing .Rprofile.",fill=TRUE)
+cat("Sourcing .Rprofile.", fill = TRUE)
 
 source("renv/activate.R")
 
@@ -37,4 +37,4 @@ run_tests_locally <- function() {
 }
 
 # Install commit-hooks locally
-statusWriteCommit <- file.copy(".hooks/pre-commit.R",".git/hooks/pre-commit",overwrite=TRUE)
+statusWriteCommit <- file.copy(".hooks/pre-commit.R", ".git/hooks/pre-commit", overwrite = TRUE)
