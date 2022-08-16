@@ -69,30 +69,29 @@ dashboard_panel <- function() {
     
     # Sidebar with a slider input for number of bins
     fluidRow(
-      box(
+      fluidRow(
         width=12,
         h2("Inputs"),
         column(width=6,
-        sliderInput("bins",
-                    "Number of bins:",
-                    min = 1,
-                    max = 50,
-                    value = 30
-        )
+        selectizeInput("selectPhase",
+                    "Select a school phase",
+                    choices = choicesPhase
+                    )
         ),
         column(
           width=6,
-          selectInput(
-            inputId = "dataset",
-            label = "Choose a dataset:",
-            choices = c("rock", "pressure", "cars")
+          selectizeInput(
+            inputId = "selectArea",
+            label = "Choose an area:",
+            choices = choicesAreas$area_name
           )
         )
       ),
-      box(width=12,
+      fluidRow(width=12,
           h2("Outputs"),
-          valueBoxOutput("box_info", width = 6),
-        plotOutput("distPlot"),
+          valueBoxOutput("boxavgRevBal", width = 6),
+          valueBoxOutput("boxpcRevBal", width = 6),
+          plotOutput("lineRevBal"),
         br()
         # add box to show user input
       )

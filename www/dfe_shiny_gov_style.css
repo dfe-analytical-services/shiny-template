@@ -57,7 +57,6 @@ body {
 }
 
 
-
 .small-box.bg-purple {
     background-color: 	#801650 !important;
     color: #ffffff;
@@ -66,6 +65,8 @@ body {
 .small-box.bg-blue{
      background-color: #1d70b8 !important; 
      color: #ffffff;
+     padding: 120px
+     margin:10px;
 }
 
 .small-box.bg-orange{

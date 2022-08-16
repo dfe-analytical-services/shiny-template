@@ -19,6 +19,7 @@ library(shinydashboard)
 library(shinyWidgets)
 library(shinyGovstyle)
 library(dplyr)
+library(ggplot2)
 
 # Functions ---------------------------------------------------------------------------------
 
@@ -75,4 +76,19 @@ source("R/support_links.R")
 source("R/read_data.R")
 
 # Read in the data
-dfRevBal <- read_revenue_data()
+dfRevBal <- read_revenue_data() 
+
+# Get geographical levels from data
+dfAreas <- dfRevBal %>% 
+  select(geographic_level,country_name,country_code,
+         region_name,region_code,
+         la_name,old_la_code,new_la_code) %>%
+  distinct()
+
+choicesAreas <- dfAreas %>% filter(geographic_level=='National') %>% select(geographic_level,area_name=country_name) %>%
+  rbind(dfAreas %>% filter(geographic_level=='Regional') %>% select(geographic_level,area_name=region_name)) %>%
+  rbind(dfAreas %>% filter(geographic_level=='Local authority') %>% select(geographic_level,area_name=la_name) %>% arrange(area_name))
+
+choicesYears <- unique(dfRevBal$time_period)
+
+choicesPhase <- unique(dfRevBal$school_phase)

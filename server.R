@@ -28,33 +28,44 @@ server <- function(input, output, session) {
   show("app-content")
 
   # Simple server stuff goes here ------------------------------------------------------------
-
+  reactiveRevBal <- reactive({
+    dfRevBal %>% filter(area_name == input$selectArea | area_name=='England',
+                        school_phase == input$selectPhase)
+  })
 
   # Define server logic required to draw a histogram
-  output$distPlot <- renderPlot({
-
-    # generate bins based on input$bins from ui.R
-    x <- faithful[, 2]
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = "darkgray", border = "white")
+  output$lineRevBal <- renderPlot({
+    createAvgRevTimeSeries(reactiveRevBal(),input$selectArea)
   })
 
   # Define server logic to create a box
 
-  output$box_info <- renderValueBox({
+  output$boxavgRevBal <- renderValueBox({
 
     # Put value into box to plug into app
-    shinydashboard::valueBox(
+    valueBox(
       # take input number
-      input$bins,
+      paste0('£',format((reactiveRevBal() %>% filter(year==max(year),
+                                 area_name==input$selectArea,
+                                 school_phase==input$selectPhase))$average_revenue_balance,
+             big.mark=',')),
       # add subtitle to explain what it's hsowing
-      paste0("Number that user has inputted"),
+      paste0("This is the value for the selected inputs"),
       color = "blue"
     )
   })
-
+  output$boxpcRevBal <- renderValueBox({
+    
+    # Put value into box to plug into app
+    valueBox(
+      # take input number
+      input$selectPhase,
+      # add subtitle to explain what it's hsowing
+      paste0("This is the selected phase"),
+      color = "purple"
+    )
+  })
+  
   observeEvent(input$link_to_app_content_tab, {
     updateTabsetPanel(session, "navbar", selected = "app_content")
   })

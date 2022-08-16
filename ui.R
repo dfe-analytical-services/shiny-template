@@ -54,13 +54,13 @@
 #    https://github.com/moj-analytical-services/shinyGovstyle
 #
 
-shinyjs::useShinyjs()
-useShinydashboard()
 
 
 ui <- function(input, output, session) {
   fluidPage(
-  tags$head(includeHTML(("google-analytics.html"))),
+    shinyjs::useShinyjs(),
+    useShinydashboard(),
+    tags$head(includeHTML(("google-analytics.html"))),
   tags$head(
     tags$link(
       rel = "stylesheet", 
