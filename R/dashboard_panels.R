@@ -71,7 +71,8 @@ dashboard_panel <- function() {
     fluidRow(
       fluidRow(
         width=12,
-        h2("Inputs"),
+        h1("Overall content title for this dashboard page (h1)"),
+        h2("Input heading if needed (h2)"),
         column(width=6,
         selectizeInput("selectPhase",
                     "Select a school phase",
@@ -88,11 +89,23 @@ dashboard_panel <- function() {
         )
       ),
       fluidRow(width=12,
-          h2("Outputs"),
+               tabsetPanel(
+                 tabPanel(
+                   "Example panel 1",
+          h2("Outputs 1 (heading level 2)"),
           valueBoxOutput("boxavgRevBal", width = 6),
           valueBoxOutput("boxpcRevBal", width = 6),
           plotOutput("lineRevBal"),
         br()
+        ),
+        tabPanel(
+          "Example panel 2",
+          h2("Outputs 2 (heading level 2)"),
+          p("This is the standard paragraph style for adding guiding info around data content."),
+          br()
+        )
+        
+               )
         # add box to show user input
       )
     )

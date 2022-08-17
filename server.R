@@ -50,7 +50,7 @@ server <- function(input, output, session) {
                                  school_phase==input$selectPhase))$average_revenue_balance,
              big.mark=',')),
       # add subtitle to explain what it's hsowing
-      paste0("This is the value for the selected inputs"),
+      paste0("This is the latest value for the selected inputs"),
       color = "blue"
     )
   })
@@ -62,7 +62,7 @@ server <- function(input, output, session) {
       input$selectPhase,
       # add subtitle to explain what it's hsowing
       paste0("This is the selected phase"),
-      color = "purple"
+      color = "blue"
     )
   })
   

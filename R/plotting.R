@@ -7,7 +7,7 @@ ggplot(dfRevenueBalance, aes(x=year,y=average_revenue_balance,color=area_name)) 
     text = element_text(size = 24),
     axis.title.x = element_text(margin = margin(t = 12)),
     axis.title.y = element_text(margin = margin(r = 16)),
-    axis.line = element_line( size = 1.6),
+    axis.line = element_line( size = 1.0),
   ) +
   scale_y_continuous(
     labels = scales::number_format(accuracy = 1, big = ',', prefix='£')) +
