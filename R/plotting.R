@@ -4,8 +4,8 @@ ggplot(dfRevenueBalance, aes(x=year,y=average_revenue_balance,color=area_name)) 
   geom_line(size = 1.2) +       
   theme_classic() +
   theme(
-    text = element_text(size = 10),
-    axis.title.x = element_text(margin = margin(t = 10)),
+    text = element_text(size = 12),
+    axis.title.x = element_text(margin = margin(t = 12)),
     axis.title.y = element_text(margin = margin(r = 12)),
     axis.line = element_line( size = 1.0),
   ) +
