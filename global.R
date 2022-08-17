@@ -9,17 +9,18 @@
 
 
 # Library calls ---------------------------------------------------------------------------------
-
-library(shiny)
-library(shinyjs)
-library(tools)
-library(testthat)
-library(shinytest)
-library(shinydashboard)
-library(shinyWidgets)
-library(shinyGovstyle)
-library(dplyr)
-library(ggplot2)
+shhh <- suppressPackageStartupMessages # It's a library, so shhh!
+shhh(library(shiny))
+shhh(library(shinyjs))
+shhh(library(tools))
+shhh(library(testthat))
+shhh(library(shinytest))
+shhh(library(shinydashboard))
+shhh(library(shinyWidgets))
+shhh(library(shinyGovstyle))
+shhh(library(dplyr))
+shhh(library(ggplot2))
+shhh(library(plotly))
 
 # Functions ---------------------------------------------------------------------------------
 

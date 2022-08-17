@@ -73,32 +73,45 @@ dashboard_panel <- function() {
         column(
           width=12,
         h1("Overall content title for this dashboard page (h1)"),
-        h2("Input heading if needed (h2)")
-        ),
-        column(width=5,
-        selectizeInput("selectPhase",
-                    "Select a school phase",
-                    choices = choicesPhase
-                    )
         ),
         column(
-          width=5,
+          width=12,
+          div(
+            class = "well",
+            style = "min-height: 100%; height: 100%; overflow-y: visible",
+            fluidRow(
+            column(
+              width=6,
+              selectizeInput("selectPhase",
+                    "Select a school phase",
+                    choices = choicesPhase
+                    )),
+        column(
+          width=6,
           selectizeInput(
             inputId = "selectArea",
             label = "Choose an area:",
             choices = choicesAreas$area_name
+        )
+        ))
           )
         ),
+        
         column(
           width=12,
                tabsetPanel(
                  tabPanel(
                    "Example panel 1",
-          h2("Outputs 1 (heading level 2)"),
+                   fluidRow(
+                     column(
+                       width=12,
+          h2("Outputs 1 (h2)"),
           valueBoxOutput("boxavgRevBal", width = 6),
           valueBoxOutput("boxpcRevBal", width = 6),
-          plotOutput("lineRevBal"),
-        br()
+          box(
+            width=12,
+          plotlyOutput("lineRevBal")))
+        )
         ),
         tabPanel(
           "Example panel 2",
