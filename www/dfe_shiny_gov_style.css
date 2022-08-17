@@ -1,59 +1,181 @@
-
-.skin-blue .main-header .navbar {
-    background-color: #0b0c0c;
+@font-face {
+  font-family:"GDS Transport";
+  src:url("/fonts/light-94a07e06a1-v2.woff2")
+  format("woff2"),
+  url("/assets/fonts/light-f591b13f7d-v2.woff")
+  format("woff");
+  font-weight:normal;
+  font-style:normal;
+  font-display:fallback
 }
 
-.navbar-default {
-    background-color: #0b0c0c;
-    border-color: #0b0c0c;
+@font-face {
+  font-family:"GDS Transport";
+  src:url("/fonts/bold-b542beb274-v2.woff2")
+  format("woff2"),url("/assets/fonts/bold-affa96571d-v2.woff")
+  format("woff");
+  font-weight:bold;
+  font-style:normal;
+  font-display:fallback
 }
 
-.navbar-default .navbar-brand {
-    color: #ffffff;
-    font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
-    font-weight: bold;
-    font-size: 24px;
+html {
+  background-color: #f3f2f1;
 }
 
-.navbar-default .navbar-nav>li>a {
-    color: 	#ffffff;
-    font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
-    font-weight: bold;
-     font-size: 18px;
+.container-fluid {
+  padding: 0px;
 }
 
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>li>a:hover {
-    color: #ffffff;
-    background-color:	#505a5f;
-     font-size: 18px;
+.row {
+  margin-right: 0px;
 }
 
-.well {
-    height: 90vh; 
-    padding: 19px;
-    margin-bottom: 20px;
-    background-color: #1d70b8;
-    border: 1px solid #e3e3e3;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
-    box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
-    color: #ffffff;
+.nav-pills > li.active > a {
+  font-family: "GDS Transport", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  line-height: 1.1428571429;
+  background-color: #eee !important;
+  color: #1d70b8;
+  font-size: 15px;
+  border-color: #1d70b8;
 }
 
-body {
-   font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
-   font-size: 14px;
-   background-color: #ffffff
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover {
+  color: #1d70b8 !important;
 }
 
-
-.control-label{
-  color: #fff;
+.nav-pills > li > a:focus,
+.nav-pills > li > a:hover {
+   border-color: #1d70b8;
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
-    font-weight: bold;
+.nav-pills > li > a {
+  font-family: "GDS Transport", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  line-height: 1.1428571429;
+  font-size: 15px;
+  padding: 10px;
+  border-left: 4px solid transparent;
+}
+
+/* Tabs layout styling */
+
+.tabbable > .tab-content {
+  padding: 30px 20px;
+  border: 1px solid #b1b4b6;
+  border-top: 0
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  position: relative;
+  margin-top: -5px;
+  margin-bottom: -1px;
+  padding-top: 14px;
+  padding-right: 19px;
+  padding-bottom: 16px;
+  padding-left: 19px;
+  border: 1px solid #b1b4b6;
+  border-bottom: 0;
+  background-color: #fff;
+}
+
+.nav-tabs > li.active > a {
+  font-family: "GDS Transport", arial, sans-serif;
+  background-color: white;
+  border: none;
+  text-decoration: none;
+}
+
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  font-family: "GDS Transport", arial, sans-serif;
+  background-color: white;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-tabs > li {
+  position: relative;
+  margin-right: 5px;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding: 10px 20px;
+  float: left;
+  background-color: #f3f2f1;
+  text-align: center;
+}
+
+.nav-tabs > li.active {
+  position: relative;
+  margin-bottom: -1px;
+  padding-top: 14px;
+  padding-right: 19px;
+  padding-bottom: 16px;
+  padding-left: 19px;
+  border: 1px solid #b1b4b6;
+  border-bottom: 0;
+  background-color: #fff;
+}
+
+.nav-tabs > li > a {
+  font-family: "GDS Transport", arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: underline;
+  text-decoration-thickness: max(1px, 0.0625rem);
+  text-underline-offset: 0.1em;
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #0b0c0c;
+  font-weight: 400;
+  font-size: 19px;
+}
+
+.nav-tabs > li > a:hover {
+  font-family: "GDS Transport", arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: underline;
+  text-decoration-thickness: max(3px, 0.1875rem, 0.12em);
+  text-underline-offset: 0.1em;
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #0b0c0c;
+  font-weight: 400;
+  font-size: 19px;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+/* Full screen plots */
+/* Adapted from https://stackoverflow.com/questions/69042546/is-there-a-way-to-create-a-full-screen-popup-window-of-a-plotly-chart-in-r */
+.plot-zoom {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    bottom: 0;
+    right: 0;
+
+}
+
+.full-screen {
+    position: fixed;
+    height: 99vh !important;
+    width: 99vw !important;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    overflow: hidden;
 }
 
 
@@ -84,24 +206,3 @@ body {
      color: #ffffff;
 }
 
-.nav-tabs-custom>.nav-tabs>li.active {
-    border-top-color: #5694ca;
-}
-
-a {
-    color: #1d70b8;
-}
-
-.help-block{
-  color: #ffffff;
-}
-
-.govuk-inset-text{
-  font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
-  font-size: 14px;
-}
-
-.govuk-details{
-  font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
-  font-size: 14px;
-}

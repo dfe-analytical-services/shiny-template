@@ -68,27 +68,29 @@ dashboard_panel <- function() {
     # Define UI for application that draws a histogram
     
     # Sidebar with a slider input for number of bins
-    fluidRow(
+    fluidPage(
       fluidRow(
-        width=12,
+        column(
+          width=12,
         h1("Overall content title for this dashboard page (h1)"),
-        h2("Input heading if needed (h2)"),
-        column(width=6,
+        h2("Input heading if needed (h2)")
+        ),
+        column(width=5,
         selectizeInput("selectPhase",
                     "Select a school phase",
                     choices = choicesPhase
                     )
         ),
         column(
-          width=6,
+          width=5,
           selectizeInput(
             inputId = "selectArea",
             label = "Choose an area:",
             choices = choicesAreas$area_name
           )
-        )
-      ),
-      fluidRow(width=12,
+        ),
+        column(
+          width=12,
                tabsetPanel(
                  tabPanel(
                    "Example panel 1",
@@ -105,9 +107,10 @@ dashboard_panel <- function() {
           br()
         )
         
-               )
+              )
+        )
         # add box to show user input
-      )
-    )
+)
+          )
   )
 }
