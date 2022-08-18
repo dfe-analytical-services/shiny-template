@@ -11,13 +11,13 @@ The tracking number below MUST be replaced with a unique number, contact the sta
     gtag('config', 'G-Z967JJVQQX');
   
   $(document).on('change', 'select#selectPhase', function(e) {
-    gtag('event', 'change', {'event_category' : 'choose Phase',
+    gtag('event', 'select phase', {'event_category' : 'choose Phase',
     'event_label' : document.querySelector('select#selectPhase').value
     });
   });
   
   $(document).on('change', 'select#selectArea', function(e) {
-    gtag('event', 'change', {'event_category' : 'choose Area',
+    gtag('event', 'select area', {'event_category' : 'choose Area',
     'event_label' : document.querySelector('select#selectArea').value
     });
   });
