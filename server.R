@@ -34,8 +34,8 @@ server <- function(input, output, session) {
   })
 
   # Define server logic required to draw a histogram
-  output$lineRevBal <- renderPlot({
-    createAvgRevTimeSeries(reactiveRevBal(),input$selectArea)
+  output$lineRevBal <- renderPlotly({
+    ggplotly(createAvgRevTimeSeries(reactiveRevBal(),input$selectArea))
   })
 
   # Define server logic to create a box
@@ -55,13 +55,20 @@ server <- function(input, output, session) {
     )
   })
   output$boxpcRevBal <- renderValueBox({
+    latest <- (reactiveRevBal() %>% filter(year==max(year),
+                                                   area_name==input$selectArea,
+                                                   school_phase==input$selectPhase))$average_revenue_balance
+    penult <- (reactiveRevBal() %>% filter(year==max(year)-1,
+                                area_name==input$selectArea,
+                                school_phase==input$selectPhase))$average_revenue_balance
     
     # Put value into box to plug into app
     valueBox(
       # take input number
-      input$selectPhase,
+      paste0('£',format(latest-penult,
+                        big.mark=',')),
       # add subtitle to explain what it's hsowing
-      paste0("This is the selected phase"),
+      paste0("Change on previous year"),
       color = "blue"
     )
   })
