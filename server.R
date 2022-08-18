@@ -95,7 +95,7 @@ server <- function(input, output, session) {
   })
   
   observeEvent(input$link_to_app_content_tab, {
-    updateTabsetPanel(session, "navbar", selected = "app_content")
+    updateTabsetPanel(session, "navlistPanel", selected = "dashboard")
   })
 
 

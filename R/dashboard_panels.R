@@ -5,8 +5,7 @@ homepage_panel <- function() {
       fluidRow(
         column(
           12,
-          h1("DfE Analytical Services R-Shiny data dashboard template"),
-          p("This app demonstrates the DfE Analytical Services R-Shiny data dashboard template."),
+          h1("DfE Analytical Services R-Shiny data dashboard template (h1)"),
           br(),
           br()
         ),
@@ -21,13 +20,17 @@ homepage_panel <- function() {
               div(
                 class = "panel-heading",
                 style = "color: white;font-size: 18px;font-style: bold; background-color: #1d70b8;",
-                h2("Contents")
+                h2("Contents (h2)")
               ),
               div(
                 class = "panel-body",
                 tags$div(
                   title = "This section is useful if you want to understand how well different industries retain graduates.",
-                  h3(actionLink("link_to_app_content_tab", "App Content"))
+                  h3("Introduction (h3)"),
+                  p("This app demonstrates the DfE Analytical Services R-Shiny data dashboard template."),
+                  p("You might want to add some brief introductory text here alongside some links to different tabs within your dashboard. Here's an example of a link working:"),
+                  p(actionLink("link_to_app_content_tab", "Dashboard panel")),
+                  p("You need to add an observeEvent() function to the server.R script for any link that navigates within your App.")
                 ),
                 br()
               )
@@ -45,10 +48,13 @@ homepage_panel <- function() {
               div(
                 class = "panel-heading",
                 style = "color: white;font-size: 18px;font-style: bold; background-color: #1d70b8;",
-                h2("Background Info")
+                h2("Background Info (h2)")
               ),
               div(
                 class = "panel-body",
+                p("You might want to add some relevant background information for your users here. For example some useful links to your EES publication, data sources and other relevant resources."),
+                h3("Guidance sources (h3)"),
+                p("For example, here we'll add some of the key resources we draw on to guide styling and vizualisation...")
               )
             )
           )
