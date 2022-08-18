@@ -118,13 +118,14 @@ dashboard_panel <- function() {
           fluidRow(
             column(
               width=12,
-          h2("Outputs 2 (heading level 2)"),
+          h2("Outputs 2 (h2)"),
           p("This is the standard paragraph style for adding guiding info around data content."),
-          box(
-            width=12,
           column(
             width=6,
-            plotlyOutput("colBenchmark")
+            box(
+              width=12,
+              plotlyOutput("colBenchmark")
+            )
           ),
           column(
             width=6,
@@ -146,7 +147,6 @@ dashboard_panel <- function() {
                 dataTableOutput("tabBenchmark")
           ))
         ))
-        )
               )
         )
         # add box to show user input

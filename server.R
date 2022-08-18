@@ -46,7 +46,8 @@ server <- function(input, output, session) {
   })
   
   output$colBenchmark <- renderPlotly({
-    ggplotly(plotAvgRevBenchmark(reactiveBenchmark()))
+    ggplotly(plotAvgRevBenchmark(reactiveBenchmark()),
+             height=420)
   })
   
   output$tabBenchmark <- renderDataTable({
