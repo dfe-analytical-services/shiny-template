@@ -38,6 +38,26 @@ server <- function(input, output, session) {
     ggplotly(createAvgRevTimeSeries(reactiveRevBal(),input$selectArea))
   })
 
+  reactiveBenchmark <- reactive({
+    dfRevBal %>% 
+      filter(area_name %in% c(input$selectArea,input$selectBenchLAs),
+                        school_phase == input$selectPhase,
+                        year == max(year))
+  })
+  
+  output$colBenchmark <- renderPlotly({
+    ggplotly(plotAvgRevBenchmark(reactiveBenchmark()))
+  })
+  
+  output$tabBenchmark <- renderDataTable({
+    datatable(reactiveBenchmark() %>%
+      select(Area=area_name, 
+             `Average Revenue Balance (£)`=average_revenue_balance, 
+             `Total Revenue Balance (£m)`=total_revenue_balance_million),
+      options=list(scrollX=TRUE,
+                   paging=FALSE))
+  })
+  
   # Define server logic to create a box
 
   output$boxavgRevBal <- renderValueBox({

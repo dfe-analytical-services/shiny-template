@@ -115,11 +115,38 @@ dashboard_panel <- function() {
         ),
         tabPanel(
           "Example panel 2",
+          fluidRow(
+            column(
+              width=12,
           h2("Outputs 2 (heading level 2)"),
           p("This is the standard paragraph style for adding guiding info around data content."),
-          br()
+          box(
+            width=12,
+          column(
+            width=6,
+            plotlyOutput("colBenchmark")
+          ),
+          column(
+            width=6,
+            div(
+              class = "well",
+              style = "min-height: 100%; height: 100%; overflow-y: visible",
+              fluidRow(
+                column(
+                  width=12,
+                  selectizeInput("selectBenchLAs",
+                                 "Select benchamrk LAs",
+                                 choices = choicesLAs$area_name,
+                                 multiple=TRUE,
+                                 options = list(maxItems = 3)
+                  )
+                )
+                  )
+              ),
+                dataTableOutput("tabBenchmark")
+          ))
+        ))
         )
-        
               )
         )
         # add box to show user input
