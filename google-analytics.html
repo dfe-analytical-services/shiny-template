@@ -10,12 +10,22 @@ The tracking number below MUST be replaced with a unique number, contact the sta
 */
     gtag('config', 'G-Z967JJVQQX');
   
-    $(document).on('change', '#selectPhase', function(e) {
-    ga('send', 'event', 'widget', 'select_phase', $(e.currentTarget).val());
+  $(document).on('change', 'select#selectPhase', function(e) {
+    gtag('event', 'change', {'event_category' : 'choose Phase',
+    'event_label' : document.querySelector('select#selectPhase').value
+    });
   });
   
-   $(document).on('change', '#selectArea', function(e) {
-    ga('send', 'event', 'widget', 'select_area', $(e.currentTarget).val());
+  $(document).on('change', 'select#selectArea', function(e) {
+    gtag('event', 'change', {'event_category' : 'choose Area',
+    'event_label' : document.querySelector('select#selectArea').value
+    });
+  });
+  
+   $(document).on('click', '#navbar', function(e) {
+    gtag('event', 'navbar', {'event_category' : 'navbar click',
+    'event_label' : document.querySelector('#tab-pane active').value
+    });
   });
   
   </script>
