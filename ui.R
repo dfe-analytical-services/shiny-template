@@ -76,7 +76,7 @@ ui <- function(input, output, session) {
     "beta banner",
     "beta",
     paste0("This Dashboard is in beta phase and we are still reviewing performance and reliability. ",
-    "If you have any issues, there are two mirrors available for this app: ",
+    "In case of slowdown or connection issues due to high demand, we have produced two instances of this site which can be accessed at the following links: ",
     "<a href=",site_primary,">Primary</a> and ",
     "<a href=",site_overflow,">Mirror</a>.")
   ),
