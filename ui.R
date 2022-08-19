@@ -61,48 +61,51 @@ ui <- function(input, output, session) {
     shinyjs::useShinyjs(),
     useShinydashboard(),
     tags$head(includeHTML(("google-analytics.html"))),
-  tags$head(
-    tags$link(
-      rel = "stylesheet", 
-      type = "text/css", 
-      href = "dfe_shiny_gov_style.css")
-  ),
-  shinyGovstyle::header(
-    main_text = "DfE", 
-    secondary_text = "DfE Shiny Template", 
-    logo = "images/DfE_logo.png"
-  ),
-  shinyGovstyle::banner(
-    "beta banner",
-    "beta",
-    paste0("This Dashboard is in beta phase and we are still reviewing performance and reliability. ",
-    "In case of slowdown or connection issues due to high demand, we have produced two instances of this site which can be accessed at the following links: ",
-    "<a href=",site_primary,">Primary</a> and ",
-    "<a href=",site_overflow,">Mirror</a>.")
-  ),
-  shiny::navlistPanel(
-    "",
-    id = "navlistPanel",
-    widths = c(2, 8),
-    well = FALSE,
-    homepage_panel(),
-    dashboard_panel(),
-    a11y_panel(),
-    support_links()
-  ),
-  gov_layout(
-    size = "full",
-    tags$br(),
-    tags$br(),
-    tags$br(),
-    tags$br(),
-    tags$br()
-  ),
-  tags$script(
-    src="script.js"
-  ),
-  tags$script(HTML(
-    "
+    tags$head(
+      tags$link(
+        rel = "stylesheet",
+        type = "text/css",
+        href = "dfe_shiny_gov_style.css"
+      )
+    ),
+    shinyGovstyle::header(
+      main_text = "DfE",
+      secondary_text = "DfE Shiny Template",
+      logo = "images/DfE_logo.png"
+    ),
+    shinyGovstyle::banner(
+      "beta banner",
+      "beta",
+      paste0(
+        "This Dashboard is in beta phase and we are still reviewing performance and reliability. ",
+        "In case of slowdown or connection issues due to high demand, we have produced two instances of this site which can be accessed at the following links: ",
+        "<a href=", site_primary, ">Primary</a> and ",
+        "<a href=", site_overflow, ">Mirror</a>."
+      )
+    ),
+    shiny::navlistPanel(
+      "",
+      id = "navlistPanel",
+      widths = c(2, 8),
+      well = FALSE,
+      homepage_panel(),
+      dashboard_panel(),
+      a11y_panel(),
+      support_links()
+    ),
+    gov_layout(
+      size = "full",
+      tags$br(),
+      tags$br(),
+      tags$br(),
+      tags$br(),
+      tags$br()
+    ),
+    tags$script(
+      src = "script.js"
+    ),
+    tags$script(HTML(
+      "
     function plotZoom(el){
         el = $(el);
         var parent = el.parent().parent();
@@ -114,14 +117,14 @@ ui <- function(input, output, session) {
             setTimeout(function() {
               $('html').css('visibility', 'visible');
             }, 700);
-            
+
         } else {
             parent.removeClass('full-screen').trigger('resize').hide().show();
             $('.fullscreen-button').text('View full screen');
             el.attr('data-full_screen', 'false');
         }
     }
-    
+
     $(function(){
        $('.plotly-full-screen  .plotly.html-widget').append(
         `
@@ -130,10 +133,10 @@ ui <- function(input, output, session) {
                 <a href='#' class='govuk-link fullscreen-button'>View full screen</a>
             </button>
         </div>
-        `); 
+        `);
     })
     "
-  )),
-  footer(full = TRUE)
-)
+    )),
+    footer(full = TRUE)
+  )
 }
