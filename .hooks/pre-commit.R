@@ -30,7 +30,7 @@ for (file in current_files$files) {
         error_flag <- TRUE
       }
       else {
-        cat(file,"is recorded in the logfile as unpublished data and in .gitignore and so will not be included as part of the commit.")
+        cat(file,"is recorded in the logfile as unpublished data and in .gitignore and so will not be included as part of the commit.\n\n")
       }
     }
   }
