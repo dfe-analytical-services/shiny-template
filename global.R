@@ -18,6 +18,7 @@ library(shinytest)
 library(shinydashboard)
 library(shinyWidgets)
 library(shinyGovstyle)
+library(dplyr)
 
 # Functions ---------------------------------------------------------------------------------
 
@@ -71,3 +72,7 @@ appLoadingCSS <- "
 "
 
 source("R/support_links.R")
+source("R/read_data.R")
+
+# Read in the data
+dfRevBal <- read_revenue_data()

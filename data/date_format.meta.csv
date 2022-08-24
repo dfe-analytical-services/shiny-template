@@ -1,0 +1,4 @@
+col_name,col_type,label,indicator_grouping,indicator_unit,indicator_dp,filter_hint,filter_grouping_column
+date,Filter,Date,,,,,
+phase,Filter,Phase of education,,,,,
+number_of_teachers_and_school_leaders_on_roll,Indicator,Number of teachers and school leaders on roll,Absence for teachers and school leaders,,,,
