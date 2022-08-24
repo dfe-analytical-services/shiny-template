@@ -83,7 +83,7 @@ ui <- function(input, output, session) {
         "<a href=", site_overflow, ">Mirror</a>."
       )
     ),
-    shiny::navlistPanel(
+      shiny::navlistPanel(
       "",
       id = "navlistPanel",
       widths = c(2, 8),
@@ -93,50 +93,10 @@ ui <- function(input, output, session) {
       a11y_panel(),
       support_links()
     ),
-    gov_layout(
-      size = "full",
-      tags$br(),
-      tags$br(),
-      tags$br(),
-      tags$br(),
-      tags$br()
-    ),
     tags$script(
       src = "script.js"
     ),
-    tags$script(HTML(
-      "
-    function plotZoom(el){
-        el = $(el);
-        var parent = el.parent().parent();
-        if(el.attr('data-full_screen') === 'false') {
-            $('html').css('visibility', 'hidden');
-            parent.addClass('full-screen').trigger('resize').hide().show();
-            $('.fullscreen-button').text('Exit full screen');
-            el.attr('data-full_screen', 'true');
-            setTimeout(function() {
-              $('html').css('visibility', 'visible');
-            }, 700);
-
-        } else {
-            parent.removeClass('full-screen').trigger('resize').hide().show();
-            $('.fullscreen-button').text('View full screen');
-            el.attr('data-full_screen', 'false');
-        }
-    }
-
-    $(function(){
-       $('.plotly-full-screen  .plotly.html-widget').append(
-        `
-        <div style='position: relative;'>
-            <button onclick=plotZoom(this) class='plot-zoom' data-full_screen='false' title='Full screen'>
-                <a href='#' class='govuk-link fullscreen-button'>View full screen</a>
-            </button>
-        </div>
-        `);
-    })
-    "
-    )),
     footer(full = TRUE)
   )
+  
 }

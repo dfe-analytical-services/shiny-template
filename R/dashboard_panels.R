@@ -1,8 +1,8 @@
 homepage_panel <- function() {
   tabPanel(
     "Homepage",
-    fluidPage(
-      fluidRow(
+    gov_main_layout(
+      gov_row(
         column(
           12,
           h1("DfE Analytical Services R-Shiny data dashboard template (h1)"),
@@ -77,8 +77,8 @@ dashboard_panel <- function() {
     # Define UI for application that draws a histogram
     
     # Sidebar with a slider input for number of bins
-    fluidPage(
-      fluidRow(
+    gov_main_layout(
+      gov_row(
         column(
           width=12,
         h1("Overall content title for this dashboard page (h1)"),
