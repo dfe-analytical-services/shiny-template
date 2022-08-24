@@ -79,11 +79,11 @@ ui <- function(input, output, session) {
       paste0(
         "This Dashboard is in beta phase and we are still reviewing performance and reliability. ",
         "In case of slowdown or connection issues due to high demand, we have produced two instances of this site which can be accessed at the following links: ",
-        "<a href=", site_primary, ">Primary</a> and ",
-        "<a href=", site_overflow, ">Mirror</a>."
+        "<a href=", site_primary, ">Site 1</a> and ",
+        "<a href=", site_overflow, ">Site 2</a>."
       )
     ),
-      shiny::navlistPanel(
+    shiny::navlistPanel(
       "",
       id = "navlistPanel",
       widths = c(2, 8),
@@ -98,5 +98,4 @@ ui <- function(input, output, session) {
     ),
     footer(full = TRUE)
   )
-  
 }
