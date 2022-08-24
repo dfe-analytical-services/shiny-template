@@ -37,7 +37,9 @@ server <- function(input, output, session) {
 
   # Define server logic required to draw a histogram
   output$lineRevBal <- renderPlotly({
-    ggplotly(createAvgRevTimeSeries(reactiveRevBal(), input$selectArea))
+    ggplotly(createAvgRevTimeSeries(reactiveRevBal(), input$selectArea)) %>%
+      config(displayModeBar = F) %>%
+      layout(legend = list(orientation = "h", x = 0, y = -0.2))
   })
 
   reactiveBenchmark <- reactive({
@@ -50,8 +52,9 @@ server <- function(input, output, session) {
   })
 
   output$colBenchmark <- renderPlotly({
-    ggplotly(plotAvgRevBenchmark(reactiveBenchmark()),
-      height = 420
+    ggplotly(plotAvgRevBenchmark(reactiveBenchmark()) %>%
+      config(displayModeBar = F),
+    height = 420
     )
   })
 
