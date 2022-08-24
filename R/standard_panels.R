@@ -1,8 +1,8 @@
 a11y_panel <- function() {
     tabPanel(
       "Accessibility",
-      fluidPage(
-        fluidRow(
+      gov_main_layout(
+        gov_row(
           column(width=12,
       h1("Accessibility statement"),
       br("This accessibility statement applies to the **application name**.
@@ -40,8 +40,8 @@ a11y_panel <- function() {
 support_links <- function() {
     tabPanel(
       "Support and feedback",
-      fluidPage(
-        fluidRow(
+      gov_main_layout(
+        gov_row(
           column(width=12,
     h2("Give us feedback"),
     "This dashboard is a new service that we are developing. If you have any feedback or suggestions for improvements, please submit them using our ",
