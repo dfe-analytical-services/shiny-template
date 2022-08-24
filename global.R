@@ -9,16 +9,19 @@
 
 
 # Library calls ---------------------------------------------------------------------------------
-
-library(shiny)
-library(shinyjs)
-library(tools)
-library(testthat)
-library(shinytest)
-library(shinydashboard)
-library(shinyWidgets)
-library(shinyGovstyle)
-library(dplyr)
+shhh <- suppressPackageStartupMessages # It's a library, so shhh!
+shhh(library(shiny))
+shhh(library(shinyjs))
+shhh(library(tools))
+shhh(library(testthat))
+shhh(library(shinytest))
+shhh(library(shinydashboard))
+shhh(library(shinyWidgets))
+shhh(library(shinyGovstyle))
+shhh(library(dplyr))
+shhh(library(ggplot2))
+shhh(library(plotly))
+shhh(library(DT))
 
 # Functions ---------------------------------------------------------------------------------
 
@@ -71,8 +74,34 @@ appLoadingCSS <- "
 }
 "
 
+site_primary <- "https://department-for-education.shinyapps.io/dfe-shiny-template/"
+site_overflow <- "https://department-for-education.shinyapps.io/dfe-shiny-template-overflow/"
+
 source("R/support_links.R")
 source("R/read_data.R")
 
 # Read in the data
 dfRevBal <- read_revenue_data()
+# Get geographical levels from data
+dfAreas <- dfRevBal %>%
+  select(
+    geographic_level, country_name, country_code,
+    region_name, region_code,
+    la_name, old_la_code, new_la_code
+  ) %>%
+  distinct()
+
+choicesLAs <- dfAreas %>%
+  filter(geographic_level == "Local authority") %>%
+  select(geographic_level, area_name = la_name) %>%
+  arrange(area_name)
+
+choicesAreas <- dfAreas %>%
+  filter(geographic_level == "National") %>%
+  select(geographic_level, area_name = country_name) %>%
+  rbind(dfAreas %>% filter(geographic_level == "Regional") %>% select(geographic_level, area_name = region_name)) %>%
+  rbind(choicesLAs)
+
+choicesYears <- unique(dfRevBal$time_period)
+
+choicesPhase <- unique(dfRevBal$school_phase)
