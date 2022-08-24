@@ -70,6 +70,7 @@ ui <- function(input, output, session) {
     ),
     shinyGovstyle::header(
       main_text = "DfE",
+      main_link = "https://www.gov.uk/government/organisations/department-for-education",
       secondary_text = "DfE Shiny Template",
       logo = "images/DfE_logo.png"
     ),
