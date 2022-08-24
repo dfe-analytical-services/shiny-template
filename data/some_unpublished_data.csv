@@ -1,0 +1,8 @@
+This is an example file pretending to be a file containing unpublished data.
+
+It has the text "unpublished" in the filename, so will be ignored by .gitignore.
+
+Any unpublished data should either have "unpublished" in it's filename or have 
+its location and filename added to the .gitignore file. In both cases, the file
+also needs to be added to datafiles_log.csv. In doing so, this will prevent the 
+file from being uploaded to the remote repository.
