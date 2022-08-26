@@ -22,9 +22,9 @@ The tracking number below MUST be replaced with a unique number, contact the sta
     });
   });
   
-   $(document).on('click', '#navbar', function(e) {
-    gtag('event', 'navbar', {'event_category' : 'navbar click',
-    'event_label' : document.querySelector('#tab-pane active').value
+   $(document).on('click', '#navlistPanel', function(e) {
+    gtag('event', 'navlistPanel', {'event_category' : 'navbar click',
+    'event_label' : document.querySelector('#navlistPanel input').value
     });
   });
   
