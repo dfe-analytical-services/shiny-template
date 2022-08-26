@@ -30,7 +30,7 @@ The tracking number below MUST be replaced with a unique number, contact the sta
      
      $(document).on('click', 'ul#tabsetpanels', function(e) {
     gtag('event', 'tab panels', {'event_category' : 'tab panel clicks',
-    'event_label' : document.querySelector('li.active > a').value
+    'event_label' : document.querySelector('li.active > a').id
     });
   });
   
