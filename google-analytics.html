@@ -24,13 +24,13 @@ The tracking number below MUST be replaced with a unique number, contact the sta
   
    $(document).on('click', 'ul#navlistPanel', function(e) {
     gtag('event', 'navlistPanel', {'event_category' : 'navbar click',
-    'event_label' : document.querySelector('ul#navlistPanel').id
+    'event_label' : document.querySelector('ul#navlistPanel').data-value
     });
   });
      
      $(document).on('click', 'ul#tabsetpanels', function(e) {
     gtag('event', 'tab panels', {'event_category' : 'tab panel clicks',
-    'event_label' : document.querySelector('ul#tabsetpanels').id
+    'event_label' : document.querySelector('ul#tabsetpanels').data-value
     });
   });
   
