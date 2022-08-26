@@ -108,7 +108,7 @@ dashboard_panel <- function() {
         
         column(
           width=12,
-               tabsetPanel(id = "tabsetpanels"
+               tabsetPanel(id = "tabsetpanels",
                  tabPanel(
                    "Example panel 1",
                    fluidRow(
