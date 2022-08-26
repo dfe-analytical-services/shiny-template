@@ -24,7 +24,7 @@ The tracking number below MUST be replaced with a unique number, contact the sta
   
    $(document).on('click', 'ul#navlistPanel', function(e) {
     gtag('event', 'navlistPanel', {'event_category' : 'navbar click',
-    'event_label' : document.querySelector('ul#navlistPanel').value
+    'event_label' : document.querySelector('a').value
     });
   });
   
