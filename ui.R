@@ -58,9 +58,10 @@
 
 ui <- function(input, output, session) {
   fluidPage(
-      title = tags$head(tags$link(rel="shortcut icon",
-                                  href="dfefavicon.png")),
-    
+    title = tags$head(tags$link(
+      rel = "shortcut icon",
+      href = "dfefavicon.png"
+    )),
     shinyjs::useShinyjs(),
     useShinydashboard(),
     tags$head(includeHTML(("google-analytics.html"))),
