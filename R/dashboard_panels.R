@@ -88,20 +88,30 @@ dashboard_panel <- function() {
           div(
             class = "well",
             style = "min-height: 100%; height: 100%; overflow-y: visible",
-            fluidRow(
+            gov_row(
             column(
-              width=6,
+              width = 6,
               selectizeInput("selectPhase",
                     "Select a school phase",
                     choices = choicesPhase
                     )),
-        column(
-          width=6,
+            column(
+              width = 6,
           selectizeInput(
             inputId = "selectArea",
             label = "Choose an area:",
             choices = choicesAreas$area_name
         )
+        ), 
+        column(
+          width = 12,
+          paste("Download the underlying data for this dashboard:"), br(),
+          downloadButton(
+            outputId = "download_data",
+            label= "Download data",
+            icon = shiny::icon("download"),
+            class = "downloadButton"
+          )
         ))
           )
         ),

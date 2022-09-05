@@ -119,6 +119,14 @@ server <- function(input, output, session) {
     updateTabsetPanel(session, "navlistPanel", selected = "dashboard")
   })
 
+  # Download the underlying data button
+  output$download_data <- downloadHandler(
+    filename = "shiny_template_underlying_data.csv",
+    content = function(file) {
+      write.csv(dfRevBal, file)
+    }
+  )
+
 
   # Stop app ---------------------------------------------------------------------------------
 
