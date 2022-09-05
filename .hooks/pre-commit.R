@@ -38,7 +38,7 @@ for (file in current_files$files) {
   }
 }
 
-if (!(Sys.getenv("USERNAME") %in% c("CFOSTER4", "CRACE", "LSELBY"))){
+if (!(Sys.getenv("USERNAME") %in% c("CFOSTER4", "CRACE", "LSELBY", "RBIELBY"))){
   gsub_file("google-analytics.html", pattern = "G-Z967JJVQQX", replacement = "G-XXXXXXXXXX")
 }
 
