@@ -36,6 +36,10 @@ for (file in current_files$files) {
   }
 }
 
+if (!(Sys.getenv("USERNAME") %in% c("CFOSTER4", "CRACE", "LSELBY"))){
+  gsub_file("google-analytics.html", pattern = "G-Z967JJVQQX", replacement = "G-XXXXXXXXXX")
+}
+
 if (error_flag) {
   cat("Warning, aborting commit. Unrecognised data files found, please update .gitignore or datafiles_log.csv.\n")
   quit(save = "no", status = 1, runLast = FALSE)
