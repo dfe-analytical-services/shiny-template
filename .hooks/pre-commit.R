@@ -46,4 +46,9 @@ if(grepl('G-Z967JJVQQX', htmltools::includeHTML(("google-analytics.html"))) &
   system2(command = "git", args=c("add","google-analytics.html"))
 }
 
+if (error_flag) {
+  cat("Warning, aborting commit. Unrecognised data files found, please update .gitignore or datafiles_log.csv.\n")
+  quit(save = "no", status = 1, runLast = FALSE)
+}
+
 # End of hooks
