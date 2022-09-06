@@ -6,7 +6,6 @@ shhh(library(xfun))
 
 
 error_flag <- FALSE
-error_flag2 <- FALSE
 
 datalog <- "datafiles_log.csv"
 log_files <- read.csv(datalog)
