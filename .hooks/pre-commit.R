@@ -6,6 +6,7 @@ shhh(library(xfun))
 
 
 error_flag <- FALSE
+error_flag2 <- FALSE
 
 datalog <- "datafiles_log.csv"
 log_files <- read.csv(datalog)
@@ -38,12 +39,18 @@ for (file in current_files$files) {
   }
 }
 
-if (!(Sys.getenv("USERNAME") %in% c("CFOSTER4", "CRACE", "LSELBY", "RBIELBY"))){
+if(grepl('G-Z967JJVQQX', htmltools::includeHTML(("google-analytics.html"))) & !(Sys.getenv("USERNAME") %in% c("CFOSTER4", "CRACE", "LSELBY", "RBIELBY"))){
   gsub_file("google-analytics.html", pattern = "G-Z967JJVQQX", replacement = "G-XXXXXXXXXX")
+  error_flag2 <- TRUE
 }
 
 if (error_flag) {
   cat("Warning, aborting commit. Unrecognised data files found, please update .gitignore or datafiles_log.csv.\n")
+  quit(save = "no", status = 1, runLast = FALSE)
+}
+
+if (error_flag2) {
+  cat("Warning, google-analytics.html has been updated. Please commit again.")
   quit(save = "no", status = 1, runLast = FALSE)
 }
 
