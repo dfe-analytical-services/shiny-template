@@ -39,19 +39,10 @@ for (file in current_files$files) {
   }
 }
 
-if(grepl('G-Z967JJVQQX', htmltools::includeHTML(("google-analytics.html"))) & !(Sys.getenv("USERNAME") %in% c("CFOSTER4", "CRACE", "LSELBY"))){
+if(grepl('G-Z967JJVQQX', htmltools::includeHTML(("google-analytics.html"))) & !(Sys.getenv("USERNAME") %in% c("CFOSTER4", "CRACE", "LSELBY", "RBIELBY"))){
+  cat("Cleaning out the template's Google Analytics tag.")
   gsub_file("google-analytics.html", pattern = "G-Z967JJVQQX", replacement = "G-XXXXXXXXXX")
-  error_flag2 <- TRUE
-}
-
-if (error_flag) {
-  cat("Warning, aborting commit. Unrecognised data files found, please update .gitignore or datafiles_log.csv.\n")
-  quit(save = "no", status = 1, runLast = FALSE)
-}
-
-if (error_flag2) {
-  cat("Warning, google-analytics.html has been updated. Please stage this and commit again.")
-  quit(save = "no", status = 1, runLast = FALSE)
+  system2(command = "git", args=c("add","google-analytics.html"))
 }
 
 # End of hooks
