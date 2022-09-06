@@ -39,7 +39,7 @@ for (file in current_files$files) {
   }
 }
 
-if(grepl('G-Z967JJVQQX', htmltools::includeHTML(("google-analytics.html"))) & !(Sys.getenv("USERNAME") %in% c("CFOSTER4", "CRACE", "LSELBY", "RBIELBY"))){
+if(grepl('G-Z967JJVQQX', htmltools::includeHTML(("google-analytics.html"))) & !(Sys.getenv("USERNAME") %in% c("CFOSTER4", "CRACE", "LSELBY"))){
   gsub_file("google-analytics.html", pattern = "G-Z967JJVQQX", replacement = "G-XXXXXXXXXX")
   error_flag2 <- TRUE
 }
