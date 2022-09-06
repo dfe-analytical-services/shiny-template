@@ -50,7 +50,7 @@ if (error_flag) {
 }
 
 if (error_flag2) {
-  cat("Warning, google-analytics.html has been updated. Please commit again.")
+  cat("Warning, google-analytics.html has been updated. Please stage this and commit again.")
   quit(save = "no", status = 1, runLast = FALSE)
 }
 
