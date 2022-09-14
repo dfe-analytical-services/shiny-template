@@ -1,0 +1,2 @@
+dummy text\n
+Another line on the file\n

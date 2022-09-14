@@ -2,6 +2,8 @@
 cat("Running commit hooks...",fill=TRUE)
 shhh <- suppressPackageStartupMessages # It's a library, so shhh!
 shhh(library(dplyr))
+shhh(library(xfun))
+
 
 error_flag <- FALSE
 
@@ -34,6 +36,13 @@ for (file in current_files$files) {
       }
     }
   }
+}
+
+if(grepl('G-Z967JJVQQX', htmltools::includeHTML(("google-analytics.html"))) & 
+   !(toupper(Sys.getenv("USERNAME")) %in% c("CFOSTER4", "CRACE", "LSELBY","RBIELBY"))){
+  cat("Cleaning out the template's Google Analytics tag.",fill=TRUE)
+  gsub_file("google-analytics.html", pattern = "G-Z967JJVQQX", replacement = "G-XXXXXXXXXX")
+  system2(command = "git", args=c("add","google-analytics.html"))
 }
 
 if (error_flag) {
