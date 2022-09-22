@@ -1,8 +1,12 @@
 <h1 align="center">
   <br>
-Shiny template app
+DfE Shiny template app
   <br>
 </h1>
+
+**Before using this template, please contact the Statistics Development Team (statistics.development@education.gov.uk) to discuss your plans for setting up a DfE dashboard.**
+
+---
 
 This template repository is for making accessible apps for published statistics in DfE. It includes a basic accessible shiny app with DfE styling, as well as templates for additional best practice documents like this README script, pull request templates and codes of conduct for contributing.
 
