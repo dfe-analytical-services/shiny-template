@@ -63,6 +63,7 @@ ui <- function(input, output, session) {
       href = "dfefavicon.png"
     )),
     shinyjs::useShinyjs(),
+    customDisconnectMessage(),
     useShinydashboard(),
     tags$head(includeHTML(("google-analytics.html"))),
     tags$head(
