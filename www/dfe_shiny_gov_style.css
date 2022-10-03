@@ -25,6 +25,23 @@ html {
   background-color: #f3f2f1;
 }
 
+a {
+  color: 	#1d70b8;
+}
+
+a:hover {
+  color: 	#003078;
+}
+
+a:visited {
+  color: 	#4c2c92;
+}
+
+a:active {
+  color: 	#0b0c0c;
+}
+
+
 .container-fluid {
   padding: 0px;
 }
