@@ -3,7 +3,8 @@ customDisconnectMessage <- function(refresh = "Refresh page",
                                     publication_name=ees_pub_name,
                                     publication_link=ees_publication) {
   checkmate::assert_string(refresh)
-  
+  print(links)
+  print(length(links))
   htmltools::tagList(
     htmltools::tags$script(
       paste0(
@@ -30,8 +31,8 @@ customDisconnectMessage <- function(refresh = "Refresh page",
                    tags$a(href = links[1], "Site 1"),
                    " - ",
                    tags$a(href = links[2], "Site 2"),
-                   if(length(links==3)){"-"},
-                   if(length(links==3)){tags$a(href = links[3], "Site 3")}
+                   if(length(links)==3){"-"},
+                   if(length(links)==3){tags$a(href = links[3], "Site 3")}
                  )
           )
         },
