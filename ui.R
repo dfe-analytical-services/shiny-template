@@ -58,13 +58,16 @@
 
 ui <- function(input, output, session) {
   fluidPage(
-    title = tags$head(tags$link(
-      rel = "shortcut icon",
-      href = "dfefavicon.png"),
-      #Add title for browser tabs
-      tags$title("DfE Shiny Template")),
-    tags$html(lang="en"),
-    #Add meta description for search engines
+    title = tags$head(
+      tags$link(
+        rel = "shortcut icon",
+        href = "dfefavicon.png"
+      ),
+      # Add title for browser tabs
+      tags$title("DfE Shiny Template")
+    ),
+    tags$html(lang = "en"),
+    # Add meta description for search engines
     meta() %>%
       meta_general(
         application_name = "DfE Shiny Template",
