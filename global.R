@@ -75,10 +75,10 @@ appLoadingCSS <- "
 }
 "
 
-site_primary    <- "https://department-for-education.shinyapps.io/dfe-shiny-template/"
-site_overflow   <- "https://department-for-education.shinyapps.io/dfe-shiny-template-overflow/"
+site_primary <- "https://department-for-education.shinyapps.io/dfe-shiny-template/"
+site_overflow <- "https://department-for-education.shinyapps.io/dfe-shiny-template-overflow/"
 sites_list <- c(site_primary, site_overflow, site_overflow)
-ees_pub_name    <- "Pupil Attendance in Schools publication"
+ees_pub_name <- "Pupil Attendance in Schools publication"
 ees_publication <- "https://explore-education-statistics.service.gov.uk/find-statistics/pupil-attendance-in-schools"
 
 source("R/support_links.R")
@@ -109,5 +109,3 @@ choicesAreas <- dfAreas %>%
 choicesYears <- unique(dfRevBal$time_period)
 
 choicesPhase <- unique(dfRevBal$school_phase)
-
-
