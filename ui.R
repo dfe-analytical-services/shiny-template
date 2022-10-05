@@ -79,6 +79,7 @@ ui <- function(input, output, session) {
         referrer = "no-referrer"
       ),
     shinyjs::useShinyjs(),
+    customDisconnectMessage(),
     useShinydashboard(),
     tags$head(includeHTML(("google-analytics.html"))),
     tags$head(
