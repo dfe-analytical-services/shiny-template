@@ -3,8 +3,6 @@ customDisconnectMessage <- function(refresh = "Refresh page",
                                     publication_name=ees_pub_name,
                                     publication_link=ees_publication) {
   checkmate::assert_string(refresh)
-  print(links)
-  print(length(links))
   htmltools::tagList(
     htmltools::tags$script(
       paste0(
