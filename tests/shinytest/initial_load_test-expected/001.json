@@ -1,8 +1,16 @@
 {
   "input": {
-
+    "link_to_app_content_tab": 0,
+    "navlistPanel": "Homepage",
+    "selectArea": "England",
+    "selectBenchLAs": null,
+    "selectPhase": "All LA maintained schools",
+    "tabsetpanels": "Example panel 1"
   },
   "output": {
+
+  },
+  "export": {
 
   }
 }
