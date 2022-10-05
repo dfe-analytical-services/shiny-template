@@ -60,8 +60,21 @@ ui <- function(input, output, session) {
   fluidPage(
     title = tags$head(tags$link(
       rel = "shortcut icon",
-      href = "dfefavicon.png"
-    )),
+      href = "dfefavicon.png"),
+      #Add title for browser tabs
+      tags$title("DfE Shiny Template")),
+    tags$html(lang="en"),
+    #Add meta description for search engines
+    meta() %>%
+      meta_general(
+        application_name = "DfE Shiny Template",
+        description = "DfE Shiny Template",
+        robots = "index,follow",
+        generator = "R-Shiny",
+        subject = "stats development",
+        rating = "General",
+        referrer = "no-referrer"
+      ),
     shinyjs::useShinyjs(),
     useShinydashboard(),
     tags$head(includeHTML(("google-analytics.html"))),
