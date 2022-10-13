@@ -188,7 +188,7 @@ a:active {
   border-color: transparent;
   background-color: transparent;
 }
-
+*/
 .well {
     min-height: 90vh;
     padding: 19px;
@@ -200,7 +200,7 @@ a:active {
     box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
     color: #fff;
 }
-*/
+
 
 /* Full screen plots */
 /* Adapted from https://stackoverflow.com/questions/69042546/is-there-a-way-to-create-a-full-screen-popup-window-of-a-plotly-chart-in-r */
