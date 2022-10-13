@@ -26,10 +26,12 @@ a {
 
 a:hover {
   color:	#003078;
+  text-decoration: underline
 }
 
 a:visited {
   color: #4c2c92;
+  text-decoration: underline
 }
 
 
