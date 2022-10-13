@@ -21,17 +21,14 @@
 
 a {
   	color: #1d70b8;
-  	text-decoration: underline
 }
 
 a:hover {
   color:	#003078;
-  text-decoration: underline
 }
 
 a:visited {
   color: #4c2c92;
-  text-decoration: underline
 }
 
 
@@ -41,18 +38,22 @@ html {
 
 a {
   color: 	#1d70b8;
+  text-decoration: underline
 }
 
 a:hover {
   color: 	#003078;
+  text-decoration: underline
 }
 
 a:visited {
   color: 	#4c2c92;
+  text-decoration: underline
 }
 
 a:active {
   color: 	#0b0c0c;
+  text-decoration: underline
 }
 
 
@@ -74,6 +75,7 @@ a:active {
   color: #1d70b8;
   font-size: 15px;
   border-color: #1d70b8;
+  text-decoration: none
 }
 
 .nav-pills > li.active > a,
@@ -96,6 +98,7 @@ a:active {
   font-size: 15px;
   padding: 10px;
   border-left: 4px solid transparent;
+  text-decoration: none
 }
 
 /* Tabs layout styling */
