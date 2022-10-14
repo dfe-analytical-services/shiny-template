@@ -103,6 +103,9 @@ a:active {
 
 /* Tabs layout styling */
 
+.nav-tabs > li > a {
+  text-decoration: none
+}
 
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:focus,
