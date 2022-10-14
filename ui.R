@@ -90,10 +90,12 @@ ui <- function(input, output, session) {
       )
     ),
     shinyGovstyle::header(
-      main_text = "DfE",
+      main_text = "",
       main_link = "https://www.gov.uk/government/organisations/department-for-education",
       secondary_text = "DfE Shiny Template",
-      logo = "images/DfE_logo.png"
+      logo = "images/DfE_logo_primary.png",
+      logo_width = 96,
+      logo_height = 56
     ),
     shinyGovstyle::banner(
       "beta banner",
