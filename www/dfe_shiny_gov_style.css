@@ -163,6 +163,12 @@ a:active {
     color: #ffffff;
 }
 
+.small-box.bg-white {
+    background-color: 	#ffffff !important;
+    color: #000000;
+}
+
+
 .small-box.bg-blue{
      background-color: #1d70b8 !important; 
      color: #ffffff;
@@ -271,7 +277,6 @@ a:active {
 
 #vboxdetail {
   text-align: left;
-  color: white;
   font-weight: bold;
   font-size: 16px;
 }
