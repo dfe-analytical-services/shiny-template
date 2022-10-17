@@ -8,9 +8,27 @@ shhh(library(xfun))
 error_flag <- FALSE
 
 datalog <- "datafiles_log.csv"
-log_files <- read.csv(datalog)
-ign_files <- read.csv(".gitignore", header = FALSE)
+log_files <- read.csv(datalog, stringsAsFactors = FALSE)
+ign_files <- read.csv(".gitignore", header = FALSE, stringsAsFactors = FALSE)
 colnames(ign_files)[1] <- "filename"
+
+cat("Contents of the .gitignore file:")
+print(ign_files)
+
+# Run a pass through the .gitignore files and look for any issues
+if(ncol(ign_files)>1){
+  cat("ERROR: It looks like you've got commas in the .gitignore. Please correct the .gitignore file and try again.")
+  error_flag <- TRUE
+} else {
+  for(i in 1:nrow(ign_files)){
+    if(grepl(' ',ign_files$filename[i])){
+      cat("ERROR: It looks like you've got spaces in filenames in the .gitignore. Please rename your files if they contain spaces and update the .gitignore file accordingly.")
+      error_flag <- TRUE
+    }
+  }
+}
+
+
 
 suffixes <- "xlsx$|dat$|csv$|tex$|pdf$"
 
