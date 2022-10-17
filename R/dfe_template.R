@@ -24,7 +24,7 @@ valueBox <- function(value, subtitle, icon = NULL, color = "aqua", width = 4,
   )
 }
 
-validColors <- c("blue")
+validColors <- c("blue","green","orange","purple")
 
 validateColor <- function(color) {
   if (color %in% validColors) {
