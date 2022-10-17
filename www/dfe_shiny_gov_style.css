@@ -261,3 +261,17 @@ a:active {
         vertical-align: top !important;
     }
 }
+
+#vboxhead {
+  text-align: left;
+  color: white;
+  font-weight: bold;
+  font-size: 56px;
+}
+
+#vboxdetail {
+  text-align: left;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
