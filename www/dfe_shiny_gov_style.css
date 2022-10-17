@@ -191,6 +191,10 @@ a:active {
      color: #ffffff;
 }
 
+.small-box.bg-dark-blue{
+     background-color: 	#12436D !important; 
+     color: #ffffff;
+}
 
 #ss-connect-dialog { display: none !important; }
 #shiny-disconnected-overlay { display: none !important; }
@@ -270,7 +274,6 @@ a:active {
 
 #vboxhead {
   text-align: left;
-  color: white;
   font-weight: bold;
   font-size: 56px;
 }
