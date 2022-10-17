@@ -12,6 +12,7 @@ log_files <- read.csv(datalog, stringsAsFactors = FALSE)
 ign_files <- read.csv(".gitignore", header = FALSE, stringsAsFactors = FALSE)
 colnames(ign_files)[1] <- "filename"
 
+cat("Contents of the .gitignore file:")
 print(ign_files)
 
 # Run a pass through the .gitignore files and look for any issues
