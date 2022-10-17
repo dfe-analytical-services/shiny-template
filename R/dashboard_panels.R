@@ -25,7 +25,6 @@ homepage_panel <- function() {
               div(
                 class = "panel-body",
                 tags$div(
-                  title = "The introduction.",
                   h3("Introduction (h3)"),
                   p("This app demonstrates the DfE Analytical Services R-Shiny data dashboard template."),
                   p("You might want to add some brief introductory text here alongside some links to different tabs within your dashboard. Here's an example of a link working:"),
