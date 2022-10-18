@@ -163,6 +163,12 @@ a:active {
     color: #ffffff;
 }
 
+.small-box.bg-white {
+    background-color: 	#ffffff !important;
+    color: #000000;
+}
+
+
 .small-box.bg-blue{
      background-color: #1d70b8 !important; 
      color: #ffffff;
@@ -185,6 +191,10 @@ a:active {
      color: #ffffff;
 }
 
+.small-box.bg-dark-blue{
+     background-color: 	#12436D !important; 
+     color: #ffffff;
+}
 
 #ss-connect-dialog { display: none !important; }
 #shiny-disconnected-overlay { display: none !important; }
@@ -260,4 +270,16 @@ a:active {
         float: left !important;
         vertical-align: top !important;
     }
+}
+
+#vboxhead {
+  text-align: left;
+  font-weight: bold;
+  font-size: 56px;
+}
+
+#vboxdetail {
+  text-align: left;
+  font-weight: bold;
+  font-size: 16px;
 }
