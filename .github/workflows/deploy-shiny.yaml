@@ -28,7 +28,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r@master
         with:
-          r-version: ${{ matrix.config.r }}
+          r-version: 3.2.1
 
       - name: Cache R packages
         if: runner.os != 'Windows'
