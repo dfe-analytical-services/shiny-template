@@ -111,7 +111,7 @@ server <- function(input, output, session) {
         big.mark = ","
       )),
       # add subtitle to explain what it's hsowing
-      paste0("Change on previous year"),
+      paste0("This is the change on previous year"),
       color = "blue"
     )
   })
@@ -130,7 +130,7 @@ server <- function(input, output, session) {
       )),
       # add subtitle to explain what it's hsowing
       paste0("This is the latest value for the selected inputs"),
-      color = "green",
+      color = "orange",
       fontsize = "small"
     )
   })
@@ -154,8 +154,8 @@ server <- function(input, output, session) {
         big.mark = ","
       )),
       # add subtitle to explain what it's hsowing
-      paste0("Change on previous year"),
-      color = "green",
+      paste0("This is the change on previous year"),
+      color = "orange",
       fontsize = "small"
     )
   })
@@ -174,7 +174,7 @@ server <- function(input, output, session) {
       )),
       # add subtitle to explain what it's hsowing
       paste0("This is the latest value for the selected inputs"),
-      color = "orange",
+      color = "green",
       fontsize = "large"
     )
   })
@@ -198,8 +198,8 @@ server <- function(input, output, session) {
         big.mark = ","
       )),
       # add subtitle to explain what it's hsowing
-      paste0("Change on previous year"),
-      color = "orange",
+      paste0("This is the change on previous year"),
+      color = "green",
       fontsize = "large"
     )
   })

@@ -275,13 +275,13 @@ a:active {
 #vboxhead-small {
   text-align: left;
   font-weight: bold;
-  font-size: 32px;
+  font-size: 36px;
 }
 
 #vboxdetail-small {
   text-align: left;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 24px;
 }
 
 #vboxhead-medium {
@@ -293,7 +293,7 @@ a:active {
 #vboxdetail-medium {
   text-align: left;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 26px;
 }
 
 #vboxhead-large {
@@ -305,5 +305,5 @@ a:active {
 #vboxdetail-large {
   text-align: left;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 28px;
 }
