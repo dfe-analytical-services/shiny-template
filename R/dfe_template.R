@@ -1,5 +1,5 @@
-# This file contains scripts which are intended to provide standard styling 
-# across dashboards. If you want to change anything in this script, please 
+# This file contains scripts which are intended to provide standard styling
+# across dashboards. If you want to change anything in this script, please
 # talk to the DfE Statistics Development team first.
 
 valueBox <- function(value, subtitle, icon = NULL, 
@@ -17,22 +17,26 @@ valueBox <- function(value, subtitle, icon = NULL,
                     ),
                     if (!is.null(icon)) div(class = "icon-large", icon)
   )
-  
-  if (!is.null(href))
+
+  if (!is.null(href)) {
     boxContent <- a(href = href, boxContent)
-  
-  div(class = if (!is.null(width)) paste0("col-sm-", width),
-      boxContent
+  }
+
+  div(
+    class = if (!is.null(width)) paste0("col-sm-", width),
+    boxContent
   )
 }
 
-validColors <- c("blue","dark-blue","green","orange","purple","white")
+validColors <- c("blue", "dark-blue", "green", "orange", "purple", "white")
 
 validateColor <- function(color) {
   if (color %in% validColors) {
     return(TRUE)
   }
-  
-  stop("Invalid color: ", color, ". Valid colors are: ",
-       paste(validColors, collapse = ", "), ".")
+
+  stop(
+    "Invalid color: ", color, ". Valid colors are: ",
+    paste(validColors, collapse = ", "), "."
+  )
 }
