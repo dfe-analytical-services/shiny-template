@@ -24,7 +24,7 @@ shhh(library(plotly))
 shhh(library(DT))
 shhh(library(xfun))
 shhh(library(metathis))
-shhh(library(shinya11y))
+#shhh(library(shinya11y))
 
 # Functions ---------------------------------------------------------------------------------
 
