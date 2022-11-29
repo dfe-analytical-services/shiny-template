@@ -204,9 +204,10 @@ server <- function(input, output, session) {
       fontsize = "large"
     )
   })
-
-
-
+  
+  observeEvent(input$go,{
+    toggle(id = "div_a",anim = T)
+  })
 
 
   observeEvent(input$link_to_app_content_tab, {

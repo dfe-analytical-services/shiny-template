@@ -83,7 +83,8 @@ dashboard_panel <- function() {
         ),
         column(
           width = 12,
-          div(
+          actionButton(inputId = "go",label = "Button"),
+          div(id = "div_a",
             class = "well",
             style = "min-height: 100%; height: 100%; overflow-y: visible",
             gov_row(
