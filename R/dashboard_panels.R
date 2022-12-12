@@ -83,7 +83,7 @@ dashboard_panel <- function() {
         ),
         column(
           width = 12,
-          expandable(inputId = 'details', label = 'Expand me', help_text = 'Dropdowns here'),
+          expandable(inputId = 'details', label = 'Expand to view dropdown options', help_text = 'Dropdowns here'),
           # div(id = "div_a",
           #   class = "well",
           #   style = "min-height: 100%; height: 100%; overflow-y: visible",
