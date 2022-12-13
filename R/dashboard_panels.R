@@ -83,38 +83,38 @@ dashboard_panel <- function() {
         ),
         column(
           width = 12,
-          expandable(inputId = 'details', label = 'Expand to view dropdown options', help_text = 'Dropdowns here'),
-          # div(id = "div_a",
-          #   class = "well",
-          #   style = "min-height: 100%; height: 100%; overflow-y: visible",
-          #   gov_row(
-          #     column(
-          #       width = 6,
-          #       selectizeInput("selectPhase",
-          #         "Select a school phase",
-          #         choices = choicesPhase
-          #       )
-          #     ),
-          #     column(
-          #       width = 6,
-          #       selectizeInput(
-          #         inputId = "selectArea",
-          #         label = "Choose an area:",
-          #         choices = choicesAreas$area_name
-          #       )
-          #     ),
-          #     column(
-          #       width = 12,
-          #       paste("Download the underlying data for this dashboard:"), br(),
-          #       downloadButton(
-          #         outputId = "download_data",
-          #         label = "Download data",
-          #         icon = shiny::icon("download"),
-          #         class = "downloadButton"
-          #       )
-          #     )
-          #   )
-          # )
+          expandable(inputId = 'details', label = 'Expand to view dropdown options', contents =
+          div(id = "div_a",
+            class = "well",
+            style = "min-height: 100%; height: 100%; overflow-y: visible",
+            gov_row(
+              column(
+                width = 6,
+                selectizeInput("selectPhase",
+                  "Select a school phase",
+                  choices = choicesPhase
+                )
+              ),
+              column(
+                width = 6,
+                selectizeInput(
+                  inputId = "selectArea",
+                  label = "Choose an area:",
+                  choices = choicesAreas$area_name
+                )
+              ),
+              column(
+                width = 12,
+                paste("Download the underlying data for this dashboard:"), br(),
+                downloadButton(
+                  outputId = "download_data",
+                  label = "Download data",
+                  icon = shiny::icon("download"),
+                  class = "downloadButton"
+                )
+              )
+            )
+          )),
         ),
         column(
           width = 12,
