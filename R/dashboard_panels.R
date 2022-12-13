@@ -85,8 +85,8 @@ dashboard_panel <- function() {
           width = 12,
           expandable(inputId = 'details', label = 'Expand to view dropdown options', contents =
           div(id = "div_a",
-            class = "well",
-            style = "min-height: 100%; height: 100%; overflow-y: visible",
+            # class = "well",
+            # style = "min-height: 100%; height: 100%; overflow-y: visible",
             gov_row(
               column(
                 width = 6,
