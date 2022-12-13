@@ -118,10 +118,10 @@ choicesPhase <- unique(dfRevBal$school_phase)
 
 expandable <-function(inputId, label, contents){
   govDetails <- shiny::tags$details(class = "govuk-details", id = inputId,
-                                    shiny::tags$summary(class = "well", style = "min-height: 100%; height: 100%; overflow-y: visible",
+                                    shiny::tags$summary(class = "govuk-details__summary",
                                                         shiny::tags$span(class = "govuk-details__summary-text",
                                                                          shiny::HTML(label))
                                     ),
-                                    shiny::tags$div(class = "well", style = "min-height: 100%; height: 100%; overflow-y: visible",contents)
+                                    shiny::tags$div(contents)
   )
 }

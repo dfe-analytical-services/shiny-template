@@ -136,6 +136,7 @@ a:active {
 }
 
 .govuk-details {
+    padding: 19px;
     font-family: GDS Transport, arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     background-color: #1d70b8;
@@ -143,6 +144,17 @@ a:active {
     color: #fff;
     margin-bottom: 20px;
     display: block;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+}
+
+.govuk-details__summary {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 5px;
+    padding-left: 25px;
+    color: #fff;
+    cursor: pointer;
 }
 
 
