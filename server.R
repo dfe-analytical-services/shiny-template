@@ -221,6 +221,10 @@ server <- function(input, output, session) {
       write.csv(dfRevBal, file)
     }
   )
+  
+  output$dropdown_label <- renderText({
+    paste("Current selections: ",input$selectPhase,",",input$selectArea)
+  })
 
 
   # Stop app ---------------------------------------------------------------------------------
