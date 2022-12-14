@@ -204,9 +204,9 @@ server <- function(input, output, session) {
       fontsize = "large"
     )
   })
-  
-  observeEvent(input$go,{
-    toggle(id = "div_a",anim = T)
+
+  observeEvent(input$go, {
+    toggle(id = "div_a", anim = T)
   })
 
 
@@ -221,9 +221,9 @@ server <- function(input, output, session) {
       write.csv(dfRevBal, file)
     }
   )
-  
+
   output$dropdown_label <- renderText({
-    paste("Current selections: ",input$selectPhase,",",input$selectArea)
+    paste("Current selections: ", input$selectPhase, ",", input$selectArea)
   })
 
 
