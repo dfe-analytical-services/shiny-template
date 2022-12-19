@@ -26,6 +26,44 @@ server <- function(input, output, session) {
   hide(id = "loading-content", anim = TRUE, animType = "fade")
   show("app-content")
 
+  # Handle the cookie consent ----------------------------------------------------------------
+  observeEvent(input$save, {
+    msg <- list(
+      name = "name", value = input$name_set
+    )
+    
+    if(input$name_set != "")
+      session$sendCustomMessage("cookie-set", msg)
+  })
+  
+  # delete
+  observeEvent(input$remove, {
+    msg <- list(name = "name")
+    session$sendCustomMessage("cookie-remove", msg)
+  })
+  
+  # output if cookie is unspecified
+  observe(
+    if(is.null(input$cookies$name)){
+      shinyalert(
+        title = "Cookie consent",
+        text = "This site uses cookies to record traffic flow using Google Analytics",
+        size = "s", 
+        closeOnEsc = TRUE,
+        closeOnClickOutside = FALSE,
+        html = FALSE,
+        type = "",
+        showConfirmButton = TRUE,
+        showCancelButton = TRUE,
+        confirmButtonText = "Accept",
+        confirmButtonCol = "#AEDEF4",
+        timer = 0,
+        imageUrl = "",
+        animation = TRUE
+      )}
+    )
+
+    
   # Simple server stuff goes here ------------------------------------------------------------
   reactiveRevBal <- reactive({
     dfRevBal %>% filter(

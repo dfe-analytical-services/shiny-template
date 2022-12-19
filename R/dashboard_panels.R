@@ -7,7 +7,11 @@ homepage_panel <- function() {
           12,
           h1("DfE Analytical Services R-Shiny data dashboard template (h1)"),
           br(),
-          br()
+          br(),
+          textInput("name_set", "What is your name?"),
+          actionButton("save", "Save cookie"),
+          actionButton("remove", "remove cookie"),
+          uiOutput("name_get")
         ),
 
         ## Left panel -------------------------------------------------------
