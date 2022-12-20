@@ -2,6 +2,12 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z967JJVQQX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
+    function getCookie(name) {
+      let matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     
@@ -9,6 +15,11 @@
 The tracking number below MUST be replaced with a unique number, contact the statistics development team to set this up. 
 */
     gtag('config', 'G-Z967JJVQQX');
+    
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': getCookie("dfe_analytics")
+    });
   
   $(document).on('change', 'select#selectPhase', function(e) {
     gtag('event', 'select phase', {'event_category' : 'choose Phase',

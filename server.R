@@ -26,26 +26,11 @@ server <- function(input, output, session) {
   hide(id = "loading-content", anim = TRUE, animType = "fade")
   show("app-content")
 
-  # Handle the cookie consent ----------------------------------------------------------------
-  observeEvent(input$save, {
-    msg <- list(
-      name = "name", value = input$name_set
-    )
-    
-    if(input$name_set != "")
-      session$sendCustomMessage("cookie-set", msg)
-  })
-  
-  # delete
-  observeEvent(input$remove, {
-    msg <- list(name = "name")
-    session$sendCustomMessage("cookie-remove", msg)
-  })
-  
   # output if cookie is unspecified
-  observe(
-    if(is.null(input$cookies$name)){
+  observe({
+    if(!is.null(input$cookies) & is.null(input$cookies$dfe_analytics)){
       shinyalert(
+        inputId = "cookie_consent",
         title = "Cookie consent",
         text = "This site uses cookies to record traffic flow using Google Analytics",
         size = "s", 
@@ -61,9 +46,57 @@ server <- function(input, output, session) {
         imageUrl = "",
         animation = TRUE
       )}
-    )
+  })
 
-    
+  observeEvent(input$cookie_consent,{
+    msg <- list(
+      name = "dfe_analytics", value = ifelse(input$cookie_consent,'granted','denied')
+    )
+    session$sendCustomMessage("cookie-set", msg)
+  }
+  )
+  
+  observeEvent(input$remove, {
+    msg <- list(name = "dfe_analytics")
+    session$sendCustomMessage("cookie-remove", msg)
+  })
+  
+  cookies_data <- reactive({
+    input$cookies
+  })
+  
+  output$cookie_status <- renderText({
+    if("cookies" %in% names(input)){
+      if("dfe_analytics" %in% names(input$cookies)){
+        if(input$cookies$dfe_analytics=="granted"){
+      "Cookies have been accepted."
+    } else {
+      "Cookies have been rejected."
+    }
+        }
+    } else {
+      "Cookies consent has not been confirmed."
+    }
+    }
+)
+  
+  observe({    
+    output$google_analytics <- renderUI(    
+      if("cookies" %in% names(input)){
+        if("dfe_analytics" %in% names(input$cookies)){
+          if(input$cookies$dfe_analytics=="granted"){
+      tags$head(includeHTML(("google-analytics.html")))
+          }
+        }
+        } else {
+          tags$p("Analytics disabled")
+    }
+  )
+}
+)
+  
+#  output$cookie_status <- renderText(as.character(input$cookies))
+  
   # Simple server stuff goes here ------------------------------------------------------------
   reactiveRevBal <- reactive({
     dfRevBal %>% filter(
