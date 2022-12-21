@@ -27,35 +27,36 @@ server <- function(input, output, session) {
   show("app-content")
 
   # output if cookie is unspecified
-  observe({
-    if(!is.null(input$cookies)){
-      if(is.null(input$cookies$dfe_analytics)){
-      shinyalert(
-        inputId = "cookie_consent",
-        title = "Cookie consent",
-        text = "This site uses cookies to record traffic flow using Google Analytics",
-        size = "s", 
-        closeOnEsc = TRUE,
-        closeOnClickOutside = FALSE,
-        html = FALSE,
-        type = "",
-        showConfirmButton = TRUE,
-        showCancelButton = TRUE,
-        confirmButtonText = "Accept",
-        confirmButtonCol = "#AEDEF4",
-        timer = 0,
-        imageUrl = "",
-        animation = TRUE
-      )} else {
+  observeEvent(input$cookies,{
+    if (!is.null(input$cookies)) {
+      if (!("dfe_analytics" %in% names(input$cookies))) {
+        shinyalert(
+          inputId = "cookie_consent",
+          title = "Cookie consent",
+          text = "This site uses cookies to record traffic flow using Google Analytics",
+          size = "s",
+          closeOnEsc = TRUE,
+          closeOnClickOutside = FALSE,
+          html = FALSE,
+          type = "",
+          showConfirmButton = TRUE,
+          showCancelButton = TRUE,
+          confirmButtonText = "Accept",
+          confirmButtonCol = "#AEDEF4",
+          timer = 0,
+          imageUrl = "",
+          animation = TRUE
+        )
+      } else {
         msg <- list(
-          name = "dfe_analytics", 
+          name = "dfe_analytics",
           value = input$cookies$dfe_analytics
         )
         session$sendCustomMessage("analytics-consent", msg)
-        if("cookies" %in% names(input)){
-          if("dfe_analytics" %in% names(input$cookies)){
-            if(input$cookies$dfe_analytics=='denied'){
-              ga_msg <- list(name = paste0("_ga_",google_analytics_key))
+        if ("cookies" %in% names(input)) {
+          if ("dfe_analytics" %in% names(input$cookies)) {
+            if (input$cookies$dfe_analytics == "denied") {
+              ga_msg <- list(name = paste0("_ga_", google_analytics_key))
               session$sendCustomMessage("cookie-remove", ga_msg)
             }
           }
@@ -64,54 +65,52 @@ server <- function(input, output, session) {
     }
   })
 
-  observeEvent(input$cookie_consent,{
+  observeEvent(input$cookie_consent, {
     msg <- list(
-      name = "dfe_analytics", 
-      value = ifelse(input$cookie_consent,'granted','denied')
+      name = "dfe_analytics",
+      value = ifelse(input$cookie_consent, "granted", "denied")
     )
     session$sendCustomMessage("cookie-set", msg)
     session$sendCustomMessage("analytics-consent", msg)
-    if("cookies" %in% names(input)){
-      if("dfe_analytics" %in% names(input$cookies)){
-        if(input$cookies$dfe_analytics=='denied'){
-          ga_msg <- list(name = paste0("_ga_",google_analytics_key))
+    if ("cookies" %in% names(input)) {
+      if ("dfe_analytics" %in% names(input$cookies)) {
+        if (input$cookies$dfe_analytics == "denied") {
+          ga_msg <- list(name = paste0("_ga_", google_analytics_key))
           session$sendCustomMessage("cookie-remove", ga_msg)
         }
       }
     }
-  }
-  )
-  
+  })
+
   observeEvent(input$remove, {
-    msg <- list(name = "dfe_analytics", value='denied')
+    msg <- list(name = "dfe_analytics", value = "denied")
     session$sendCustomMessage("cookie-remove", msg)
     session$sendCustomMessage("analytics-consent", msg)
-    ga_msg <- list(name = paste0("_ga_",google_analytics_key))
-    session$sendCustomMessage("cookie-remove", ga_msg)
   })
-  
+
   cookies_data <- reactive({
     input$cookies
   })
-  
+
   output$cookie_status <- renderText({
-    if("cookies" %in% names(input)){
-      if("dfe_analytics" %in% names(input$cookies)){
-        if(input$cookies$dfe_analytics=="granted"){
-      "Cookies have been accepted."
-    } else {
-      "Cookies have been rejected."
-    }
+    cookie_text_stem <- "To better understand the reach of our dashboard tools, this site uses cookies to identify numbers of unique users as part of Google Analytics. You have chosen to"
+    cookie_text_tail <- "the use of cookies on this website."
+    if ("cookies" %in% names(input)) {
+      if ("dfe_analytics" %in% names(input$cookies)) {
+        if (input$cookies$dfe_analytics == "granted") {
+          paste(cookie_text_stem, "accept", cookie_text_tail)
+        } else {
+          paste(cookie_text_stem, "reject", cookie_text_tail)
         }
+      }
     } else {
       "Cookies consent has not been confirmed."
     }
-    }
-)
-  
+  })
 
-#  output$cookie_status <- renderText(as.character(input$cookies))
-  
+
+  #  output$cookie_status <- renderText(as.character(input$cookies))
+
   # Simple server stuff goes here ------------------------------------------------------------
   reactiveRevBal <- reactive({
     dfRevBal %>% filter(
@@ -314,5 +313,3 @@ server <- function(input, output, session) {
     stopApp()
   })
 }
-
-

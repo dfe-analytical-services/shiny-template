@@ -60,12 +60,6 @@ homepage_panel <- function() {
               )
             )
           )
-        ),
-        column(
-          12,
-          textOutput("cookie_status"),
-          actionButton("remove", "Reset consent"),
-          
         )
       )
     )

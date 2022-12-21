@@ -31,6 +31,16 @@ jobs:
           r-version: 4.2.1
           use-public-rspm: true
 
+      - name: Set env vars (dev)
+        if: endsWith(github.ref, '/development')
+        run: |
+          echo "SHINYAPP_NAME='dev-dfe-shiny-template'" >> $GITHUB_ENV
+      - name: Set env vars (prod)
+        if: endsWith(github.ref, '/main')
+        run: |
+          echo "SHINYAPP_NAME='dfe-shiny-template'">> $GITHUB_ENV
+          echo "SHINYAPP_OVERFLOW_NAME='dfe-shiny-template-overflow'">> $GITHUB_ENV
+
       - name: Cache R packages
         if: runner.os != 'Windows'
         uses: actions/cache@v1
@@ -66,5 +76,8 @@ jobs:
         run: >
           Rscript
           -e "rsconnect::setAccountInfo(name = 'department-for-education', token = '${{secrets.SHINYAPPS_TOKEN}}', secret = '${{secrets.SHINYAPPS_SECRET}}')"
-          -e "rsconnect::deployApp(appName='dfe-shiny-template')"
-          -e "rsconnect::deployApp(appName='dfe-shiny-template-overflow')"
+          -e "rsconnect::deployApp(appName=${{env.SHINYAPP_NAME}})"
+        if: endsWith(github.ref, '/main')
+        run: >
+          Rscript
+          -e "rsconnect::deployApp(appName=${{env.SHINYAPP_OVERFLOW_NAME}})"
