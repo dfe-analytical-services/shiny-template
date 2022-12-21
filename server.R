@@ -28,7 +28,8 @@ server <- function(input, output, session) {
 
   # output if cookie is unspecified
   observe({
-    if(!is.null(input$cookies) & is.null(input$cookies$dfe_analytics)){
+    if(!is.null(input$cookies)){
+      if(is.null(input$cookies$dfe_analytics)){
       shinyalert(
         inputId = "cookie_consent",
         title = "Cookie consent",
@@ -45,20 +46,31 @@ server <- function(input, output, session) {
         timer = 0,
         imageUrl = "",
         animation = TRUE
-      )}
+      )} else {
+        msg <- list(
+          name = "dfe_analytics", 
+          value = input$cookies$dfe_analytics
+        )
+        session$sendCustomMessage("analytics-consent", msg)
+      }
+      
+    }
   })
 
   observeEvent(input$cookie_consent,{
     msg <- list(
-      name = "dfe_analytics", value = ifelse(input$cookie_consent,'granted','denied')
+      name = "dfe_analytics", 
+      value = ifelse(input$cookie_consent,'granted','denied')
     )
     session$sendCustomMessage("cookie-set", msg)
+    session$sendCustomMessage("analytics-consent", msg)
   }
   )
   
   observeEvent(input$remove, {
-    msg <- list(name = "dfe_analytics")
+    msg <- list(name = "dfe_analytics", value='denied')
     session$sendCustomMessage("cookie-remove", msg)
+    session$sendCustomMessage("analytics-consent", msg)
   })
   
   cookies_data <- reactive({
@@ -80,21 +92,7 @@ server <- function(input, output, session) {
     }
 )
   
-  observe({    
-    output$google_analytics <- renderUI(    
-      if("cookies" %in% names(input)){
-        if("dfe_analytics" %in% names(input$cookies)){
-          if(input$cookies$dfe_analytics=="granted"){
-      tags$head(includeHTML(("google-analytics.html")))
-          }
-        }
-        } else {
-          tags$p("Analytics disabled")
-    }
-  )
-}
-)
-  
+
 #  output$cookie_status <- renderText(as.character(input$cookies))
   
   # Simple server stuff goes here ------------------------------------------------------------
@@ -299,3 +297,5 @@ server <- function(input, output, session) {
     stopApp()
   })
 }
+
+

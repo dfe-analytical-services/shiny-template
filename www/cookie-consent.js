@@ -16,3 +16,11 @@ Shiny.addCustomMessageHandler('cookie-remove', function(msg){
 $(document).on('shiny:connected', function(ev){
   getCookies();
 })
+
+Shiny.addCustomMessageHandler('analytics-consent', function(msg){
+  gtag('consent', 'update', {
+    'analytics_storage': msg.value
+  });
+})
+
+
