@@ -27,7 +27,7 @@ server <- function(input, output, session) {
   show("app-content")
 
   # output if cookie is unspecified
-  observeEvent(input$cookies,{
+  observeEvent(input$cookies, {
     if (!is.null(input$cookies)) {
       if (!("dfe_analytics" %in% names(input$cookies))) {
         shinyalert(
