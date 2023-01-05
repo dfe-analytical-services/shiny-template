@@ -223,7 +223,7 @@ server <- function(input, output, session) {
   )
 
   output$dropdown_label <- renderText({
-    paste("Current selections: ", input$selectPhase, ",", input$selectArea)
+    paste0("Current selections: ", input$selectPhase, ", ", input$selectArea)
   })
 
 
