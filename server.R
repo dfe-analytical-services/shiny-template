@@ -205,8 +205,9 @@ server <- function(input, output, session) {
     )
   })
 
-
-
+  observeEvent(input$go, {
+    toggle(id = "div_a", anim = T)
+  })
 
 
   observeEvent(input$link_to_app_content_tab, {
@@ -220,6 +221,10 @@ server <- function(input, output, session) {
       write.csv(dfRevBal, file)
     }
   )
+
+  output$dropdown_label <- renderText({
+    paste0("Current selections: ", input$selectPhase, ", ", input$selectArea)
+  })
 
 
   # Stop app ---------------------------------------------------------------------------------

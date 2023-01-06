@@ -115,3 +115,17 @@ choicesAreas <- dfAreas %>%
 choicesYears <- unique(dfRevBal$time_period)
 
 choicesPhase <- unique(dfRevBal$school_phase)
+
+expandable <- function(inputId, label, contents) {
+  govDetails <- shiny::tags$details(
+    class = "govuk-details", id = inputId,
+    shiny::tags$summary(
+      class = "govuk-details__summary",
+      shiny::tags$span(
+        class = "govuk-details__summary-text",
+        label
+      )
+    ),
+    shiny::tags$div(contents)
+  )
+}

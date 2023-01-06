@@ -135,6 +135,28 @@ a:active {
     color: #fff;
 }
 
+.govuk-details {
+    padding: 19px;
+    font-family: GDS Transport, arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: #1d70b8;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 20px;
+    display: block;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+}
+
+.govuk-details__summary {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 5px;
+    padding-left: 25px;
+    color: #fff;
+    cursor: pointer;
+}
+
 
 /* Full screen plots */
 /* Adapted from https://stackoverflow.com/questions/69042546/is-there-a-way-to-create-a-full-screen-popup-window-of-a-plotly-chart-in-r */
