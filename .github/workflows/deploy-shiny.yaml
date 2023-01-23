@@ -36,6 +36,7 @@ jobs:
         if: endsWith(github.ref, '/development')
         run: |
           echo "SHINYAPP_NAME='dev-dfe-shiny-template'" >> $GITHUB_ENV
+          echo "SHINYAPP_OVERFLOW_NAME='dev-dfe-shiny-template-overflow'">> $GITHUB_ENV
       - name: Set env vars (prod)
         if: endsWith(github.ref, '/main')
         run: |
@@ -78,7 +79,4 @@ jobs:
           Rscript
           -e "rsconnect::setAccountInfo(name = 'department-for-education', token = '${{secrets.SHINYAPPS_TOKEN}}', secret = '${{secrets.SHINYAPPS_SECRET}}')"
           -e "rsconnect::deployApp(appName=${{env.SHINYAPP_NAME}})"
-        if: endsWith(github.ref, '/main')
-        run_overflow: >
-          Rscript
           -e "rsconnect::deployApp(appName=${{env.SHINYAPP_OVERFLOW_NAME}})"
