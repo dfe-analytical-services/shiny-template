@@ -65,7 +65,7 @@ ui <- function(input, output, session) {
         href = "dfefavicon.png"
       ),
       # Add title for browser tabs
-      tags$title("DfE Shiny Template")
+      tags$title("DfE Shiny Template - Testing - no analytics")
     ),
     tags$html(lang = "en"),
     # Add meta description for search engines
@@ -82,6 +82,17 @@ ui <- function(input, output, session) {
     shinyjs::useShinyjs(),
     customDisconnectMessage(),
     useShinydashboard(),
+    # Setting up cookie consent based on a cookie recording the consent:
+    # https://book.javascript-for-r.com/shiny-cookies.html
+    tags$head(
+      tags$script(
+        src = paste0(
+          "https://cdn.jsdelivr.net/npm/js-cookie@rc/",
+          "dist/js.cookie.min.js"
+        )
+      ),
+      tags$script(src = "cookie-consent.js")
+    ),
     tags$head(includeHTML(("google-analytics.html"))),
     tags$head(
       tags$link(
