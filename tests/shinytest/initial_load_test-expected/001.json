@@ -1,7 +1,11 @@
 {
   "input": {
+    "cookies": {
+
+    },
     "link_to_app_content_tab": 0,
     "navlistPanel": "Homepage",
+    "remove": 0,
     "selectArea": "England",
     "selectBenchLAs": null,
     "selectPhase": "All LA maintained schools",
