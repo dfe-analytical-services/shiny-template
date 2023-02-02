@@ -26,27 +26,25 @@ The tracking number below MUST be replaced with a unique number, contact the sta
   
 
   $(document).on('change', 'select#selectPhase', function(e) {
-    gtag('event', 'select phase' : document.querySelector('select#selectPhase').value, 
-    {'event_category' : 'choose Phase',
+    gtag('event', 'select phase', {'event_category' : 'choose Phase',
     'event_label' : document.querySelector('select#selectPhase').value
     });
   });
   
   $(document).on('change', 'select#selectArea', function(e) {
-    gtag('event', 'select area'  : document.querySelector('select#selectArea').value, 
-    {'event_category' : 'choose Area',
+    gtag('event', 'select area', {'event_category' : 'choose Area',
     'event_label' : document.querySelector('select#selectArea').value
     });
   });
   
   $(document).on('click', 'ul#navlistPanel', function(e) {
-    gtag('event', 'navlistPanel' : document.querySelector('ul#navlistPanel > li.active > a').getAttribute('data-value'), {'event_category' : 'navbar click',
+    gtag('event', 'navlistPanel', {'event_category' : 'navbar click',
     'event_label' : document.querySelector('ul#navlistPanel > li.active > a').getAttribute('data-value')
     });
   });
      
   $(document).on('click', 'ul#tabsetpanels', function(e) {
-    gtag('event', 'tab panels' : document.querySelector('ul#tabsetpanels > li.active > a').getAttribute('data-value'), {'event_category' : 'tab panel clicks',
+    gtag('event', 'tab panels', {'event_category' : 'tab panel clicks',
     'event_label' : document.querySelector('ul#tabsetpanels > li.active > a').getAttribute('data-value')
     });
   });
@@ -61,3 +59,4 @@ The tracking number below MUST be replaced with a unique number, contact the sta
   
 </script>
       
+
