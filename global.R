@@ -90,7 +90,6 @@ ees_publication <- "https://explore-education-statistics.service.gov.uk/find-sta
 google_analytics_key <- "Z967JJVQQX"
 
 
-source("R/support_links.R")
 source("R/read_data.R")
 
 # Read in the data
