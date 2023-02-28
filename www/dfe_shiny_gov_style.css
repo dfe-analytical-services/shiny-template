@@ -19,19 +19,6 @@
   font-display:fallback
 }
 
-a {
-  	color: #1d70b8;
-}
-
-a:hover {
-  color:	#003078;
-}
-
-a:visited {
-  color: #4c2c92;
-}
-
-
 html {
   background-color: #f3f2f1;
 }
@@ -56,6 +43,9 @@ a:active {
   text-decoration: underline
 }
 
+/* This line sets the main area width. Originally set to 66.667% in the GDS 
+template. 80% works well here to reduce white space on the right hand side.*/
+.col-sm-8{ width: 80%}
 
 .container-fluid {
   padding: 0px;
