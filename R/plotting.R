@@ -1,7 +1,9 @@
 createAvgRevTimeSeries <- function(df, inputArea) {
-  ggplot(df, aes(x = year, 
-                 y = average_revenue_balance, 
-                 color = area_name)) +
+  ggplot(df, aes(
+    x = year,
+    y = average_revenue_balance,
+    color = area_name
+  )) +
     geom_line(size = 1.2) +
     theme_classic() +
     theme(
