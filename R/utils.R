@@ -10,6 +10,9 @@ customDisconnectMessage <- function(refresh = "Refresh page",
         "  $(document).on('shiny:disconnected', function(event) {",
         "    $('#custom-disconnect-dialog').show();",
         "    $('#ss-overlay').show();",
+        "    gtag('event', 'disconnect', {",
+        "       disconnect: disconnected",
+        "    })",
         "  })",
         "});"
       )
