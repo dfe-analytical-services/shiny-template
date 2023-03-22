@@ -55,6 +55,13 @@ The tracking number below MUST be replaced with a unique number, contact the sta
     });
   });
   
+  $(document).on('shiny:disconnected', function(e) {
+    gtag('event', 'disconnect', { 
+      'event_label' : 'Disconnect',
+      'event_category' : 'Disconnect'
+    });
+  });
+
 
   
 </script>
