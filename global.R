@@ -31,8 +31,12 @@ shhh(library(shinyalert))
 
 # Here's an example function for simplifying the code needed to commas separate numbers:
 
+enableBookmarking("url")
+
 # cs_num ----------------------------------------------------------------------------
 # Comma separating function
+
+
 
 cs_num <- function(value) {
   format(value, big.mark = ",", trim = TRUE)
