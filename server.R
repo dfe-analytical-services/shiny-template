@@ -26,6 +26,19 @@ server <- function(input, output, session) {
   hide(id = "loading-content", anim = TRUE, animType = "fade")
   show("app-content")
 
+  # The template uses bookmarking to store input choices in the url. You can
+  # exclude specific inputs using the list here:
+  setBookmarkExclude(c("cookies", "link_to_app_content_tab"))
+
+  observe({
+    # Trigger this observer every time an input changes
+    reactiveValuesToList(input)
+    session$doBookmark()
+  })
+  onBookmarked(function(url) {
+    updateQueryString(url)
+  })
+
   # output if cookie is unspecified
   observeEvent(input$cookies, {
     if (!is.null(input$cookies)) {
