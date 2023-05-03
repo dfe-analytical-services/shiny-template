@@ -1041,6 +1041,16 @@
         "withr"
       ]
     },
+    "shinytitle": {
+      "Package": "shinytitle",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "12a2972d88910692c1a125d6e1e95d51",
+      "Requirements": [
+        "shiny"
+      ]
+    },
     "showimage": {
       "Package": "showimage",
       "Version": "1.0.0",

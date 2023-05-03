@@ -18,6 +18,7 @@ shhh(library(shinytest))
 shhh(library(shinydashboard))
 shhh(library(shinyWidgets))
 shhh(library(shinyGovstyle))
+shhh(library(shinytitle))
 shhh(library(dplyr))
 shhh(library(ggplot2))
 shhh(library(plotly))
@@ -87,6 +88,7 @@ appLoadingCSS <- "
 }
 "
 
+site_title <- "DfE Shiny Template"
 site_primary <- "https://department-for-education.shinyapps.io/dfe-shiny-template/"
 site_overflow <- "https://department-for-education.shinyapps.io/dfe-shiny-template-overflow/"
 sites_list <- c(site_primary, site_overflow) # We can add further mirrors where necessary. Each one can generally handle about 2,500 users simultaneously
