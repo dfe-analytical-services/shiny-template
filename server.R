@@ -35,9 +35,27 @@ server <- function(input, output, session) {
     reactiveValuesToList(input)
     session$doBookmark()
   })
+  
   onBookmarked(function(url) {
     updateQueryString(url)
   })
+  
+  observe({
+    if(input$navlistPanel=='dashboard'){
+    change_window_title(
+      session, 
+      paste0(
+        site_title, ' - ', 
+        input$selectPhase, ', ',
+        input$selectArea))
+    } else {
+      change_window_title(
+        session, 
+        paste0(
+          site_title, ' - ', 
+          input$navlistPanel))
+    }
+    })
 
   # output if cookie is unspecified
   observeEvent(input$cookies, {
