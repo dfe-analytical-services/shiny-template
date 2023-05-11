@@ -27,8 +27,18 @@ server <- function(input, output, session) {
   show("app-content")
 
   # The template uses bookmarking to store input choices in the url. You can
-  # exclude specific inputs using the list here:
-  setBookmarkExclude(c("cookies", "link_to_app_content_tab"))
+  # exclude specific inputs (for example extra info created for a datatable
+  # or plotly chart) using the list here:
+  setBookmarkExclude(c(
+    "cookies", "link_to_app_content_tab",
+    "tabBenchmark_rows_current", "tabBenchmark_rows_all",
+    "tabBenchmark_columns_selected", "tabBenchmark_cell_clicked",
+    "tabBenchmark_cells_selected", "tabBenchmark_search",
+    "tabBenchmark_rows_selected", "tabBenchmark_row_last_clicked",
+    "tabBenchmark_state",
+    "plotly_click-A", "plotly_hover-A", "plotly_afterplot-A",
+    ".clientValue-default-plotlyCrosstalkOpts"
+  ))
 
   observe({
     # Trigger this observer every time an input changes
