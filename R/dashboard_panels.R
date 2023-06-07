@@ -1,6 +1,6 @@
 homepage_panel <- function() {
   tabPanel(
-    "Homepage",
+    "User guide and information",
     gov_main_layout(
       gov_row(
         column(
