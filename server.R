@@ -307,6 +307,7 @@ server <- function(input, output, session) {
     }
   )
 
+  # Add input IDs here that are within the relevant drop down boxes to create dynamic text
   output$dropdown_label <- renderText({
     paste0("Current selections: ", input$selectPhase, ", ", input$selectArea)
   })
