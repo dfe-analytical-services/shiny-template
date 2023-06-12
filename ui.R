@@ -65,7 +65,7 @@ ui <- function(input, output, session) {
         href = "dfefavicon.png"
       ),
       # Add title for browser tabs
-      tags$title("DfE Shiny Template - Testing - no analytics")
+      tags$title("DfE Shiny Template")
     ),
     tags$html(lang = "en"),
     # Add meta description for search engines

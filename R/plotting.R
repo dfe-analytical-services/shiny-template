@@ -1,5 +1,9 @@
-createAvgRevTimeSeries <- function(dfRevenueBalance, inputArea) {
-  ggplot(dfRevenueBalance, aes(x = year, y = average_revenue_balance, color = area_name)) +
+createAvgRevTimeSeries <- function(df, inputArea) {
+  ggplot(df, aes(
+    x = year,
+    y = average_revenue_balance,
+    color = area_name
+  )) +
     geom_line(size = 1.2) +
     theme_classic() +
     theme(
@@ -17,7 +21,7 @@ createAvgRevTimeSeries <- function(dfRevenueBalance, inputArea) {
     scale_color_manual(
       "Area",
       breaks = unique(c("England", inputArea)),
-      values = c("#f47738", "#1d70b8")
+      values = gss_colour_pallette
     )
 }
 
