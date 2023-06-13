@@ -20,7 +20,7 @@
     "link_to_app_content_tab": 0,
     "navlistPanel": "dashboard",
     "plotly_afterplot-A": "\"lineRevBal\"",
-    "plotly_relayout-A": "{\"width\":576.328125,\"height\":400}",
+    "plotly_relayout-A": "{\"width\":710.59375,\"height\":400}",
     "remove": 0,
     "selectArea": "England",
     "selectBenchLAs": null,
@@ -97,7 +97,7 @@
             "mode": "lines",
             "line": {
               "width": 4.53543307086614,
-              "color": "rgba(244,119,56,1)",
+              "color": "rgba(18,67,109,1)",
               "dash": "solid"
             },
             "hoveron": "points",
