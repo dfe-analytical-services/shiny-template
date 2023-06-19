@@ -67,6 +67,7 @@ ui <- function(input, output, session) {
       # Add title for browser tabs
       tags$title("DfE Shiny Template")
     ),
+    use_shiny_title(),
     tags$html(lang = "en"),
     # Add meta description for search engines
     meta() %>%

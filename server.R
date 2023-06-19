@@ -26,6 +26,41 @@ server <- function(input, output, session) {
   hide(id = "loading-content", anim = TRUE, animType = "fade")
   show("app-content")
 
+  # The template uses bookmarking to store input choices in the url. You can
+  # exclude specific inputs using the list here:
+  setBookmarkExclude(c("cookies", "link_to_app_content_tab"))
+
+  observe({
+    # Trigger this observer every time an input changes
+    reactiveValuesToList(input)
+    session$doBookmark()
+  })
+
+  onBookmarked(function(url) {
+    updateQueryString(url)
+  })
+
+  observe({
+    if (input$navlistPanel == "dashboard") {
+      change_window_title(
+        session,
+        paste0(
+          site_title, " - ",
+          input$selectPhase, ", ",
+          input$selectArea
+        )
+      )
+    } else {
+      change_window_title(
+        session,
+        paste0(
+          site_title, " - ",
+          input$navlistPanel
+        )
+      )
+    }
+  })
+
   # output if cookie is unspecified
   observeEvent(input$cookies, {
     if (!is.null(input$cookies)) {
