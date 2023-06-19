@@ -96,7 +96,7 @@
             "type": "scatter",
             "mode": "lines",
             "line": {
-              "width": 4.53543307086614,
+              "width": 4.5354330708661417,
               "color": "rgba(18,67,109,1)",
               "dash": "solid"
             },
@@ -112,17 +112,17 @@
         ],
         "layout": {
           "margin": {
-            "t": 25.7412480974125,
-            "r": 7.30593607305936,
-            "b": 42.0866196208662,
-            "l": 77.9078455790785
+            "t": 25.74124809741248,
+            "r": 7.3059360730593621,
+            "b": 42.086619620866202,
+            "l": 77.907845579078483
           },
           "plot_bgcolor": "rgba(255,255,255,1)",
           "paper_bgcolor": "rgba(255,255,255,1)",
           "font": {
             "color": "rgba(0,0,0,1)",
             "family": "",
-            "size": 15.9402241594022
+            "size": 15.940224159402243
           },
           "xaxis": {
             "domain": [
@@ -165,8 +165,8 @@
             "nticks": null,
             "ticks": "outside",
             "tickcolor": "rgba(51,51,51,1)",
-            "ticklen": 3.65296803652968,
-            "tickwidth": 0.66417600664176,
+            "ticklen": 3.6529680365296811,
+            "tickwidth": 0.66417600664176002,
             "showticklabels": true,
             "tickfont": {
               "color": "rgba(77,77,77,1)",
@@ -187,7 +187,7 @@
               "font": {
                 "color": "rgba(0,0,0,1)",
                 "family": "",
-                "size": 15.9402241594022
+                "size": 15.940224159402243
               }
             },
             "hoverformat": ".2f"
@@ -202,7 +202,7 @@
             "autorange": false,
             "range": [
               100850.2,
-              163325.8
+              163325.79999999999
             ],
             "tickmode": "array",
             "ticktext": [
@@ -224,8 +224,8 @@
             "nticks": null,
             "ticks": "outside",
             "tickcolor": "rgba(51,51,51,1)",
-            "ticklen": 3.65296803652968,
-            "tickwidth": 0.66417600664176,
+            "ticklen": 3.6529680365296811,
+            "tickwidth": 0.66417600664176002,
             "showticklabels": true,
             "tickfont": {
               "color": "rgba(77,77,77,1)",
@@ -246,7 +246,7 @@
               "font": {
                 "color": "rgba(0,0,0,1)",
                 "family": "",
-                "size": 15.9402241594022
+                "size": 15.940224159402243
               }
             },
             "hoverformat": ".2f"
@@ -274,7 +274,7 @@
           "legend": {
             "bgcolor": "rgba(255,255,255,1)",
             "bordercolor": "transparent",
-            "borderwidth": 1.88976377952756,
+            "borderwidth": 1.8897637795275593,
             "font": {
               "color": "rgba(0,0,0,1)",
               "family": "",
@@ -285,12 +285,12 @@
               "font": {
                 "color": "rgba(0,0,0,1)",
                 "family": "",
-                "size": 15.9402241594022
+                "size": 15.940224159402243
               }
             },
             "orientation": "h",
             "x": 0,
-            "y": -0.2
+            "y": -0.20000000000000001
           },
           "hovermode": "closest",
           "barmode": "relative"
@@ -310,7 +310,7 @@
           "persistent": false,
           "dynamic": false,
           "selectize": false,
-          "opacityDim": 0.2,
+          "opacityDim": 0.20000000000000001,
           "selected": {
             "opacity": 1
           },
