@@ -4,7 +4,7 @@
     "Repositories": [
       {
         "Name": "CRAN",
-        "URL": "https://cran.rstudio.com"
+        "URL": "http://cran.rstudio.com"
       }
     ]
   },
@@ -1256,6 +1256,16 @@
         "withr"
       ],
       "Hash": "981229915650258e38ae95947210082d"
+    },
+    "shinytitle": {
+      "Package": "shinytitle",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "shiny"
+      ],
+      "Hash": "12a2972d88910692c1a125d6e1e95d51"
     },
     "showimage": {
       "Package": "showimage",
