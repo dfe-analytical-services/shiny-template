@@ -337,8 +337,9 @@ server <- function(input, output, session) {
     )
   })
 
-
-
+  observeEvent(input$go, {
+    toggle(id = "div_a", anim = T)
+  })
 
 
   observeEvent(input$link_to_app_content_tab, {
@@ -352,6 +353,11 @@ server <- function(input, output, session) {
       write.csv(dfRevBal, file)
     }
   )
+
+  # Add input IDs here that are within the relevant drop down boxes to create dynamic text
+  output$dropdown_label <- renderText({
+    paste0("Current selections: ", input$selectPhase, ", ", input$selectArea)
+  })
 
 
   # Stop app ---------------------------------------------------------------------------------

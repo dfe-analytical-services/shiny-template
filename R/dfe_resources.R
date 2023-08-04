@@ -1,4 +1,3 @@
-
 # Current GSS colours for use in charts. These are taken from the current
 # guidance here:
 # https://analysisfunction.civilservice.gov.uk/policy-store/data-visualisation-colours-in-charts/

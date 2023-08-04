@@ -97,6 +97,10 @@ local({
     substring(string, 1, nchar(prefix)) == prefix
   }
   
+  `%??%` <- function(x, y) {
+    if (is.null(x)) y else x
+  }
+  
   bootstrap <- function(version, library) {
   
     friendly <- renv_bootstrap_version_friendly(version)
@@ -776,6 +780,7 @@ local({
     sha <- attr(version, "sha", exact = TRUE)
     valid <- if (!is.null(sha))
       renv_bootstrap_validate_version_dev(sha, description)
+
     else
       renv_bootstrap_validate_version_release(version, description)
   
