@@ -38,6 +38,7 @@ server <- function(input, output, session) {
     "tabBenchmark_cells_selected", "tabBenchmark_search",
     "tabBenchmark_rows_selected", "tabBenchmark_row_last_clicked",
     "tabBenchmark_state",
+    "plotly_relayout-A",
     "plotly_click-A", "plotly_hover-A", "plotly_afterplot-A",
     ".clientValue-default-plotlyCrosstalkOpts"
   ))
