@@ -87,7 +87,7 @@ Package control is handled using renv. As in the steps above, you will need to r
 
 ### Tests
 
-UI tests have been created using shinytest that test the app loads, that content appears correctly when different inputs are selected, and that tab content displays as expected. More should be added over time as extra features are added.
+UI tests have been created using shinytest2 that test the app loads. More should be added over time as extra features are added.
 
 GitHub Actions provide CI by running the automated tests and checks for code styling. The yaml files for these workflows can be found in the .github/workflows folder.
 
