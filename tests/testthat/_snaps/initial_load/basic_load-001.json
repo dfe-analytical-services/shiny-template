@@ -1,0 +1,425 @@
+{
+  "input": {
+    ".clientValue-default-plotlyCrosstalkOpts": {
+      "on": "plotly_click",
+      "persistent": false,
+      "dynamic": false,
+      "selectize": false,
+      "opacityDim": 0.2,
+      "selected": {
+        "opacity": 1
+      },
+      "debounce": 0,
+      "color": [
+
+      ]
+    },
+    "cookies": {
+
+    },
+    "link_to_app_content_tab": 0,
+    "navlistPanel": "dashboard",
+    "plotly_afterplot-A": "\"lineRevBal\"",
+    "plotly_relayout-A": "{\"width\":1073,\"height\":400}",
+    "remove": 0,
+    "selectArea": "England",
+    "selectBenchLAs": null,
+    "selectPhase": "All LA maintained schools",
+    "tabsetpanels": "Example panel 1"
+  },
+  "output": {
+    "boxavgRevBal": {
+      "html": "<div class=\"small-box bg-blue\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-medium\">£160,486<\/p>\n    <p id=\"vboxdetail-medium\">This is the latest value for the selected inputs<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "boxavgRevBal_large": {
+      "html": "<div class=\"small-box bg-green\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-large\">£160,486<\/p>\n    <p id=\"vboxdetail-large\">This is the latest value for the selected inputs<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "boxavgRevBal_small": {
+      "html": "<div class=\"small-box bg-orange\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-small\">£160,486<\/p>\n    <p id=\"vboxdetail-small\">This is the latest value for the selected inputs<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "boxpcRevBal": {
+      "html": "<div class=\"small-box bg-blue\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-medium\">£49,794<\/p>\n    <p id=\"vboxdetail-medium\">This is the change on previous year<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "boxpcRevBal_large": {
+      "html": "<div class=\"small-box bg-green\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-large\">£49,794<\/p>\n    <p id=\"vboxdetail-large\">This is the change on previous year<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "boxpcRevBal_small": {
+      "html": "<div class=\"small-box bg-orange\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-small\">£49,794<\/p>\n    <p id=\"vboxdetail-small\">This is the change on previous year<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "dropdown_label": "Current selections: All LA maintained schools, England",
+    "lineRevBal": {
+      "x": {
+        "data": [
+          {
+            "x": [
+              2016,
+              2017,
+              2018,
+              2019,
+              2020,
+              2021
+            ],
+            "y": [
+              124415,
+              105683,
+              103690,
+              110448,
+              110692,
+              160486
+            ],
+            "text": [
+              "year: 2016<br />average_revenue_balance: 124415<br />area_name: England",
+              "year: 2017<br />average_revenue_balance: 105683<br />area_name: England",
+              "year: 2018<br />average_revenue_balance: 103690<br />area_name: England",
+              "year: 2019<br />average_revenue_balance: 110448<br />area_name: England",
+              "year: 2020<br />average_revenue_balance: 110692<br />area_name: England",
+              "year: 2021<br />average_revenue_balance: 160486<br />area_name: England"
+            ],
+            "type": "scatter",
+            "mode": "lines",
+            "line": {
+              "width": 4.5354330708661417,
+              "color": "rgba(18,67,109,1)",
+              "dash": "solid"
+            },
+            "hoveron": "points",
+            "name": "England",
+            "legendgroup": "England",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "frame": null
+          }
+        ],
+        "layout": {
+          "margin": {
+            "t": 25.74124809741248,
+            "r": 7.3059360730593621,
+            "b": 42.086619620866202,
+            "l": 77.907845579078483
+          },
+          "plot_bgcolor": "rgba(255,255,255,1)",
+          "paper_bgcolor": "rgba(255,255,255,1)",
+          "font": {
+            "color": "rgba(0,0,0,1)",
+            "family": "",
+            "size": 15.940224159402243
+          },
+          "xaxis": {
+            "domain": [
+              0,
+              1
+            ],
+            "automargin": true,
+            "type": "linear",
+            "autorange": false,
+            "range": [
+              2015.75,
+              2021.25
+            ],
+            "tickmode": "array",
+            "ticktext": [
+              "2016",
+              "2017",
+              "2018",
+              "2019",
+              "2020",
+              "2021"
+            ],
+            "tickvals": [
+              2016,
+              2017,
+              2018,
+              2019,
+              2020,
+              2021
+            ],
+            "categoryorder": "array",
+            "categoryarray": [
+              "2016",
+              "2017",
+              "2018",
+              "2019",
+              "2020",
+              "2021"
+            ],
+            "nticks": null,
+            "ticks": "outside",
+            "tickcolor": "rgba(51,51,51,1)",
+            "ticklen": 3.6529680365296811,
+            "tickwidth": 0.66417600664176002,
+            "showticklabels": true,
+            "tickfont": {
+              "color": "rgba(77,77,77,1)",
+              "family": "",
+              "size": 12.7521793275218
+            },
+            "tickangle": 0,
+            "showline": true,
+            "linecolor": "rgba(0,0,0,1)",
+            "linewidth": 1.32835201328352,
+            "showgrid": false,
+            "gridcolor": null,
+            "gridwidth": 0,
+            "zeroline": false,
+            "anchor": "y",
+            "title": {
+              "text": "Academic year end",
+              "font": {
+                "color": "rgba(0,0,0,1)",
+                "family": "",
+                "size": 15.940224159402243
+              }
+            },
+            "hoverformat": ".2f"
+          },
+          "yaxis": {
+            "domain": [
+              0,
+              1
+            ],
+            "automargin": true,
+            "type": "linear",
+            "autorange": false,
+            "range": [
+              100850.2,
+              163325.79999999999
+            ],
+            "tickmode": "array",
+            "ticktext": [
+              "£120,000",
+              "£140,000",
+              "£160,000"
+            ],
+            "tickvals": [
+              120000,
+              140000,
+              160000
+            ],
+            "categoryorder": "array",
+            "categoryarray": [
+              "£120,000",
+              "£140,000",
+              "£160,000"
+            ],
+            "nticks": null,
+            "ticks": "outside",
+            "tickcolor": "rgba(51,51,51,1)",
+            "ticklen": 3.6529680365296811,
+            "tickwidth": 0.66417600664176002,
+            "showticklabels": true,
+            "tickfont": {
+              "color": "rgba(77,77,77,1)",
+              "family": "",
+              "size": 12.7521793275218
+            },
+            "tickangle": 0,
+            "showline": true,
+            "linecolor": "rgba(0,0,0,1)",
+            "linewidth": 1.32835201328352,
+            "showgrid": false,
+            "gridcolor": null,
+            "gridwidth": 0,
+            "zeroline": false,
+            "anchor": "x",
+            "title": {
+              "text": "Average revenue balance",
+              "font": {
+                "color": "rgba(0,0,0,1)",
+                "family": "",
+                "size": 15.940224159402243
+              }
+            },
+            "hoverformat": ".2f"
+          },
+          "shapes": [
+            {
+              "type": "rect",
+              "fillcolor": null,
+              "line": {
+                "color": null,
+                "width": 0,
+                "linetype": [
+
+                ]
+              },
+              "yref": "paper",
+              "xref": "paper",
+              "x0": 0,
+              "x1": 1,
+              "y0": 0,
+              "y1": 1
+            }
+          ],
+          "showlegend": true,
+          "legend": {
+            "bgcolor": "rgba(255,255,255,1)",
+            "bordercolor": "transparent",
+            "borderwidth": 1.8897637795275593,
+            "font": {
+              "color": "rgba(0,0,0,1)",
+              "family": "",
+              "size": 12.7521793275218
+            },
+            "title": {
+              "text": "Area",
+              "font": {
+                "color": "rgba(0,0,0,1)",
+                "family": "",
+                "size": 15.940224159402243
+              }
+            },
+            "orientation": "h",
+            "x": 0,
+            "y": -0.20000000000000001
+          },
+          "hovermode": "closest",
+          "barmode": "relative"
+        },
+        "config": {
+          "doubleClick": "reset",
+          "modeBarButtonsToAdd": [
+            "hoverclosest",
+            "hovercompare"
+          ],
+          "showSendToCloud": false,
+          "displayModeBar": false
+        },
+        "source": "A",
+        "highlight": {
+          "on": "plotly_click",
+          "persistent": false,
+          "dynamic": false,
+          "selectize": false,
+          "opacityDim": 0.20000000000000001,
+          "selected": {
+            "opacity": 1
+          },
+          "debounce": 0
+        },
+        "shinyEvents": [
+          "plotly_hover",
+          "plotly_click",
+          "plotly_selected",
+          "plotly_relayout",
+          "plotly_brushed",
+          "plotly_brushing",
+          "plotly_clickannotation",
+          "plotly_doubleclick",
+          "plotly_deselect",
+          "plotly_afterplot",
+          "plotly_sunburstclick"
+        ],
+        "base_url": "https://plot.ly"
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+        {
+          "name": "setprototypeof",
+          "version": "0.1",
+          "src": {
+            "href": "setprototypeof-0.1"
+          },
+          "meta": null,
+          "script": "setprototypeof.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "typedarray",
+          "version": "0.1",
+          "src": {
+            "href": "typedarray-0.1"
+          },
+          "meta": null,
+          "script": "typedarray.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "jquery",
+          "version": "3.5.1",
+          "src": {
+            "href": "jquery-3.5.1"
+          },
+          "meta": null,
+          "script": "jquery.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "crosstalk",
+          "version": "1.2.0",
+          "src": {
+            "href": "crosstalk-1.2.0"
+          },
+          "meta": null,
+          "script": "js/crosstalk.min.js",
+          "stylesheet": "css/crosstalk.min.css",
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "plotly-htmlwidgets-css",
+          "version": "2.11.1",
+          "src": {
+            "href": "plotly-htmlwidgets-css-2.11.1"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "plotly-htmlwidgets.css",
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "plotly-main",
+          "version": "2.11.1",
+          "src": {
+            "href": "plotly-main-2.11.1"
+          },
+          "meta": null,
+          "script": "plotly-latest.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        }
+      ]
+    }
+  },
+  "export": {
+
+  }
+}
