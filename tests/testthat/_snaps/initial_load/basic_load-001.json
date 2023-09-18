@@ -20,7 +20,7 @@
     "link_to_app_content_tab": 0,
     "navlistPanel": "dashboard",
     "plotly_afterplot-A": "\"lineRevBal\"",
-    "plotly_relayout-A": "{\"width\":710.59375,\"height\":400}",
+    "plotly_relayout-A": "{\"width\":1073,\"height\":400}",
     "remove": 0,
     "selectArea": "England",
     "selectBenchLAs": null,
