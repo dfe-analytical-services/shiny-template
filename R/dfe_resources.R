@@ -4,4 +4,7 @@
 # Note the advice on trying to keep to a maximum of 4 series in a single plot
 # (the two commented out hex codes are for the suggested colours for two
 # additional series if absolutely necessary).
-gss_colour_pallette <- c("#12436D", "#28A197", "#801650", "#F46A25", "#3D3D3D", "#A285D1")
+# 2023-09-21: update made to change hex codes to AF colours package
+# guidance here: https://best-practice-and-impact.github.io/afcolours/ 
+
+gss_colour_pallette <- afcolours::af_colours("categorical", colour_format = "hex", n = 6)
