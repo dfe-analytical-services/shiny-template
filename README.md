@@ -42,7 +42,7 @@ Add links to where each version of your app is deployed - e.g.
 
 ## Requirements
 
-You should list out the software and programming skills needed, as well as any access requirements = e.g.
+You should list out the software and programming skills needed, as well as any access requirements e.g.
 
 
 ### i. Software requirements (for running locally)
