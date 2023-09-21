@@ -57,7 +57,7 @@
     },
     "Matrix": {
       "Package": "Matrix",
-      "Version": "1.6-1",
+      "Version": "1.6-1.1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -70,7 +70,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "cb6855ac711958ca734b75e631b2035d"
+      "Hash": "1a00d4828f33a9d690806e98bd17150c"
     },
     "R.cache": {
       "Package": "R.cache",
@@ -156,6 +156,18 @@
         "utils"
       ],
       "Hash": "ae6cbbe1492f4de79c45fce06f967ce8"
+    },
+    "afcolours": {
+      "Package": "afcolours",
+      "Version": "1.0.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "dplyr",
+        "grDevices"
+      ],
+      "Hash": "2f2912ff398384ab8b2d7e1256019894"
     },
     "anytime": {
       "Package": "anytime",
@@ -1036,13 +1048,13 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "1.0.2",
+      "Version": "1.0.3",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "utils"
       ],
-      "Hash": "4b22ac016fe54028b88d0c68badbd061"
+      "Hash": "41b847654f567341725473431dd0d5ab"
     },
     "rlang": {
       "Package": "rlang",
@@ -1057,7 +1069,7 @@
     },
     "rmarkdown": {
       "Package": "rmarkdown",
-      "Version": "2.24",
+      "Version": "2.25",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1077,7 +1089,7 @@
         "xfun",
         "yaml"
       ],
-      "Hash": "3854c37590717c08c32ec8542a2e0a35"
+      "Hash": "d65e35823c817f09f4de424fcdfa812a"
     },
     "rprojroot": {
       "Package": "rprojroot",
