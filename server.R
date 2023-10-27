@@ -98,7 +98,7 @@ server <- function(input, output, session) {
       shinyjs::hide(id = "cookieMain")
     }
   })
-  
+
   # Need these set of observeEvent to create a path through the cookie banner
   observeEvent(input$cookieAccept, {
     msg <- list(
@@ -110,7 +110,7 @@ server <- function(input, output, session) {
     shinyjs::show(id = "cookieAcceptDiv")
     shinyjs::hide(id = "cookieMain")
   })
-  
+
   observeEvent(input$cookieReject, {
     msg <- list(
       name = "dfe_analytics",
@@ -121,15 +121,15 @@ server <- function(input, output, session) {
     shinyjs::show(id = "cookieRejectDiv")
     shinyjs::hide(id = "cookieMain")
   })
-  
+
   observeEvent(input$hideAccept, {
     shinyjs::toggle(id = "cookieDiv")
   })
-  
+
   observeEvent(input$hideReject, {
     shinyjs::toggle(id = "cookieDiv")
   })
-  
+
   observeEvent(input$remove, {
     print(input$cookies)
     shinyjs::toggle(id = "cookieMain")
@@ -138,11 +138,11 @@ server <- function(input, output, session) {
     session$sendCustomMessage("analytics-consent", msg)
     print(input$cookies)
   })
-  
+
   cookies_data <- reactive({
     input$cookies
   })
-  
+
   output$cookie_status <- renderText({
     cookie_text_stem <- "To better understand the reach of our dashboard tools, this site uses cookies to identify numbers of unique users as part of Google Analytics. You have chosen to"
     cookie_text_tail <- "the use of cookies on this website."
@@ -158,12 +158,12 @@ server <- function(input, output, session) {
       "Cookies consent has not been confirmed."
     }
   })
-  
+
   observeEvent(input$cookieLink, {
     # Need to link here to where further info is located.  You can
     # updateTabsetPanel to have a cookie page for instance
   })
-  
+
 
   #  output$cookie_status <- renderText(as.character(input$cookies))
 
