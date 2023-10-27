@@ -405,6 +405,23 @@
       ],
       "Hash": "6b9602c7ebbe87101a9c8edb6e8b6d21"
     },
+    "dfeshiny": {
+      "Package": "dfeshiny",
+      "Version": "0.1.0",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "dfe-analytical-services",
+      "RemoteRepo": "dfeshiny",
+      "RemoteRef": "main",
+      "RemoteSha": "907ea793b644929e47ac164fcb11fdaea037a434",
+      "Requirements": [
+        "shiny",
+        "shinyGovstyle",
+        "styler"
+      ],
+      "Hash": "4491ff843932cf885c1b1fa9142f0fa6"
+    },
     "diffobj": {
       "Package": "diffobj",
       "Version": "0.3.5",
@@ -1142,7 +1159,7 @@
     },
     "shiny": {
       "Package": "shiny",
-      "Version": "1.7.5",
+      "Version": "1.7.5.1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1172,7 +1189,7 @@
         "withr",
         "xtable"
       ],
-      "Hash": "438b99792adbe82a8329ad8697d45afe"
+      "Hash": "5ec01cc255f2138fc2f0dc74d2b1a1a1"
     },
     "shinyGovstyle": {
       "Package": "shinyGovstyle",
