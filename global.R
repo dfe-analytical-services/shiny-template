@@ -27,6 +27,7 @@ shhh(library(metathis))
 shhh(library(shinyalert))
 shhh(library(shinytest2))
 shhh(library(rstudioapi))
+shhh(library(bslib))
 shhh(library(dfeshiny))
 # shhh(library(shinya11y))
 
