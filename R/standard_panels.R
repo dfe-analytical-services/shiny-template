@@ -37,4 +37,3 @@ a11y_panel <- function() {
     )
   )
 }
-
