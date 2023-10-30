@@ -129,10 +129,10 @@ ui <- function(input, output, session) {
       homepage_panel(),
       a11y_panel(),
       support_panel(
-        team_email='statistics.development@education.gov.uk',
-        repo_name = 'shiny-template',
-        form_url = 'https://forms.office.com'
-        )
+        team_email = "statistics.development@education.gov.uk",
+        repo_name = "shiny-template",
+        form_url = "https://forms.office.com"
+      )
     ),
     tags$script(
       src = "script.js"
