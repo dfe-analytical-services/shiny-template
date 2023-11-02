@@ -1,19 +1,5 @@
 {
   "input": {
-    ".clientValue-default-plotlyCrosstalkOpts": {
-      "on": "plotly_click",
-      "persistent": false,
-      "dynamic": false,
-      "selectize": false,
-      "opacityDim": 0.2,
-      "selected": {
-        "opacity": 1
-      },
-      "debounce": 0,
-      "color": [
-
-      ]
-    },
     "cookieAccept": 0,
     "cookieLink": 0,
     "cookieReject": 0,
@@ -25,8 +11,6 @@
     "link_to_app_content_tab": 0,
     "navlistPanel": "dashboard",
     "plotly_afterplot-A": "\"lineRevBal\"",
-    "plotly_relayout-A": "{\"width\":1052.1875,\"height\":400}",
-    "remove": 0,
     "selectArea": "England",
     "selectBenchLAs": null,
     "selectPhase": "All LA maintained schools",
@@ -423,8 +407,5 @@
         }
       ]
     }
-  },
-  "export": {
-
   }
 }
