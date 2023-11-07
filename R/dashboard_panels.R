@@ -1,3 +1,6 @@
+#message("Sourcing dashboard panels")
+
+
 homepage_panel <- function() {
   tabPanel(
     "User guide and information",
