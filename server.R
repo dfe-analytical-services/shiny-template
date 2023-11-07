@@ -131,7 +131,6 @@ server <- function(input, output, session) {
   })
 
   observeEvent(input$remove, {
-    print(input$cookies)
     shinyjs::toggle(id = "cookieMain")
     msg <- list(name = "dfe_analytics", value = "denied")
     session$sendCustomMessage("cookie-remove", msg)

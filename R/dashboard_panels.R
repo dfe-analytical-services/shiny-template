@@ -1,4 +1,4 @@
-#message("Sourcing dashboard panels")
+# message("Sourcing dashboard panels")
 
 
 homepage_panel <- function() {
