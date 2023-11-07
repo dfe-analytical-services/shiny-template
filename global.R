@@ -96,7 +96,7 @@ site_overflow <- "https://department-for-education.shinyapps.io/dfe-shiny-templa
 sites_list <- c(site_primary, site_overflow) # We can add further mirrors where necessary. Each one can generally handle about 2,500 users simultaneously
 ees_pub_name <- "Statistical publication" # Update this with your parent publication name (e.g. the EES publication)
 ees_publication <- "https://explore-education-statistics.service.gov.uk/find-statistics/" # Update with parent publication link
-# google_analytics_key <- "Z967JJVQQX"
+google_analytics_key <- "Z967JJVQQX"
 
 
 source("R/read_data.R")
