@@ -7,4 +7,6 @@
 # 2023-09-21: update made to change hex codes to AF colours package
 # guidance here: https://best-practice-and-impact.github.io/afcolours/
 
-gss_colour_pallette <- afcolours::af_colours("categorical", colour_format = "hex", n = 6)
+# message("Sourcing gss colour palette")
+
+suppressMessages(gss_colour_pallette <- afcolours::af_colours("categorical", colour_format = "hex", n = 6))

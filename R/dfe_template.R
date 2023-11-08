@@ -2,6 +2,7 @@
 # across dashboards. If you want to change anything in this script, please
 # talk to the DfE Statistics Development team first.
 
+# message("Sourcing dfe_template")
 valueBox <- function(value, subtitle, icon = NULL,
                      color = "blue", width = 4,
                      href = NULL, fontsize = "medium")

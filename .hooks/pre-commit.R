@@ -57,9 +57,10 @@ for (file in current_files$files) {
 }
 
 if(grepl('G-Z967JJVQQX', htmltools::includeHTML(("google-analytics.html"))) & 
-   !(toupper(Sys.getenv("USERNAME")) %in% c("CFOSTER4", "CRACE", "LSELBY","RBIELBY", "JEN-MACHIN"))){
+   !(toupper(Sys.getenv("USERNAME")) %in% c("CFOSTER4", "CRACE", "LSELBY","RBIELBY", "JMACHIN"))){
   cat("Cleaning out the template's Google Analytics tag.",fill=TRUE)
   gsub_file("google-analytics.html", pattern = "G-Z967JJVQQX", replacement = "G-XXXXXXXXXX")
+  gsub_file("ui.R", pattern = "Z967JJVQQX", replacement = "XXXXXXXXXX")
   system2(command = "git", args=c("add","google-analytics.html"))
 }
 

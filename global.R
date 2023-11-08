@@ -6,6 +6,7 @@
 # whereas the server and UI files are constantly interacting and responsive to user input.
 #
 # ---------------------------------------------------------
+# message("Sourcing global")
 
 
 # Library calls ---------------------------------------------------------------------------------
