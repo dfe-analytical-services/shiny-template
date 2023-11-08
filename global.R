@@ -28,6 +28,8 @@ shhh(library(metathis))
 shhh(library(shinyalert))
 shhh(library(shinytest2))
 shhh(library(rstudioapi))
+shhh(library(bslib))
+shhh(library(dfeshiny))
 # shhh(library(shinya11y))
 
 # Functions ---------------------------------------------------------------------------------
@@ -45,25 +47,6 @@ enableBookmarking("url")
 cs_num <- function(value) {
   format(value, big.mark = ",", trim = TRUE)
 }
-
-# tidy_code_function -------------------------------------------------------------------------------
-# Code to tidy up the scripts.
-
-tidy_code_function <- function() {
-  message("----------------------------------------")
-  message("App scripts")
-  message("----------------------------------------")
-  app_scripts <- eval(styler::style_dir(recursive = FALSE)$changed)
-  message("R scripts")
-  message("----------------------------------------")
-  r_scripts <- eval(styler::style_dir("R/")$changed)
-  message("Test scripts")
-  message("----------------------------------------")
-  test_scripts <- eval(styler::style_dir("tests/", filetype = "r")$changed)
-  script_changes <- c(app_scripts, r_scripts, test_scripts)
-  return(script_changes)
-}
-
 
 # Source scripts ---------------------------------------------------------------------------------
 
