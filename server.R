@@ -74,28 +74,12 @@ server <- function(input, output, session) {
     }
   })
 
-  # output if cookie is unspecified
   observeEvent(input$cookies, {
     if (!is.null(input$cookies)) {
       if (!("dfe_analytics" %in% names(input$cookies))) {
-        shinyalert(
-          inputId = "cookie_consent",
-          title = "Cookie consent",
-          text = "This site uses cookies to record traffic flow using Google Analytics",
-          size = "s",
-          closeOnEsc = TRUE,
-          closeOnClickOutside = FALSE,
-          html = FALSE,
-          type = "",
-          showConfirmButton = TRUE,
-          showCancelButton = TRUE,
-          confirmButtonText = "Accept",
-          confirmButtonCol = "#AEDEF4",
-          timer = 0,
-          imageUrl = "",
-          animation = TRUE
-        )
+        shinyjs::show(id = "cookieMain")
       } else {
+        shinyjs::hide(id = "cookieMain")
         msg <- list(
           name = "dfe_analytics",
           value = input$cookies$dfe_analytics
@@ -110,30 +94,48 @@ server <- function(input, output, session) {
           }
         }
       }
+    } else {
+      shinyjs::hide(id = "cookieMain")
     }
   })
 
-  observeEvent(input$cookie_consent, {
+  # Need these set of observeEvent to create a path through the cookie banner
+  observeEvent(input$cookieAccept, {
     msg <- list(
       name = "dfe_analytics",
-      value = ifelse(input$cookie_consent, "granted", "denied")
+      value = "granted"
     )
     session$sendCustomMessage("cookie-set", msg)
     session$sendCustomMessage("analytics-consent", msg)
-    if ("cookies" %in% names(input)) {
-      if ("dfe_analytics" %in% names(input$cookies)) {
-        if (input$cookies$dfe_analytics == "denied") {
-          ga_msg <- list(name = paste0("_ga_", google_analytics_key))
-          session$sendCustomMessage("cookie-remove", ga_msg)
-        }
-      }
-    }
+    shinyjs::show(id = "cookieAcceptDiv")
+    shinyjs::hide(id = "cookieMain")
+  })
+
+  observeEvent(input$cookieReject, {
+    msg <- list(
+      name = "dfe_analytics",
+      value = "denied"
+    )
+    session$sendCustomMessage("cookie-set", msg)
+    session$sendCustomMessage("analytics-consent", msg)
+    shinyjs::show(id = "cookieRejectDiv")
+    shinyjs::hide(id = "cookieMain")
+  })
+
+  observeEvent(input$hideAccept, {
+    shinyjs::toggle(id = "cookieDiv")
+  })
+
+  observeEvent(input$hideReject, {
+    shinyjs::toggle(id = "cookieDiv")
   })
 
   observeEvent(input$remove, {
+    shinyjs::toggle(id = "cookieMain")
     msg <- list(name = "dfe_analytics", value = "denied")
     session$sendCustomMessage("cookie-remove", msg)
     session$sendCustomMessage("analytics-consent", msg)
+    print(input$cookies)
   })
 
   cookies_data <- reactive({
@@ -154,6 +156,12 @@ server <- function(input, output, session) {
     } else {
       "Cookies consent has not been confirmed."
     }
+  })
+
+  observeEvent(input$cookieLink, {
+    # Need to link here to where further info is located.  You can
+    # updateTabsetPanel to have a cookie page for instance
+    updateTabsetPanel(session, "navlistPanel", selected = "Support and feedback")
   })
 
 
