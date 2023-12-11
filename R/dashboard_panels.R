@@ -144,9 +144,8 @@ dashboard_panel <- function() {
                     valueBoxOutput("boxavgRevBal_large", width = 6),
                     valueBoxOutput("boxpcRevBal_large", width = 6)
                   ),
-                  box(
-                    width = 12,
-                    plotlyOutput("lineRevBal")
+                  fluidRow(
+                    girafeOutput("lineRevBal")
                   )
                 )
               )
@@ -160,10 +159,7 @@ dashboard_panel <- function() {
                   p("This is the standard paragraph style for adding guiding info around data content."),
                   column(
                     width = 6,
-                    box(
-                      width = 12,
-                      plotlyOutput("colBenchmark")
-                    )
+                    girafeOutput("colBenchmark")
                   ),
                   column(
                     width = 6,

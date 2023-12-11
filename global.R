@@ -30,6 +30,7 @@ shhh(library(shinytest2))
 shhh(library(rstudioapi))
 shhh(library(bslib))
 shhh(library(dfeshiny))
+shhh(library(ggiraph))
 # shhh(library(shinya11y))
 
 # Functions ---------------------------------------------------------------------------------
