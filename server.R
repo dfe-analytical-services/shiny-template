@@ -178,11 +178,11 @@ server <- function(input, output, session) {
   # Define server logic required to draw a histogram
   output$lineRevBal <- renderGirafe({
     girafe(
-      ggobj=createAvgRevTimeSeries(reactiveRevBal(), input$selectArea),
+      ggobj = createAvgRevTimeSeries(reactiveRevBal(), input$selectArea),
       options = list(opts_sizing(rescale = TRUE, width = 1.0)),
       width_svg = 6.5,
-      height_svg=4
-      )
+      height_svg = 4
+    )
   })
 
   reactiveBenchmark <- reactive({
@@ -196,11 +196,11 @@ server <- function(input, output, session) {
 
   output$colBenchmark <- renderGirafe({
     girafe(
-      ggobj=plotAvgRevBenchmark(reactiveBenchmark()),
+      ggobj = plotAvgRevBenchmark(reactiveBenchmark()),
       options = list(opts_sizing(rescale = TRUE, width = 1.0)),
       width_svg = 4,
       height_svg = 4
-           )
+    )
   })
 
   output$tabBenchmark <- renderDataTable({
