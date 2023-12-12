@@ -157,14 +157,14 @@ dashboard_panel <- function() {
               )
             ),
             tabPanel(
-                    "Line chart example",
-                    fluidRow(
-                      column(
-                        width = 12,
-                        h2("An example line chart using ggplot and ggiraph (h2)"),
-                        girafeOutput("lineRevBal",width = "100%", height = "100%")
-                    )
-                  )
+              "Line chart example",
+              fluidRow(
+                column(
+                  width = 12,
+                  h2("An example line chart using ggplot and ggiraph (h2)"),
+                  girafeOutput("lineRevBal", width = "100%", height = "100%")
+                )
+              )
             ),
             tabPanel(
               "Benchmarking example",
@@ -175,7 +175,7 @@ dashboard_panel <- function() {
                   p("This is the standard paragraph style for adding guiding info around data content."),
                   column(
                     width = 6,
-                    girafeOutput("colBenchmark",width = "100%", height = "100%")
+                    girafeOutput("colBenchmark", width = "100%", height = "100%")
                   ),
                   column(
                     width = 6,
