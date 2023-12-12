@@ -5,9 +5,10 @@ createAvgRevTimeSeries <- function(df, inputArea) {
   ggplot(df, aes(
     x = year,
     y = average_revenue_balance,
-    color = area_name
+    color = area_name,
+    tooltip = area_name
   )) +
-    geom_line(size = 1) +
+    geom_line_interactive(size = 1) +
     theme_classic() +
     theme(
       text = element_text(size = 12),
@@ -32,9 +33,10 @@ plotAvgRevBenchmark <- function(dfRevenueBalance, inputArea) {
   ggplot(dfRevenueBalance, aes(
     x = area_name,
     y = average_revenue_balance,
-    fill = area_name
+    fill = area_name,
+    tooltip = paste('<p><b>',area_name,'</b></p>','<p>£',format(average_revenue_balance, big.mark = ","),'</p>')
   )) +
-    geom_col() +
+    geom_col_interactive() +
     theme_classic() +
     theme(
       text = element_text(size = 12),
