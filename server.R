@@ -180,8 +180,8 @@ server <- function(input, output, session) {
     girafe(
       ggobj = createAvgRevTimeSeries(reactiveRevBal(), input$selectArea),
       options = list(opts_sizing(rescale = TRUE, width = 1.0)),
-      width_svg = 6.5,
-      height_svg = 4
+      width_svg = 9.6,
+      height_svg = 5.0
     )
   })
 
@@ -198,8 +198,8 @@ server <- function(input, output, session) {
     girafe(
       ggobj = plotAvgRevBenchmark(reactiveBenchmark()),
       options = list(opts_sizing(rescale = TRUE, width = 1.0)),
-      width_svg = 4,
-      height_svg = 4
+      width_svg = 5.0,
+      height_svg = 5.0
     )
   })
 
