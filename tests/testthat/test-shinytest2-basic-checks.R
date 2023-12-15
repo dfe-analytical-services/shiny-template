@@ -22,7 +22,8 @@ outputs <- c(
   "boxavgRevBal", "boxavgRevBal_large", "boxavgRevBal_small",
   "boxpcRevBal", "boxpcRevBal_large", "boxpcRevBal_small",
   "dropdown_label",
-  "lineRevBal"
+  "lineRevBal",
+  "colBenchmark"
 )
 
 test_that("App loads", {
