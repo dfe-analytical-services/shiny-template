@@ -189,8 +189,10 @@ server <- function(input, output, session) {
       # Removing elements that cause issues with shinytest comparisons when run on different environments
       svg_removed <- gsub("svg_[0-9a-z]{8}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{12}", "svg_random_giraph_string", value)
       font_standardised <- gsub("Arial", "Helvetica", svg_removed)
-      cleaned_positions <- gsub("x='[0-9.]*' y='[0-9.]*'", "Position", font_standardised)
-      gsub("width='[0-9.]*' height='[0-9.]*'", "Size", cleaned_positions)
+      cleaned_positions <- gsub("x[0-9]*='[0-9.]*' y[0-9]*='[0-9.]*'", "Position", font_standardised)
+      cleaned_size <- gsub("width='[0-9.]*' height='[0-9.]*'", "Size", cleaned_positions)
+      cleaned_points <- gsub("points='[0-9., ]*'", "points", cleaned_size)
+      cleaned_points
     }
   )
 
@@ -217,8 +219,10 @@ server <- function(input, output, session) {
       # different environments - should add to dfeshiny at some point.
       svg_removed <- gsub("svg_[0-9a-z]{8}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{12}", "svg_random_giraph_string", value)
       font_standardised <- gsub("Arial", "Helvetica", svg_removed)
-      cleaned_positions <- gsub("x='[0-9.]*' y='[0-9.]*'", "Position", font_standardised)
-      gsub("width='[0-9.]*' height='[0-9.]*'", "Size", cleaned_positions)
+      cleaned_positions <- gsub("x[0-9]*='[0-9.]*' y[0-9]*='[0-9.]*'", "Position", font_standardised)
+      cleaned_size <- gsub("width='[0-9.]*' height='[0-9.]*'", "Size", cleaned_positions)
+      cleaned_points <- gsub("points='[0-9., ]*'", "points", cleaned_size)
+      cleaned_points
     }
   )
 
