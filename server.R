@@ -176,15 +176,20 @@ server <- function(input, output, session) {
   })
 
   # Define server logic required to draw a histogram
-  output$lineRevBal <- renderGirafe({
+  output$lineRevBal <- snapshotPreprocessOutput(
+    renderGirafe({
     girafe(
       ggobj = createAvgRevTimeSeries(reactiveRevBal(), input$selectArea),
       options = list(opts_sizing(rescale = TRUE, width = 1.0)),
       width_svg = 9.6,
       height_svg = 5.0
     )
-  })
-
+  }),
+  function(value) {
+    gsub('svg_[0-9a-z]{8}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{12}', 'svg_random_giraph_string', value)
+  }
+  )
+  
   reactiveBenchmark <- reactive({
     dfRevBal %>%
       filter(
@@ -194,14 +199,19 @@ server <- function(input, output, session) {
       )
   })
 
-  output$colBenchmark <- renderGirafe({
+  output$colBenchmark <-  snapshotPreprocessOutput(
+    renderGirafe({
     girafe(
       ggobj = plotAvgRevBenchmark(reactiveBenchmark()),
       options = list(opts_sizing(rescale = TRUE, width = 1.0)),
       width_svg = 5.0,
       height_svg = 5.0
     )
-  })
+  }),
+  function(value) {
+    gsub('svg_[0-9a-z]{8}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{12}', 'svg_random_giraph_string', value)
+  }
+  )
 
   output$tabBenchmark <- renderDataTable({
     datatable(
