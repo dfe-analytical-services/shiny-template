@@ -33,3 +33,21 @@ test_that("App loads", {
     output = outputs
   )
 })
+
+app$set_inputs(tabsetpanels = "Line chart example")
+test_that("Line chart created", {
+  # Capture initial values
+  app$expect_values(
+    input = inputs,
+    output = outputs
+  )
+})
+
+app$set_inputs(tabsetpanels = "Benchmarking example")
+test_that("Benchmarking panel", {
+  # Capture initial values
+  app$expect_values(
+    input = inputs,
+    output = outputs
+  )
+})

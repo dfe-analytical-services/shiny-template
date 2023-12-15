@@ -1,0 +1,243 @@
+{
+  "input": {
+    "cookieAccept": 0,
+    "cookieLink": 0,
+    "cookieReject": 0,
+    "cookies": {
+
+    },
+    "hideAccept": 0,
+    "hideReject": 0,
+    "link_to_app_content_tab": 0,
+    "navlistPanel": "dashboard",
+    "selectArea": "England",
+    "selectBenchLAs": null,
+    "selectPhase": "All LA maintained schools",
+    "tabsetpanels": "Benchmarking example"
+  },
+  "output": {
+    "boxavgRevBal": {
+      "html": "<div class=\"small-box bg-blue\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-medium\">£160,486<\/p>\n    <p id=\"vboxdetail-medium\">This is the latest value for the selected inputs<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "boxavgRevBal_large": {
+      "html": "<div class=\"small-box bg-green\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-large\">£160,486<\/p>\n    <p id=\"vboxdetail-large\">This is the latest value for the selected inputs<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "boxavgRevBal_small": {
+      "html": "<div class=\"small-box bg-orange\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-small\">£160,486<\/p>\n    <p id=\"vboxdetail-small\">This is the latest value for the selected inputs<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "boxpcRevBal": {
+      "html": "<div class=\"small-box bg-blue\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-medium\">£49,794<\/p>\n    <p id=\"vboxdetail-medium\">This is the change on previous year<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "boxpcRevBal_large": {
+      "html": "<div class=\"small-box bg-green\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-large\">£49,794<\/p>\n    <p id=\"vboxdetail-large\">This is the change on previous year<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "boxpcRevBal_small": {
+      "html": "<div class=\"small-box bg-orange\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-small\">£49,794<\/p>\n    <p id=\"vboxdetail-small\">This is the change on previous year<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "colBenchmark": {
+      "x": {
+        "html": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='ggiraph-svg' role='img' id='svg_28573fda_2279_429c_a7a1_61a7dfff4e81' viewBox='0 0 360 360'>\n <defs id='svg_28573fda_2279_429c_a7a1_61a7dfff4e81_defs'>\n  <clipPath id='svg_28573fda_2279_429c_a7a1_61a7dfff4e81_c1'>\n   <rect x='0' y='0' width='360' height='360'/>\n  <\/clipPath>\n  <clipPath id='svg_28573fda_2279_429c_a7a1_61a7dfff4e81_c2'>\n   <rect x='106.87' y='5.48' width='247.66' height='335.22'/>\n  <\/clipPath>\n <\/defs>\n <g id='svg_28573fda_2279_429c_a7a1_61a7dfff4e81_rootg' class='ggiraph-svg-rootg'>\n  <g clip-path='url(#svg_28573fda_2279_429c_a7a1_61a7dfff4e81_c1)'>\n   <rect x='0' y='0' width='360' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.75' stroke-linejoin='round' stroke-linecap='round' class='ggiraph-svg-bg'/>\n   <rect x='0' y='0' width='360' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='round'/>\n  <\/g>\n  <g clip-path='url(#svg_28573fda_2279_429c_a7a1_61a7dfff4e81_c2)'>\n   <rect x='106.87' y='5.48' width='247.66' height='335.22' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <rect id='svg_28573fda_2279_429c_a7a1_61a7dfff4e81_e1' x='137.82' y='20.72' width='185.74' height='304.75' fill='#12436D' fill-opacity='1' stroke='none' title='&amp;lt;p&amp;gt;&amp;lt;b&amp;gt; England &amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt; &amp;lt;p&amp;gt;£ 160,486 &amp;lt;/p&amp;gt;'/>\n  <\/g>\n  <g clip-path='url(#svg_28573fda_2279_429c_a7a1_61a7dfff4e81_c1)'>\n   <polyline points='106.87,340.70 106.87,5.48' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.6' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='91.26' y='328.9' font-size='7.2pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>£0<\/text>\n   <text x='67.26' y='233.96' font-size='7.2pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>£50,000<\/text>\n   <text x='61.92' y='139.01' font-size='7.2pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>£100,000<\/text>\n   <text x='61.92' y='44.06' font-size='7.2pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>£150,000<\/text>\n   <polyline points='104.13,325.47 106.87,325.47' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='104.13,230.52 106.87,230.52' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='104.13,135.57 106.87,135.57' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='104.13,40.63 106.87,40.63' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='106.87,340.70 354.52,340.70' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.6' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='230.69,343.44 230.69,340.70' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='213.09' y='352.5' font-size='7.2pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>England<\/text>\n   <text x='5.48' y='164.43' font-size='9pt' font-family='Arial'>Average<\/text>\n   <text x='6.04' y='177.39' font-size='9pt' font-family='Arial'>revenue<\/text>\n   <text x='6.7' y='190.35' font-size='9pt' font-family='Arial'>balance<\/text>\n  <\/g>\n <\/g>\n<\/svg>",
+        "js": null,
+        "uid": "svg_28573fda_2279_429c_a7a1_61a7dfff4e81",
+        "ratio": 1,
+        "settings": {
+          "tooltip": {
+            "css": ".tooltip_SVGID_ { padding:5px;background:black;color:white;border-radius:2px;text-align:left; ; position:absolute;pointer-events:none;z-index:999;}",
+            "placement": "doc",
+            "opacity": 0.9,
+            "offx": 10,
+            "offy": 10,
+            "use_cursor_pos": true,
+            "use_fill": false,
+            "use_stroke": false,
+            "delay_over": 200,
+            "delay_out": 500
+          },
+          "hover": {
+            "css": ".hover_data_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_data_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_data_SVGID_ { fill:orange;stroke:black; }\nline.hover_data_SVGID_, polyline.hover_data_SVGID_ { fill:none;stroke:orange; }\nrect.hover_data_SVGID_, polygon.hover_data_SVGID_, path.hover_data_SVGID_ { fill:orange;stroke:none; }\nimage.hover_data_SVGID_ { stroke:orange; }",
+            "reactive": true,
+            "nearest_distance": null
+          },
+          "hover_inv": {
+            "css": ""
+          },
+          "hover_key": {
+            "css": ".hover_key_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_key_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_key_SVGID_ { fill:orange;stroke:black; }\nline.hover_key_SVGID_, polyline.hover_key_SVGID_ { fill:none;stroke:orange; }\nrect.hover_key_SVGID_, polygon.hover_key_SVGID_, path.hover_key_SVGID_ { fill:orange;stroke:none; }\nimage.hover_key_SVGID_ { stroke:orange; }",
+            "reactive": true
+          },
+          "hover_theme": {
+            "css": ".hover_theme_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_theme_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_theme_SVGID_ { fill:orange;stroke:black; }\nline.hover_theme_SVGID_, polyline.hover_theme_SVGID_ { fill:none;stroke:orange; }\nrect.hover_theme_SVGID_, polygon.hover_theme_SVGID_, path.hover_theme_SVGID_ { fill:orange;stroke:none; }\nimage.hover_theme_SVGID_ { stroke:orange; }",
+            "reactive": true
+          },
+          "select": {
+            "css": ".select_data_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_data_SVGID_ { stroke:none;fill:red; }\ncircle.select_data_SVGID_ { fill:red;stroke:black; }\nline.select_data_SVGID_, polyline.select_data_SVGID_ { fill:none;stroke:red; }\nrect.select_data_SVGID_, polygon.select_data_SVGID_, path.select_data_SVGID_ { fill:red;stroke:none; }\nimage.select_data_SVGID_ { stroke:red; }",
+            "type": "multiple",
+            "only_shiny": true,
+            "selected": [
+
+            ]
+          },
+          "select_inv": {
+            "css": ""
+          },
+          "select_key": {
+            "css": ".select_key_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_key_SVGID_ { stroke:none;fill:red; }\ncircle.select_key_SVGID_ { fill:red;stroke:black; }\nline.select_key_SVGID_, polyline.select_key_SVGID_ { fill:none;stroke:red; }\nrect.select_key_SVGID_, polygon.select_key_SVGID_, path.select_key_SVGID_ { fill:red;stroke:none; }\nimage.select_key_SVGID_ { stroke:red; }",
+            "type": "single",
+            "only_shiny": true,
+            "selected": [
+
+            ]
+          },
+          "select_theme": {
+            "css": ".select_theme_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_theme_SVGID_ { stroke:none;fill:red; }\ncircle.select_theme_SVGID_ { fill:red;stroke:black; }\nline.select_theme_SVGID_, polyline.select_theme_SVGID_ { fill:none;stroke:red; }\nrect.select_theme_SVGID_, polygon.select_theme_SVGID_, path.select_theme_SVGID_ { fill:red;stroke:none; }\nimage.select_theme_SVGID_ { stroke:red; }",
+            "type": "single",
+            "only_shiny": true,
+            "selected": [
+
+            ]
+          },
+          "zoom": {
+            "min": 1,
+            "max": 1,
+            "duration": 300
+          },
+          "toolbar": {
+            "position": "topright",
+            "pngname": "diagram",
+            "tooltips": null,
+            "hidden": [
+
+            ],
+            "delay_over": 200,
+            "delay_out": 500
+          },
+          "sizing": {
+            "rescale": true,
+            "width": 1
+          }
+        }
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+
+      ]
+    },
+    "dropdown_label": "Current selections: All LA maintained schools, England",
+    "lineRevBal": {
+      "x": {
+        "html": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='ggiraph-svg' role='img' id='svg_c9608dc7_ed58_4f50_a869_61a8acc1ff5d' viewBox='0 0 691.2 360'>\n <defs id='svg_c9608dc7_ed58_4f50_a869_61a8acc1ff5d_defs'>\n  <clipPath id='svg_c9608dc7_ed58_4f50_a869_61a8acc1ff5d_c1'>\n   <rect x='0' y='0' width='691.2' height='360'/>\n  <\/clipPath>\n  <clipPath id='svg_c9608dc7_ed58_4f50_a869_61a8acc1ff5d_c2'>\n   <rect x='106.87' y='44.68' width='578.86' height='272.96'/>\n  <\/clipPath>\n <\/defs>\n <g id='svg_c9608dc7_ed58_4f50_a869_61a8acc1ff5d_rootg' class='ggiraph-svg-rootg'>\n  <g clip-path='url(#svg_c9608dc7_ed58_4f50_a869_61a8acc1ff5d_c1)'>\n   <rect x='0' y='0' width='691.2' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.75' stroke-linejoin='round' stroke-linecap='round' class='ggiraph-svg-bg'/>\n   <rect x='0' y='0' width='691.2' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='round'/>\n  <\/g>\n  <g clip-path='url(#svg_c9608dc7_ed58_4f50_a869_61a8acc1ff5d_c2)'>\n   <rect x='106.87' y='44.68' width='578.86' height='272.96' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <polyline id='svg_c9608dc7_ed58_4f50_a869_61a8acc1ff5d_e1' points='133.18,214.68 238.42,296.52 343.67,305.23 448.92,275.70 554.16,274.63 659.41,57.08' fill='none' stroke='#12436D' stroke-opacity='1' stroke-width='2.13' stroke-linejoin='round' stroke-linecap='butt' title='England'/>\n  <\/g>\n  <g clip-path='url(#svg_c9608dc7_ed58_4f50_a869_61a8acc1ff5d_c1)'>\n   <polyline points='106.87,317.63 106.87,44.68' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.6' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='61.92' y='237.4' font-size='7.2pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>£120,000<\/text>\n   <text x='61.92' y='150.02' font-size='7.2pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>£140,000<\/text>\n   <text x='61.92' y='62.64' font-size='7.2pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>£160,000<\/text>\n   <polyline points='104.13,233.97 106.87,233.97' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='104.13,146.59 106.87,146.59' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='104.13,59.21 106.87,59.21' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='106.87,317.63 685.72,317.63' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.6' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='133.18,320.37 133.18,317.63' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='238.42,320.37 238.42,317.63' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='343.67,320.37 343.67,317.63' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='448.92,320.37 448.92,317.63' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='554.16,320.37 554.16,317.63' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='659.41,320.37 659.41,317.63' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='122.51' y='329.43' font-size='7.2pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>2016<\/text>\n   <text x='227.75' y='329.43' font-size='7.2pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>2017<\/text>\n   <text x='333' y='329.43' font-size='7.2pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>2018<\/text>\n   <text x='438.25' y='329.43' font-size='7.2pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>2019<\/text>\n   <text x='543.49' y='329.43' font-size='7.2pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>2020<\/text>\n   <text x='648.74' y='329.43' font-size='7.2pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>2021<\/text>\n   <text x='344.92' y='352' font-size='9pt' font-family='Arial'>Academic year end<\/text>\n   <text x='5.48' y='172.49' font-size='9pt' font-family='Arial'>Average<\/text>\n   <text x='6.04' y='185.45' font-size='9pt' font-family='Arial'>revenue<\/text>\n   <text x='6.7' y='198.41' font-size='9pt' font-family='Arial'>balance<\/text>\n   <rect x='345.92' y='5.48' width='100.75' height='28.24' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <text x='351.4' y='23.9' font-size='9pt' font-family='Arial'>Area<\/text>\n   <line x1='384.46' y1='19.6' x2='398.28' y2='19.6' stroke='#12436D' stroke-opacity='1' stroke-width='2.13' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='405.99' y='23.03' font-size='7.2pt' font-family='Arial'>England<\/text>\n  <\/g>\n <\/g>\n<\/svg>",
+        "js": null,
+        "uid": "svg_c9608dc7_ed58_4f50_a869_61a8acc1ff5d",
+        "ratio": 1.92,
+        "settings": {
+          "tooltip": {
+            "css": ".tooltip_SVGID_ { padding:5px;background:black;color:white;border-radius:2px;text-align:left; ; position:absolute;pointer-events:none;z-index:999;}",
+            "placement": "doc",
+            "opacity": 0.9,
+            "offx": 10,
+            "offy": 10,
+            "use_cursor_pos": true,
+            "use_fill": false,
+            "use_stroke": false,
+            "delay_over": 200,
+            "delay_out": 500
+          },
+          "hover": {
+            "css": ".hover_data_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_data_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_data_SVGID_ { fill:orange;stroke:black; }\nline.hover_data_SVGID_, polyline.hover_data_SVGID_ { fill:none;stroke:orange; }\nrect.hover_data_SVGID_, polygon.hover_data_SVGID_, path.hover_data_SVGID_ { fill:orange;stroke:none; }\nimage.hover_data_SVGID_ { stroke:orange; }",
+            "reactive": true,
+            "nearest_distance": null
+          },
+          "hover_inv": {
+            "css": ""
+          },
+          "hover_key": {
+            "css": ".hover_key_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_key_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_key_SVGID_ { fill:orange;stroke:black; }\nline.hover_key_SVGID_, polyline.hover_key_SVGID_ { fill:none;stroke:orange; }\nrect.hover_key_SVGID_, polygon.hover_key_SVGID_, path.hover_key_SVGID_ { fill:orange;stroke:none; }\nimage.hover_key_SVGID_ { stroke:orange; }",
+            "reactive": true
+          },
+          "hover_theme": {
+            "css": ".hover_theme_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_theme_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_theme_SVGID_ { fill:orange;stroke:black; }\nline.hover_theme_SVGID_, polyline.hover_theme_SVGID_ { fill:none;stroke:orange; }\nrect.hover_theme_SVGID_, polygon.hover_theme_SVGID_, path.hover_theme_SVGID_ { fill:orange;stroke:none; }\nimage.hover_theme_SVGID_ { stroke:orange; }",
+            "reactive": true
+          },
+          "select": {
+            "css": ".select_data_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_data_SVGID_ { stroke:none;fill:red; }\ncircle.select_data_SVGID_ { fill:red;stroke:black; }\nline.select_data_SVGID_, polyline.select_data_SVGID_ { fill:none;stroke:red; }\nrect.select_data_SVGID_, polygon.select_data_SVGID_, path.select_data_SVGID_ { fill:red;stroke:none; }\nimage.select_data_SVGID_ { stroke:red; }",
+            "type": "multiple",
+            "only_shiny": true,
+            "selected": [
+
+            ]
+          },
+          "select_inv": {
+            "css": ""
+          },
+          "select_key": {
+            "css": ".select_key_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_key_SVGID_ { stroke:none;fill:red; }\ncircle.select_key_SVGID_ { fill:red;stroke:black; }\nline.select_key_SVGID_, polyline.select_key_SVGID_ { fill:none;stroke:red; }\nrect.select_key_SVGID_, polygon.select_key_SVGID_, path.select_key_SVGID_ { fill:red;stroke:none; }\nimage.select_key_SVGID_ { stroke:red; }",
+            "type": "single",
+            "only_shiny": true,
+            "selected": [
+
+            ]
+          },
+          "select_theme": {
+            "css": ".select_theme_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_theme_SVGID_ { stroke:none;fill:red; }\ncircle.select_theme_SVGID_ { fill:red;stroke:black; }\nline.select_theme_SVGID_, polyline.select_theme_SVGID_ { fill:none;stroke:red; }\nrect.select_theme_SVGID_, polygon.select_theme_SVGID_, path.select_theme_SVGID_ { fill:red;stroke:none; }\nimage.select_theme_SVGID_ { stroke:red; }",
+            "type": "single",
+            "only_shiny": true,
+            "selected": [
+
+            ]
+          },
+          "zoom": {
+            "min": 1,
+            "max": 1,
+            "duration": 300
+          },
+          "toolbar": {
+            "position": "topright",
+            "pngname": "diagram",
+            "tooltips": null,
+            "hidden": [
+
+            ],
+            "delay_over": 200,
+            "delay_out": 500
+          },
+          "sizing": {
+            "rescale": true,
+            "width": 1
+          }
+        }
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+
+      ]
+    }
+  }
+}
