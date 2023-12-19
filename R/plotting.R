@@ -6,10 +6,16 @@ createAvgRevTimeSeries <- function(df, inputArea) {
     x = year,
     y = average_revenue_balance,
     color = area_name,
-    id = area_name,
-    tooltip = area_name
+    id = area_name
   )) +
     geom_line_interactive(size = 1) +
+    geom_point_interactive(
+      aes(
+        tooltip = paste0(
+          "<p><b>",area_name, ", ", year, "</b></p>", 
+          "<p>£", format(average_revenue_balance, big.mark = ","), "</p>")
+        ), 
+      size = 0.5) +
     theme_classic() +
     theme(
       text = element_text(size = 12),
@@ -22,7 +28,7 @@ createAvgRevTimeSeries <- function(df, inputArea) {
       labels = scales::number_format(accuracy = 1, big = ",", prefix = "£")
     ) +
     xlab("Academic year end") +
-    ylab("Average\nrevenue\nbalance") +
+    ylab(str_wrap("Average revenue balance",16)) +
     scale_color_manual(
       "Area",
       breaks = unique(c("England", inputArea)),
@@ -51,7 +57,7 @@ plotAvgRevBenchmark <- function(dfRevenueBalance, inputArea) {
       labels = scales::number_format(accuracy = 1, big = ",", prefix = "£")
     ) +
     xlab("Area") +
-    ylab("Average\nrevenue\nbalance") +
+    ylab(str_wrap("Average revenue balance",12)) +
     scale_fill_manual(
       "Area",
       breaks = unique(dfRevenueBalance$area_name),
