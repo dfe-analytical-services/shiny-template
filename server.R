@@ -74,69 +74,7 @@ server <- function(input, output, session) {
     }
   })
 
-  observeEvent(input$cookies, {
-    if (!is.null(input$cookies)) {
-      if (!("dfe_analytics" %in% names(input$cookies))) {
-        shinyjs::show(id = "cookieMain")
-      } else {
-        shinyjs::hide(id = "cookieMain")
-        msg <- list(
-          name = "dfe_analytics",
-          value = input$cookies$dfe_analytics
-        )
-        session$sendCustomMessage("analytics-consent", msg)
-        if ("cookies" %in% names(input)) {
-          if ("dfe_analytics" %in% names(input$cookies)) {
-            if (input$cookies$dfe_analytics == "denied") {
-              ga_msg <- list(name = paste0("_ga_", google_analytics_key))
-              session$sendCustomMessage("cookie-remove", ga_msg)
-            }
-          }
-        }
-      }
-    } else {
-      shinyjs::hide(id = "cookieMain")
-    }
-  })
-
-  # Need these set of observeEvent to create a path through the cookie banner
-  observeEvent(input$cookieAccept, {
-    msg <- list(
-      name = "dfe_analytics",
-      value = "granted"
-    )
-    session$sendCustomMessage("cookie-set", msg)
-    session$sendCustomMessage("analytics-consent", msg)
-    shinyjs::show(id = "cookieAcceptDiv")
-    shinyjs::hide(id = "cookieMain")
-  })
-
-  observeEvent(input$cookieReject, {
-    msg <- list(
-      name = "dfe_analytics",
-      value = "denied"
-    )
-    session$sendCustomMessage("cookie-set", msg)
-    session$sendCustomMessage("analytics-consent", msg)
-    shinyjs::show(id = "cookieRejectDiv")
-    shinyjs::hide(id = "cookieMain")
-  })
-
-  observeEvent(input$hideAccept, {
-    shinyjs::toggle(id = "cookieDiv")
-  })
-
-  observeEvent(input$hideReject, {
-    shinyjs::toggle(id = "cookieDiv")
-  })
-
-  observeEvent(input$remove, {
-    shinyjs::toggle(id = "cookieMain")
-    msg <- list(name = "dfe_analytics", value = "denied")
-    session$sendCustomMessage("cookie-remove", msg)
-    session$sendCustomMessage("analytics-consent", msg)
-    print(input$cookies)
-  })
+  cookieBannerServer('cookies', cookies=reactive(input$cookies))
 
   cookies_data <- reactive({
     input$cookies
@@ -157,13 +95,6 @@ server <- function(input, output, session) {
       "Cookies consent has not been confirmed."
     }
   })
-
-  observeEvent(input$cookieLink, {
-    # Need to link here to where further info is located.  You can
-    # updateTabsetPanel to have a cookie page for instance
-    updateTabsetPanel(session, "navlistPanel", selected = "Support and feedback")
-  })
-
 
   #  output$cookie_status <- renderText(as.character(input$cookies))
 
