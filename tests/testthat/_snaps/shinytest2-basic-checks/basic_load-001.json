@@ -1,0 +1,57 @@
+{
+  "input": {
+    "cookieAccept": 0,
+    "cookieLink": 0,
+    "cookieReject": 0,
+    "cookies": {
+
+    },
+    "hideAccept": 0,
+    "hideReject": 0,
+    "link_to_app_content_tab": 0,
+    "navlistPanel": "dashboard",
+    "selectArea": "England",
+    "selectBenchLAs": null,
+    "selectPhase": "All LA maintained schools",
+    "tabsetpanels": "Valuebox example"
+  },
+  "output": {
+    "boxavgRevBal": {
+      "html": "<div class=\"small-box bg-blue\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-medium\">£160,486<\/p>\n    <p id=\"vboxdetail-medium\">This is the latest value for the selected inputs<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "boxavgRevBal_large": {
+      "html": "<div class=\"small-box bg-green\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-large\">£160,486<\/p>\n    <p id=\"vboxdetail-large\">This is the latest value for the selected inputs<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "boxavgRevBal_small": {
+      "html": "<div class=\"small-box bg-orange\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-small\">£160,486<\/p>\n    <p id=\"vboxdetail-small\">This is the latest value for the selected inputs<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "boxpcRevBal": {
+      "html": "<div class=\"small-box bg-blue\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-medium\">£49,794<\/p>\n    <p id=\"vboxdetail-medium\">This is the change on previous year<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "boxpcRevBal_large": {
+      "html": "<div class=\"small-box bg-green\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-large\">£49,794<\/p>\n    <p id=\"vboxdetail-large\">This is the change on previous year<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "boxpcRevBal_small": {
+      "html": "<div class=\"small-box bg-orange\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-small\">£49,794<\/p>\n    <p id=\"vboxdetail-small\">This is the change on previous year<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "dropdown_label": "Current selections: All LA maintained schools, England"
+  }
+}

@@ -127,43 +127,55 @@ dashboard_panel <- function() {
           tabsetPanel(
             id = "tabsetpanels",
             tabPanel(
-              "Example panel 1",
+              "Valuebox example",
               fluidRow(
                 column(
                   width = 12,
-                  h2("Outputs 1 (h2)"),
+                  h2("Examples of producing value boxes in R-Shiny (h2)"),
                   fluidRow(
-                    valueBoxOutput("boxavgRevBal_small", width = 6),
-                    valueBoxOutput("boxpcRevBal_small", width = 6)
+                    column(
+                      width = 12,
+                      valueBoxOutput("boxavgRevBal_small", width = 6),
+                      valueBoxOutput("boxpcRevBal_small", width = 6)
+                    )
                   ),
                   fluidRow(
-                    valueBoxOutput("boxavgRevBal", width = 6),
-                    valueBoxOutput("boxpcRevBal", width = 6)
+                    column(
+                      width = 12,
+                      valueBoxOutput("boxavgRevBal", width = 6),
+                      valueBoxOutput("boxpcRevBal", width = 6)
+                    )
                   ),
                   fluidRow(
-                    valueBoxOutput("boxavgRevBal_large", width = 6),
-                    valueBoxOutput("boxpcRevBal_large", width = 6)
-                  ),
-                  box(
-                    width = 12,
-                    plotlyOutput("lineRevBal")
+                    column(
+                      width = 12,
+                      valueBoxOutput("boxavgRevBal_large", width = 6),
+                      valueBoxOutput("boxpcRevBal_large", width = 6)
+                    )
                   )
                 )
               )
             ),
             tabPanel(
-              "Example panel 2",
+              "Line chart example",
               fluidRow(
                 column(
                   width = 12,
-                  h2("Outputs 2 (h2)"),
+                  h2("An example line chart using ggplot and ggiraph (h2)"),
+                  girafeOutput("lineRevBal", width = "100%", height = "100%")
+                )
+              )
+            ),
+            tabPanel(
+              "Benchmarking example",
+              fluidRow(
+                column(
+                  width = 12,
+                  h2("An example bar chart using ggplot and ggiraph (h2)"),
                   p("This is the standard paragraph style for adding guiding info around data content."),
                   column(
                     width = 6,
-                    box(
-                      width = 12,
-                      plotlyOutput("colBenchmark")
-                    )
+                    girafeOutput("colBenchmark", width = "100%", height = "100%")
                   ),
                   column(
                     width = 6,

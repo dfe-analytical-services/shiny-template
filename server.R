@@ -176,11 +176,25 @@ server <- function(input, output, session) {
   })
 
   # Define server logic required to draw a histogram
-  output$lineRevBal <- renderPlotly({
-    ggplotly(createAvgRevTimeSeries(reactiveRevBal(), input$selectArea)) %>%
-      config(displayModeBar = F) %>%
-      layout(legend = list(orientation = "h", x = 0, y = -0.2))
-  })
+  output$lineRevBal <- snapshotPreprocessOutput(
+    renderGirafe({
+      girafe(
+        ggobj = createAvgRevTimeSeries(reactiveRevBal(), input$selectArea),
+        options = list(opts_sizing(rescale = TRUE, width = 1.0)),
+        width_svg = 9.6,
+        height_svg = 5.0
+      )
+    }),
+    function(value) {
+      # Removing elements that cause issues with shinytest comparisons when run on different environments
+      svg_removed <- gsub("svg_[0-9a-z]{8}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{12}", "svg_random_giraph_string", value)
+      font_standardised <- gsub("Arial", "Helvetica", svg_removed)
+      cleaned_positions <- gsub("[a-z]*x[0-9]*='[0-9.]*' [a-z]*y[0-9]*='[0-9.]*'", "Position", font_standardised)
+      cleaned_size <- gsub("width='[0-9.]*' height='[0-9.]*'", "Size", cleaned_positions)
+      cleaned_points <- gsub("points='[0-9., ]*'", "points", cleaned_size)
+      cleaned_points
+    }
+  )
 
   reactiveBenchmark <- reactive({
     dfRevBal %>%
@@ -191,13 +205,26 @@ server <- function(input, output, session) {
       )
   })
 
-  output$colBenchmark <- renderPlotly({
-    ggplotly(
-      plotAvgRevBenchmark(reactiveBenchmark()) %>%
-        config(displayModeBar = F),
-      height = 420
-    )
-  })
+  output$colBenchmark <- snapshotPreprocessOutput(
+    renderGirafe({
+      girafe(
+        ggobj = plotAvgRevBenchmark(reactiveBenchmark()),
+        options = list(opts_sizing(rescale = TRUE, width = 1.0)),
+        width_svg = 5.0,
+        height_svg = 5.0
+      )
+    }),
+    function(value) {
+      # Removing elements that cause issues with shinytest comparisons when run on
+      # different environments - should add to dfeshiny at some point.
+      svg_removed <- gsub("svg_[0-9a-z]{8}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{12}", "svg_random_giraph_string", value)
+      font_standardised <- gsub("Arial", "Helvetica", svg_removed)
+      cleaned_positions <- gsub("x[0-9]*='[0-9.]*' y[0-9]*='[0-9.]*'", "Position", font_standardised)
+      cleaned_size <- gsub("width='[0-9.]*' height='[0-9.]*'", "Size", cleaned_positions)
+      cleaned_points <- gsub("points='[0-9., ]*'", "points", cleaned_size)
+      cleaned_points
+    }
+  )
 
   output$tabBenchmark <- renderDataTable({
     datatable(
