@@ -77,12 +77,12 @@ customDisconnectMessage <- function(refresh = "Refresh page",
 
 cookieBannerUI <- function(id, name = "DfE R-Shiny dashboard template"){
   tags$div(
-    id="cookieDiv",
+    id=NS(id,"cookieDiv"),
     class="govuk-cookie-banner",
     `data-nosnippet role`="region",
     `aria-label`="Cookies on name",
     tags$div(
-      id="cookieMain",
+      id=NS(id,"cookieMain"),
       class="govuk-cookie-banner__message govuk-width-container",
       tags$div(
         class="govuk-grid-row",
@@ -107,9 +107,9 @@ cookieBannerUI <- function(id, name = "DfE R-Shiny dashboard template"){
       ),
       tags$div(
         class="govuk-button-group",
-        actionButton(inputId="cookieAccept", label = "Accept analytics cookies"),
-        actionButton(inputId="cookieReject", label =  "Reject analytics cookies"),
-        actionButton(inputId="cookieLink", label = "View cookies")
+        actionButton(NS(id,"cookieAccept"), label = "Accept analytics cookies"),
+        actionButton(NS(id,"cookieReject"), label =  "Reject analytics cookies"),
+        actionButton(NS(id,"cookieLink"), label = "View cookies")
         )
       )
     )
@@ -119,7 +119,8 @@ cookieBannerServer <- function(id, cookies=NULL) {
   moduleServer(id, function(input, output, session) {
     print(input)
     observeEvent(cookies(), {
-      print(cookies())
+      print(cookies()$`_ga_Z967JJVQQX`)
+      print(cookies()$dfe_analytics)
       if (!is.null(cookies())) {
         if (!("dfe_analytics" %in% names(cookies()))) {
           shinyjs::show(id = "cookieMain")
@@ -140,59 +141,41 @@ cookieBannerServer <- function(id, cookies=NULL) {
           }
         }
       } else {
-        shinyjs::hide(id = "cookieMain")
-        shinyjs::toggle(id = "cookieDiv")
+        shinyjs::hide(id = "cookieMain", asis = TRUE)
+        shinyjs::toggle(id = "cookieDiv", asis = TRUE)
       }
     })
     
     # Check for the cookies being authorised
     observeEvent(input$cookieAccept, {
+      print("cookieAccept pressed")
       msg <- list(
         name = "dfe_analytics",
         value = "granted"
       )
-      print("cookieAccept pressed")
       session$sendCustomMessage("cookie-set", msg)
       session$sendCustomMessage("analytics-consent", msg)
-      shinyjs::show(id = "cookieAcceptDiv")
-      shinyjs::hide(id = "cookieMain")
+      shinyjs::hide(id = "cookieMain", asis = TRUE)
+      shinyjs::show(id = "cookieAcceptDiv", asis = TRUE)
     })
     
     # Check for the cookies being rejected
     observeEvent(input$cookieReject, {
+      print("cookieReject pressed")
       msg <- list(
         name = "dfe_analytics",
         value = "denied"
       )
       session$sendCustomMessage("cookie-set", msg)
       session$sendCustomMessage("analytics-consent", msg)
-      shinyjs::show(id = "cookieRejectDiv")
-      shinyjs::hide(id = "cookieMain")
-    })
-    
-    observeEvent(input$hideAccept, {
-      shinyjs::toggle(id = "cookieDiv")
-    })
-    
-    observeEvent(input$hideReject, {
-      shinyjs::toggle(id = "cookieDiv")
-    })
-    
-    observeEvent(input$remove, {
-      shinyjs::toggle(id = "cookieMain")
-      msg <- list(name = "dfe_analytics", value = "denied")
-      session$sendCustomMessage("cookie-remove", msg)
-      session$sendCustomMessage("analytics-consent", msg)
-      print(cookies())
-    })
-    
-    cookies_data <- reactive({
-      cookies()
+      shinyjs::hide(id = "cookieMain", asis = TRUE)
+      shinyjs::show(id = "cookieRejectDiv", asis = TRUE)
     })
     
     observeEvent(input$cookieLink, {
       # Need to link here to where further info is located.  You can
       # updateTabsetPanel to have a cookie page for instance
+      print("cookieLink pressed")
       updateTabsetPanel(session, "navlistPanel", selected = "Support and feedback")
     })
   })
