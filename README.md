@@ -10,8 +10,9 @@ DfE Shiny template app
 
 This template repository is for making accessible apps for published statistics in DfE. It includes a basic accessible shiny app with DfE styling, as well as templates for additional best practice documents like this README script, pull request templates and codes of conduct for contributing.
 
-To use this template, click the green "use this template" button at the top of the repo. This will create a copy for you to work off of. 
+There is a version of this template hosted for you to preview at https://department-for-education.shinyapps.io/dfe-shiny-template/.
 
+To use this template, click the green "use this template" button at the top of the repo. This will create a copy for you to work off of. 
 
 Please delete this header section when you are writing up the README file for your own app.
 
