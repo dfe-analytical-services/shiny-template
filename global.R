@@ -2,14 +2,15 @@
 # This is the global file.
 # Use it to store functions, library calls, source files etc.
 # Moving these out of the server file and into here improves performance
-# The global file is run only once when the app launches and stays consistent across users
-# whereas the server and UI files are constantly interacting and responsive to user input.
+# The global file is run only once when the app launches and stays consistent
+# across users whereas the server and UI files are constantly interacting and
+# responsive to user input.
 #
 # ---------------------------------------------------------
 # message("Sourcing global")
 
 
-# Library calls ---------------------------------------------------------------------------------
+# Library calls ----------------------------------------------------------------
 shhh <- suppressPackageStartupMessages # It's a library, so shhh!
 shhh(library(shiny))
 shhh(library(shinyjs))
@@ -33,14 +34,15 @@ shhh(library(dfeshiny))
 shhh(library(ggiraph))
 # shhh(library(shinya11y))
 
-# Functions ---------------------------------------------------------------------------------
+# Functions --------------------------------------------------------------------
 
-# Here's an example function for simplifying the code needed to commas separate numbers:
+# Here's an example function for simplifying the code needed to commas separate
+# numbers:
 
 # This line enables bookmarking such that input choices are shown in the url.
 enableBookmarking("url")
 
-# cs_num ----------------------------------------------------------------------------
+# cs_num -----------------------------------------------------------------------
 # Comma separating function
 
 
@@ -49,15 +51,16 @@ cs_num <- function(value) {
   format(value, big.mark = ",", trim = TRUE)
 }
 
-# Source scripts ---------------------------------------------------------------------------------
+# Source scripts ---------------------------------------------------------------
 
-# Source any scripts here. Scripts may be needed to process data before it gets to the server file.
+# Source any scripts here. Scripts may be needed to process data before it gets
+# to the server file.
 # It's best to do this here instead of the server file, to improve performance.
 
 # source("R/filename.r")
 
 
-# appLoadingCSS ----------------------------------------------------------------------------
+# appLoadingCSS ----------------------------------------------------------------
 # Set up loading screen
 
 appLoadingCSS <- "
@@ -77,9 +80,14 @@ appLoadingCSS <- "
 site_title <- "DfE Shiny Template"
 site_primary <- "https://department-for-education.shinyapps.io/dfe-shiny-template/"
 site_overflow <- "https://department-for-education.shinyapps.io/dfe-shiny-template-overflow/"
-sites_list <- c(site_primary, site_overflow) # We can add further mirrors where necessary. Each one can generally handle about 2,500 users simultaneously
-ees_pub_name <- "Statistical publication" # Update this with your parent publication name (e.g. the EES publication)
-ees_publication <- "https://explore-education-statistics.service.gov.uk/find-statistics/" # Update with parent publication link
+# We can add further mirrors where necessary. Each one can generally handle
+# about 2,500 users simultaneously
+sites_list <- c(site_primary, site_overflow)
+# Update this with your parent
+# publication name (e.g. the EES publication)
+ees_pub_name <- "Statistical publication"
+# Update with parent publication link
+ees_publication <- "https://explore-education-statistics.service.gov.uk/find-statistics/"
 google_analytics_key <- "Z967JJVQQX"
 
 
@@ -104,7 +112,8 @@ choicesLAs <- dfAreas %>%
 choicesAreas <- dfAreas %>%
   filter(geographic_level == "National") %>%
   select(geographic_level, area_name = country_name) %>%
-  rbind(dfAreas %>% filter(geographic_level == "Regional") %>% select(geographic_level, area_name = region_name)) %>%
+  rbind(dfAreas %>% filter(geographic_level == "Regional") %>%
+    select(geographic_level, area_name = region_name)) %>%
   rbind(choicesLAs)
 
 choicesYears <- unique(dfRevBal$time_period)

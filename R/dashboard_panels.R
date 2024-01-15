@@ -22,17 +22,22 @@ homepage_panel <- function() {
               class = "panel panel-info",
               div(
                 class = "panel-heading",
-                style = "color: white;font-size: 18px;font-style: bold; background-color: #1d70b8;",
+                style = "color: white;font-size: 18px;font-style: bold;
+                background-color: #1d70b8;",
                 h2("Contents (h2)")
               ),
               div(
                 class = "panel-body",
                 tags$div(
                   h3("Introduction (h3)"),
-                  p("This app demonstrates the DfE Analytical Services R-Shiny data dashboard template."),
-                  p("You might want to add some brief introductory text here alongside some links to different tabs within your dashboard. Here's an example of a link working:"),
+                  p("This app demonstrates the DfE Analytical Services R-Shiny
+                    data dashboard template."),
+                  p("You might want to add some brief introductory text here
+                    alongside some links to different tabs within your
+                    dashboard. Here's an example of a link working:"),
                   p(actionLink("link_to_app_content_tab", "Dashboard panel")),
-                  p("You need to add an observeEvent() function to the server.R script for any link that navigates within your App.")
+                  p("You need to add an observeEvent() function to the server.R
+                    script for any link that navigates within your App.")
                 ),
                 br()
               )
@@ -49,17 +54,26 @@ homepage_panel <- function() {
               class = "panel panel-info",
               div(
                 class = "panel-heading",
-                style = "color: white;font-size: 18px;font-style: bold; background-color: #1d70b8;",
+                style = "color: white;font-size: 18px;font-style: bold;
+                background-color: #1d70b8;",
                 h2("Background Info (h2)")
               ),
               div(
                 class = "panel-body",
                 h3("Context and purpose (h3)"),
-                p("This app is the DfE Analytical Service's R-Shiny template demonstration app and is being developed to provide a coherent styling for DfE dashboards alongside some useful example componenets that teams can adapt for their own uses."),
-                p("DfE teams using this template should avoid changing the styling and layout, keeping the header, footer and side navigation list formats."),
-                p("You might want to add some relevant background information for your users here. For example some useful links to your EES publication, data sources and other relevant resources."),
+                p("This app is the DfE Analytical Service's R-Shiny template
+                  demonstration app and is being developed to provide a coherent
+                  styling for DfE dashboards alongside some useful example
+                  componenets that teams can adapt for their own uses."),
+                p("DfE teams using this template should avoid changing the
+                  styling and layout, keeping the header, footer and side
+                  navigation list formats."),
+                p("You might want to add some relevant background information
+                  for your users here. For example some useful links to your EES
+                  publication, data sources and other relevant resources."),
                 h3("Guidance sources (h3)"),
-                p("For example, here we'll add some of the key resources we draw on to guide styling and vizualisation...")
+                p("For example, here we'll add some of the key resources we draw
+                  on to guide styling and vizualisation...")
               )
             )
           )
@@ -87,7 +101,8 @@ dashboard_panel <- function() {
         column(
           width = 12,
           expandable(
-            inputId = "details", label = textOutput("dropdown_label"), contents =
+            inputId = "details", label = textOutput("dropdown_label"),
+            contents =
               div(
                 id = "div_a",
                 # class = "well",
@@ -110,7 +125,8 @@ dashboard_panel <- function() {
                   ),
                   column(
                     width = 12,
-                    paste("Download the underlying data for this dashboard:"), br(),
+                    paste("Download the underlying data for this dashboard:"),
+                    br(),
                     downloadButton(
                       outputId = "download_data",
                       label = "Download data",
@@ -172,16 +188,20 @@ dashboard_panel <- function() {
                 column(
                   width = 12,
                   h2("An example bar chart using ggplot and ggiraph (h2)"),
-                  p("This is the standard paragraph style for adding guiding info around data content."),
+                  p("This is the standard paragraph style for adding guiding
+                    info around data content."),
                   column(
                     width = 6,
-                    girafeOutput("colBenchmark", width = "100%", height = "100%")
+                    girafeOutput("colBenchmark",
+                      width = "100%", height = "100%"
+                    )
                   ),
                   column(
                     width = 6,
                     div(
                       class = "well",
-                      style = "min-height: 100%; height: 100%; overflow-y: visible",
+                      style = "min-height: 100%; height: 100%; overflow-y:
+                      visible",
                       fluidRow(
                         column(
                           width = 12,

@@ -9,4 +9,8 @@
 
 # message("Sourcing gss colour palette")
 
-suppressMessages(gss_colour_pallette <- afcolours::af_colours("categorical", colour_format = "hex", n = 6))
+suppressMessages(
+  gss_colour_pallette <- afcolours::af_colours("categorical",
+    colour_format = "hex", n = 6
+  )
+)

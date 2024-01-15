@@ -43,7 +43,8 @@ customDisconnectMessage <- function(refresh = "Refresh page",
         },
         if (!is.null(publication_name)) {
           tags$p(
-            "All the data used in this dashboard can also be viewed or downloaded via the ",
+            "All the data used in this dashboard can also be viewed or
+            downloaded via the ",
             tags$a(
               href = publication_link,
               publication_name
@@ -53,7 +54,10 @@ customDisconnectMessage <- function(refresh = "Refresh page",
         },
         tags$p(
           "Please contact",
-          tags$a(href = "mailto:statistics.development@education.gov.uk", "statistics.development@education.gov.uk"),
+          tags$a(
+            href = "mailto:statistics.development@education.gov.uk",
+            "statistics.development@education.gov.uk"
+          ),
           "with details of any problems with this resource."
         )
         #  ),
