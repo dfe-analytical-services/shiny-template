@@ -39,10 +39,13 @@ jobs:
           r-version: 4.2.1
           use-public-rspm: true
       
-      - name: resotre renv
+      - name: restore renv
         uses: r-lib/actions/setup-renv@v2
-        with:
-          extra-packages: lintr
+
+      - name: Install lintr
+        shell: Rscript {0}
+        run: |
+          renv::install("lintr")
 
       - name: Run lintr
         run: lintr::sarif_output(lintr::lint_dir("."), "lintr-results.sarif")
