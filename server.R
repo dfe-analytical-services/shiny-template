@@ -1,11 +1,13 @@
 # ---------------------------------------------------------
 # This is the server file.
-# Use it to create interactive elements like tables, charts and text for your app.
+# Use it to create interactive elements like tables, charts and text for your
+# app.
 #
-# Anything you create in the server file won't appear in your app until you call it in the UI file.
-# This server script gives an example of a plot and value box that updates on slider input.
-# There are many other elements you can add in too, and you can play around with their reactivity.
-# The "outputs" section of the shiny cheatsheet has a few examples of render calls you can use:
+# Anything you create in the server file won't appear in your app until you call
+# it in the UI file. This server script gives an example of a plot and value box
+# that updates on slider input. There are many other elements you can add in
+# too, and you can play around with their reactivity. The "outputs" section of
+# the shiny cheatsheet has a few examples of render calls you can use:
 # https://shiny.rstudio.com/images/shiny-cheatsheet.pdf
 #
 #
@@ -20,7 +22,7 @@
 
 
 server <- function(input, output, session) {
-  # Loading screen ---------------------------------------------------------------------------
+  # Loading screen -------------------------------------------------------------
   # Call initial loading screen
 
   hide(id = "loading-content", anim = TRUE, animType = "fade")
@@ -143,7 +145,9 @@ server <- function(input, output, session) {
   })
 
   output$cookie_status <- renderText({
-    cookie_text_stem <- "To better understand the reach of our dashboard tools, this site uses cookies to identify numbers of unique users as part of Google Analytics. You have chosen to"
+    cookie_text_stem <- "To better understand the reach of our dashboard tools,
+    this site uses cookies to identify numbers of unique users as part of Google
+    Analytics. You have chosen to"
     cookie_text_tail <- "the use of cookies on this website."
     if ("cookies" %in% names(input)) {
       if ("dfe_analytics" %in% names(input$cookies)) {
@@ -161,13 +165,15 @@ server <- function(input, output, session) {
   observeEvent(input$cookieLink, {
     # Need to link here to where further info is located.  You can
     # updateTabsetPanel to have a cookie page for instance
-    updateTabsetPanel(session, "navlistPanel", selected = "Support and feedback")
+    updateTabsetPanel(session, "navlistPanel",
+      selected = "Support and feedback"
+    )
   })
 
 
   #  output$cookie_status <- renderText(as.character(input$cookies))
 
-  # Simple server stuff goes here ------------------------------------------------------------
+  # Simple server stuff goes here ----------------------------------------------
   reactiveRevBal <- reactive({
     dfRevBal %>% filter(
       area_name == input$selectArea | area_name == "England",
@@ -186,11 +192,20 @@ server <- function(input, output, session) {
       )
     }),
     function(value) {
-      # Removing elements that cause issues with shinytest comparisons when run on different environments
-      svg_removed <- gsub("svg_[0-9a-z]{8}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{12}", "svg_random_giraph_string", value)
+      # Removing elements that cause issues with shinytest comparisons when run
+      # on different environments
+      svg_removed <- gsub(
+        "svg_[0-9a-z]{8}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{12}",
+        "svg_random_giraph_string", value
+      )
       font_standardised <- gsub("Arial", "Helvetica", svg_removed)
-      cleaned_positions <- gsub("[a-z]*x[0-9]*='[0-9.]*' [a-z]*y[0-9]*='[0-9.]*'", "Position", font_standardised)
-      cleaned_size <- gsub("width='[0-9.]*' height='[0-9.]*'", "Size", cleaned_positions)
+      cleaned_positions <- gsub(
+        "[a-z]*x[0-9]*='[0-9.]*' [a-z]*y[0-9]*='[0-9.]*'",
+        "Position", font_standardised
+      )
+      cleaned_size <- gsub(
+        "width='[0-9.]*' height='[0-9.]*'", "Size", cleaned_positions
+      )
       cleaned_points <- gsub("points='[0-9., ]*'", "points", cleaned_size)
       cleaned_points
     }
@@ -217,10 +232,20 @@ server <- function(input, output, session) {
     function(value) {
       # Removing elements that cause issues with shinytest comparisons when run on
       # different environments - should add to dfeshiny at some point.
-      svg_removed <- gsub("svg_[0-9a-z]{8}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{12}", "svg_random_giraph_string", value)
+      svg_removed <- gsub(
+        "svg_[0-9a-z]{8}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{12}",
+        "svg_random_giraph_string",
+        value
+      )
       font_standardised <- gsub("Arial", "Helvetica", svg_removed)
-      cleaned_positions <- gsub("x[0-9]*='[0-9.]*' y[0-9]*='[0-9.]*'", "Position", font_standardised)
-      cleaned_size <- gsub("width='[0-9.]*' height='[0-9.]*'", "Size", cleaned_positions)
+      cleaned_positions <- gsub(
+        "x[0-9]*='[0-9.]*' y[0-9]*='[0-9.]*'",
+        "Position", font_standardised
+      )
+      cleaned_size <- gsub(
+        "width='[0-9.]*' height='[0-9.]*'",
+        "Size", cleaned_positions
+      )
       cleaned_points <- gsub("points='[0-9., ]*'", "points", cleaned_size)
       cleaned_points
     }
@@ -390,13 +415,14 @@ server <- function(input, output, session) {
     }
   )
 
-  # Add input IDs here that are within the relevant drop down boxes to create dynamic text
+  # Add input IDs here that are within the relevant drop down boxes to create
+  # dynamic text
   output$dropdown_label <- renderText({
     paste0("Current selections: ", input$selectPhase, ", ", input$selectArea)
   })
 
 
-  # Stop app ---------------------------------------------------------------------------------
+  # Stop app -------------------------------------------------------------------
 
   session$onSessionEnded(function() {
     stopApp()
