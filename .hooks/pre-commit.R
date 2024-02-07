@@ -3,7 +3,7 @@ cat("Running commit hooks...",fill=TRUE)
 shhh <- suppressPackageStartupMessages # It's a library, so shhh!
 shhh(library(dplyr))
 shhh(library(xfun))
-
+shhh(library(dfeshiny))
 
 error_flag <- FALSE
 
@@ -27,8 +27,6 @@ if(ncol(ign_files)>1){
     }
   }
 }
-
-
 
 suffixes <- "xlsx$|dat$|csv$|tex$|pdf$"
 
