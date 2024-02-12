@@ -74,7 +74,7 @@ server <- function(input, output, session) {
     }
   })
 
-  cookieBannerServer('cookies', cookies=reactive(input$cookies))
+  cookieBannerServer('cookies', input.cookies=reactive(input$cookies), input.remove=reactive(input$remove))
 
   cookies_data <- reactive({
     input$cookies

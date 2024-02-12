@@ -115,25 +115,24 @@ cookieBannerUI <- function(id, name = "DfE R-Shiny dashboard template"){
     )
 }
 
-cookieBannerServer <- function(id, cookies=NULL) {
+cookieBannerServer <- function(id, input.cookies=NULL, input.remove=NULL) {
   moduleServer(id, function(input, output, session) {
-    print(input)
-    observeEvent(cookies(), {
-      print(cookies()$`_ga_Z967JJVQQX`)
-      print(cookies()$dfe_analytics)
-      if (!is.null(cookies())) {
-        if (!("dfe_analytics" %in% names(cookies()))) {
+    observeEvent(input.cookies(), {
+      print(input.cookies()$`_ga_Z967JJVQQX`)
+      print(input.cookies()$dfe_analytics)
+      if (!is.null(input.cookies())) {
+        if (!("dfe_analytics" %in% names(input.cookies()))) {
           shinyjs::show(id = "cookieMain")
         } else {
           shinyjs::hide(id = "cookieMain")
           msg <- list(
             name = "dfe_analytics",
-            value = cookies()$dfe_analytics
+            value = input.cookies()$dfe_analytics
           )
           session$sendCustomMessage("analytics-consent", msg)
           if ("cookies" %in% names(input)) {
-            if ("dfe_analytics" %in% names(cookies())) {
-              if (cookies()$dfe_analytics == "denied") {
+            if ("dfe_analytics" %in% names(input.cookies())) {
+              if (input.cookies()$dfe_analytics == "denied") {
                 ga_msg <- list(name = paste0("_ga_", google_analytics_key))
                 session$sendCustomMessage("cookie-remove", ga_msg)
               }
@@ -178,5 +177,14 @@ cookieBannerServer <- function(id, cookies=NULL) {
       print("cookieLink pressed")
       updateTabsetPanel(session, "navlistPanel", selected = "Support and feedback")
     })
+
+    observeEvent(input.remove(), {
+      shinyjs::toggle(id = "cookieMain")
+      msg <- list(name = "dfe_analytics", value = "denied")
+      session$sendCustomMessage("cookie-remove", msg)
+      session$sendCustomMessage("analytics-consent", msg)
+      print(input$cookies)
+    })
+    
   })
 }
