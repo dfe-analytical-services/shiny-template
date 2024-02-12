@@ -22,10 +22,29 @@ outputs <- c(
   "boxavgRevBal", "boxavgRevBal_large", "boxavgRevBal_small",
   "boxpcRevBal", "boxpcRevBal_large", "boxpcRevBal_small",
   "dropdown_label",
-  "lineRevBal"
+  "lineRevBal",
+  "colBenchmark"
 )
 
 test_that("App loads", {
+  # Capture initial values
+  app$expect_values(
+    input = inputs,
+    output = outputs
+  )
+})
+
+app$set_inputs(tabsetpanels = "Line chart example")
+test_that("Line chart created", {
+  # Capture initial values
+  app$expect_values(
+    input = inputs,
+    output = outputs
+  )
+})
+
+app$set_inputs(tabsetpanels = "Benchmarking example")
+test_that("Benchmarking panel", {
   # Capture initial values
   app$expect_values(
     input = inputs,

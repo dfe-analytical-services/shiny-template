@@ -43,7 +43,8 @@ customDisconnectMessage <- function(refresh = "Refresh page",
         },
         if (!is.null(publication_name)) {
           tags$p(
-            "All the data used in this dashboard can also be viewed or downloaded via the ",
+            "All the data used in this dashboard can also be viewed or
+            downloaded via the ",
             tags$a(
               href = publication_link,
               publication_name
@@ -53,7 +54,10 @@ customDisconnectMessage <- function(refresh = "Refresh page",
         },
         tags$p(
           "Please contact",
-          tags$a(href = "mailto:statistics.development@education.gov.uk", "statistics.development@education.gov.uk"),
+          tags$a(
+            href = "mailto:statistics.development@education.gov.uk",
+            "statistics.development@education.gov.uk"
+          ),
           "with details of any problems with this resource."
         )
         #  ),
@@ -75,47 +79,48 @@ customDisconnectMessage <- function(refresh = "Refresh page",
   )
 }
 
-cookieBannerUI <- function(id, name = "DfE R-Shiny dashboard template"){
+cookieBannerUI <- function(id, name = "DfE R-Shiny dashboard template") {
   tags$div(
-    id=NS(id,"cookieDiv"),
-    class="govuk-cookie-banner",
-    `data-nosnippet role`="region",
-    `aria-label`="Cookies on name",
+    id = NS(id, "cookieDiv"),
+    class = "govuk-cookie-banner",
+    `data-nosnippet role` = "region",
+    `aria-label` = "Cookies on name",
     tags$div(
-      id=NS(id,"cookieMain"),
-      class="govuk-cookie-banner__message govuk-width-container",
+      id = NS(id, "cookieMain"),
+      class = "govuk-cookie-banner__message govuk-width-container",
       tags$div(
-        class="govuk-grid-row",
+        class = "govuk-grid-row",
         tags$div(
-          class="govuk-grid-column-two-thirds",
+          class = "govuk-grid-column-two-thirds",
           tags$h2(
-            class="govuk-cookie-banner__heading govuk-heading-m",
-            name),
+            class = "govuk-cookie-banner__heading govuk-heading-m",
+            name
+          ),
           tags$div(
-            class="govuk-cookie-banner__content",
+            class = "govuk-cookie-banner__content",
             tags$p(
-              class="govuk-body",
+              class = "govuk-body",
               "We use some essential cookies to make this service work."
-              ),
+            ),
             tags$p(
-              class="govuk-body",
+              class = "govuk-body",
               "We'd also like to use analytics cookies so we can understand
               how you use the service and make improvements."
-              )
+            )
           )
         )
       ),
       tags$div(
-        class="govuk-button-group",
-        actionButton(NS(id,"cookieAccept"), label = "Accept analytics cookies"),
-        actionButton(NS(id,"cookieReject"), label =  "Reject analytics cookies"),
-        actionButton(NS(id,"cookieLink"), label = "View cookies")
-        )
+        class = "govuk-button-group",
+        actionButton(NS(id, "cookieAccept"), label = "Accept analytics cookies"),
+        actionButton(NS(id, "cookieReject"), label = "Reject analytics cookies"),
+        actionButton(NS(id, "cookieLink"), label = "View cookies")
       )
     )
+  )
 }
 
-cookieBannerServer <- function(id, input.cookies=NULL, input.remove=NULL) {
+cookieBannerServer <- function(id, input.cookies = NULL, input.remove = NULL) {
   moduleServer(id, function(input, output, session) {
     observeEvent(input.cookies(), {
       print(input.cookies()$`_ga_Z967JJVQQX`)
@@ -144,7 +149,7 @@ cookieBannerServer <- function(id, input.cookies=NULL, input.remove=NULL) {
         shinyjs::toggle(id = "cookieDiv", asis = TRUE)
       }
     })
-    
+
     # Check for the cookies being authorised
     observeEvent(input$cookieAccept, {
       print("cookieAccept pressed")
@@ -157,7 +162,7 @@ cookieBannerServer <- function(id, input.cookies=NULL, input.remove=NULL) {
       shinyjs::hide(id = "cookieMain", asis = TRUE)
       shinyjs::show(id = "cookieAcceptDiv", asis = TRUE)
     })
-    
+
     # Check for the cookies being rejected
     observeEvent(input$cookieReject, {
       print("cookieReject pressed")
@@ -170,7 +175,7 @@ cookieBannerServer <- function(id, input.cookies=NULL, input.remove=NULL) {
       shinyjs::hide(id = "cookieMain", asis = TRUE)
       shinyjs::show(id = "cookieRejectDiv", asis = TRUE)
     })
-    
+
     observeEvent(input$cookieLink, {
       # Need to link here to where further info is located.  You can
       # updateTabsetPanel to have a cookie page for instance
@@ -185,6 +190,5 @@ cookieBannerServer <- function(id, input.cookies=NULL, input.remove=NULL) {
       session$sendCustomMessage("analytics-consent", msg)
       print(input$cookies)
     })
-    
   })
 }
