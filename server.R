@@ -76,29 +76,13 @@ server <- function(input, output, session) {
     }
   })
 
-  cookieBannerServer("cookies", input.cookies = reactive(input$cookies), input.remove = reactive(input$remove))
-
-  cookies_data <- reactive({
-    input$cookies
-  })
-
-  output$cookie_status <- renderText({
-    cookie_text_stem <- "To better understand the reach of our dashboard tools,
-    this site uses cookies to identify numbers of unique users as part of Google
-    Analytics. You have chosen to"
-    cookie_text_tail <- "the use of cookies on this website."
-    if ("cookies" %in% names(input)) {
-      if ("dfe_analytics" %in% names(input$cookies)) {
-        if (input$cookies$dfe_analytics == "granted") {
-          paste(cookie_text_stem, "accept", cookie_text_tail)
-        } else {
-          paste(cookie_text_stem, "reject", cookie_text_tail)
-        }
-      }
-    } else {
-      "Cookies consent has not been confirmed."
-    }
-  })
+  output$cookie_status <- dfeshiny::cookie_banner_server(
+    "cookies",
+    input.cookies = reactive(input$cookies),
+    input.remove = reactive(input$remove),
+    parent_session = session,
+    google_analytics_key = google_analytics_key
+  )
 
   #  output$cookie_status <- renderText(as.character(input$cookies))
 
