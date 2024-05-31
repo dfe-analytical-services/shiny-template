@@ -77,7 +77,7 @@ appLoadingCSS <- "
 }
 "
 
-site_title <- "DfE Shiny Template"
+site_title <- "Department for Education (DfE) Shiny Template"
 site_primary <- "https://department-for-education.shinyapps.io/dfe-shiny-template/"
 site_overflow <- "https://department-for-education.shinyapps.io/dfe-shiny-template-overflow/"
 # We can add further mirrors where necessary. Each one can generally handle
@@ -94,7 +94,10 @@ google_analytics_key <- "Z967JJVQQX"
 source("R/read_data.R")
 
 # Read in the data
-dfRevBal <- read_revenue_data()
+dfRevBal <- read_revenue_data() %>%
+  mutate(school_phase = case_when(school_phase == "All LA maintained schools" ~ "All local authority maintained schools",
+    .default = school_phase
+  ))
 # Get geographical levels from data
 dfAreas <- dfRevBal %>%
   select(

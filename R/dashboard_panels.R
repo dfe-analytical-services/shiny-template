@@ -8,7 +8,7 @@ homepage_panel <- function() {
       gov_row(
         column(
           12,
-          h1("DfE Analytical Services R-Shiny data dashboard template (h1)"),
+          h1("Department for Education (DfE) Analytical Services R-Shiny data dashboard template"),
           br(),
           br()
         ),
@@ -24,12 +24,12 @@ homepage_panel <- function() {
                 class = "panel-heading",
                 style = "color: white;font-size: 18px;font-style: bold;
                 background-color: #1d70b8;",
-                h2("Contents (h2)")
+                h2("Contents")
               ),
               div(
                 class = "panel-body",
                 tags$div(
-                  h3("Introduction (h3)"),
+                  h3("Introduction"),
                   p("This app demonstrates the DfE Analytical Services R-Shiny
                     data dashboard template."),
                   p("You might want to add some brief introductory text here
@@ -56,11 +56,11 @@ homepage_panel <- function() {
                 class = "panel-heading",
                 style = "color: white;font-size: 18px;font-style: bold;
                 background-color: #1d70b8;",
-                h2("Background Info (h2)")
+                h2("Background Info")
               ),
               div(
                 class = "panel-body",
-                h3("Context and purpose (h3)"),
+                h3("Context and purpose"),
                 p("This app is the DfE Analytical Service's R-Shiny template
                   demonstration app and is being developed to provide a coherent
                   styling for DfE dashboards alongside some useful example
@@ -69,9 +69,10 @@ homepage_panel <- function() {
                   styling and layout, keeping the header, footer and side
                   navigation list formats."),
                 p("You might want to add some relevant background information
-                  for your users here. For example some useful links to your EES
+                  for your users here. For example some useful links to your
+                  Explore Education Statistics (EES)
                   publication, data sources and other relevant resources."),
-                h3("Guidance sources (h3)"),
+                h3("Guidance sources"),
                 p("For example, here we'll add some of the key resources we draw
                   on to guide styling and vizualisation...")
               )
@@ -96,7 +97,7 @@ dashboard_panel <- function() {
       gov_row(
         column(
           width = 12,
-          h1("Overall content title for this dashboard page (h1)"),
+          h1("Overall content title for this dashboard page"),
         ),
         column(
           width = 12,
@@ -147,7 +148,7 @@ dashboard_panel <- function() {
               fluidRow(
                 column(
                   width = 12,
-                  h2("Examples of producing value boxes in R-Shiny (h2)"),
+                  h2("Examples of producing value boxes in R-Shiny"),
                   fluidRow(
                     column(
                       width = 12,
@@ -177,7 +178,7 @@ dashboard_panel <- function() {
               fluidRow(
                 column(
                   width = 12,
-                  h2("An example line chart using ggplot and ggiraph (h2)"),
+                  h2("An example line chart using ggplot and ggiraph"),
                   girafeOutput("lineRevBal", width = "100%", height = "100%")
                 )
               )
@@ -187,7 +188,7 @@ dashboard_panel <- function() {
               fluidRow(
                 column(
                   width = 12,
-                  h2("An example bar chart using ggplot and ggiraph (h2)"),
+                  h2("An example bar chart using ggplot and ggiraph"),
                   p("This is the standard paragraph style for adding guiding
                     info around data content."),
                   column(
@@ -206,7 +207,7 @@ dashboard_panel <- function() {
                         column(
                           width = 12,
                           selectizeInput("selectBenchLAs",
-                            "Select benchmark LAs",
+                            "Select benchmark local authorities",
                             choices = choicesLAs$area_name,
                             multiple = TRUE,
                             options = list(maxItems = 3)

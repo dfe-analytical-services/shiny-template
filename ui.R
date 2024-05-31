@@ -66,15 +66,15 @@ ui <- function(input, output, session) {
         href = "dfefavicon.png"
       ),
       # Add title for browser tabs
-      tags$title("DfE Shiny Template")
+      tags$title("Department for Education (DfE) Shiny Template")
     ),
     use_shiny_title(),
     tags$html(lang = "en"),
     # Add meta description for search engines
     meta() %>%
       meta_general(
-        application_name = "DfE Shiny Template",
-        description = "DfE Shiny Template",
+        application_name = "Department for Education (DfE) Shiny Template",
+        description = "Department for Education (DfE) Shiny Template",
         robots = "index,follow",
         generator = "R-Shiny",
         subject = "stats development",
@@ -103,11 +103,11 @@ ui <- function(input, output, session) {
         href = "dfe_shiny_gov_style.css"
       )
     ),
-    shinyGovstyle::cookieBanner("DfE R-Shiny dashboard template"),
+    shinyGovstyle::cookieBanner("Department for Education (DfE) R-Shiny dashboard template"),
     shinyGovstyle::header(
       main_text = "",
       main_link = "https://www.gov.uk/government/organisations/department-for-education",
-      secondary_text = "DfE Shiny Template",
+      secondary_text = "Department for Education (DfE) Shiny Template",
       logo = "images/DfE_logo_landscape.png",
       logo_width = 150,
       logo_height = 32

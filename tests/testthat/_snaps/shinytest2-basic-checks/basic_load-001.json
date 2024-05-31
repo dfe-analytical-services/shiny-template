@@ -12,7 +12,7 @@
     "navlistPanel": "dashboard",
     "selectArea": "England",
     "selectBenchLAs": null,
-    "selectPhase": "All LA maintained schools",
+    "selectPhase": "All local authority maintained schools",
     "tabsetpanels": "Valuebox example"
   },
   "output": {
@@ -52,6 +52,6 @@
 
       ]
     },
-    "dropdown_label": "Current selections: All LA maintained schools, England"
+    "dropdown_label": "Current selections: All local authority maintained schools, England"
   }
 }
