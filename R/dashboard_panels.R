@@ -206,7 +206,7 @@ dashboard_panel <- function() {
                         column(
                           width = 12,
                           selectizeInput("selectBenchLAs",
-                            "Select benchmark LAs",
+                            "Select benchmark local authorities",
                             choices = choicesLAs$area_name,
                             multiple = TRUE,
                             options = list(maxItems = 3)
