@@ -77,7 +77,7 @@ appLoadingCSS <- "
 }
 "
 
-site_title <- "DfE Shiny Template"
+site_title <- "Department for Education (DfE) Shiny Template"
 site_primary <- "https://department-for-education.shinyapps.io/dfe-shiny-template/"
 site_overflow <- "https://department-for-education.shinyapps.io/dfe-shiny-template-overflow/"
 # We can add further mirrors where necessary. Each one can generally handle
