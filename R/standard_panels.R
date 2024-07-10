@@ -5,58 +5,160 @@ a11y_panel <- function() {
       gov_row(
         column(
           width = 12,
-          h1("Accessibility statement"),
-          br("This accessibility statement applies to the **application name**.
-            This application is run by the Department for Education. We want as
-            many people as possible to be able to use this application, and have
-            actively developed this application with accessibilty in mind."),
-          h2("WCAG 2.1 compliance"),
+          h1("Accessibility statement for [service name]"), # TODO
           br(
-            "We follow the reccomendations of the ",
+            "This accessibility statement applies to the [raw service URL] website. This website is run by the", # TODO
             a(
-              href = "https://www.w3.org/TR/WCAG21/",
-              "WCAG 2.1 requirements. ",
-              onclick = "ga('send', 'event', 'click', 'link', 'IKnow', 1)"
-            ),
-            "This application has been checked using the ",
-            a(href = "https://github.com/ewenme/shinya11y", "Shinya11y tool "),
-            ", which did not detect accessibility issues.
-            This application also fully passes the accessibility audits checked
-            by the ",
-            a(
-              href = "https://developers.google.com/web/tools/lighthouse",
-              "Google Developer Lighthouse tool"
-            ),
-            ". This means that this application:"
+              href = "https://www.gov.uk/government/organisations/department-for-education",
+              "Department for Education (DfE)",
+              .noWS = "after"
+            ), ".",
+            "This statement does not cover any other services run by the Department for Education (DfE) or GOV.UK."
+          ),
+          h2("How you should be able to use this website"),
+          br(
+            "We want as many people as possible to be able to use this website. You should be able to:"
           ),
           tags$div(tags$ul(
-            tags$li("uses colours that have sufficient contrast"),
-            tags$li("allows you to zoom in up to 300% without the text spilling
-                    off the screen"),
-            tags$li("has its performance regularly monitored, with a team
-                    working on any feedback to improve accessibility for all
-                    users")
+            tags$li("change colours, contrast levels and fonts using browser or device settings"),
+            tags$li("zoom in up to 400% without the text spilling off the screen"),
+            tags$li("navigate most of the website using a keyboard or speech recognition software"),
+            tags$li("listen to most of the website using a screen reader
+                    (including the most recent versions of JAWS, NVDA and VoiceOver)")
           )),
-          h2("Limitations"),
-          br("We recognise that there are still potential issues with
-          accessibility in this application, but we will continue to review
-          updates to technology available to us to keep improving accessibility
-          for all of our users. For example, these are known issues that we will
-          continue to monitor and improve:"),
-          tags$div(tags$ul(
-            tags$li("List"),
-            tags$li("known"),
-            tags$li("limitations, e.g."),
-            tags$li("Alternative text in interactive charts is limited to titles
-                    and could be more descriptive (although this data is
-                    available in csv format)")
-          )),
-          h2("Feedback"),
+          br("We’ve also made the website text as simple as possible to understand."),
           br(
-            "If you have any feedback on how we could further improve the
-            accessibility of this application, please contact us at",
-            a(href = "mailto:email@education.gov.uk", "email@education.gov.uk")
-          )
+            a(
+              href = "https://mcmw.abilitynet.org.uk/",
+              "AbilityNet"
+            ),
+            " has advice on making your device easier to use if you have a disability."
+          ),
+          h2("How accessible this website is"),
+          br("We know some parts of this website are not fully accessible:"),
+          tags$div(tags$ul(
+            tags$li("list them here") # TODO
+          )),
+          h2("Feedback and contact information"),
+          br(
+            "If you need information on this website in a different format please see the ",
+            a(
+              href = "", # TODO
+              "[source publication] on Explore education statistics", # TODO
+              .noWS = "after"
+            ),
+            ". More details are available on that service for alternative formats of this data.",
+          ),
+          br("We’re always looking to improve the accessibility of this website.
+             If you find any problems not listed on this page or think we’re not meeting
+             accessibility requirements, contact us:"),
+          tags$ul(tags$li(
+            a(
+              href = "mailto:explore.statistics@education.gov.uk",
+              "explore.statistics@education.gov.uk"
+            )
+          )),
+          h2("Enforcement procedure"),
+          br("The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies
+             (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018
+             (the ‘accessibility regulations’)."),
+          br(
+            "If you are not happy with how we respond to your complaint, ",
+            a(
+              href = "https://www.equalityadvisoryservice.com/",
+              "contact the Equality Advisory and Support Service (EASS)",
+              .noWS = "after"
+            ),
+            "."
+          ),
+          h2("Technical information about this website's accessibility"),
+          br(
+            "The Department for Education (DfE) is committed to making its website accessible,
+            in accordance with the Public Sector Bodies (Websites and Mobile Applications)
+              (No. 2) Accessibility Regulations 2018."
+          ),
+          h3("Compliance status"),
+          br(
+            "This website is partially compliant with the", # TODO
+            a(
+              href = "https://www.w3.org/TR/WCAG21/",
+              "Web Content Accessibility Guidelines version 2.1 AA standard",
+              .noWS = "after"
+            ),
+            " due to the non-compliances listed below."
+          ),
+          h3("Non accessible content"),
+          br("The content listed below is non-accessible for the following reasons.
+             We will address these issues to ensure our content is accessible."),
+          tags$div(tags$ul(
+            tags$li("list them here") # TODO
+          )),
+          h3("Disproportionate burden"),
+          br("Not applicable."),
+          h2("How we tested this website"),
+          br(
+            "The template used for this website was last tested on 12 March 2024 against",
+            a(
+              href = "https://www.w3.org/TR/WCAG22/",
+              "Accessibility Guidelines WCAG2.2",
+              .noWS = "after"
+            ),
+            ". The test was carried out by the",
+            a(
+              href = "https://digitalaccessibilitycentre.org/",
+              "Digital accessibility centre (DAC)",
+              .noWS = "after"
+            ),
+            "."
+          ),
+          br("DAC tested a sample of pages to cover the core functionality of the service including:"),
+          tags$div(tags$ul(
+            tags$li("navigation"),
+            tags$li("interactive dropdown selections"),
+            tags$li("charts, maps, and tables")
+          )),
+          br(
+            "This specific website was was last tested on [date] against", # TODO
+            a(
+              href = "https://www.w3.org/TR/WCAG22/",
+              "Accessibility Guidelines WCAG2.2",
+              .noWS = "after"
+            ),
+            ". The test was carried out by the",
+            a(
+              href = "https://www.gov.uk/government/organisations/department-for-education",
+              "Department for Education (DfE)",
+              .noWS = "after"
+            ),
+            "."
+          ),
+          h2("What we're doing to improve accessibility"),
+          br(
+            "We plan to continually test the service for accessibility issues, and are working through a prioritised
+          list of issues to resolve."
+          ),
+          br(
+            "Our current list of issues to be resolved is available on our ",
+            a(
+              href = "", # TODO
+              "[GitHub issues page]", # TODO
+              .noWS = "after"
+            ),
+            "."
+          ),
+          h2("Preparation of this accessibility statement"),
+          br("This statement was prepared on 1st July 2024. It was last reviewed on [date]."), # TODO
+          br(
+            "The template used for this website was last testing in March 2024 against the WCAG 2.2 AA standard.
+          This test of a representative sample of pages was carried out by the",
+            a(
+              href = "https://digitalaccessibilitycentre.org/",
+              "Digital accessibility centre (DAC)",
+              .noWS = "after"
+            ),
+            "."
+          ),
+          br("We also used findings from our own testing when preparing this accessibility statement.")
         )
       )
     )
