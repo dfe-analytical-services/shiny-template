@@ -1,7 +1,4 @@
-# message("Sourcing plotting")
-
-
-createAvgRevTimeSeries <- function(df, inputArea) {
+create_avg_rev_timeseries <- function(df, input_area) {
   ggplot(df, aes(
     x = year,
     y = average_revenue_balance,
@@ -36,13 +33,13 @@ createAvgRevTimeSeries <- function(df, inputArea) {
     ylab(str_wrap("Average revenue balance", 16)) +
     scale_color_manual(
       "Area",
-      breaks = unique(c("England", inputArea)),
+      breaks = unique(c("England", input_area)),
       values = gss_colour_pallette
     )
 }
 
-plotAvgRevBenchmark <- function(dfRevenueBalance, inputArea) {
-  ggplot(dfRevenueBalance, aes(
+plot_avg_rev_benchmark <- function(df_revenue_balance, input_area) {
+  ggplot(df_revenue_balance, aes(
     x = str_wrap(area_name, width = 12),
     y = average_revenue_balance,
     fill = area_name,
@@ -71,7 +68,7 @@ plotAvgRevBenchmark <- function(dfRevenueBalance, inputArea) {
     ylab(str_wrap("Average revenue balance", 12)) +
     scale_fill_manual(
       "Area",
-      breaks = unique(dfRevenueBalance$area_name),
+      breaks = unique(df_revenue_balance$area_name),
       values = gss_colour_pallette
     )
 }

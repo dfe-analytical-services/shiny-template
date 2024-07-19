@@ -1,17 +1,15 @@
 # This file contains scripts which are intended to provide standard styling
 # across dashboards. If you want to change anything in this script, please
-# talk to the DfE Statistics Development team first.
+# talk to the Explore education statistics platforms team first.
 
-# message("Sourcing dfe_template")
-valueBox <- function(value, subtitle, icon = NULL,
-                     color = "blue", width = 4,
-                     href = NULL, fontsize = "medium")
 # fontsize: can be small, medium or large
-{
-  validateColor(color)
+value_box <- function(value, subtitle, icon = NULL,
+                      color = "blue", width = 4,
+                      href = NULL, fontsize = "medium") {
+  validate_color(color)
   if (!is.null(icon)) tagAssert(icon, type = "i")
 
-  boxContent <- div(
+  box_content <- div(
     class = paste0("small-box bg-", color),
     div(
       class = "inner",
@@ -22,24 +20,24 @@ valueBox <- function(value, subtitle, icon = NULL,
   )
 
   if (!is.null(href)) {
-    boxContent <- a(href = href, boxContent)
+    box_content <- a(href = href, box_content)
   }
 
   div(
     class = if (!is.null(width)) paste0("col-sm-", width),
-    boxContent
+    box_content
   )
 }
 
-validColors <- c("blue", "dark-blue", "green", "orange", "purple", "white")
+valid_colors <- c("blue", "dark-blue", "green", "orange", "purple", "white")
 
-validateColor <- function(color) {
-  if (color %in% validColors) {
+validate_color <- function(color) {
+  if (color %in% valid_colors) {
     return(TRUE)
   }
 
   stop(
     "Invalid color: ", color, ". Valid colors are: ",
-    paste(validColors, collapse = ", "), "."
+    paste(valid_colors, collapse = ", "), "."
   )
 }

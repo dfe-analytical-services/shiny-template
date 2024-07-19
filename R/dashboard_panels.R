@@ -1,6 +1,3 @@
-# message("Sourcing dashboard panels")
-
-
 homepage_panel <- function() {
   tabPanel(
     "User guide and information",
@@ -102,18 +99,16 @@ dashboard_panel <- function() {
         column(
           width = 12,
           expandable(
-            inputId = "details", label = textOutput("dropdown_label"),
+            input_id = "details", label = textOutput("dropdown_label"),
             contents =
               div(
                 id = "div_a",
-                # class = "well",
-                # style = "min-height: 100%; height: 100%; overflow-y: visible",
                 gov_row(
                   column(
                     width = 6,
                     selectizeInput("selectPhase",
                       "Select a school phase",
-                      choices = choicesPhase
+                      choices = choices_phase
                     )
                   ),
                   column(
@@ -121,7 +116,7 @@ dashboard_panel <- function() {
                     selectizeInput(
                       inputId = "selectArea",
                       label = "Choose an area:",
-                      choices = choicesAreas$area_name
+                      choices = choices_areas$area_name
                     )
                   ),
                   column(
@@ -208,7 +203,7 @@ dashboard_panel <- function() {
                           width = 12,
                           selectizeInput("selectBenchLAs",
                             "Select benchmark local authorities",
-                            choices = choicesLAs$area_name,
+                            choices = choices_las$area_name,
                             multiple = TRUE,
                             options = list(maxItems = 3)
                           )

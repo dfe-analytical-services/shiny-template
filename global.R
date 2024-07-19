@@ -54,8 +54,8 @@ sites_list <- c(site_primary, site_overflow)
 # publication name (e.g. the EES publication)
 ees_pub_name <- "Statistical publication"
 
-# Update with parent publication link
-ees_publication <- "https://explore-education-statistics.service.gov.uk/find-statistics/"
+# Update with parent publication link, using apprenticeships as an example
+ees_publication <- "https://explore-education-statistics.service.gov.uk/find-statistics/apprenticeships"
 google_analytics_key <- "Z967JJVQQX"
 
 # Read in the data
@@ -66,7 +66,7 @@ df_revbal <- read_revenue_data() %>%
   ))
 
 # Get geographical levels from data
-dfAreas <- df_revbal %>%
+df_areas <- df_revbal %>%
   select(
     geographic_level, country_name, country_code,
     region_name, region_code,
@@ -74,28 +74,28 @@ dfAreas <- df_revbal %>%
   ) %>%
   distinct()
 
-choicesLAs <- dfAreas %>%
+choices_las <- df_areas %>%
   filter(geographic_level == "Local authority") %>%
   select(geographic_level, area_name = la_name) %>%
   arrange(area_name)
 
-choicesAreas <- dfAreas %>%
+choices_areas <- df_areas %>%
   filter(geographic_level == "National") %>%
   select(geographic_level, area_name = country_name) %>%
   rbind(
-    dfAreas %>%
+    df_areas %>%
       filter(geographic_level == "Regional") %>%
       select(geographic_level, area_name = region_name)
   ) %>%
-  rbind(choicesLAs)
+  rbind(choices_las)
 
-choicesYears <- unique(df_revbal$time_period)
+choices_years <- unique(df_revbal$time_period)
 
-choicesPhase <- unique(df_revbal$school_phase)
+choices_phase <- unique(df_revbal$school_phase)
 
-expandable <- function(inputId, label, contents) {
-  govDetails <- shiny::tags$details(
-    class = "govuk-details", id = inputId,
+expandable <- function(input_id, label, contents) {
+  gov_details <- shiny::tags$details(
+    class = "govuk-details", id = input_id,
     shiny::tags$summary(
       class = "govuk-details__summary",
       shiny::tags$span(

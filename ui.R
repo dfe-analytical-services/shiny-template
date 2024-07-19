@@ -1,4 +1,4 @@
-# ---------------------------------------------------------
+# -----------------------------------------------------------------------------
 # This is the ui file.
 # Use it to call elements created in your server file into the app, and define
 # where they are placed. Also use this file to define inputs.
@@ -28,7 +28,7 @@
 #
 #    http://shiny.rstudio.com/
 #
-# ---------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 #
 # This is the user-interface definition of a Shiny web application. You can
@@ -41,25 +41,9 @@
 # The documentation for this GOVUK components can be found at:
 #
 #    https://github.com/moj-analytical-services/shinyGovstyle
-#
-
-
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-# The documentation for this GOVUK components can be found at:
-#
-#    https://github.com/moj-analytical-services/shinyGovstyle
-#
-
+# -----------------------------------------------------------------------------
 ui <- function(input, output, session) {
   fluidPage(
-    # use_tota11y(),
     title = tags$head(
       tags$link(
         rel = "shortcut icon",
@@ -82,7 +66,12 @@ ui <- function(input, output, session) {
         referrer = "no-referrer"
       ),
     shinyjs::useShinyjs(),
-    customDisconnectMessage(),
+    # Variables used here are dset in the global.R file
+    dfeshiny::custom_disconnect_message(
+      links = sites_list,
+      publication_name = ees_pub_name,
+      publication_link = ees_publication
+    ),
     useShinydashboard(),
     # Setting up cookie consent based on a cookie recording the consent:
     # https://book.javascript-for-r.com/shiny-cookies.html

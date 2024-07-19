@@ -15,11 +15,11 @@ read_revenue_data <- function(
     file = "data/la_maintained_schools_revenue_reserve_final.csv") {
   # This reads in an example file. For the purposes of this demo, we're using
   # the latest LA expenditure data downloaded from the EES release.
-  dfRevenue <- read.csv(file)
+  df_revenue <- read.csv(file)
   # The time period column name has some non-ascii characters so we're just
   # going to rename it here.
-  colnames(dfRevenue)[1] <- "time_period"
-  dfRevenue <- dfRevenue %>% mutate(
+  colnames(df_revenue)[1] <- "time_period"
+  df_revenue <- df_revenue %>% mutate(
     year = as.numeric(paste0("20", substr(format(time_period), 5, 6))),
     area_name = case_when(
       geographic_level == "National" ~ country_name,
@@ -27,5 +27,5 @@ read_revenue_data <- function(
       TRUE ~ la_name
     )
   )
-  return(dfRevenue)
+  return(df_revenue)
 }
