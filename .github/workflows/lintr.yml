@@ -14,7 +14,15 @@ permissions:
 
 jobs:
   lintr:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.config.os }}
+
+    name: Run lintr scanning
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {os: ubuntu-latest, r: 'release'}
 
     name: Run lintr scanning
 
