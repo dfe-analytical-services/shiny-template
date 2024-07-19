@@ -19,15 +19,7 @@
 #    http://shiny.rstudio.com/
 #
 # ---------------------------------------------------------
-
-
 server <- function(input, output, session) {
-  # Loading screen -------------------------------------------------------------
-  # Call initial loading screen
-
-  hide(id = "loading-content", anim = TRUE, animType = "fade")
-  show("app-content")
-
   # The template uses bookmarking to store input choices in the url. You can
   # exclude specific inputs (for example extra info created for a datatable
   # or plotly chart) using the list below, but it will need updating to match
@@ -262,26 +254,41 @@ server <- function(input, output, session) {
       )
     )
   })
+  # Example box ==================================================
+  # TODO
 
   # Define server logic to create a box
+  average_revenue_balance <- reactive({
+    paste0("£", format(
+      (reactive_rev_bal() %>% filter(
+        year == max(year),
+        area_name == input$selectArea,
+        school_phase == input$selectPhase
+      ))$average_revenue_balance,
+      big.mark = ","
+    ))
+  })
 
-  output$boxavgRevBal <- renderValueBox({
-    # Put value into box to plug into app
+  # Create the value box
+  boxavg_rev_bal <- reactive({
     value_box(
       # take input number
-      paste0("£", format(
-        (reactive_rev_bal() %>% filter(
-          year == max(year),
-          area_name == input$selectArea,
-          school_phase == input$selectPhase
-        ))$average_revenue_balance,
-        big.mark = ","
-      )),
-      # add subtitle to explain what it's hsowing
+      average_revenue_balance(),
+      # add subtitle to explain what it's showing
       paste0("This is the latest value for the selected inputs"),
       color = "blue"
     )
   })
+
+  output$boxavgRevBal <- renderValueBox({
+    boxavg_rev_bal()
+  })
+
+  # Export value for use in UI tests ------------------------------------------
+  exportTestValues(
+    boxavgRevBal_value = average_revenue_balance(),
+    whole_revbal_box = boxavgRevBal()
+  )
 
   output$boxpcRevBal <- renderValueBox({
     latest <- (reactive_rev_bal() %>% filter(
@@ -417,7 +424,6 @@ server <- function(input, output, session) {
   output$dropdown_label <- renderText({
     paste0("Current selections: ", input$selectPhase, ", ", input$selectArea)
   })
-
 
   # Stop app -------------------------------------------------------------------
 

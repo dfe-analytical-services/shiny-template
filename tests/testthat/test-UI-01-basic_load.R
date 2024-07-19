@@ -1,60 +1,34 @@
-library(shinytest2)
-
+# -----------------------------------------------------------------------------
+# This is an example UI test file
+# It includes a basic test to check that the app loads without error
+#
+# We recommend keeping this test
+#
+# Update it to match the expected title of the app and always make sure it is
+# passing before merging any new code in
+#
+# This should prevent your app from ever failing to start up on the servers
+# -----------------------------------------------------------------------------
+# Start an app running
 app <- AppDriver$new(
   name = "basic_load",
   height = 846,
   width = 1445,
   load_timeout = 45 * 1000,
   timeout = 20 * 1000,
-  wait = TRUE
+  wait = TRUE,
+  expect_values_screenshot_args = FALSE # Turn off as we don't need screenshots
 )
 
-# Wait until Shiny is not busy for 500ms
-app$wait_for_idle(500)
+# Wait until Shiny is not busy for 5ms so we know any processes are complete
+app$wait_for_idle(5)
 
-# Screenshots are left on for this script to help with troubleshooting
-# They will not cause any failures if there's changes
-
-inputs <- c(
-  "cookieAccept", "cookieLink",
-  "cookieReject", "cookies", "hideAccept", "hideReject",
-  "link_to_app_content_tab",
-  "navlistPanel",
-  "plotly_afterplot-A",
-  "selectArea", "selectBenchLAs", "selectPhase",
-  "tabsetpanels"
-)
-
-outputs <- c(
-  "boxavgRevBal", "boxavgRevBal_large", "boxavgRevBal_small",
-  "boxpcRevBal", "boxpcRevBal_large", "boxpcRevBal_small",
-  "dropdown_label",
-  "lineRevBal",
-  "colBenchmark"
-)
-
-test_that("App loads", {
-  # Capture initial values
-  app$expect_values(
-    input = inputs,
-    output = outputs
-  )
-})
-
-app$set_inputs(tabsetpanels = "Line chart example")
-test_that("Line chart created", {
-  # Capture initial values
-  app$expect_values(
-    input = inputs,
-    output = outputs
-  )
-})
-
-app$set_inputs(tabsetpanels = "Benchmarking example")
-test_that("Benchmarking panel", {
-  # Capture initial values
-  app$expect_values(
-    input = inputs,
-    output = outputs
+# Test that the app will start up without error
+# Checks that the first heading level 1 (title) is as expected
+test_that("App loads and title of app appears as expected", {
+  expect_equal(
+    app$get_text("h1")[1],
+    # This matches what is set in dashboard_panels.R for the first panel
+    "Overall content title for this dashboard page"
   )
 })
