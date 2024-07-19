@@ -4,7 +4,7 @@ DfE Shiny template app
   <br>
 </h1>
 
-**Before using this template, please contact the Statistics Development Team (statistics.development@education.gov.uk) to discuss your plans for setting up a DfE dashboard.**
+**Before using this template, please contact the Explore education statistics platforms team (explore.statistics@education.gov.uk) to discuss your plans for setting up a DfE dashboard.**
 
 ---
 
@@ -16,7 +16,7 @@ To use this template, click the green "use this template" button at the top of t
 
 Please delete this header section when you are writing up the README file for your own app.
 
-Please contact statistics.DEVELOPMENT@education.gov.uk if you have any questions, or raise an issue on here if you have spotted something specific that we should change.
+Please contact explore.statistics@education.gov.uk if you have any questions, or raise an issue on here if you have spotted something specific that we should change.
 
 <p align="center">
   <a href="#introduction">Introduction</a> |
@@ -62,7 +62,7 @@ You should list out the software and programming skills needed, as well as any a
 
 ### iii. Access requirements
 
-- Access to the Stats Development Team SQL modelling area (MA_SDT_NS_DATA) in T1PRANMSQL\SQLPROD,60125. Request access from Cam Race and forward on your request to the PDR mailbox (PupilData.REPOSITORY@education.gov.uk)
+- Access to the team SQL modelling area (MA_SDT_NS_DATA) in T1PRANMSQL\SQLPROD,60125. Request access from Cam Race and forward on your request to the PDR mailbox (PupilData.REPOSITORY@education.gov.uk)
   
 ---
 
@@ -119,7 +119,7 @@ If you spot any issues with the application, please flag it in the "Issues" tab 
 
 ### Merging pull requests
 
-Only members of the Statistics Development team can merge pull requests. Add lauraselby, cjrace and sarahmwong as requested reviewers, and the team will review before merging.
+Only members of the Statistics Statistics Services Unit can merge pull requests. Add cjrace and rmbielby as requested reviewers, and the team will review before merging.
 
 ---
 

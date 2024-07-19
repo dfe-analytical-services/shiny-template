@@ -1,6 +1,10 @@
+# -----------------------------------------------------------------------------
 # This file contains scripts which are intended to provide standard styling
-# across dashboards. If you want to change anything in this script, please
+# across dashboards.
+#
+# If you want to change anything in this script, please
 # talk to the Explore education statistics platforms team first.
+# -----------------------------------------------------------------------------
 
 # fontsize: can be small, medium or large
 value_box <- function(value, subtitle, icon = NULL,

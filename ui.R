@@ -123,7 +123,7 @@ ui <- function(input, output, session) {
       homepage_panel(),
       a11y_panel(),
       support_panel(
-        team_email = "statistics.development@education.gov.uk",
+        team_email = "explore.statistics@education.gov.uk",
         repo_name = "https://github.com/dfe-analytical-services/shiny-template",
         form_url = "https://forms.office.com"
       )
