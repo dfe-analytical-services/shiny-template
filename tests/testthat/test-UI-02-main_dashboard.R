@@ -8,11 +8,11 @@
 # 2. exporting values from the app and using here (recommended long term)
 #
 # Snapshots form the basic for future test runs to check to see if the app has
-# changed at all, if it has it will fail and suggest you review the changes
+# changed at all, if it has it will fail and suggest you review the changes.
 #
 # Deciding what to check for in snapshots is a tricky balance, often it's best
-# to snapshot everything, review the .json file and then be very selective
-# about what you care about tracking if it changes.
+# to test running the app in the console, and then running app$get_values() to
+# see what values exist to check.
 #
 # Exporting values allows you to make tests that don't care about data updates
 # or package updates or any other noise, and you can purely focus on what you

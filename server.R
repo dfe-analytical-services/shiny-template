@@ -287,7 +287,7 @@ server <- function(input, output, session) {
   # Export value for use in UI tests ------------------------------------------
   exportTestValues(
     boxavgRevBal_value = average_revenue_balance(),
-    whole_revbal_box = boxavgRevBal()
+    whole_revbal_box = boxavg_rev_bal()
   )
 
   output$boxpcRevBal <- renderValueBox({

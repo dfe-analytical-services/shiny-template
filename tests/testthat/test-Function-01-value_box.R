@@ -1,11 +1,12 @@
 # -----------------------------------------------------------------------------
-# This is an example unit test file
-# It includes a basic test to check that 2 + 2 = 4
+# This is an example unit test file.
 #
-# These examples show some ways you can make use of unit tests
+# These examples show some ways you can make use of unit tests.
+#
+# Add more scripts and checks to test any other functions or non-shiny R code.
 #
 # Unit tests are easy to write and quick to run, make use of them where you can
-# For more information, look at the testthat package documentation
+# For more information, look at the testthat package documentation.
 # -----------------------------------------------------------------------------
 test_that("Example - two plus two equals four", {
   # Expect two objects to be the same
