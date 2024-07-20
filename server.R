@@ -1,25 +1,24 @@
-# ---------------------------------------------------------
+# -----------------------------------------------------------------------------
 # This is the server file.
+#
 # Use it to create interactive elements like tables, charts and text for your
 # app.
 #
 # Anything you create in the server file won't appear in your app until you call
-# it in the UI file. This server script gives an example of a plot and value box
-# that updates on slider input. There are many other elements you can add in
-# too, and you can play around with their reactivity. The "outputs" section of
-# the shiny cheatsheet has a few examples of render calls you can use:
+# it in the UI file. This server script gives examples of plots and value boxes
+#
+# There are many other elements you can add in too, and you can play around with
+# their reactivity. The "outputs" section of the shiny cheatsheet has a few
+# examples of render calls you can use:
 # https://shiny.rstudio.com/images/shiny-cheatsheet.pdf
-#
-#
-# This is the server logic of a Shiny web application. You can run th
-# application by clicking 'Run App' above.
 #
 # Find out more about building applications with Shiny here:
 #
 #    http://shiny.rstudio.com/
 #
-# ---------------------------------------------------------
+# -----------------------------------------------------------------------------
 server <- function(input, output, session) {
+  # Bookmarking ---------------------------------------------------------------
   # The template uses bookmarking to store input choices in the url. You can
   # exclude specific inputs (for example extra info created for a datatable
   # or plotly chart) using the list below, but it will need updating to match
@@ -68,6 +67,7 @@ server <- function(input, output, session) {
     }
   })
 
+  # Cookies logic -------------------------------------------------------------
   observeEvent(input$cookies, {
     if (!is.null(input$cookies)) {
       if (!("dfe_analytics" %in% names(input$cookies))) {
@@ -162,7 +162,7 @@ server <- function(input, output, session) {
     )
   })
 
-  # Simple server stuff goes here ----------------------------------------------
+  # Dataset with timeseries data ----------------------------------------------
   reactive_rev_bal <- reactive({
     df_revbal %>% filter(
       area_name == input$selectArea | area_name == "England",
@@ -170,7 +170,18 @@ server <- function(input, output, session) {
     )
   })
 
-  # Define server logic required to draw a histogram
+  # Dataset with benchmark data -----------------------------------------------
+  reactive_benchmark <- reactive({
+    df_revbal %>%
+      filter(
+        area_name %in% c(input$selectArea, input$selectBenchLAs),
+        school_phase == input$selectPhase,
+        year == max(year)
+      )
+  })
+
+  # Charts --------------------------------------------------------------------
+  # Line chart for revenue balance over time
   output$lineRevBal <- renderGirafe({
     girafe(
       ggobj = create_avg_rev_timeseries(reactive_rev_bal(), input$selectArea),
@@ -183,15 +194,7 @@ server <- function(input, output, session) {
     )
   })
 
-  reactive_benchmark <- reactive({
-    df_revbal %>%
-      filter(
-        area_name %in% c(input$selectArea, input$selectBenchLAs),
-        school_phase == input$selectPhase,
-        year == max(year)
-      )
-  })
-
+  # Benchmarking bar chart
   output$colBenchmark <- renderGirafe({
     girafe(
       ggobj = plot_avg_rev_benchmark(reactive_benchmark()),
@@ -204,6 +207,7 @@ server <- function(input, output, session) {
     )
   })
 
+  # Benchmarking table
   output$tabBenchmark <- renderDataTable({
     datatable(
       reactive_benchmark() %>%
@@ -219,7 +223,8 @@ server <- function(input, output, session) {
       )
     )
   })
-  # Value boxes ===============================================================
+
+  # Value boxes ---------------------------------------------------------------
   # Create a reactive value for average revenue balance
   latest_average_balance <- reactive({
     reactive_rev_bal() %>%
@@ -270,18 +275,12 @@ server <- function(input, output, session) {
     )
   })
 
-  # ---------------------------------------------------------------------------
-  # TODO: WORK OUT WHAT THIS IS
-  observeEvent(input$go, {
-    toggle(id = "div_a", anim = TRUE)
-  })
-
-
+  # Link in the user guide panel back to the main panel -----------------------
   observeEvent(input$link_to_app_content_tab, {
     updateTabsetPanel(session, "navlistPanel", selected = "Example tab 1")
   })
 
-  # Download the underlying data button
+  # Download the underlying data button --------------------------------------
   output$download_data <- downloadHandler(
     filename = "shiny_template_underlying_data.csv",
     content = function(file) {
@@ -289,14 +288,12 @@ server <- function(input, output, session) {
     }
   )
 
-  # Add input IDs here that are within the relevant drop down boxes to create
-  # dynamic text
+  # Dynamic label showing custom selections -----------------------------------
   output$dropdown_label <- renderText({
     paste0("Current selections: ", input$selectPhase, ", ", input$selectArea)
   })
 
   # Stop app ------------------------------------------------------------------
-
   session$onSessionEnded(function() {
     stopApp()
   })
