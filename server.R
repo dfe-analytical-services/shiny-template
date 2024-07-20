@@ -48,7 +48,7 @@ server <- function(input, output, session) {
   })
 
   observe({
-    if (input$navlistPanel == "dashboard") {
+    if (input$navlistPanel == "Example tab 1") {
       change_window_title(
         session,
         paste0(
@@ -414,7 +414,7 @@ server <- function(input, output, session) {
 
 
   observeEvent(input$link_to_app_content_tab, {
-    updateTabsetPanel(session, "navlistPanel", selected = "dashboard")
+    updateTabsetPanel(session, "navlistPanel", selected = "Example tab 1")
   })
 
   # Download the underlying data button

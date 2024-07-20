@@ -45,3 +45,13 @@ validate_color <- function(color) {
     paste(valid_colors, collapse = ", "), "."
   )
 }
+
+# Current GSS colours for use in charts. These are taken from the current
+# guidance here:
+# https://analysisfunction.civilservice.gov.uk/policy-store/data-visualisation-colours-in-charts/
+# Note the advice on trying to keep to a maximum of 4 series in a single plot
+# AF colours package guidance here: https://best-practice-and-impact.github.io/afcolours/
+
+suppressMessages(
+  gss_colour_pallette <- afcolours::af_colours("categorical", colour_format = "hex", n = 4)
+)

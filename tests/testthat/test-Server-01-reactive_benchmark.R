@@ -15,7 +15,7 @@
 testServer(expr = {
   # Give the inputs expected on initial load
   session$setInputs(
-    navlistPanel = "dashboard",
+    navlistPanel = "Example tab 1",
     region = "England",
     selectPhase = "All local authority maintained schools",
     tabsetpanels = "Benchmark example",
@@ -30,13 +30,11 @@ testServer(expr = {
 
   # Change to a different dropdown selection
   session$setInputs(
-    navlistPanel = "dashboard",
     region = "North East",
     selectPhase = "Secondary",
     tabsetpanels = "Benchmarking example",
     selectBenchLAs = c("Barnsley", "Doncaster")
   )
-
 
   # Check the reactive benchmark table is a valid number
   # not currently running expect_true(grepl("^\\d*$", reactive_benchmark()))

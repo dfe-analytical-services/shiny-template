@@ -28,7 +28,7 @@ app$wait_for_idle(5)
 test_that("App loads and title of app appears as expected", {
   expect_equal(
     app$get_text("h1")[1],
-    # This matches what is set in dashboard_panels.R for the first panel
+    # This matches what is set in example_tab_1.R for the first panel
     "Overall content title for this dashboard page"
   )
 })

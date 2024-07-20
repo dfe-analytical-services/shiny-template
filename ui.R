@@ -60,8 +60,8 @@ ui <- function(input, output, session) {
     # Variables used here are dset in the global.R file
     dfeshiny::custom_disconnect_message(
       links = sites_list,
-      publication_name = ees_pub_name,
-      publication_link = ees_publication
+      publication_name = parent_pub_name,
+      publication_link = parent_publication
     ),
     useShinydashboard(),
     # Setting up cookie consent based on a cookie recording the consent:
@@ -110,8 +110,8 @@ ui <- function(input, output, session) {
       id = "navlistPanel",
       widths = c(2, 8),
       well = FALSE,
-      dashboard_panel(),
-      homepage_panel(),
+      example_tab_1_panel(),
+      user_guide_panel(),
       a11y_panel(),
       support_panel(
         team_email = "explore.statistics@education.gov.uk",
