@@ -20,6 +20,7 @@ shhh(library(rstudioapi))
 shhh(library(dfeR))
 shhh(library(dfeshiny))
 shhh(library(shinyGovstyle))
+shhh(library(afcolours))
 
 # Creating charts and tables
 shhh(library(ggplot2))
@@ -33,7 +34,6 @@ shhh(library(ggiraph))
 # Shiny extensions
 shhh(library(shinyjs))
 shhh(library(tools))
-shhh(library(shinydashboard))
 shhh(library(shinyWidgets))
 shhh(library(shinytitle))
 shhh(library(xfun))
@@ -82,6 +82,12 @@ sites_list <- c(site_primary, site_overflow)
 
 # Set the key for Google Analytics tracking
 google_analytics_key <- "Z967JJVQQX"
+
+# Set standard colour palette from AF colours guidance
+# https://analysisfunction.civilservice.gov.uk/policy-store/data-visualisation-colours-in-charts/
+# Note the advice on trying to keep to a maximum of 4 series in a single plot
+# AF colours package guidance here: https://best-practice-and-impact.github.io/afcolours/
+gss_colour_pallette <- afcolours::af_colours("categorical", colour_format = "hex", n = 4)
 
 # End of global variables -----------------------------------------------------
 

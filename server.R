@@ -162,7 +162,8 @@ server <- function(input, output, session) {
     )
   })
 
-  # Simple server stuff goes here ----------------------------------------------
+  # TODO
+  # CHARTS? ----------------------------------------------
   reactive_rev_bal <- reactive({
     df_revbal %>% filter(
       area_name == input$selectArea | area_name == "England",
@@ -283,31 +284,22 @@ server <- function(input, output, session) {
       pull(average_revenue_balance)
   })
 
-  # Export values for use in UI tests -----------------------------------------
+  # Export values for use in UI tests
   exportTestValues(
     avg_rev_bal_value = latest_average_balance(),
     prev_avg_rev_bal_value = previous_average_balance()
   )
 
-  # Create a value box for average revenue balance
-  output$box_balance_latest <- renderValueBox({
-    value_box(
-      value = dfeR::pretty_num(latest_average_balance(), gbp = TRUE),
-      subtitle = paste0("This is the latest value for the selected inputs"),
-      color = "blue"
-    )
+  # Export values for use in value boxes in R/ui_panels/example_tab_1.R
+  output$box_balance_latest <- renderText({
+    dfeR::pretty_num(latest_average_balance(), gbp = TRUE)
   })
 
-  # Create a value box for the change on previous year
-  output$box_balance_change <- renderValueBox({
-    value_box(
-      value = dfeR::pretty_num(
-        latest_average_balance() - previous_average_balance(),
-        prefix = "+/-",
-        gbp = TRUE
-      ),
-      subtitle = paste0("Change from previous year"),
-      color = "blue"
+  output$box_balance_change <- renderText({
+    dfeR::pretty_num(
+      latest_average_balance() - previous_average_balance(),
+      prefix = "+/-",
+      gbp = TRUE
     )
   })
 
@@ -337,7 +329,6 @@ server <- function(input, output, session) {
   })
 
   # Stop app ------------------------------------------------------------------
-
   session$onSessionEnded(function() {
     stopApp()
   })
