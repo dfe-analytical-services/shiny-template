@@ -1,28 +1,119 @@
-/* Link text CSS ----------------------------------------------------------- */
-a {
-  color: #1d70b8;
-  text-decoration: underline
+/* Fonts ------------------------------------------------------------------- */
+/* main body text */
+body {
+  font-family: "Arial", sans-serif;
+  font-size: 19px;
+  margin-bottom: 20px;
 }
 
-a:hover {
-  color: #003078;
-  text-decoration: underline
+p {
+  font-family: "Arial", sans-serif;
+  font-size: 19px;
+  margin-bottom: 20px;
+}
+
+/* heading text */
+.govuk-header__link--service-name {
+  font-size: 24px;
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+.h1,
+h1 {
+  font-family: "Arial", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.0416666667;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.h2,
+h2 {
+  font-family: "Arial", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.0416666667;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.h3,
+h3 {
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.0416666667;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* feedback banner */
+.govuk-phase-banner__content {
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  color: #000000;
+}
+
+/* well text */
+label {
+  font-family: "Arial", sans-serif;
+  font-size: 19px;
+}
+
+
+/* Bullet point formatting ------------------------------------------------- */
+li {
+  margin-bottom: 5px;
+  display: list-item;
+  text-align: -webkit-match-parent;
+  unicode-bidi: isolate;
+}
+
+ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+/* Link text styling ------------------------------------------------------- */
+a {
+  font-family: arial, sans-serif;
+  text-decoration: underline;
+  text-decoration-thickness: max(1px, .0625rem);
+  text-underline-offset: .1578em;
+  word-break: break-word;
+  background-color: transparent;
 }
 
 a:visited {
-  color: #4c2c92;
-  text-decoration: underline
+  color: #4C2C92;
 }
 
-a:active {
+a:focus {
+  outline: 3px solid rgba(0, 0, 0, 0);
   color: #0b0c0c;
-  text-decoration: underline
+  background-color: #fd0;
+  box-shadow: 0 -2px #fd0, 0 4px #0b0c0c;
+  text-decoration: none;
 }
 
 /* GOV.UK containers ------------------------------------------------------- */
 .govuk-width-container {
   width: 100% !important;
   max-width: 100% !important;
+}
+
+/*removing white gutters on govheader container */
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  --bs-gutter-x: 0;
+  --bs-gutter-y: 0;
 }
 
 /* This line sets the main area width. Originally set to 66.667% in the GDS 
@@ -81,12 +172,19 @@ template. 80% works well here to reduce white space on the right hand side.*/
   }
 }
 
-/* This makes it look like the footer extends on shorter pages ------------- */
+/* GOV.UK footer ----------------------------------------------------------- */
+/* footer padding */
+.govuk-footer {
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+/* This makes it look like the footer extends on shorter pages  */
 html {
   background-color: #f3f2f1;
 }
 
-/* GOV.UK details component CSS -------------------------------------------- */
+/* GOV.UK details component ------------------------------------------------ */
 .govuk-details {
   padding: 19px;
   font-family: GDS Transport, arial, sans-serif;
@@ -143,9 +241,9 @@ html {
   padding-right: 19px;
   padding-bottom: 16px;
   padding-left: 19px;
-  border: 1px solid #b1b4b6;
+  border: 1px solid #b1b4b6 !important;
   border-bottom: 0;
-  background-color: #fff;
+  background-color: #fff !important;
   text-decoration: none
 }
 
@@ -156,9 +254,9 @@ html {
   font-weight: 700;
   line-height: 1.1428571429;
   background-color: #f3f2f1 !important;
-  color: #1d70b8;
+  color: #1d70b8 !important;
   font-size: 15px;
-  border-color: #1d70b8;
+  border-color: #1d70b8 !important;
   text-decoration: none
 }
 
@@ -170,7 +268,7 @@ html {
 
 .nav-pills>li>a:focus,
 .nav-pills>li>a:hover {
-  border-color: #1d70b8;
+  border-color: #1d70b8 !important;
 }
 
 .nav-pills>li>a {
@@ -280,35 +378,35 @@ html {
 /* Set the colours for the value boxes */
 .small-box.bg-purple {
   background-color: #801650 !important;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .small-box.bg-white {
   background-color: #ffffff !important;
-  color: #000000;
+  color: #000000 !important;
 }
 
 .small-box.bg-blue {
   background-color: #1d70b8 !important;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .small-box.bg-orange {
   background-color: #F46A25 !important;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .small-box.bg-red {
   background-color: #f499be !important;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .small-box.bg-green {
   background-color: #00703c !important;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .small-box.bg-dark-blue {
   background-color: #12436D !important;
-  color: #ffffff;
+  color: #ffffff !important;
 }
