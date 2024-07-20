@@ -1,16 +1,13 @@
 example_tab_1_panel <- function() {
   tabPanel(
     "Example tab 1",
-
-    # Define UI for application that draws a histogram
-
-    # Sidebar with a slider input for number of bins
     gov_main_layout(
       gov_row(
         column(
           width = 12,
           h1("Overall content title for this dashboard page"),
         ),
+        # Expandable section --------------------------------------------------
         column(
           width = 12,
           expandable(
@@ -18,6 +15,7 @@ example_tab_1_panel <- function() {
             contents =
               div(
                 id = "div_a",
+                # User selection dropdowns ------------------------------------
                 gov_row(
                   column(
                     width = 6,
@@ -34,6 +32,7 @@ example_tab_1_panel <- function() {
                       choices = choices_areas$area_name
                     )
                   ),
+                  # Download button -------------------------------------------
                   column(
                     width = 12,
                     paste("Download the underlying data for this dashboard:"),
@@ -49,10 +48,12 @@ example_tab_1_panel <- function() {
               )
           ),
         ),
+        # Tabset under dropdowns ----------------------------------------------
         column(
           width = 12,
           tabsetPanel(
             id = "tabsetpanels",
+            # Value boxes tab -------------------------------------------------
             tabPanel(
               "Valuebox example",
               fluidRow(
@@ -69,6 +70,7 @@ example_tab_1_panel <- function() {
                 )
               )
             ),
+            # Timeseries tab --------------------------------------------------
             tabPanel(
               "Line chart example",
               fluidRow(
@@ -79,6 +81,7 @@ example_tab_1_panel <- function() {
                 )
               )
             ),
+            # Benchmarking tab ------------------------------------------------
             tabPanel(
               "Benchmarking example",
               fluidRow(
@@ -87,6 +90,7 @@ example_tab_1_panel <- function() {
                   h2("An example bar chart using ggplot and ggiraph"),
                   p("This is the standard paragraph style for adding guiding
                     info around data content."),
+                  # Bar chart for benchmarking --------------------------------
                   column(
                     width = 6,
                     girafeOutput("colBenchmark",
@@ -100,6 +104,7 @@ example_tab_1_panel <- function() {
                       style = "min-height: 100%; height: 100%; overflow-y:
                       visible",
                       fluidRow(
+                        # Benchmarking dropdown selection ---------------------
                         column(
                           width = 12,
                           selectizeInput("selectBenchLAs",
@@ -111,6 +116,7 @@ example_tab_1_panel <- function() {
                         )
                       )
                     ),
+                    # Benchmarking table --------------------------------------
                     dataTableOutput("tabBenchmark")
                   )
                 )
@@ -118,7 +124,6 @@ example_tab_1_panel <- function() {
             )
           )
         )
-        # add box to show user input
       )
     )
   )

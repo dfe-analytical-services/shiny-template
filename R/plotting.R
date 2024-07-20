@@ -1,3 +1,14 @@
+# -----------------------------------------------------------------------------
+# This is the plotting.R file.
+#
+# This is where we've stored the functions for creating the plots in the app.
+#
+# It is up to you whether you put all plots in this script, move the plots to
+# the utils.R script or have a multiple scripts or even a folder of scripts
+# that contain your custom plotting functions.
+# -----------------------------------------------------------------------------
+
+# Revenue balance time series line chart --------------------------------------
 create_avg_rev_timeseries <- function(df, input_area) {
   ggplot(df, aes(
     x = year,
@@ -38,6 +49,7 @@ create_avg_rev_timeseries <- function(df, input_area) {
     )
 }
 
+# Revenue balance bar chart ---------------------------------------------------
 plot_avg_rev_benchmark <- function(df_revenue_balance, input_area) {
   ggplot(df_revenue_balance, aes(
     x = str_wrap(area_name, width = 12),
