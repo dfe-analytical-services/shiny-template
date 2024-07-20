@@ -8,7 +8,7 @@ Shiny.addCustomMessageHandler('cookie-set', function(msg){
   getCookies();
 })
 
-Shiny.addCustomMessageHandler('cookie-remove', function(msg){
+Shiny.addCustomMessageHandler('cookie-clear', function(msg){
   Cookies.remove(msg.name);
   getCookies();
 })
