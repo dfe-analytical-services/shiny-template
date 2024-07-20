@@ -171,37 +171,17 @@ server <- function(input, output, session) {
   })
 
   # Define server logic required to draw a histogram
-  output$lineRevBal <- snapshotPreprocessOutput(
-    renderGirafe({
-      girafe(
-        ggobj = create_avg_rev_timeseries(reactive_rev_bal(), input$selectArea),
-        options = list(
-          opts_sizing(rescale = TRUE, width = 1.0),
-          opts_toolbar(saveaspng = FALSE)
-        ),
-        width_svg = 9.6,
-        height_svg = 5.0
-      )
-    }),
-    function(value) {
-      # Removing elements that cause issues with shinytest comparisons when run
-      # on different environments
-      svg_removed <- gsub(
-        "svg_[0-9a-z]{8}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{12}",
-        "svg_random_giraph_string", value
-      )
-      font_standardised <- gsub("Arial", "Helvetica", svg_removed)
-      cleaned_positions <- gsub(
-        "[a-z]*x[0-9]*='[0-9.]*' [a-z]*y[0-9]*='[0-9.]*'",
-        "Position", font_standardised
-      )
-      cleaned_size <- gsub(
-        "width='[0-9.]*' height='[0-9.]*'", "Size", cleaned_positions
-      )
-      cleaned_points <- gsub("points='[0-9., ]*'", "points", cleaned_size)
-      cleaned_points
-    }
-  )
+  output$lineRevBal <- renderGirafe({
+    girafe(
+      ggobj = create_avg_rev_timeseries(reactive_rev_bal(), input$selectArea),
+      options = list(
+        opts_sizing(rescale = TRUE, width = 1.0),
+        opts_toolbar(saveaspng = FALSE)
+      ),
+      width_svg = 9.6,
+      height_svg = 5.0
+    )
+  })
 
   reactive_benchmark <- reactive({
     df_revbal %>%
@@ -212,39 +192,17 @@ server <- function(input, output, session) {
       )
   })
 
-  output$colBenchmark <- snapshotPreprocessOutput(
-    renderGirafe({
-      girafe(
-        ggobj = plot_avg_rev_benchmark(reactive_benchmark()),
-        options = list(
-          opts_sizing(rescale = TRUE, width = 1.0),
-          opts_toolbar(saveaspng = FALSE)
-        ),
-        width_svg = 5.0,
-        height_svg = 5.0
-      )
-    }),
-    function(value) {
-      # Removing elements that cause issues with shinytest comparisons when run on
-      # different environments - should add to dfeshiny at some point.
-      svg_removed <- gsub(
-        "svg_[0-9a-z]{8}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{4}_[0-9a-z]{12}",
-        "svg_random_giraph_string",
-        value
-      )
-      font_standardised <- gsub("Arial", "Helvetica", svg_removed)
-      cleaned_positions <- gsub(
-        "x[0-9]*='[0-9.]*' y[0-9]*='[0-9.]*'",
-        "Position", font_standardised
-      )
-      cleaned_size <- gsub(
-        "width='[0-9.]*' height='[0-9.]*'",
-        "Size", cleaned_positions
-      )
-      cleaned_points <- gsub("points='[0-9., ]*'", "points", cleaned_size)
-      cleaned_points
-    }
-  )
+  output$colBenchmark <- renderGirafe({
+    girafe(
+      ggobj = plot_avg_rev_benchmark(reactive_benchmark()),
+      options = list(
+        opts_sizing(rescale = TRUE, width = 1.0),
+        opts_toolbar(saveaspng = FALSE)
+      ),
+      width_svg = 5.0,
+      height_svg = 5.0
+    )
+  })
 
   output$tabBenchmark <- renderDataTable({
     datatable(
