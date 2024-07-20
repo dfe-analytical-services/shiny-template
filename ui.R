@@ -34,8 +34,6 @@
 #
 # -----------------------------------------------------------------------------
 ui <- function(input, output, session) {
-  # TODO
-  # page_fluid(
   fluidPage(
     title = tags$head(
       tags$link(
@@ -65,6 +63,7 @@ ui <- function(input, output, session) {
       publication_name = parent_pub_name,
       publication_link = parent_publication
     ),
+    useShinydashboard(),
     # Setting up cookie consent based on a cookie recording the consent:
     # https://book.javascript-for-r.com/shiny-cookies.html
     tags$head(

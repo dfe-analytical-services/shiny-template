@@ -62,14 +62,8 @@ example_tab_1_panel <- function() {
                   fluidRow(
                     column(
                       width = 12,
-                      bslib::value_box(
-                        title = "Average revenue balance",
-                        value = textOutput("box_balance_latest")
-                      ),
-                      bslib::value_box(
-                        title = "Change from previous year",
-                        value = textOutput("box_balance_change")
-                      )
+                      valueBoxOutput("box_balance_latest", width = 6),
+                      valueBoxOutput("box_balance_change", width = 6)
                     )
                   )
                 )
@@ -124,6 +118,7 @@ example_tab_1_panel <- function() {
             )
           )
         )
+        # add box to show user input
       )
     )
   )
