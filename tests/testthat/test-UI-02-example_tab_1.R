@@ -24,7 +24,7 @@
 # -----------------------------------------------------------------------------
 # Start an app running
 app <- AppDriver$new(
-  name = "basic_load",
+  name = "example_tab_1",
   height = 846,
   width = 1445,
   load_timeout = 45 * 1000,
