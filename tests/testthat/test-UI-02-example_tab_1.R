@@ -51,14 +51,7 @@ app$expect_values(
 # Get the exported values, defined in server.R file using exportTestValues()
 rev_bal_export <- app$get_values(export = c("boxavgRevBal_value"))
 
-# Expect that the value in the box is always a £ symbol followed by numbers
-# it accounts for commas being added if the numbers are large.
+# Expect that the value in the box is always a number
 # This checks that there is a value present, it hasn't errored, and won't
 # fail when you next update the data.
-expect_true(
-  grepl(
-    # regex to check the value meets expected pattern
-    "^£\\d{1,3}(,\\d{3})*$",
-    rev_bal_export$export$boxavgRevBal_value
-  )
-)
+expect_true(is.numeric(rev_bal_export$export$boxavgRevBal_value))

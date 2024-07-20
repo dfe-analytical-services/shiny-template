@@ -10,7 +10,7 @@ create_avg_rev_timeseries <- function(df, input_area) {
       aes(
         tooltip = paste0(
           "<p><b>", area_name, ", ", year, "</b></p>",
-          "<p>£", format(average_revenue_balance, big.mark = ","), "</p>"
+          unlist(lapply(average_revenue_balance, pretty_num, prefix = "£")), "</p>"
         )
       ),
       size = 0.5
@@ -45,8 +45,8 @@ plot_avg_rev_benchmark <- function(df_revenue_balance, input_area) {
     fill = area_name,
     id = area_name,
     tooltip = paste(
-      "<p><b>", area_name, "</b></p>", "<p>£",
-      format(average_revenue_balance, big.mark = ","), "</p>"
+      "<p><b>", area_name, "</b></p>",
+      unlist(lapply(average_revenue_balance, pretty_num, prefix = "£")), "</p>"
     )
   )) +
     geom_col_interactive() +

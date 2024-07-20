@@ -265,21 +265,18 @@ server <- function(input, output, session) {
 
   # Define server logic to create a box
   average_revenue_balance <- reactive({
-    paste0("£", format(
-      (reactive_rev_bal() %>% filter(
-        year == max(year),
-        area_name == input$selectArea,
-        school_phase == input$selectPhase
-      ))$average_revenue_balance,
-      big.mark = ","
-    ))
+    (reactive_rev_bal() %>% filter(
+      year == max(year),
+      area_name == input$selectArea,
+      school_phase == input$selectPhase
+    ))$average_revenue_balance
   })
 
   # Create the value box
   boxavg_rev_bal <- reactive({
     value_box(
       # take input number
-      average_revenue_balance(),
+      dfeR::pretty_num(average_revenue_balance(), prefix = "£"),
       # add subtitle to explain what it's showing
       paste0("This is the latest value for the selected inputs"),
       color = "blue"
