@@ -228,6 +228,11 @@ server <- function(input, output, session) {
 
   # ---------------------------------------------------------------------------
   # TODO: WORK OUT WHAT THIS IS
+  observeEvent(input$go, {
+    toggle(id = "div_a", anim = TRUE)
+  })
+
+
   observeEvent(input$link_to_app_content_tab, {
     updateTabsetPanel(session, "navlistPanel", selected = "Example tab 1")
   })

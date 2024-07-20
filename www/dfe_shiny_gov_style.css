@@ -129,15 +129,111 @@ template. 80% works well here to reduce white space on the right hand side.*/
     color: #fff;
 }
 
+.govuk-details {
+    padding: 19px;
+    font-family: GDS Transport, arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 25px;
+    background-color: #1d70b8;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 20px;
+    display: block;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+}
+
+.govuk-details__summary {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 5px;
+    padding-left: 25px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.govuk-details__summary-text:hover {
+    text-decoration: underline;
+    text-decoration-thickness: max(4px, .1875rem, .12em);
+}
+
+.govuk-details__summary:hover {
+    color: #fff;
+}
+
+.govuk-details__summary:focus {
+    outline: 3px solid rgba(0, 0, 0, 0);
+    /* color: #0b0c0c; */
+    background-color: #fd0;
+    box-shadow: 0 -2px #fd0, 0 4px #0b0c0c;
+    color: #0b0c0c;
+    text-decoration: none;
+}
 
 
-/* Block the standard shiny disconnect overlay from appearing */
-#shiny-disconnected-overlay { display: none !important; }
+/* Full screen plots */
+/* Adapted from https://stackoverflow.com/questions/69042546/is-there-a-way-to-create-a-full-screen-popup-window-of-a-plotly-chart-in-r */
+.plot-zoom {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    bottom: 0;
+    right: 0;
+
+}
+
+.full-screen {
+    position: fixed;
+    height: 99vh !important;
+    width: 99vw !important;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    overflow: hidden;
+}
 
 
-/* Need to work out what this is */
+.small-box.bg-purple {
+    background-color: 	#801650 !important;
+    color: #ffffff;
+}
+
+.small-box.bg-white {
+    background-color: 	#ffffff !important;
+    color: #000000;
+}
+
+
+.small-box.bg-blue{
+     background-color: #1d70b8 !important; 
+     color: #ffffff;
+     padding: 120px
+     margin:10px;
+}
+
+.small-box.bg-orange{
+     background-color: #F46A25 !important; 
+     color: #ffffff;
+}
+
+.small-box.bg-red{
+     background-color: #f499be !important; 
+     color: #ffffff;
+}
+
+.small-box.bg-green{
+     background-color: 	#00703c !important; 
+     color: #ffffff;
+}
+
+.small-box.bg-dark-blue{
+     background-color: 	#12436D !important; 
+     color: #ffffff;
+}
+
 #ss-connect-dialog { display: none !important; }
-
+#shiny-disconnected-overlay { display: none !important; }
+        
 #ss-overlay {
              background-color: #000000 !important;
              opacity: 0.6 !important;
@@ -209,4 +305,40 @@ template. 80% works well here to reduce white space on the right hand side.*/
         float: left !important;
         vertical-align: top !important;
     }
+}
+
+#vboxhead-small {
+  text-align: left;
+  font-weight: bold;
+  font-size: 36px;
+}
+
+#vboxdetail-small {
+  text-align: left;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+#vboxhead-medium {
+  text-align: left;
+  font-weight: bold;
+  font-size: 42px;
+}
+
+#vboxdetail-medium {
+  text-align: left;
+  font-weight: bold;
+  font-size: 26px;
+}
+
+#vboxhead-large {
+  text-align: left;
+  font-weight: bold;
+  font-size: 56px;
+}
+
+#vboxdetail-large {
+  text-align: left;
+  font-weight: bold;
+  font-size: 28px;
 }

@@ -13,38 +13,41 @@ example_tab_1_panel <- function() {
         ),
         column(
           width = 12,
-          div(
-            id = "dropdown_div",
-            textOutput("dropdown_label"),
-            gov_row(
-              column(
-                width = 6,
-                selectizeInput("selectPhase",
-                  "Select a school phase",
-                  choices = choices_phase
-                )
-              ),
-              column(
-                width = 6,
-                selectizeInput(
-                  inputId = "selectArea",
-                  label = "Choose an area:",
-                  choices = choices_areas$area_name
-                )
-              ),
-              column(
-                width = 12,
-                paste("Download the underlying data for this dashboard:"),
-                br(),
-                downloadButton(
-                  outputId = "download_data",
-                  label = "Download data",
-                  icon = shiny::icon("download"),
-                  class = "downloadButton"
+          expandable(
+            input_id = "details", label = textOutput("dropdown_label"),
+            contents =
+              div(
+                id = "div_a",
+                gov_row(
+                  column(
+                    width = 6,
+                    selectizeInput("selectPhase",
+                      "Select a school phase",
+                      choices = choices_phase
+                    )
+                  ),
+                  column(
+                    width = 6,
+                    selectizeInput(
+                      inputId = "selectArea",
+                      label = "Choose an area:",
+                      choices = choices_areas$area_name
+                    )
+                  ),
+                  column(
+                    width = 12,
+                    paste("Download the underlying data for this dashboard:"),
+                    br(),
+                    downloadButton(
+                      outputId = "download_data",
+                      label = "Download data",
+                      icon = shiny::icon("download"),
+                      class = "downloadButton"
+                    )
+                  )
                 )
               )
-            )
-          )
+          ),
         ),
         column(
           width = 12,
