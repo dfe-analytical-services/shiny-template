@@ -252,7 +252,7 @@ server <- function(input, output, session) {
   output$box_balance_latest <- renderValueBox({
     value_box(
       value = dfeR::pretty_num(latest_average_balance(), gbp = TRUE),
-      subtitle = paste0("This is the latest value for the selected inputs"),
+      subtitle = paste0("Average revenue balance"),
       color = "blue"
     )
   })

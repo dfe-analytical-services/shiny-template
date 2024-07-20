@@ -10,7 +10,7 @@
       ]
     },
     "box_balance_latest": {
-      "html": "<div class=\"small-box bg-blue\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-medium\">£120,880<\/p>\n    <p id=\"vboxdetail-medium\">This is the latest value for the selected inputs<\/p>\n  <\/div>\n<\/div>",
+      "html": "<div class=\"small-box bg-blue\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-medium\">£120,880<\/p>\n    <p id=\"vboxdetail-medium\">Average revenue balance<\/p>\n  <\/div>\n<\/div>",
       "deps": [
 
       ]
