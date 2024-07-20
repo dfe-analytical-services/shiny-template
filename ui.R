@@ -20,6 +20,7 @@
 # -----------------------------------------------------------------------------
 ui <- function(input, output, session) {
   fluidPage(
+    # Set app metadata --------------------------------------------------------
     title = tags$head(
       tags$link(
         rel = "shortcut icon",
@@ -41,14 +42,20 @@ ui <- function(input, output, session) {
         rating = "General",
         referrer = "no-referrer"
       ),
-    shinyjs::useShinyjs(),
-    # Variables used here are dset in the global.R file
+
+    # Custom disconnect function ----------------------------------------------
+    # Variables used here are set in the global.R file
     dfeshiny::custom_disconnect_message(
       links = sites_list,
       publication_name = parent_pub_name,
       publication_link = parent_publication
     ),
+
+    # Load javascript dependencies --------------------------------------------
     useShinydashboard(),
+    shinyjs::useShinyjs(),
+
+    # Cookies -----------------------------------------------------------------
     # Setting up cookie consent based on a cookie recording the consent:
     # https://book.javascript-for-r.com/shiny-cookies.html
     tags$head(
@@ -60,6 +67,9 @@ ui <- function(input, output, session) {
       ),
       tags$script(src = "cookie-consent.js")
     ),
+    shinyGovstyle::cookieBanner("Department for Education (DfE) R-Shiny dashboard template"),
+
+    # Google analytics --------------------------------------------------------
     tags$head(includeHTML(("google-analytics.html"))),
     tags$head(
       tags$link(
@@ -68,7 +78,8 @@ ui <- function(input, output, session) {
         href = "dfe_shiny_gov_style.css"
       )
     ),
-    shinyGovstyle::cookieBanner("Department for Education (DfE) R-Shiny dashboard template"),
+
+    # Header ------------------------------------------------------------------
     shinyGovstyle::header(
       main_text = "",
       main_link = "https://www.gov.uk/government/organisations/department-for-education",
@@ -77,6 +88,8 @@ ui <- function(input, output, session) {
       logo_width = 150,
       logo_height = 32
     ),
+
+    # Beta banner -------------------------------------------------------------
     shinyGovstyle::banner(
       "beta banner",
       "beta",
@@ -90,11 +103,14 @@ ui <- function(input, output, session) {
         "<a href=", site_overflow, " id='link_site_2'>Site 2</a>."
       )
     ),
+
+    # Nav panels --------------------------------------------------------------
     shiny::navlistPanel(
       "",
       id = "navlistPanel",
       widths = c(2, 8),
       well = FALSE,
+      # Content for these panels is defined in the R/ui_panels/ folder
       example_tab_1_panel(),
       user_guide_panel(),
       a11y_panel(),
@@ -104,9 +120,8 @@ ui <- function(input, output, session) {
         form_url = "https://forms.office.com"
       )
     ),
-    tags$script(
-      src = "script.js"
-    ),
+
+    # Footer ------------------------------------------------------------------
     footer(full = TRUE)
   )
 }
