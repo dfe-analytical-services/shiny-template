@@ -58,14 +58,23 @@ ui <- function(input, output, session) {
         rating = "General",
         referrer = "no-referrer"
       ),
-    dfeshiny::dfe_cookie_script(),
     shinyjs::useShinyjs(),
-    cookie_banner_ui("cookies", name = "Template R-Shiny data dashboard"),
     # Variables used here are dset in the global.R file
     dfeshiny::custom_disconnect_message(
       links = sites_list,
       publication_name = parent_pub_name,
       publication_link = parent_publication
+    ),
+    # Setting up cookie consent based on a cookie recording the consent:
+    # https://book.javascript-for-r.com/shiny-cookies.html
+    tags$head(
+      tags$script(
+        src = paste0(
+          "https://cdn.jsdelivr.net/npm/js-cookie@rc/",
+          "dist/js.cookie.min.js"
+        )
+      ),
+      tags$script(src = "cookie-consent.js")
     ),
     tags$head(includeHTML(("google-analytics.html"))),
     tags$head(
@@ -75,6 +84,7 @@ ui <- function(input, output, session) {
         href = "dfe_shiny_gov_style.css"
       )
     ),
+    shinyGovstyle::cookieBanner("Department for Education (DfE) R-Shiny dashboard template"),
     shinyGovstyle::header(
       main_text = "",
       main_link = "https://www.gov.uk/government/organisations/department-for-education",
@@ -108,11 +118,10 @@ ui <- function(input, output, session) {
         team_email = "explore.statistics@education.gov.uk",
         repo_name = "https://github.com/dfe-analytical-services/shiny-template",
         form_url = "https://forms.office.com"
-      ),
-      cookies_panel_ui(
-        id = "cookies_panel",
-        google_analytics_key = google_analytics_key
       )
+    ),
+    tags$script(
+      src = "script.js"
     ),
     footer(full = TRUE)
   )
