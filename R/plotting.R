@@ -23,7 +23,7 @@ create_avg_rev_timeseries <- function(df, input_area) {
         angle = 0, vjust = 0.5,
         margin = margin(r = 12)
       ),
-      axis.line = element_line(size = 0.75),
+      axis.line = element_line(linewidth = 0.75),
       legend.position = "top"
     ) +
     scale_y_continuous(
@@ -58,7 +58,7 @@ plot_avg_rev_benchmark <- function(df_revenue_balance, input_area) {
         angle = 0, vjust = 0.5,
         margin = margin(r = 12)
       ),
-      axis.line = element_line(size = 0.75),
+      axis.line = element_line(linewidth = 0.75),
       legend.position = "none"
     ) +
     scale_y_continuous(
