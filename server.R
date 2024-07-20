@@ -214,7 +214,8 @@ server <- function(input, output, session) {
         ),
       options = list(
         scrollX = TRUE,
-        paging = FALSE
+        paging = FALSE,
+        searching = FALSE
       )
     )
   })
