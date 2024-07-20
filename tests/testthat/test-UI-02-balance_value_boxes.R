@@ -44,14 +44,15 @@ app$wait_for_idle(5)
 
 # Capture specified values for average revenue balance box (raw snapshot)
 app$expect_values(
-  input = c("selectArea"), # Check location selected
-  output = c("boxavgRevBal") # Output to snapshot
+  input = c("selectArea"), # Input selections to snapshot
+  output = c("box_balance_latest", "box_balance_change") # Output to snapshot
 )
 
 # Get the exported values, defined in server.R file using exportTestValues()
-rev_bal_export <- app$get_values(export = c("boxavgRevBal_value"))
+rev_bal_export <- app$get_values(export = c("avg_rev_bal_value", "prev_avg_rev_bal_value"))
 
-# Expect that the value in the box is always a number
+# Expect that the exported values used in the boxes are always a number
 # This checks that there is a value present, it hasn't errored, and won't
 # fail when you next update the data.
-expect_true(is.numeric(rev_bal_export$export$boxavgRevBal_value))
+expect_true(is.numeric(rev_bal_export$export$avg_rev_bal_value))
+expect_true(is.numeric(rev_bal_export$export$prev_avg_rev_bal_value))

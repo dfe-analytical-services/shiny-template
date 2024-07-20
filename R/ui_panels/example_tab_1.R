@@ -62,22 +62,8 @@ example_tab_1_panel <- function() {
                   fluidRow(
                     column(
                       width = 12,
-                      valueBoxOutput("boxavgRevBal_small", width = 6),
-                      valueBoxOutput("boxpcRevBal_small", width = 6)
-                    )
-                  ),
-                  fluidRow(
-                    column(
-                      width = 12,
-                      valueBoxOutput("boxavgRevBal", width = 6),
-                      valueBoxOutput("boxpcRevBal", width = 6)
-                    )
-                  ),
-                  fluidRow(
-                    column(
-                      width = 12,
-                      valueBoxOutput("boxavgRevBal_large", width = 6),
-                      valueBoxOutput("boxpcRevBal_large", width = 6)
+                      valueBoxOutput("box_balance_latest", width = 6),
+                      valueBoxOutput("box_balance_change", width = 6)
                     )
                   )
                 )
