@@ -175,7 +175,10 @@ server <- function(input, output, session) {
     renderGirafe({
       girafe(
         ggobj = create_avg_rev_timeseries(reactive_rev_bal(), input$selectArea),
-        options = list(opts_sizing(rescale = TRUE, width = 1.0)),
+        options = list(
+          opts_sizing(rescale = TRUE, width = 1.0),
+          opts_toolbar(saveaspng = FALSE)
+        ),
         width_svg = 9.6,
         height_svg = 5.0
       )
@@ -213,7 +216,10 @@ server <- function(input, output, session) {
     renderGirafe({
       girafe(
         ggobj = plot_avg_rev_benchmark(reactive_benchmark()),
-        options = list(opts_sizing(rescale = TRUE, width = 1.0)),
+        options = list(
+          opts_sizing(rescale = TRUE, width = 1.0),
+          opts_toolbar(saveaspng = FALSE)
+        ),
         width_svg = 5.0,
         height_svg = 5.0
       )
@@ -425,7 +431,7 @@ server <- function(input, output, session) {
     paste0("Current selections: ", input$selectPhase, ", ", input$selectArea)
   })
 
-  # Stop app -------------------------------------------------------------------
+  # Stop app ------------------------------------------------------------------
 
   session$onSessionEnded(function() {
     stopApp()

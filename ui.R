@@ -28,19 +28,10 @@
 #
 #    http://shiny.rstudio.com/
 #
-# -----------------------------------------------------------------------------
-
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-# The documentation for this GOVUK components can be found at:
+# The documentation for GOV.UK components can be found at:
 #
 #    https://github.com/moj-analytical-services/shinyGovstyle
+#
 # -----------------------------------------------------------------------------
 ui <- function(input, output, session) {
   fluidPage(
