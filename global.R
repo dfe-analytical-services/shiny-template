@@ -89,13 +89,9 @@ google_analytics_key <- "Z967JJVQQX"
 enableBookmarking("url")
 
 # Read in the data ------------------------------------------------------------
-df_revbal <- read_revenue_data() %>%
-  mutate(school_phase = case_when(
-    school_phase == "All LA maintained schools" ~ "All local authority maintained schools",
-    .default = school_phase
-  ))
+df_revbal <- read_revenue_data()
 
-# Get geographical levels from data
+# Get geographical areas from data
 df_areas <- df_revbal %>%
   select(
     geographic_level, country_name, country_code,
@@ -104,12 +100,14 @@ df_areas <- df_revbal %>%
   ) %>%
   distinct()
 
-## Extract lists for use in drop downs ----------------------------------------
+# Extract lists for use in drop downs -----------------------------------------
+# LA list
 choices_las <- df_areas %>%
   filter(geographic_level == "Local authority") %>%
   select(geographic_level, area_name = la_name) %>%
   arrange(area_name)
 
+# Full list of areas
 choices_areas <- df_areas %>%
   filter(geographic_level == "National") %>%
   select(geographic_level, area_name = country_name) %>%
@@ -120,4 +118,5 @@ choices_areas <- df_areas %>%
   ) %>%
   rbind(choices_las)
 
+# List of phases
 choices_phase <- unique(df_revbal$school_phase)
