@@ -58,16 +58,4 @@ testServer(expr = {
         school_phase == "Secondary"
       )
   )
-
-  # Check the reactive benchmark value is a valid number
-  # not currently running expect_true(grepl("^\\d*$", reactive_benchmark()))
-
-  # Check the output has expected number of rows for benchmark table
-  # not currently running expect_equal(nrow(output$tabBenchmark), 1)
-
-  # Check the reactive benchmark table is a valid number
-  # not currently running expect_true(grepl("^\\d*$", reactive_benchmark()))
-
-  # Check the output has expected number of rows for benchmark table
-  # not currently running expect_equal(nrow(reactive_benchmark()), 3)
 })
