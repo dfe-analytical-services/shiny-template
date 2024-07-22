@@ -66,7 +66,7 @@ ui <- function(input, output, session) {
         href = "dfefavicon.png"
       ),
       # Add title for browser tabs
-      tags$title("Department for Education (DfE) Shiny Template")
+      tags$head(HTML("<title>Department for Education (DfE) Shiny Template</title>"))
     ),
     use_shiny_title(),
     tags$html(lang = "en"),
