@@ -60,14 +60,10 @@
 ui <- function(input, output, session) {
   fluidPage(
     # use_tota11y(),
-    title = tags$head(
-      tags$link(
-        rel = "shortcut icon",
-        href = "dfefavicon.png"
-      ),
-      # Add title for browser tabs
-      tags$head(HTML("<title>Department for Education (DfE) Shiny Template</title>"))
-    ),
+
+    # Set application metadata ------------------------------------------------
+    tags$head(HTML("<title>Department for Education (DfE) Shiny Template</title>")),
+    tags$head(tags$link(rel = "shortcut icon", href = "dfefavicon.png")),
     use_shiny_title(),
     tags$html(lang = "en"),
     # Add meta description for search engines
