@@ -24,8 +24,6 @@ jobs:
         config:
           - {os: ubuntu-latest, r: 'release'}
 
-    name: Run lintr scanning
-
     permissions:
       contents: read # for checkout to fetch code
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
