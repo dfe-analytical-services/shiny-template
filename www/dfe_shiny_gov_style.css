@@ -78,7 +78,7 @@ ul {
 
 /* Link text styling ------------------------------------------------------- */
 a {
-  font-family: arial, sans-serif;
+  font-family: "Arial", sans-serif;
   text-decoration: underline;
   text-decoration-thickness: max(1px, .0625rem);
   text-underline-offset: .1578em;
@@ -187,7 +187,7 @@ html {
 /* GOV.UK details component ------------------------------------------------ */
 .govuk-details {
   padding: 19px;
-  font-family: GDS Transport, arial, sans-serif;
+  font-family: "Arial", sans-serif;
   -webkit-font-smoothing: antialiased;
   font-size: 25px;
   background-color: #1d70b8;
@@ -228,59 +228,16 @@ html {
 
 /* Tabs layout styling ----------------------------------------------------- */
 .nav-tabs>li>a {
-  text-decoration: none
+  text-decoration: none /* Remove underlining */
 }
 
-.nav-tabs>li.active>a,
-.nav-tabs>li.active>a:focus,
-.nav-tabs>li.active>a:hover {
-  position: relative;
-  margin-top: -5px;
-  margin-bottom: -1px;
-  padding-top: 14px;
-  padding-right: 19px;
-  padding-bottom: 16px;
-  padding-left: 19px;
-  border: 1px solid #b1b4b6 !important;
-  border-bottom: 0;
-  background-color: #fff !important;
-  text-decoration: none
+.nav-tabs>li>a:focus {
+  background-color: #fd0 !important;
+  box-shadow: 0 0px #fd0, 0 4px #1d70b8 !important;
 }
 
-.nav-pills>li.active>a {
-  font-family: "GDS Transport", Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 700;
-  line-height: 1.1428571429;
-  background-color: #f3f2f1 !important;
-  color: #1d70b8 !important;
-  font-size: 15px;
-  border-color: #1d70b8 !important;
-  text-decoration: none
-}
-
-.nav-pills>li.active>a,
-.nav-pills>li.active>a:focus,
-.nav-pills>li.active>a:hover {
-  color: #1d70b8 !important;
-}
-
-.nav-pills>li>a:focus,
-.nav-pills>li>a:hover {
-  border-color: #1d70b8 !important;
-}
-
-.nav-pills>li>a {
-  font-family: "GDS Transport", Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 700;
-  line-height: 1.1428571429;
-  font-size: 15px;
-  padding: 10px;
-  border-left: 4px solid transparent;
-  text-decoration: none
+.nav-tabs>li>a:hover {
+  background-color: #9d9b9b;
 }
 
 /* Well panel CSS used in user selections ---------------------------------- */
