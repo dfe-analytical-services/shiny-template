@@ -226,8 +226,39 @@ html {
   text-decoration: none;
 }
 
+/* Left nav tabs styling --------------------------------------------------- */
+
+.nav-stacked>li>a {
+  text-decoration: none; /* Remove underlining */
+  color: #000;
+}
+
+.nav-stacked>li>a:focus {
+  background-color: #fd0;
+  box-shadow: 0 0px #fd0, 0 4px #1d70b8;
+}
+
+.nav-stacked>li>a:hover {
+  color: #000;
+  font-weight: bold;
+  background-color: #b1b4b6;
+}
+
+.nav-pills>li.active>a {
+  color: #ffffff;
+  background-color: #1d70b8;
+  box-shadow: 0 0px #b1b4b6, 0 4px #1d70b8;
+}
+
+.nav-pills>li.active>a:focus {
+  color: #000;
+  background-color: #fd0;
+  box-shadow: 0 0px #b1b4b6, 0 4px #1d70b8;
+}
+
 /* Tabs layout styling ----------------------------------------------------- */
 .nav-tabs>li>a {
+  color: #000;
   text-decoration: none /* Remove underlining */
 }
 
@@ -237,7 +268,9 @@ html {
 }
 
 .nav-tabs>li>a:hover {
-  background-color: #9d9b9b;
+  color: #000;
+  font-weight: bold;
+  background-color: #b1b4b6;
 }
 
 /* Well panel CSS used in user selections ---------------------------------- */
