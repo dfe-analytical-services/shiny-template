@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-# This is the utils.R file, short for 'utilities'
+# This is the helper file, filled with lots of helpful functions!
 #
 # It is commonly used as an R script to store custom functions used through the
 # app to keep the rest of the app code easier to read.

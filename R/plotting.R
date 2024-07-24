@@ -4,8 +4,8 @@
 # This is where we've stored the functions for creating the plots in the app.
 #
 # It is up to you whether you put all plots in this script, move the plots to
-# the utils.R script or have a multiple scripts or even a folder of scripts
-# that contain your custom plotting functions.
+# the helper_functions.R script or have a multiple scripts or even a folder of
+# scripts that contain your custom plotting functions.
 # -----------------------------------------------------------------------------
 
 # Revenue balance time series line chart --------------------------------------

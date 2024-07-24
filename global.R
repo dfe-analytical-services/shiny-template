@@ -59,7 +59,7 @@ if (FALSE) {
 source("R/read_data.R")
 
 # Source custom functions script
-source("R/utils.R")
+source("R/helper_functions.R")
 
 # Source all files in the ui_panels folder
 lapply(list.files("R/ui_panels/", full.names = TRUE), source)

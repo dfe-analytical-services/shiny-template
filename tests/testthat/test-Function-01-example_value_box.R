@@ -20,7 +20,7 @@ test_that("Example - two plus two equals four", {
 test_that("Value box function errors when no value is given", {
   # Note the path to the file is adjusted so that it works
   # when running shinytest2::test_app()
-  source("../../R/utils.R")
+  source("../../R/helper_functions.R")
 
   # Expect an error if no value argument is given to value_box() function
   expect_error(value_box())
