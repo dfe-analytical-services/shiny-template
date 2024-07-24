@@ -22,7 +22,7 @@ test_data <- read_revenue_data(
 )
 
 # Test the server file --------------------------------------------------------
-testServer(expr = {
+shiny::testServer(expr = {
   # Give the inputs expected on initial load
   session$setInputs(
     navlistPanel = "Example tab 1",
