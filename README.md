@@ -1,41 +1,65 @@
 # Department for Education template R Shiny application
 
-**Before using this template, please contact the Explore education statistics platforms team (explore.statistics@education.gov.uk) to discuss your plans for setting up a DfE dashboard.**
-
-This template repository is for making accessible apps for published statistics in DfE. It includes a basic accessible shiny app with DfE styling, as well as templates for additional best practice documents like this README script, pull request templates and codes of conduct for contributing.
-
-There is a version of this template hosted for you to preview at https://department-for-education.shinyapps.io/dfe-shiny-template/.
-
-To use this template, click the green "use this template" button at the top of the repo. This will create a copy for you to work off of. 
-
-Please delete this header section and all commented lines when you are writing up the README file for your own app.
-
-Please contact explore.statistics@education.gov.uk if you have any questions, or raise an issue on here if you have spotted something specific that we should change.
-
 ---
 
 ## Introduction 
 
-<!-- Give a brief overview of what your app is for here.-->
+**Before using this template, please contact the Explore education statistics platforms team (explore.statistics@education.gov.uk) to discuss your plans for creating a DfE dashboard.**
 
-...
+This template repository is for making accessible apps for published statistics in DfE. It includes a basic shiny app with DfE styling and example components, as well as templates for additional best practice documents like the README script, pull request templates and codes of conduct for contributing.
 
-This application is deployed in the following places:
-
-<!-- Update this list as appropriate for your app -->
+This template app is deployed in the following places for you to view:
 
 - Public production - https://department-for-education.shinyapps.io/dfe-shiny-template/
 - Public overflow - https://department-for-education.shinyapps.io/dfe-shiny-template-overflow/
+
+We have guidance on [creating public dashboards](https://dfe-analytical-services.github.io/analysts-guide/writing-visualising/dashboards.html) and [creating dashboards in R Shiny](https://dfe-analytical-services.github.io/analysts-guide/writing-visualising/dashboards_rshiny.html) that you should familiarise yourself with before using this template.
+
+---
+
+## Using this template
+
+If you wish to begin developing an official DfE dashboard, then contact the explore education statistics platforms team to arrange a new dashboard repository based on this template in the dfe-analytical-services GitHub area. 
+
+If you just want to experiment with the template first, you can create your own copy of the template by clicking the green "use this template" button. Though note that all DfE dashboards must be held within the dfe-analytical-services area and you should minimise any code that is held in personal repositories.
+
+---
+
+### New application checklist
+
+---
+
+Once you have a new repository set up from this template, you should start by taking the following actions. If you have any issues while running these please contact explore.statistics@gov.uk for support.
+
+#### Check you can run it
+
+1. Check that you can run the app successfully using the instructions in this README
+2. Check that the example automated tests also run successfully using `shinytest2::test_app()`
+
+#### Update standard variables
+
+3. Update the app title in the `ui.R` script and the `tests/testthat/test-UI-01-basic_load.R` UI test script
+4. Update the rest of the app metadata set in the `ui.R` script
+5. Update the variables set in the `global.R` script
+6. Test that the app still loads okay in the tests using `shinytest2::test_app()`
+
+Finally before adding your own code, you should update the readme, deleting this version and then replacing with your own content applicable to your dashboard based on the README_template.md file in this repository. Once done you should also delete that template, leaving you with a single `README.md` file that documents an overview of your application. Continue to edit and maintain that as a key document for your application over time.
+
+#### Set up other things
+
+Before publishing there will be a number of other things you wish to set up. You can do some of these using the functions starting with `init_` from the `dfeshiny` package. More guidance on these steps, including walkthrough guides can be found on the [dfeshiny package documentation site](https://dfe-analytical-services.github.io/dfeshiny/).
+
+* User analytics using Google Analytics using `dfeshiny::init_analytics()`
+* Cookies tracking using `dfeshiny::init_cookies()` and following the [guide to using the cookies functions in dfeshiny](https://dfe-analytical-services.github.io/dfeshiny/articles/implementing-cookies.html)
+* Deployment keys, to deploy to shinyapps.io and make a dashboard public, you will need to contact explore.statistics@education.gov.uk for them to add the deployment keys as secure variables in your repository to then allow the `.github/workflows/deploy-shiny.yaml` workflow to run successfully
 
 ---
 
 ## Requirements
 
-The following requirements are necessarily for running the application yourself or contributing to it.
+The following requirements are necessary for running the application yourself or contributing to it.
 
 ### i. Software requirements (for running locally)
-
-<!-- Update these to match your application -->
 
 - Installation of R Studio 2024.04.2+764 "Chocolate Cosmos" or higher
 
@@ -45,25 +69,19 @@ The following requirements are necessarily for running the application yourself 
 
 ### ii. Programming skills required (for editing or troubleshooting)
 
-<!-- Update these to match your application -->
-
 - R at an intermediate level, [DfE R leanring resources](https://dfe-analytical-services.github.io/analysts-guide/learning-development/r.html)
 
 - Particularly [R Shiny](https://shiny.rstudio.com/)
 
 ### iii. Access requirements
 
-<!-- Detail any access requirements, e.g. database access for source data, including what level of access is required and how to request it.-->
+To contribute to the repo you will need to be given access to create new branches, commit and push / pull, contact explore.statistics@education.gov.uk for this.
 
-...
-  
+There are no other access requirements as all example data is available in the repository
+
 ---
 
 ## How to use
-
-<!-- Add any other useful detail for others about your application code here -->
-
-...
 
 ### Running the app locally
 
@@ -78,10 +96,6 @@ The following requirements are necessarily for running the application yourself 
 ### Folder structure
 
 All R code outside of the core `global.R`, `server.R`, and `ui.R` files is stored in the `R/` folder. There is a `utils.R` file for common custom functions, and scripts for the different UI panels in the `R/ui_panels/` folder.
-
-<!-- Include any other detail as appropriate to help guide others around your repo -->
-
-...
 
 ### Packages
 
@@ -115,9 +129,7 @@ You should also run `lintr::lint_dir()` regularly as lintr will check all pull r
 
 ## How to contribute
 
-<!-- Add any other ways to contribute to your application here -->
-
-...
+We welcome all suggestions and contributions to this template, and recommend raising an issue in GitHub to start discussions around potential additions or changes with the maintaining team.
 
 ### Flagging issues
 
@@ -131,6 +143,4 @@ You can also use the "Issues" tab in GitHub to suggest new features, changes or 
 
 ## Contact
 
-<!-- Add contact details of how to get in touch with your team. -->
-
-...
+explore.statistics@education.gov.uk
