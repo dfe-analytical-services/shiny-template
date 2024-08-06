@@ -12,15 +12,15 @@ Please use the templates provided to ensure that there is sufficient detail in y
 
 ## Pull requests
 
-If you have written some code that fixes a bug or feature, please pusht his up in a new branch under the format "bug/issue" and open this as a new PR when it is ready to review.
+If you have written some code that fixes a bug or feature, please push this up in a new branch under the format "bug/issue" and open this as a new PR when it is ready to review.
 
 - Ensure the PR description clearly describes the problem and solution. 
 - Include the relevant issue number if applicable.
 
 ### Code styling
 
-All code is styled using the styleR package. Running the `tidy_code()` function before pushing up to branch ensures that your code is in line with our style, and passes the continuous integration tests.
+All code is styled using the styleR package. Running the `styler::style_dir()` function before pushing up to branch ensures that your code is in line with our style, and passes the pre-commit hooks.
 
 ## Any other questions
 
-If you have any other questions, please do not hesitate to contact us at Statistics.DEVELOPMENT@education.gov.uk
+If you have any other questions, please do not hesitate to contact us at explore.statistics@education.gov.uk

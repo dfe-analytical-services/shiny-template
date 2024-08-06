@@ -1,26 +1,11 @@
-# ---------------------------------------------------------
-# This is the ui file.
-# Use it to call elements created in your server file into the app, and define
-# where they are placed. Also use this file to define inputs.
-#
-# Every UI file should contain:
-# - A title for the app
-# - A call to a CSS file to define the styling
-# - An accessibility statement
-# - Contact information
+# -----------------------------------------------------------------------------
+# This is the ui file. Use it to call elements created in your server file into
+# the app, and define where they are placed, and define any user inputs.
 #
 # Other elements like charts, navigation bars etc. are completely up to you to
 # decide what goes in. However, every element should meet accessibility
 # requirements and user needs.
 #
-# This file uses a slider input, but other inputs are available like date
-# selections, multiple choice dropdowns etc. Use the shiny cheatsheet to explore
-# more options: https://shiny.rstudio.com/images/shiny-cheatsheet.pdf
-#
-# Likewise, this template uses the navbar layout.
-# We have used this as it meets accessibility requirements, but you are free to
-# use another layout if it does too.
-#
 # This is the user-interface definition of a Shiny web application. You can
 # run the application by clicking 'Run App' above.
 #
@@ -28,39 +13,13 @@
 #
 #    http://shiny.rstudio.com/
 #
-# ---------------------------------------------------------
-
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-# The documentation for this GOVUK components can be found at:
+# The documentation for GOV.UK components can be found at:
 #
 #    https://github.com/moj-analytical-services/shinyGovstyle
 #
-
-
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-# The documentation for this GOVUK components can be found at:
-#
-#    https://github.com/moj-analytical-services/shinyGovstyle
-#
-
+# -----------------------------------------------------------------------------
 ui <- function(input, output, session) {
   fluidPage(
-    # use_tota11y(),
-
     # Set application metadata ------------------------------------------------
     tags$head(HTML("<title>Department for Education (DfE) Shiny Template</title>")),
     tags$head(tags$link(rel = "shortcut icon", href = "dfefavicon.png")),
@@ -77,9 +36,20 @@ ui <- function(input, output, session) {
         rating = "General",
         referrer = "no-referrer"
       ),
-    shinyjs::useShinyjs(),
-    customDisconnectMessage(),
+
+    # Custom disconnect function ----------------------------------------------
+    # Variables used here are set in the global.R file
+    dfeshiny::custom_disconnect_message(
+      links = sites_list,
+      publication_name = parent_pub_name,
+      publication_link = parent_publication
+    ),
+
+    # Load javascript dependencies --------------------------------------------
     useShinydashboard(),
+    shinyjs::useShinyjs(),
+
+    # Cookies -----------------------------------------------------------------
     # Setting up cookie consent based on a cookie recording the consent:
     # https://book.javascript-for-r.com/shiny-cookies.html
     tags$head(
@@ -91,6 +61,9 @@ ui <- function(input, output, session) {
       ),
       tags$script(src = "cookie-consent.js")
     ),
+    shinyGovstyle::cookieBanner("Department for Education (DfE) R-Shiny dashboard template"),
+
+    # Google analytics --------------------------------------------------------
     tags$head(includeHTML(("google-analytics.html"))),
     tags$head(
       tags$link(
@@ -99,7 +72,8 @@ ui <- function(input, output, session) {
         href = "dfe_shiny_gov_style.css"
       )
     ),
-    shinyGovstyle::cookieBanner("Department for Education (DfE) R-Shiny dashboard template"),
+
+    # Header ------------------------------------------------------------------
     shinyGovstyle::header(
       main_text = "",
       main_link = "https://www.gov.uk/government/organisations/department-for-education",
@@ -108,6 +82,8 @@ ui <- function(input, output, session) {
       logo_width = 150,
       logo_height = 32
     ),
+
+    # Beta banner -------------------------------------------------------------
     shinyGovstyle::banner(
       "beta banner",
       "beta",
@@ -121,23 +97,25 @@ ui <- function(input, output, session) {
         "<a href=", site_overflow, " id='link_site_2'>Site 2</a>."
       )
     ),
+
+    # Nav panels --------------------------------------------------------------
     shiny::navlistPanel(
       "",
       id = "navlistPanel",
       widths = c(2, 8),
       well = FALSE,
-      dashboard_panel(),
-      homepage_panel(),
+      # Content for these panels is defined in the R/ui_panels/ folder
+      example_tab_1_panel(),
+      user_guide_panel(),
       a11y_panel(),
       support_panel(
-        team_email = "statistics.development@education.gov.uk",
+        team_email = "explore.statistics@education.gov.uk",
         repo_name = "https://github.com/dfe-analytical-services/shiny-template",
         form_url = "https://forms.office.com"
       )
     ),
-    tags$script(
-      src = "script.js"
-    ),
+
+    # Footer ------------------------------------------------------------------
     footer(full = TRUE)
   )
 }

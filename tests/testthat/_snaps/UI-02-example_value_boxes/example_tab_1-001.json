@@ -1,0 +1,19 @@
+{
+  "input": {
+    "selectArea": "North East"
+  },
+  "output": {
+    "box_balance_change": {
+      "html": "<div class=\"small-box bg-blue\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-medium\">+£53,131<\/p>\n    <p id=\"vboxdetail-medium\">Change from previous year<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "box_balance_latest": {
+      "html": "<div class=\"small-box bg-blue\">\n  <div class=\"inner\">\n    <p id=\"vboxhead-medium\">£120,880<\/p>\n    <p id=\"vboxdetail-medium\">Average revenue balance<\/p>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    }
+  }
+}

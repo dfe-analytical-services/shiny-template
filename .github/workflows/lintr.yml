@@ -22,8 +22,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        # Running on mac as it's quicker to build
-          - {os: macOS-latest, r: 'release'}
+          - {os: ubuntu-latest, r: 'release'}
 
     permissions:
       contents: read # for checkout to fetch code
@@ -31,12 +30,10 @@ jobs:
       
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup R
-        uses: r-lib/actions/setup-r@4e1feaf90520ec1215d1882fdddfe3411c08e492
+      - uses: r-lib/actions/setup-r@v2
         with:
-          r-version: 4.2.1
           use-public-rspm: true
       
       - name: restore renv
@@ -53,7 +50,7 @@ jobs:
         continue-on-error: true
 
       - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: lintr-results.sarif
           wait-for-processing: true

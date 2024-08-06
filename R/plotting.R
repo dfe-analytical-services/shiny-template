@@ -1,7 +1,15 @@
-# message("Sourcing plotting")
+# -----------------------------------------------------------------------------
+# This is the plotting.R file.
+#
+# This is where we've stored the functions for creating the plots in the app.
+#
+# It is up to you whether you put all plots in this script, move the plots to
+# the helper_functions.R script or have a multiple scripts or even a folder of
+# scripts that contain your custom plotting functions.
+# -----------------------------------------------------------------------------
 
-
-createAvgRevTimeSeries <- function(df, inputArea) {
+# Revenue balance time series line chart --------------------------------------
+create_avg_rev_timeseries <- function(df, input_area) {
   ggplot(df, aes(
     x = year,
     y = average_revenue_balance,
@@ -13,7 +21,7 @@ createAvgRevTimeSeries <- function(df, inputArea) {
       aes(
         tooltip = paste0(
           "<p><b>", area_name, ", ", year, "</b></p>",
-          "<p>£", format(average_revenue_balance, big.mark = ","), "</p>"
+          unlist(lapply(average_revenue_balance, pretty_num, prefix = "£")), "</p>"
         )
       ),
       size = 0.5
@@ -26,7 +34,7 @@ createAvgRevTimeSeries <- function(df, inputArea) {
         angle = 0, vjust = 0.5,
         margin = margin(r = 12)
       ),
-      axis.line = element_line(size = 0.75),
+      axis.line = element_line(linewidth = 0.75),
       legend.position = "top"
     ) +
     scale_y_continuous(
@@ -36,20 +44,21 @@ createAvgRevTimeSeries <- function(df, inputArea) {
     ylab(str_wrap("Average revenue balance", 16)) +
     scale_color_manual(
       "Area",
-      breaks = unique(c("England", inputArea)),
+      breaks = unique(c("England", input_area)),
       values = gss_colour_pallette
     )
 }
 
-plotAvgRevBenchmark <- function(dfRevenueBalance, inputArea) {
-  ggplot(dfRevenueBalance, aes(
+# Revenue balance bar chart ---------------------------------------------------
+plot_avg_rev_benchmark <- function(df_revenue_balance, input_area) {
+  ggplot(df_revenue_balance, aes(
     x = str_wrap(area_name, width = 12),
     y = average_revenue_balance,
     fill = area_name,
     id = area_name,
     tooltip = paste(
-      "<p><b>", area_name, "</b></p>", "<p>£",
-      format(average_revenue_balance, big.mark = ","), "</p>"
+      "<p><b>", area_name, "</b></p>",
+      unlist(lapply(average_revenue_balance, pretty_num, prefix = "£")), "</p>"
     )
   )) +
     geom_col_interactive() +
@@ -61,7 +70,7 @@ plotAvgRevBenchmark <- function(dfRevenueBalance, inputArea) {
         angle = 0, vjust = 0.5,
         margin = margin(r = 12)
       ),
-      axis.line = element_line(size = 0.75),
+      axis.line = element_line(linewidth = 0.75),
       legend.position = "none"
     ) +
     scale_y_continuous(
@@ -71,7 +80,7 @@ plotAvgRevBenchmark <- function(dfRevenueBalance, inputArea) {
     ylab(str_wrap("Average revenue balance", 12)) +
     scale_fill_manual(
       "Area",
-      breaks = unique(dfRevenueBalance$area_name),
+      breaks = unique(df_revenue_balance$area_name),
       values = gss_colour_pallette
     )
 }

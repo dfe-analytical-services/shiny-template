@@ -6,7 +6,7 @@ a11y_panel <- function() {
         column(
           width = 12,
           h1("Accessibility statement for [service name]"), # TODO
-          br(
+          p(
             "This accessibility statement applies to the [raw service URL] website. This website is run by the", # TODO
             a(
               href = "https://www.gov.uk/government/organisations/department-for-education",
@@ -16,9 +16,7 @@ a11y_panel <- function() {
             "This statement does not cover any other services run by the Department for Education (DfE) or GOV.UK."
           ),
           h2("How you should be able to use this website"),
-          br(
-            "We want as many people as possible to be able to use this website. You should be able to:"
-          ),
+          p("We want as many people as possible to be able to use this website. You should be able to:"),
           tags$div(tags$ul(
             tags$li("change colours, contrast levels and fonts using browser or device settings"),
             tags$li("zoom in up to 400% without the text spilling off the screen"),
@@ -26,21 +24,18 @@ a11y_panel <- function() {
             tags$li("listen to most of the website using a screen reader
                     (including the most recent versions of JAWS, NVDA and VoiceOver)")
           )),
-          br("We’ve also made the website text as simple as possible to understand."),
-          br(
-            a(
-              href = "https://mcmw.abilitynet.org.uk/",
-              "AbilityNet"
-            ),
+          p("We’ve also made the website text as simple as possible to understand."),
+          p(
+            a(href = "https://mcmw.abilitynet.org.uk/", "AbilityNet"),
             " has advice on making your device easier to use if you have a disability."
           ),
           h2("How accessible this website is"),
-          br("We know some parts of this website are not fully accessible:"),
+          p("We know some parts of this website are not fully accessible:"),
           tags$div(tags$ul(
             tags$li("list them here") # TODO
           )),
           h2("Feedback and contact information"),
-          br(
+          p(
             "If you need information on this website in a different format please see the ",
             a(
               href = "", # TODO
@@ -49,7 +44,7 @@ a11y_panel <- function() {
             ),
             ". More details are available on that service for alternative formats of this data.",
           ),
-          br("We’re always looking to improve the accessibility of this website.
+          p("We’re always looking to improve the accessibility of this website.
              If you find any problems not listed on this page or think we’re not meeting
              accessibility requirements, contact us:"),
           tags$ul(tags$li(
@@ -59,10 +54,10 @@ a11y_panel <- function() {
             )
           )),
           h2("Enforcement procedure"),
-          br("The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies
+          p("The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies
              (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018
              (the ‘accessibility regulations’)."),
-          br(
+          p(
             "If you are not happy with how we respond to your complaint, ",
             a(
               href = "https://www.equalityadvisoryservice.com/",
@@ -72,13 +67,10 @@ a11y_panel <- function() {
             "."
           ),
           h2("Technical information about this website's accessibility"),
-          br(
-            "The Department for Education (DfE) is committed to making its website accessible,
-            in accordance with the Public Sector Bodies (Websites and Mobile Applications)
-              (No. 2) Accessibility Regulations 2018."
-          ),
+          p("The Department for Education (DfE) is committed to making its website accessible, in accordance with the
+          Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018."),
           h3("Compliance status"),
-          br(
+          p(
             "This website is partially compliant with the", # TODO
             a(
               href = "https://www.w3.org/TR/WCAG21/",
@@ -88,15 +80,15 @@ a11y_panel <- function() {
             " due to the non-compliances listed below."
           ),
           h3("Non accessible content"),
-          br("The content listed below is non-accessible for the following reasons.
+          p("The content listed below is non-accessible for the following reasons.
              We will address these issues to ensure our content is accessible."),
           tags$div(tags$ul(
             tags$li("list them here") # TODO
           )),
           h3("Disproportionate burden"),
-          br("Not applicable."),
+          p("Not applicable."),
           h2("How we tested this website"),
-          br(
+          p(
             "The template used for this website was last tested on 12 March 2024 against",
             a(
               href = "https://www.w3.org/TR/WCAG22/",
@@ -111,13 +103,13 @@ a11y_panel <- function() {
             ),
             "."
           ),
-          br("DAC tested a sample of pages to cover the core functionality of the service including:"),
+          p("DAC tested a sample of pages to cover the core functionality of the service including:"),
           tags$div(tags$ul(
             tags$li("navigation"),
             tags$li("interactive dropdown selections"),
             tags$li("charts, maps, and tables")
           )),
-          br(
+          p(
             "This specific website was was last tested on [date] against", # TODO
             a(
               href = "https://www.w3.org/TR/WCAG22/",
@@ -133,11 +125,9 @@ a11y_panel <- function() {
             "."
           ),
           h2("What we're doing to improve accessibility"),
-          br(
-            "We plan to continually test the service for accessibility issues, and are working through a prioritised
-          list of issues to resolve."
-          ),
-          br(
+          p("We plan to continually test the service for accessibility issues, and are working through a prioritised
+          list of issues to resolve."),
+          p(
             "Our current list of issues to be resolved is available on our ",
             a(
               href = "", # TODO
@@ -147,8 +137,8 @@ a11y_panel <- function() {
             "."
           ),
           h2("Preparation of this accessibility statement"),
-          br("This statement was prepared on 1st July 2024. It was last reviewed on [date]."), # TODO
-          br(
+          p("This statement was prepared on 1st July 2024. It was last reviewed on [date]."), # TODO
+          p(
             "The template used for this website was last testing in March 2024 against the WCAG 2.2 AA standard.
           This test of a representative sample of pages was carried out by the",
             a(
@@ -158,7 +148,7 @@ a11y_panel <- function() {
             ),
             "."
           ),
-          br("We also used findings from our own testing when preparing this accessibility statement.")
+          p("We also used findings from our own testing when preparing this accessibility statement.")
         )
       )
     )
