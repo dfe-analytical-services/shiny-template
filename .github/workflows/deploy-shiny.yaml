@@ -30,21 +30,6 @@ jobs:
         run: |
           echo "SHINYAPP_NAME='dfe-shiny-template'">> $GITHUB_ENV
           echo "SHINYAPP_OVERFLOW_NAME='dfe-shiny-template-overflow'">> $GITHUB_ENV
-
-      - name: Cache R packages
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
-
-      - name: Cache renv packages
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.RENV_PATHS_ROOT }}
-          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-renv-
         
       - name: Restore renv snapshot
         shell: Rscript {0}
