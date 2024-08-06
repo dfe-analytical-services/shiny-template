@@ -47,7 +47,7 @@ Finally before adding your own code, you should update the readme, deleting this
 
 #### Set up other things
 
-Before publishing there will be a number of other things you wish to set up. You can do some of these using the functions starting with `init_` from the `dfeshiny` package. More guidance on these steps, including walkthrough guides can be found on the [dfeshiny package documentation site](https://dfe-analytical-services.github.io/dfeshiny/).
+Before publishing there will be a number of other things you wish to set up. You can do some of these using the functions starting with `init_` from the `dfeshiny` package. More guidance on these steps, including walk-through guides can be found on the [dfeshiny package documentation site](https://dfe-analytical-services.github.io/dfeshiny/).
 
 * User analytics using Google Analytics using `dfeshiny::init_analytics()`
 * Cookies tracking using `dfeshiny::init_cookies()` and following the [guide to using the cookies functions in dfeshiny](https://dfe-analytical-services.github.io/dfeshiny/articles/implementing-cookies.html)
@@ -103,11 +103,30 @@ Package control is handled using renv. As in the steps above, you will need to r
 
 Whenever you add new packages, make sure to use `renv::snapshot()` to record them in the `renv.lock` file.
 
+#### Known issues
+
+We've found that some packages have particular issues with backwards / forwards compatibility when using different versions of R. 
+
+You'll hit this if you have older versions of some packages but have updated your R version, and you'll see install issues when running `renv::restore()`.
+
+We commonly see this with MASS and Matrix.
+
+To solve this issue, you should try recording the latest versions of these packages individually in the lockfile and replacing the package version with the latest available version on CRAN.
+
+To install specific package versions use @ to specify the version, for example:
+```
+renv::record("MASS@7.3-61")
+```
+
+Once you've recorded the newest versions, try running `renv::restore()` again to install the versions of the packages now specified, all going well, the latest versions should work with the latest version of R. 
+
+Be mindful that updating package versions can change behaviour, so make sure to test your dashboard thorough and check all automated tests are still passing after making any package updates.
+
 ### Tests
 
 Automated tests have been created using shinytest2 that test the app loads and also give other examples of ways you can use tests. You should edit the tests as you add new features into the app and continue to add and maintain the tests over time.
 
-GitHub Actions provide CI by running the automated tests and checks for code styling on every pull request into the main branch. The yaml files for these workflows can be found in the .github/workflows folder.
+GitHub Actions provide continuous integration (CI) by running the automated tests and checks for code styling on every pull request into the main branch. The yaml files for these workflows can be found in the .github/workflows folder.
 
 You should run `shinytest2::test_app()` regularly to check that the tests are passing against the code you are working on.
 
@@ -129,15 +148,15 @@ You should also run `lintr::lint_dir()` regularly as lintr will check all pull r
 
 ## How to contribute
 
-We welcome all suggestions and contributions to this template, and recommend raising an issue in GitHub to start discussions around potential additions or changes with the maintaining team.
+We welcome all suggestions and contributions to this template, and recommend [raising an issue in GitHub](https://github.com/dfe-analytical-services/shiny-template/issues/new/choose) to start discussions around potential additions or changes with the maintaining team.
 
 ### Flagging issues
 
-If you spot any issues with the application, please flag it in the "Issues" tab of this repository, and label as a bug. Include as much detail as possible to help the developers diagnose the issue and prepare a suitable remedy.
+If you spot any issues with the application, please flag it in the [issues tab of this repository](https://github.com/dfe-analytical-services/shiny-template/issues), and label as a bug. Include as much detail as possible to help the developers diagnose the issue and prepare a suitable remedy.
 
 ### Making suggestions
 
-You can also use the "Issues" tab in GitHub to suggest new features, changes or additions. Include as much detail on why you're making the suggestion and any thinking towards a solution that you have already done.
+You can also use the [issues tab of this repository](https://github.com/dfe-analytical-services/shiny-template/issues) to suggest new features, changes or additions. Include as much detail on why you're making the suggestion and any thinking towards a solution that you have already done.
 
 ---
 

@@ -39,7 +39,7 @@ The following requirements are necessary for running the application yourself or
 
 <!-- Update these to match your application -->
 
-- R at an intermediate level, [DfE R leanring resources](https://dfe-analytical-services.github.io/analysts-guide/learning-development/r.html)
+- R at an intermediate level, [DfE R learning resources](https://dfe-analytical-services.github.io/analysts-guide/learning-development/r.html)
 
 - Particularly [R Shiny](https://shiny.rstudio.com/)
 
