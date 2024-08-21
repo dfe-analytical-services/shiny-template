@@ -34,7 +34,8 @@ Once you have a new repository set up from this template, you should start by ta
 #### Check you can run it
 
 1. Check that you can run the app successfully using the instructions in this README
-2. Check that the example automated tests also run successfully using `shinytest2::test_app()`
+2. Check that the example automated tests also run successfully using `shinytest2::test_app()`<br>
+(If you get `Error in initialize(...) : Invalid path to Chrome`, the Analyst's Guide has a solution - [shinytest2 - Invalid path to Chrome (chromote) error message](https://dfe-analytical-services.github.io/analysts-guide/learning-development/r.html#shinytest2---invalid-path-to-chrome-chromote-error-message))
 
 #### Update standard variables
 
@@ -42,6 +43,7 @@ Once you have a new repository set up from this template, you should start by ta
 4. Update the rest of the app metadata set in the `ui.R` script
 5. Update the variables set in the `global.R` script
 6. Test that the app still loads okay in the tests using `shinytest2::test_app()`
+7. Note: You may get a failure for the test in `test-UI-01-basic_load.R`, with a reason similar to `app$get_text("title") not equal to ...`. See this [workaround for the failure of the UI test](#ui-test-fail).
 
 Finally before adding your own code, you should update the readme, deleting this version and then replacing with your own content applicable to your dashboard based on the README_template.md file in this repository. Once done you should also delete that template, leaving you with a single `README.md` file that documents an overview of your application. Continue to edit and maintain that as a key document for your application over time.
 
@@ -105,6 +107,8 @@ Whenever you add new packages, make sure to use `renv::snapshot()` to record the
 
 #### Known issues
 
+##### renv
+
 We've found that some packages have particular issues with backwards / forwards compatibility when using different versions of R. 
 
 You'll hit this if you have older versions of some packages but have updated your R version, and you'll see install issues when running `renv::restore()`.
@@ -121,6 +125,26 @@ renv::record("MASS@7.3-61")
 Once you've recorded the newest versions, try running `renv::restore()` again to install the versions of the packages now specified, all going well, the latest versions should work with the latest version of R. 
 
 Be mindful that updating package versions can change behaviour, so make sure to test your dashboard thorough and check all automated tests are still passing after making any package updates.
+
+##### UI test fail
+
+Lines 49 to 68 in the `server.R` script are used to change the app title dependent on some selections.
+
+Updating the app title in the `ui.R` script and the `tests/testthat/test-UI-01-basic_load.R` UI test script may lead to an error when `shinytest2::test_app()` is run. The error may look something similar to:
+
+```
+── Failed tests ──────────────────────────────────────────────────────────────────────────────────────────────────────────
+Failure (test-UI-01-basic_load.R:30:3): App loads and title of app appears as expected
+app$get_text("title") not equal to "Your new app title".
+1/1 mismatches
+x[1]: "Your new app title - All Local authority maintained schools, England"
+y[1]: "Your new app title"
+```
+
+To fix / workaround this, please comment out or delete the lines 49 to 68 in the `server.R` script.
+
+However, this feature can be helpful. For example, if you have lots of tabs / pages in your dashboard to switch the title depending on which one a user is looking at. But, its biggest value is for screen readers and assistive tech users, as they will get an announcement every time the title changes.
+So, note this may be a useful feature for later on in your app development.
 
 ### Tests
 
