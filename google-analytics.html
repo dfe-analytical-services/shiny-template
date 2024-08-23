@@ -12,58 +12,59 @@ gtag('consent', 'default', {
 </script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script async src='https://www.googletagmanager.com/gtag/js?id=G-Z967JJVQQX'></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
 
     gtag('js', new Date());
-    
+
+  gtag('config', 'G-Z967JJVQQX');
+
 /*
-The tracking number below MUST be replaced with a unique number, contact the Explore education statistics platforms team to set this up. 
+The custom trackers below can be tailored to match the inputs used in your
+dashboard.
 */
-  gtag('config', 'G-XXXXXXXXXX');
-  
 
   $(document).on('change', 'select#selectPhase', function(e) {
     gtag('event', 'select phase', {'event_category' : 'choose Phase',
     'event_label' : document.querySelector('select#selectPhase').value
     });
   });
-  
+
   $(document).on('change', 'select#selectArea', function(e) {
     gtag('event', 'select area', {'event_category' : 'choose Area',
     'event_label' : document.querySelector('select#selectArea').value
     });
   });
-  
+
   $(document).on('click', 'ul#navlistPanel', function(e) {
     gtag('event', 'navlistPanel', {'event_category' : 'navbar click',
-    'event_label' : document.querySelector('ul#navlistPanel > li.active > a').getAttribute('data-value')
+    'event_label' : document.querySelector(
+    'ul#navlistPanel > li.active > a'
+    ).getAttribute('data-value')
     });
   });
-     
+
   $(document).on('click', 'ul#tabsetpanels', function(e) {
     gtag('event', 'tab panels', {'event_category' : 'tab panel clicks',
-    'event_label' : document.querySelector('ul#tabsetpanels > li.active > a').getAttribute('data-value')
+    'event_label' : document.querySelector(
+    'ul#tabsetpanels > li.active > a'
+    ).getAttribute('data-value')
     });
   });
-  
-  
+
+
   $(document).on('click', 'a#download_data', function(e) {
     gtag('event', 'Download button', {'event_category' : 'Download button click'
     });
   });
-  
+
   $(document).on('shiny:disconnected', function(e) {
-    gtag('event', 'disconnect', { 
+    gtag('event', 'disconnect', {
       'event_label' : 'Disconnect',
       'event_category' : 'Disconnect'
     });
   });
 
-
-  
 </script>
-      
-
