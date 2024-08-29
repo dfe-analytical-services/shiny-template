@@ -35,13 +35,17 @@ example_tab_1_panel <- function() {
                   # Download button -------------------------------------------
                   column(
                     width = 12,
-                    paste("Download the underlying data for this dashboard:"),
-                    br(),
+                    p("Download the underlying data for this dashboard:"),
                     downloadButton(
                       outputId = "download_data",
                       label = "Download data",
                       icon = shiny::icon("download"),
                       class = "downloadButton"
+                    ),
+                    shinyGovstyle::button_Input(
+                      label = "Download data",
+                      inputId = "download-button",
+                      type = "secondary"
                     )
                   )
                 )
