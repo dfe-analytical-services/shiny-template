@@ -226,6 +226,16 @@ html {
   text-decoration: none;
 }
 
+/* GOV.UK select component ------------------------------------------------- */
+
+.govuk-select {
+  color: black;
+}
+
+.govuk-label {
+  color: white !important;
+}
+
 /* Left nav tabs styling --------------------------------------------------- */
 
 .nav-stacked>li>a {
