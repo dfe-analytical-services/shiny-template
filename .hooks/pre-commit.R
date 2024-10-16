@@ -35,7 +35,7 @@ if (ncol(ign_files) > 1) {
 suffixes <- "xlsx$|ods$|dat$|csv$|tex$|pdf$|zip$|gz$|parquet$"
 
 current_files <- data.frame(files = list.files("./", recursive = TRUE)) %>%
-  filter(grepl(suffixes, files), !grepl("renv|datafiles_log.csv", files))
+  filter(grepl(suffixes, files, ignore.case = TRUE), !grepl("renv|datafiles_log.csv", files))
 
 for (file in current_files$files) {
   if (!file %in% log_files$filename) {
