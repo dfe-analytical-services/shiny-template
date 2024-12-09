@@ -108,10 +108,20 @@ ui <- function(input, output, session) {
       example_tab_1_panel(),
       user_guide_panel(),
       a11y_panel(),
-      support_panel(
-        team_email = "explore.statistics@education.gov.uk",
-        repo_name = "https://github.com/dfe-analytical-services/shiny-template",
-        form_url = "https://forms.office.com"
+      tabPanel(
+        "Support and Feedback",
+        gov_main_layout(
+          gov_row(
+            column(
+              width = 12,
+              support_panel(
+                team_email = "explore.statistics@education.gov.uk",
+                repo_name = "https://github.com/dfe-analytical-services/shiny-template",
+                form_url = "https://forms.office.com"
+              )
+            )
+          )
+        )
       )
     ),
 
