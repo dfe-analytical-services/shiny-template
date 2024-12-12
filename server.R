@@ -35,17 +35,17 @@ server <- function(input, output, session) {
     "plotly_click-A", "plotly_hover-A", "plotly_afterplot-A",
     ".clientValue-default-plotlyCrosstalkOpts"
   ))
-
+  
   observe({
     # Trigger this observer every time an input changes
     reactiveValuesToList(input)
     session$doBookmark()
   })
-
+  
   onBookmarked(function(url) {
     updateQueryString(url)
   })
-
+  
   observe({
     if (input$navlistPanel == "Example tab 1") {
       change_window_title(
@@ -66,7 +66,7 @@ server <- function(input, output, session) {
       )
     }
   })
-
+  
   # Cookies logic -------------------------------------------------------------
   observeEvent(input$cookies, {
     if (!is.null(input$cookies)) {
@@ -92,7 +92,7 @@ server <- function(input, output, session) {
       shinyjs::hide(id = "cookieMain")
     }
   })
-
+  
   # Need these set of observeEvent to create a path through the cookie banner
   observeEvent(input$cookieAccept, {
     msg <- list(
@@ -104,7 +104,7 @@ server <- function(input, output, session) {
     shinyjs::show(id = "cookieAcceptDiv")
     shinyjs::hide(id = "cookieMain")
   })
-
+  
   observeEvent(input$cookieReject, {
     msg <- list(
       name = "dfe_analytics",
@@ -115,15 +115,15 @@ server <- function(input, output, session) {
     shinyjs::show(id = "cookieRejectDiv")
     shinyjs::hide(id = "cookieMain")
   })
-
+  
   observeEvent(input$hideAccept, {
     shinyjs::toggle(id = "cookieDiv")
   })
-
+  
   observeEvent(input$hideReject, {
     shinyjs::toggle(id = "cookieDiv")
   })
-
+  
   observeEvent(input$remove, {
     shinyjs::toggle(id = "cookieMain")
     msg <- list(name = "dfe_analytics", value = "denied")
@@ -131,11 +131,11 @@ server <- function(input, output, session) {
     session$sendCustomMessage("analytics-consent", msg)
     print(input$cookies)
   })
-
+  
   cookies_data <- reactive({
     input$cookies
   })
-
+  
   output$cookie_status <- renderText({
     cookie_text_stem <- "To better understand the reach of our dashboard tools,
     this site uses cookies to identify numbers of unique users as part of Google
@@ -153,15 +153,15 @@ server <- function(input, output, session) {
       "Cookies consent has not been confirmed."
     }
   })
-
+  
   observeEvent(input$cookieLink, {
     # Need to link here to where further info is located.  You can
     # updateTabsetPanel to have a cookie page for instance
     updateTabsetPanel(session, "navlistPanel",
-      selected = "Support and feedback"
+                      selected = "Support and feedback"
     )
   })
-
+  
   # Dataset with timeseries data ----------------------------------------------
   reactive_rev_bal <- reactive({
     df_revbal %>% filter(
@@ -169,7 +169,7 @@ server <- function(input, output, session) {
       school_phase == input$selectPhase
     )
   })
-
+  
   # Dataset with benchmark data -----------------------------------------------
   reactive_benchmark <- reactive({
     df_revbal %>%
@@ -179,7 +179,7 @@ server <- function(input, output, session) {
         year == max(year)
       )
   })
-
+  
   # Charts --------------------------------------------------------------------
   # Line chart for revenue balance over time
   output$lineRevBal <- renderGirafe({
@@ -193,7 +193,7 @@ server <- function(input, output, session) {
       height_svg = 5.0
     )
   })
-
+  
   # Benchmarking bar chart
   output$colBenchmark <- renderGirafe({
     girafe(
@@ -206,7 +206,7 @@ server <- function(input, output, session) {
       height_svg = 5.0
     )
   })
-
+  
   # Benchmarking table
   output$tabBenchmark <- renderDataTable({
     datatable(
@@ -223,7 +223,36 @@ server <- function(input, output, session) {
       )
     )
   })
+  
+  output$tabBenchmark2 <- renderReactable({
+    reactable(
+      reactive_benchmark() %>%
+        select(
+          Area = area_name,
+          `Average Revenue Balance (£)` = average_revenue_balance,
+          `Total Revenue Balance (£m)` = total_revenue_balance_million
+        ),
+      # defaultPageSizr and minRows needed for Pagination: example here
+      # defaultPageSize = 4,
+      # minRows = 4,
+      # searchable = TRUE, # uncomment line if you want a search box
+      # filterable = TRUE, # uncomment line if you want filters at the top
+      # filters on individual columns also possible
+      defaultSorted = list("Total Revenue Balance (£m)" = "desc"),
+      defaultColDef = colDef(
+        style = JS("function(rowInfo, column, state) {
+      // Highlight sorted columns
+      for (let i = 0; i < state.sorted.length; i++) {
+        if (state.sorted[i].id === column.id) {
+          return { background: 'rgba(0, 0, 0, 0.03)' }
+        }
+      }
+    }")
+      )
+    )
+  })
 
+  
   # Value boxes ---------------------------------------------------------------
   # Create a reactive value for average revenue balance
   latest_average_balance <- reactive({
@@ -235,7 +264,7 @@ server <- function(input, output, session) {
       ) %>%
       pull(average_revenue_balance)
   })
-
+  
   # Create a reactive value for previous year average
   previous_average_balance <- reactive({
     previous_year <- reactive_rev_bal() %>%
@@ -246,13 +275,13 @@ server <- function(input, output, session) {
       ) %>%
       pull(average_revenue_balance)
   })
-
+  
   # Export values for use in UI tests -----------------------------------------
   exportTestValues(
     avg_rev_bal_value = latest_average_balance(),
     prev_avg_rev_bal_value = previous_average_balance()
   )
-
+  
   # Create a value box for average revenue balance
   output$box_balance_latest <- renderValueBox({
     value_box(
@@ -261,7 +290,7 @@ server <- function(input, output, session) {
       color = "blue"
     )
   })
-
+  
   # Create a value box for the change on previous year
   output$box_balance_change <- renderValueBox({
     value_box(
@@ -274,12 +303,12 @@ server <- function(input, output, session) {
       color = "blue"
     )
   })
-
+  
   # Link in the user guide panel back to the main panel -----------------------
   observeEvent(input$link_to_app_content_tab, {
     updateTabsetPanel(session, "navlistPanel", selected = "Example tab 1")
   })
-
+  
   # Download the underlying data button --------------------------------------
   output$download_data <- downloadHandler(
     filename = "shiny_template_underlying_data.csv",
@@ -287,12 +316,12 @@ server <- function(input, output, session) {
       write.csv(df_revbal, file)
     }
   )
-
+  
   # Dynamic label showing custom selections -----------------------------------
   output$dropdown_label <- renderText({
     paste0("Current selections: ", input$selectPhase, ", ", input$selectArea)
   })
-
+  
   # Stop app ------------------------------------------------------------------
   session$onSessionEnded(function() {
     stopApp()
