@@ -24,6 +24,7 @@ shhh(library(shinyGovstyle))
 # Creating charts and tables
 shhh(library(ggplot2))
 shhh(library(DT))
+shhh(library(leaflet))
 
 # Data and string manipulation
 shhh(library(dplyr))
