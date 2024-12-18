@@ -106,10 +106,14 @@ ui <- function(input, output, session) {
         "Cookies",
         cookies_panel_ui(google_analytics_key = google_analytics_key)
       ),
-      support_panel(
-        team_email = "explore.statistics@education.gov.uk",
-        repo_name = "https://github.com/dfe-analytical-services/shiny-template",
-        form_url = "https://forms.office.com"
+      shiny::tabPanel(
+        value = "support_panel_ui",
+        "Support and feedback",
+        support_panel(
+          team_email = "explore.statistics@education.gov.uk",
+          repo_name = "https://github.com/dfe-analytical-services/shiny-template",
+          form_url = "https://forms.office.com"
+        )
       )
     ),
 
