@@ -410,3 +410,51 @@ html {
   background-color: #12436D !important;
   color: #ffffff !important;
 }
+
+/* Set default reactable styles */
+.reactable {
+  font-size: 1rem !important;
+  table-layout: fixed;
+  width: 100% !important;
+  word-break: keep-all; /* Prevents breaking words mid-word */
+  white-space: normal; /* Allows line breaks between words */
+}
+
+@media screen and (min-width: 1440px) {
+  .bslib-sidebar-layout .sidebar-title {
+    font-size: 1.188rem !important;  /* Slightly larger font size for large monitors */
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  .bslib-sidebar-layout .sidebar-title {
+    font-size: 1.1rem !important;  /* Slightly larger font size for large laptops */
+  }
+}
+
+/* Media query for laptop screens (1024px or smaller) */
+@media screen and (max-width: 1024px) {
+  .reactable,
+  .bslib-sidebar-layout > .sidebar > .sidebar-content label,
+  .selectize-control.multi .selectize-input.has-items {
+    font-size: 0.9rem !important; /* Slightly smaller font size for laptops */
+  }
+}
+
+/* Media query for tablet-sized screens (768px or smaller) */
+@media screen and (max-width: 768px) {
+  .reactable,
+  .bslib-sidebar-layout > .sidebar > .sidebar-content label,
+  .selectize-control.multi .selectize-input.has-items {
+    font-size: 0.8rem !important; /* Smaller font size for tablets */
+  }
+}
+
+/* Media query for small screens (480px or smaller) */
+@media screen and (max-width: 480px) {
+  .reactable,
+  .bslib-sidebar-layout > .sidebar > .sidebar-content label,
+  .selectize-control.multi .selectize-input.has-items {
+    font-size: 0.7rem !important; /* Even smaller font size for mobile */
+  }
+}
