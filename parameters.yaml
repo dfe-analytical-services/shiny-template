@@ -1,0 +1,8 @@
+dashboard_name: "dev-dfe-shiny-template"
+deploy_target: "shinyapps"
+install_gdal: true
+extra_packages:
+  - sf
+  - data.table
+  - DT
+
