@@ -25,6 +25,7 @@ shhh(library(shinyGovstyle))
 shhh(library(ggplot2))
 shhh(library(DT))
 shhh(library(leaflet))
+shhh(library(htmltools))
 
 # Data and string manipulation
 shhh(library(dplyr))
@@ -92,6 +93,9 @@ enableBookmarking("url")
 # Read in the data ------------------------------------------------------------
 df_revbal <- read_revenue_data()
 
+df_revbal_years <- sort(unique(df_revbal$year))
+df_revbal_phase <- unique(df_revbal$school_phase)
+
 # Get geographical areas from data
 df_areas <- df_revbal %>%
   select(
@@ -100,6 +104,17 @@ df_areas <- df_revbal %>%
     la_name, old_la_code, new_la_code
   ) %>%
   distinct()
+
+df_upper_tier_geo <- read_upper_tier_data()
+
+df_upper_tier_all <- df_upper_tier_geo %>%
+  dplyr::select(UTLA22NM, LONG, LAT, geometry) %>%
+  dplyr::rename("area_name" = "UTLA22NM") %>%
+  inner_join(df_revbal,
+    by = "area_name"
+  ) %>%
+  rowwise() %>%
+  mutate(lab = HTML(sprintf("%s <hr> %s </br> %s %s", area_name, "Schools with deficit", PC_schools_with_deficit, "%")))
 
 # Extract lists for use in drop downs -----------------------------------------
 # LA list
