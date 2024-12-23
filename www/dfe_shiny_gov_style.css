@@ -410,3 +410,40 @@ html {
   background-color: #12436D !important;
   color: #ffffff !important;
 }
+
+
+/* Map formatting */
+@import '~govuk-frontend/dist/govuk/base';
+
+.map {
+  background-color: govuk-colour('light-grey');
+
+  path:focus {
+    outline: none;
+  }
+}
+
+.tooltip {
+  white-space: normal;
+  width: 100%;
+}
+
+.tooltipContent {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+.legend {
+  align-items: center;
+  display: flex;
+  line-height: 20px;
+  margin-bottom: 0;
+}
+
+.legendIcon {
+  border: 1px solid govuk-colour('black');
+  forced-color-adjust: none;
+  height: 20px;
+  margin-right: govuk-spacing(1);
+  width: 20px;
+}
