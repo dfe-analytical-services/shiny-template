@@ -440,7 +440,7 @@
       "RemoteUsername": "dfe-analytical-services",
       "RemoteRepo": "dfeshiny",
       "RemoteRef": "main",
-      "RemoteSha": "10839ea6942570856e726072b50c188ef5de684e",
+      "RemoteSha": "2de5915421cf2cdccceb9440ee694254f2f6af1c",
       "Requirements": [
         "R",
         "checkmate",
@@ -454,7 +454,7 @@
         "stringr",
         "styler"
       ],
-      "Hash": "0343ae081c14d14deabefb8402405d86"
+      "Hash": "b09d13e69d151ab2acc7bb0b4eb510c0"
     },
     "diffobj": {
       "Package": "diffobj",
