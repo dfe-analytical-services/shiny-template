@@ -10,4 +10,4 @@ jobs:
   deploy:
     uses: dfe-analytical-services/dfeshiny/.github/workflows/dashboard_deploy_template.yaml@main
     with:
-      parameter_file: parameters.yaml
+      parameter_file: deploy_parameters.yaml
