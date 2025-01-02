@@ -58,7 +58,7 @@ ui <- function(input, output, session) {
 
     # Skip_to_main -------------------------------------------------------------
     # Add a 'Skip to main content' link for keyboard users to bypass navigation.
-    # It stays hidden unless focused via tabbing.
+    # It stays hidden unless focussed via tabbing.
     shinyGovstyle::skip_to_main(),
 
     # Google analytics --------------------------------------------------------
