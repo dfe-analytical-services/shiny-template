@@ -102,7 +102,6 @@ ui <- function(input, output, session) {
       user_guide_panel(),
       shiny::tabPanel(
         value = "a11y_panel",
-        "Accessibility",
         dfeshiny::a11y_panel(
           dashboard_title = site_title,
           dashboard_url = site_primary,
