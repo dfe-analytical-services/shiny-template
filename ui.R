@@ -51,17 +51,15 @@ ui <- function(input, output, session) {
 
     # Cookies -----------------------------------------------------------------
     # Setting up cookie consent based on a cookie recording the consent:
-    # https://book.javascript-for-r.com/shiny-cookies.html
-    tags$head(
-      tags$script(
-        src = paste0(
-          "https://cdn.jsdelivr.net/npm/js-cookie@rc/",
-          "dist/js.cookie.min.js"
-        )
-      ),
-      tags$script(src = "cookie-consent.js")
+    dfeshiny::dfe_cookies_script(),
+    dfeshiny::cookies_banner_ui(
+      name = "Department for Education (DfE) Shiny Template"
     ),
-    shinyGovstyle::cookieBanner("Department for Education (DfE) R-Shiny dashboard template"),
+
+    # Skip_to_main -------------------------------------------------------------
+    # Add a 'Skip to main content' link for keyboard users to bypass navigation.
+    # It stays hidden unless focussed via tabbing.
+    shinyGovstyle::skip_to_main(),
 
     # Google analytics --------------------------------------------------------
     tags$head(includeHTML(("google-analytics.html"))),
@@ -108,19 +106,18 @@ ui <- function(input, output, session) {
       example_tab_1_panel(),
       user_guide_panel(),
       a11y_panel(),
-      tabPanel(
-        "Support and Feedback",
-        gov_main_layout(
-          gov_row(
-            column(
-              width = 12,
-              support_panel(
-                team_email = "explore.statistics@education.gov.uk",
-                repo_name = "https://github.com/dfe-analytical-services/shiny-template",
-                form_url = "https://forms.office.com"
-              )
-            )
-          )
+      shiny::tabPanel(
+        value = "cookies_panel_ui",
+        "Cookies",
+        cookies_panel_ui(google_analytics_key = google_analytics_key)
+      ),
+      shiny::tabPanel(
+        value = "support_panel_ui",
+        "Support and feedback",
+        support_panel(
+          team_email = "explore.statistics@education.gov.uk",
+          repo_name = "https://github.com/dfe-analytical-services/shiny-template",
+          form_url = "https://forms.office.com"
         )
       )
     ),

@@ -1282,7 +1282,7 @@
     },
     "shiny": {
       "Package": "shiny",
-      "Version": "1.9.1",
+      "Version": "1.10.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1311,13 +1311,18 @@
         "withr",
         "xtable"
       ],
-      "Hash": "6a293995a66e12c48d13aa1f957d09c7"
+      "Hash": "4b4477baa9a939c5577e5ddb4bf01f28"
     },
     "shinyGovstyle": {
       "Package": "shinyGovstyle",
-      "Version": "0.1.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
+      "Version": "0.1.0.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "dfe-analytical-services",
+      "RemoteRepo": "shinyGovstyle",
+      "RemoteRef": "master",
+      "RemoteSha": "99b0875300e7c194078459de004074b5dd6f5270",
       "Requirements": [
         "R",
         "htmltools",
@@ -1328,7 +1333,7 @@
         "shinyjs",
         "stringr"
       ],
-      "Hash": "4a57256cf54590da8a07c53b995c42a8"
+      "Hash": "2d868667a317427326a4f1ab73035a36"
     },
     "shinyWidgets": {
       "Package": "shinyWidgets",
