@@ -1,3 +1,5 @@
+name: Deploy Dashboard
+
 on:
   push:
     branches:
@@ -8,9 +10,13 @@ on:
       - main
       - development
 
-name: shinyapps.io deploy
-
 jobs:
+<<<<<<< add-dashboard-deploy-template
+  deploy:
+    uses: dfe-analytical-services/dfeshiny/.github/workflows/dashboard_deploy_template.yaml@main
+    with:
+      parameter_file: deploy_parameters.yaml
+=======
   deployShiny:
     runs-on: ubuntu-latest
 
@@ -59,3 +65,4 @@ jobs:
           -e "rsconnect::setAccountInfo(name = 'department-for-education', token = '${{secrets.SHINYAPPS_TOKEN}}', secret = '${{secrets.SHINYAPPS_SECRET}}')"
           -e "rsconnect::deployApp(appName=${{env.SHINYAPP_NAME}}, forceUpdate = TRUE)"
           -e "rsconnect::deployApp(appName=${{env.SHINYAPP_OVERFLOW_NAME}}, forceUpdate = TRUE)"
+>>>>>>> main
