@@ -37,7 +37,7 @@ read_revenue_data <- function(file = "data/la_maintained_schools_revenue_reserve
 read_upper_tier_data <- function(file = "data/Upper_Tier_Local_Authorities_Simplified.geojson") {
   # This reads in an example file. For the purposes of this demo, we're using
   # the LA expenditure data downloaded from an EES release
-  df_upper_tier <- read_sf(file)
+  df_upper_tier <- sf::read_sf(file)
 
   return(df_upper_tier)
 }
