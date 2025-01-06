@@ -56,6 +56,11 @@ ui <- function(input, output, session) {
       name = "Department for Education (DfE) Shiny Template"
     ),
 
+    # Skip_to_main -------------------------------------------------------------
+    # Add a 'Skip to main content' link for keyboard users to bypass navigation.
+    # It stays hidden unless focussed via tabbing.
+    shinyGovstyle::skip_to_main(),
+
     # Google analytics --------------------------------------------------------
     tags$head(includeHTML(("google-analytics.html"))),
     tags$head(
@@ -67,13 +72,8 @@ ui <- function(input, output, session) {
     ),
 
     # Header ------------------------------------------------------------------
-    shinyGovstyle::header(
-      main_text = "",
-      main_link = "https://www.gov.uk/government/organisations/department-for-education",
-      secondary_text = "Department for Education (DfE) Shiny Template",
-      logo = "images/DfE_logo_landscape.png",
-      logo_width = 150,
-      logo_height = 32
+    dfeshiny::header(
+      header = "Department for Education (DfE) Shiny Template"
     ),
 
     # Beta banner -------------------------------------------------------------
@@ -100,7 +100,20 @@ ui <- function(input, output, session) {
       # Content for these panels is defined in the R/ui_panels/ folder
       example_tab_1_panel(),
       user_guide_panel(),
-      a11y_panel(),
+      shiny::tabPanel(
+        value = "a11y_panel",
+        "Accessibility",
+        dfeshiny::a11y_panel(
+          dashboard_title = site_title,
+          dashboard_url = site_primary,
+          date_tested = "12th March 2024",
+          date_prepared = "1st July 2024",
+          date_reviewed = "1st July 2024",
+          issues_contact = "explore.statistics@education.gov.uk",
+          non_accessible_components = c("List non-accessible components here"),
+          specific_issues = c("List specific issues here")
+        )
+      ),
       shiny::tabPanel(
         value = "cookies_panel_ui",
         "Cookies",
