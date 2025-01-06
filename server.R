@@ -137,7 +137,8 @@ server <- function(input, output, session) {
       searchable = TRUE, # uncomment line if you want a search box
       filterable = TRUE, # uncomment line if you want filters at the top
       defaultSorted = list("Total Revenue Balance (£m)" = "desc"),
-      defaultColDef = colDef(headerClass = "bar-sort-header",
+      defaultColDef = colDef(
+        headerClass = "bar-sort-header",
         style = JS("function(rowInfo, column, state) {
       // Highlight sorted columns
       for (let i = 0; i < state.sorted.length; i++) {
