@@ -51,17 +51,15 @@ ui <- function(input, output, session) {
 
     # Cookies -----------------------------------------------------------------
     # Setting up cookie consent based on a cookie recording the consent:
-    # https://book.javascript-for-r.com/shiny-cookies.html
-    tags$head(
-      tags$script(
-        src = paste0(
-          "https://cdn.jsdelivr.net/npm/js-cookie@rc/",
-          "dist/js.cookie.min.js"
-        )
-      ),
-      tags$script(src = "cookie-consent.js")
+    dfeshiny::dfe_cookies_script(),
+    dfeshiny::cookies_banner_ui(
+      name = "Department for Education (DfE) Shiny Template"
     ),
-    shinyGovstyle::cookieBanner("Department for Education (DfE) R-Shiny dashboard template"),
+
+    # Skip_to_main -------------------------------------------------------------
+    # Add a 'Skip to main content' link for keyboard users to bypass navigation.
+    # It stays hidden unless focussed via tabbing.
+    shinyGovstyle::skip_to_main(),
 
     # Google analytics --------------------------------------------------------
     tags$head(includeHTML(("google-analytics.html"))),
@@ -74,13 +72,8 @@ ui <- function(input, output, session) {
     ),
 
     # Header ------------------------------------------------------------------
-    shinyGovstyle::header(
-      main_text = "",
-      main_link = "https://www.gov.uk/government/organisations/department-for-education",
-      secondary_text = "Department for Education (DfE) Shiny Template",
-      logo = "images/DfE_logo_landscape.png",
-      logo_width = 150,
-      logo_height = 32
+    dfeshiny::header(
+      header = "Department for Education (DfE) Shiny Template"
     ),
 
     # Beta banner -------------------------------------------------------------
@@ -107,11 +100,33 @@ ui <- function(input, output, session) {
       # Content for these panels is defined in the R/ui_panels/ folder
       example_tab_1_panel(),
       user_guide_panel(),
-      a11y_panel(),
-      support_panel(
-        team_email = "explore.statistics@education.gov.uk",
-        repo_name = "https://github.com/dfe-analytical-services/shiny-template",
-        form_url = "https://forms.office.com"
+      shiny::tabPanel(
+        value = "a11y_panel",
+        "Accessibility",
+        dfeshiny::a11y_panel(
+          dashboard_title = site_title,
+          dashboard_url = site_primary,
+          date_tested = "12th March 2024",
+          date_prepared = "1st July 2024",
+          date_reviewed = "1st July 2024",
+          issues_contact = "explore.statistics@education.gov.uk",
+          non_accessible_components = c("List non-accessible components here"),
+          specific_issues = c("List specific issues here")
+        )
+      ),
+      shiny::tabPanel(
+        value = "cookies_panel_ui",
+        "Cookies",
+        cookies_panel_ui(google_analytics_key = google_analytics_key)
+      ),
+      shiny::tabPanel(
+        value = "support_panel_ui",
+        "Support and feedback",
+        support_panel(
+          team_email = "explore.statistics@education.gov.uk",
+          repo_name = "https://github.com/dfe-analytical-services/shiny-template",
+          form_url = "https://forms.office.com"
+        )
       )
     ),
 
