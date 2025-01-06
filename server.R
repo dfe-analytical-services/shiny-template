@@ -215,12 +215,10 @@ server <- function(input, output, session) {
           `Average Revenue Balance (£)` = average_revenue_balance,
           `Total Revenue Balance (£m)` = total_revenue_balance_million
         ),
-      # defaultPageSize and minRows needed for Pagination: example here
-      # defaultPageSize = 4,
-      # minRows = 4,
-      # searchable = TRUE, # uncomment line if you want a search box
-      # filterable = TRUE, # uncomment line if you want filters at the top
-      # filters on individual columns also possible
+      defaultPageSize = 4,
+      minRows = 4,
+      searchable = TRUE, # uncomment line if you want a search box
+      filterable = TRUE, # uncomment line if you want filters at the top
       defaultSorted = list("Total Revenue Balance (£m)" = "desc"),
       defaultColDef = colDef(
         style = JS("function(rowInfo, column, state) {
