@@ -124,22 +124,33 @@ server <- function(input, output, session) {
     )
   })
 
-  # Benchmarking table
-  output$tabBenchmark <- renderDataTable({
-    datatable(
+  output$tabBenchmark2 <- renderReactable({
+    reactable(
       reactive_benchmark() %>%
         select(
           Area = area_name,
           `Average Revenue Balance (£)` = average_revenue_balance,
           `Total Revenue Balance (£m)` = total_revenue_balance_million
         ),
-      options = list(
-        scrollX = TRUE,
-        paging = FALSE,
-        searching = FALSE
+      defaultPageSize = 4,
+      minRows = 4,
+      searchable = TRUE, # uncomment line if you want a search box
+      filterable = TRUE, # uncomment line if you want filters at the top
+      defaultSorted = list("Total Revenue Balance (£m)" = "desc"),
+      defaultColDef = colDef(
+        headerClass = "bar-sort-header",
+        style = JS("function(rowInfo, column, state) {
+      // Highlight sorted columns
+      for (let i = 0; i < state.sorted.length; i++) {
+        if (state.sorted[i].id === column.id) {
+          return { background: 'rgba(0, 0, 0, 0.03)' }
+        }
+      }
+    }")
       )
     )
   })
+
 
   # Value boxes ---------------------------------------------------------------
   # Create a reactive value for average revenue balance
