@@ -27,6 +27,7 @@ shhh(library(DT))
 shhh(library(sf))
 shhh(library(leaflet))
 shhh(library(htmltools))
+shhh(library(reactable))
 
 # Data and string manipulation
 shhh(library(dplyr))
