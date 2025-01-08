@@ -24,6 +24,9 @@ shhh(library(shinyGovstyle))
 # Creating charts and tables
 shhh(library(ggplot2))
 shhh(library(DT))
+shhh(library(sf))
+shhh(library(leaflet))
+shhh(library(htmltools))
 
 # Data and string manipulation
 shhh(library(dplyr))
@@ -100,6 +103,17 @@ df_areas <- df_revbal %>%
   ) %>%
   distinct()
 
+df_upper_tier_geo <- read_upper_tier_data()
+
+df_upper_tier_all <- df_upper_tier_geo %>%
+  dplyr::select(UTLA22NM, LONG, LAT, geometry) %>%
+  dplyr::rename("area_name" = "UTLA22NM") %>%
+  inner_join(df_revbal,
+    by = "area_name"
+  ) %>%
+  rowwise() %>%
+  mutate(lab = HTML(sprintf("%s <hr> %s </br> %s %s", area_name, "Schools with deficit", PC_schools_with_deficit, "%")))
+
 # Extract lists for use in drop downs -----------------------------------------
 # LA list
 choices_las <- df_areas %>%
@@ -120,3 +134,6 @@ choices_areas <- df_areas %>%
 
 # List of phases
 choices_phase <- unique(df_revbal$school_phase)
+
+# List of years
+df_revbal_years <- sort(unique(df_revbal$year))

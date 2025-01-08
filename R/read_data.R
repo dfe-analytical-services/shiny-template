@@ -32,3 +32,9 @@ read_revenue_data <- function(file = "data/la_maintained_schools_revenue_reserve
   )
   return(df_revenue)
 }
+
+# Upper Tier data ----------------------------------------------------------------
+read_upper_tier_data <- function(file = "data/Upper_Tier_Local_Authorities_Simplified.geojson") {
+  df_upper_tier <- read_sf(file)
+  return(df_upper_tier)
+}
