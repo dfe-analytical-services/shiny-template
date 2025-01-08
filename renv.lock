@@ -1717,19 +1717,16 @@
     "terra": {
       "Package": "terra",
       "Version": "1.8-9",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteUsername": "rspatial",
-      "RemoteRepo": "terra",
-      "RemoteRef": "master",
+      "Source": "Repository",
+      "Repository": "https://rspatial.r-universe.dev",
+      "RemoteUrl": "https://github.com/rspatial/terra",
       "RemoteSha": "f3f833f5646c0f59f08dc60af0a6514f38901275",
       "Requirements": [
         "R",
         "Rcpp",
         "methods"
       ],
-      "Hash": "7cd5772d76ea24bd474e5a84c5cc7e41"
+      "Hash": "6d98bdf01c51cc7978b1c02989b3ce00"
     },
     "testthat": {
       "Package": "testthat",
