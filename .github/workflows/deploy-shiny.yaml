@@ -47,6 +47,12 @@ jobs:
         run: |
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
           renv::install("rsconnect")
+          
+      - name: Install proj library (terra depdencies)
+        run: sudo apt-get install libproj-dev
+        
+      - name: Install gdal library (terra dependencies)
+        run: sudo apt-get install libgdal-dev
          
 # Tokens are stored as secrets in GitHub to make sure only DfE analysts can publish apps in our shiny.io area
 # Navigate to Settings > Secrets to add and view secrets. These can also be things like admin login and passwords for SQL databases.
