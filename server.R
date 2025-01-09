@@ -275,6 +275,11 @@ server <- function(input, output, session) {
     paste0("Current selections: ", input$selectPhase, ", ", input$selectArea)
   })
 
+  # footer links -----------------------
+  shiny::observeEvent(input$accessibility_statement, {
+    shiny::updateTabsetPanel(session, "navlistPanel", selected = "a11y_panel")
+  })
+
   # Stop app ------------------------------------------------------------------
   session$onSessionEnded(function() {
     stopApp()
