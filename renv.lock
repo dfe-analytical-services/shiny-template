@@ -1716,15 +1716,17 @@
     },
     "terra": {
       "Package": "terra",
-      "Version": "1.8-10",
+      "Version": "1.8-11",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "https://rspatial.r-universe.dev",
+      "RemoteUrl": "https://github.com/rspatial/terra",
+      "RemoteSha": "4556133d34a974663ce2192ff369695c01b33e83",
       "Requirements": [
         "R",
         "Rcpp",
         "methods"
       ],
-      "Hash": "03e35a7e2b044d284afe186c9b9f833d"
+      "Hash": "d239689d81430bb493787ec826921186"
     },
     "testthat": {
       "Package": "testthat",
