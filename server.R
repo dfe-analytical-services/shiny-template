@@ -117,7 +117,8 @@ server <- function(input, output, session) {
 
   reactive_map_to_display <- reactive({
     leaflet(reactive_map_dataset()) %>%
-      addTiles() %>%
+      addProviderTiles(providers$CartoDB.Positron) %>%
+      # addTiles() %>%
       setView(lng = -3.95, lat = 53, zoom = 5.5) %>%
       addPolygons(
         color = "black",
