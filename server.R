@@ -87,6 +87,56 @@ server <- function(input, output, session) {
     )
   })
 
+  # Dataset with map data ----------------------------------------------
+  reactive_map_dataset <- reactive({
+    df_upper_tier_all %>%
+      dplyr::filter(
+        year == input$selectMapYear,
+        area_name != "England",
+        school_phase == input$selectMapPhase
+      ) %>%
+      dplyr::select(
+        area_name,
+        PC_schools_with_deficit,
+        LONG,
+        LAT,
+        geometry,
+        lab
+      )
+  })
+
+  reactive_map_pal <- reactive({
+    quantile_num <- 5
+    probs <- seq(0, 1, length.out = quantile_num + 1)
+    bins <- quantile(reactive_map_dataset()$PC_schools_with_deficit, probs, na.rm = TRUE, names = FALSE)
+    bins <- unique(bins)
+
+    pal <- colorBin("YlOrRd", bins = bins)
+    return(pal)
+  })
+
+  reactive_map_to_display <- reactive({
+    leaflet(reactive_map_dataset()) %>%
+      addProviderTiles(providers$CartoDB.Positron) %>%
+      # addTiles() %>%
+      setView(lng = -3.95, lat = 53, zoom = 5.5) %>%
+      addPolygons(
+        color = "black",
+        fillColor = ~ reactive_map_pal()(PC_schools_with_deficit),
+        fillOpacity = 0.5,
+        stroke = TRUE,
+        weight = 0.2,
+        opacity = 0.8,
+        label = ~lab
+      ) %>%
+      addLegend(
+        # "topright",
+        pal = reactive_map_pal(), values = ~PC_schools_with_deficit,
+        title = "% Schools with Deficit",
+        opacity = 1
+      )
+  })
+
   # Dataset with benchmark data -----------------------------------------------
   reactive_benchmark <- reactive({
     df_revbal %>%
@@ -109,6 +159,11 @@ server <- function(input, output, session) {
       width_svg = 9.6,
       height_svg = 5.0
     )
+  })
+
+  # Map rendering
+  output$mapOut <- renderLeaflet({
+    reactive_map_to_display()
   })
 
   # Benchmarking bar chart
