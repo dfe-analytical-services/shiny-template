@@ -12,38 +12,38 @@ example_tab_1_panel <- function() {
         column(
           width = 12,
           gov_box(
-              column(
-                width = 4,
-                selectizeInput(
-                  "selectPhase",
-                  "Select a school phase:",
-                  choices = choices_phase,
-                  multiple = FALSE,
-                  selected = "All Local authority maintained schools"
-                )
-              ),
-              column(
-                width = 4,
-                selectizeInput(
-                  "selectArea",
-                  "Choose an area:",
-                  choices = choices_areas$area_name,
-                  multiple = FALSE,
-                  selected = "England"
-                )
-              ),
-              # Download button -------------------------------------------
-              column(
-                width = 4,
-                h4("Download the data:", style = 'font-family: "Arial", sans-serif !important;
-                   font-size: 19px;'),
-                downloadButton(
-                  outputId = "download_data",
-                  label = "Download data",
-                  icon = shiny::icon("download"),
-                  class = "downloadButton"
-                )
+            column(
+              width = 4,
+              selectizeInput(
+                "selectPhase",
+                "Select a school phase:",
+                choices = choices_phase,
+                multiple = FALSE,
+                selected = "All Local authority maintained schools"
               )
+            ),
+            column(
+              width = 4,
+              selectizeInput(
+                "selectArea",
+                "Choose an area:",
+                choices = choices_areas$area_name,
+                multiple = FALSE,
+                selected = "England"
+              )
+            ),
+            # Download button -------------------------------------------
+            column(
+              width = 4,
+              h4("Download the data:", style = 'font-family: "Arial", sans-serif !important;
+                   font-size: 19px;'),
+              downloadButton(
+                outputId = "download_data",
+                label = "Download data",
+                icon = shiny::icon("download"),
+                class = "downloadButton"
+              )
+            )
           ),
         ),
         # Tabset under dropdowns ----------------------------------------------
