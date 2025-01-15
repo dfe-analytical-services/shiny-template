@@ -35,7 +35,16 @@ jobs:
         run: |
           echo "SHINYAPP_NAME='dfe-shiny-template'">> $GITHUB_ENV
           echo "SHINYAPP_OVERFLOW_NAME='dfe-shiny-template-overflow'">> $GITHUB_ENV
-
+      
+      - name: Install proj library (terra depdencies)
+        run: sudo apt-get install libproj-dev
+        
+      - name: Install gdal library (terra dependencies)
+        run: sudo apt-get install libgdal-dev
+      
+      - name: Install udunits library (units dependencies)
+        run: sudo apt-get install libudunits2-dev
+        
       - name: Restore renv snapshot
         shell: Rscript {0}
         run: |
