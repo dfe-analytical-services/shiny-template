@@ -8,46 +8,40 @@ example_tab_1_panel <- function() {
           id = "main_col",
           h1("Overall content title for this dashboard page"),
         ),
-        # Expandable section --------------------------------------------------
+        # Non-Expandable section --------------------------------------------------
         column(
           width = 12,
-          expandable(
-            input_id = "details", label = textOutput("dropdown_label"),
-            contents =
-              div(
-                id = "div_a",
-                # User selection dropdowns ------------------------------------
-                gov_row(
-                  column(
-                    width = 6,
-                    shinyGovstyle::select_Input(
-                      inputId = "selectPhase",
-                      label = "Select a school phase",
-                      select_text = choices_phase,
-                      select_value = choices_phase
-                    )
-                  ),
-                  column(
-                    width = 6,
-                    shinyGovstyle::select_Input(
-                      inputId = "selectArea",
-                      label = "Choose an area:",
-                      select_text = choices_areas$area_name,
-                      select_value = choices_areas$area_name
-                    )
-                  ),
-                  # Download button -------------------------------------------
-                  column(
-                    width = 12,
-                    paste("Download the underlying data for this dashboard:"),
-                    br(),
-                    downloadButton(
-                      outputId = "download_data",
-                      label = "Download data",
-                      icon = shiny::icon("download"),
-                      class = "downloadButton"
-                    )
-                  )
+          gov_box(
+              column(
+                width = 4,
+                selectizeInput(
+                  "selectPhase",
+                  "Select a school phase:",
+                  choices = choices_phase,
+                  multiple = FALSE,
+                  selected = "All Local authority maintained schools"
+                )
+              ),
+              column(
+                width = 4,
+                selectizeInput(
+                  "selectArea",
+                  "Choose an area:",
+                  choices = choices_areas$area_name,
+                  multiple = FALSE,
+                  selected = "England"
+                )
+              ),
+              # Download button -------------------------------------------
+              column(
+                width = 4,
+                h4("Download the data:", style = 'font-family: "Arial", sans-serif !important;
+                   font-size: 19px;'),
+                downloadButton(
+                  outputId = "download_data",
+                  label = "Download data",
+                  icon = shiny::icon("download"),
+                  class = "downloadButton"
                 )
               )
           ),
