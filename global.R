@@ -107,10 +107,10 @@ df_areas <- df_revbal %>%
 df_upper_tier_geo <- read_upper_tier_data()
 
 df_upper_tier_all <- df_upper_tier_geo %>%
-  dplyr::select(UTLA22NM, LONG, LAT, geometry) %>%
-  dplyr::rename("area_name" = "UTLA22NM") %>%
+  dplyr::select(new_la_code, LONG, LAT, geometry) %>%
+  # dplyr::rename("new_la_code" = "LAD24CD") %>%
   inner_join(df_revbal,
-    by = "area_name"
+    by = "new_la_code"
   ) %>%
   rowwise() %>%
   mutate(lab = HTML(sprintf("%s <hr> %s </br> %s %s", area_name, "Schools with deficit", PC_schools_with_deficit, "%")))
