@@ -166,7 +166,8 @@ example_tab_1_panel <- function() {
                       )
                     ),
                     # Benchmarking table --------------------------------------
-                    dataTableOutput("tabBenchmark")
+                    h2("An example Reactable"),
+                    reactableOutput("tabBenchmark2")
                   )
                 )
               )

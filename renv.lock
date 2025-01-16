@@ -1317,6 +1317,34 @@
       ],
       "Hash": "0e2829df8cb74a98179c886b023ffea8"
     },
+<<<<<<< HEAD
+=======
+    "reactR": {
+      "Package": "reactR",
+      "Version": "0.6.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "htmltools"
+      ],
+      "Hash": "b8e3d93f508045812f47136c7c44c251"
+    },
+    "reactable": {
+      "Package": "reactable",
+      "Version": "0.4.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "digest",
+        "htmltools",
+        "htmlwidgets",
+        "jsonlite",
+        "reactR"
+      ],
+      "Hash": "6069eb2a6597963eae0605c1875ff14c"
+    },
+>>>>>>> 87be875e2f13295df0d0ac0d7d636c889d1ca932
     "renv": {
       "Package": "renv",
       "Version": "1.0.11",
@@ -1691,15 +1719,27 @@
     },
     "terra": {
       "Package": "terra",
+<<<<<<< HEAD
       "Version": "1.8-5",
       "Source": "Repository",
       "Repository": "CRAN",
+=======
+      "Version": "1.8-11",
+      "Source": "Repository",
+      "Repository": "https://rspatial.r-universe.dev",
+      "RemoteUrl": "https://github.com/rspatial/terra",
+      "RemoteSha": "4556133d34a974663ce2192ff369695c01b33e83",
+>>>>>>> 87be875e2f13295df0d0ac0d7d636c889d1ca932
       "Requirements": [
         "R",
         "Rcpp",
         "methods"
       ],
+<<<<<<< HEAD
       "Hash": "6e3f2c53b58161327fe5787fe1a63d02"
+=======
+      "Hash": "d239689d81430bb493787ec826921186"
+>>>>>>> 87be875e2f13295df0d0ac0d7d636c889d1ca932
     },
     "testthat": {
       "Package": "testthat",
