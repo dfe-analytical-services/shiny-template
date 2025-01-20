@@ -87,6 +87,56 @@ server <- function(input, output, session) {
     )
   })
 
+  # Dataset with map data ----------------------------------------------
+  reactive_map_dataset <- reactive({
+    df_upper_tier_all %>%
+      dplyr::filter(
+        year == input$selectMapYear,
+        area_name != "England",
+        school_phase == input$selectMapPhase
+      ) %>%
+      dplyr::select(
+        area_name,
+        PC_schools_with_deficit,
+        LONG,
+        LAT,
+        geometry,
+        lab
+      )
+  })
+
+  reactive_map_pal <- reactive({
+    quantile_num <- 5
+    probs <- seq(0, 1, length.out = quantile_num + 1)
+    bins <- quantile(reactive_map_dataset()$PC_schools_with_deficit, probs, na.rm = TRUE, names = FALSE)
+    bins <- unique(bins)
+
+    pal <- colorBin("YlOrRd", bins = bins)
+    return(pal)
+  })
+
+  reactive_map_to_display <- reactive({
+    leaflet(reactive_map_dataset()) %>%
+      addProviderTiles(providers$CartoDB.Positron) %>%
+      # addTiles() %>%
+      setView(lng = -3.95, lat = 53, zoom = 5.5) %>%
+      addPolygons(
+        color = "black",
+        fillColor = ~ reactive_map_pal()(PC_schools_with_deficit),
+        fillOpacity = 0.5,
+        stroke = TRUE,
+        weight = 0.2,
+        opacity = 0.8,
+        label = ~lab
+      ) %>%
+      addLegend(
+        # "topright",
+        pal = reactive_map_pal(), values = ~PC_schools_with_deficit,
+        title = "% Schools with Deficit",
+        opacity = 1
+      )
+  })
+
   # Dataset with benchmark data -----------------------------------------------
   reactive_benchmark <- reactive({
     df_revbal %>%
@@ -111,6 +161,11 @@ server <- function(input, output, session) {
     )
   })
 
+  # Map rendering
+  output$mapOut <- renderLeaflet({
+    reactive_map_to_display()
+  })
+
   # Benchmarking bar chart
   output$colBenchmark <- renderGirafe({
     girafe(
@@ -124,22 +179,33 @@ server <- function(input, output, session) {
     )
   })
 
-  # Benchmarking table
-  output$tabBenchmark <- renderDataTable({
-    datatable(
+  output$tabBenchmark2 <- renderReactable({
+    reactable(
       reactive_benchmark() %>%
         select(
           Area = area_name,
           `Average Revenue Balance (£)` = average_revenue_balance,
           `Total Revenue Balance (£m)` = total_revenue_balance_million
         ),
-      options = list(
-        scrollX = TRUE,
-        paging = FALSE,
-        searching = FALSE
+      defaultPageSize = 4,
+      minRows = 4,
+      searchable = TRUE, # uncomment line if you want a search box
+      filterable = TRUE, # uncomment line if you want filters at the top
+      defaultSorted = list("Total Revenue Balance (£m)" = "desc"),
+      defaultColDef = colDef(
+        headerClass = "bar-sort-header",
+        style = JS("function(rowInfo, column, state) {
+      // Highlight sorted columns
+      for (let i = 0; i < state.sorted.length; i++) {
+        if (state.sorted[i].id === column.id) {
+          return { background: 'rgba(0, 0, 0, 0.03)' }
+        }
+      }
+    }")
       )
     )
   })
+
 
   # Value boxes ---------------------------------------------------------------
   # Create a reactive value for average revenue balance
