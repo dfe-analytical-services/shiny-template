@@ -28,6 +28,7 @@ shhh(library(sf))
 shhh(library(leaflet))
 shhh(library(htmltools))
 shhh(library(reactable))
+shhh(library(svglite))
 
 # Data and string manipulation
 shhh(library(dplyr))
@@ -138,3 +139,4 @@ choices_phase <- unique(df_revbal$school_phase)
 
 # List of years
 df_revbal_years <- sort(unique(df_revbal$year))
+

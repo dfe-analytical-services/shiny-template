@@ -160,6 +160,102 @@ server <- function(input, output, session) {
       height_svg = 5.0
     )
   })
+  
+  line_chart_server <- reactive({
+    timeseries_LineChartServer(reactive_rev_bal())
+  })
+  
+  line_chart_basic <- reactive({
+    timeseries_LineChartServer_basic(reactive_rev_bal())
+  })
+  
+  output$rev_line_chart <- renderGirafe({
+    line_chart_server()
+  })
+  
+  output$lineRevBalUI <- renderUI({
+    div(
+      style = "display: flex; justify-content: space-between; align-items: center; background: white;",
+      # Line chart
+      bslib::card(
+        bslib::card_body(
+          div(
+            ggiraph::girafeOutput('rev_line_chart',
+                                  width = "100%", height = "100%"),
+            role = "img",
+            `aria-label` = 'Line chart showing average revenue balance by region'
+          )
+        ),
+        full_screen = TRUE,
+        style = "flex-grow: 1; display: flex; justify-content: center; padding: 0 10px;"
+      ),
+      div(
+        shiny::tagAppendAttributes(
+          shiny::downloadButton(
+            "download_chart",
+            label = "Download Chart",
+            class = "govuk-button--secondary",
+            style = "margin-left: 15px; align-self: flex-start;"
+          ),
+          style = "max-width: none; margin-left: 0; align-self: auto;"
+        ),
+        br(),
+        # shiny::tagAppendAttributes(
+        #   actionButton(
+        #     "copy_chart",
+        #     "Copy Chart to Clipboard",
+        #     icon = icon("copy", `aria-hidden` = "true"),
+        #     class = "gov-uk-button"
+        #   ),
+        #   style = "max-width: none;"
+        # ),
+        style = "display: flex; flex-direction: column; align-self: flex-start; margin: 15px;"
+      )
+    )
+    
+  })
+  
+  output$download_chart <- downloadHandler(
+    filename = function() {
+      # Use the selected dataset as the suggested file name
+      paste0("line_chart_download_",Sys.Date(),".jpeg")
+    },
+    content = function(file) {
+      # Write the dataset to the `file` that will be downloaded
+      file.copy(ggplot2::ggsave(filename = tempfile(paste0("line_chart_download_",Sys.Date(),".jpeg")),
+                      plot = line_chart_basic(), device = 'jpeg'),
+                file)
+    }
+  )
+  
+ 
+
+  
+  line_char_ui <- function(id) {
+    ns <- NS(id)
+    
+    bslib::nav_panel(
+      title = "Line chart",
+      div(
+        style = "display: flex; justify-content: space-between; align-items: center; background: white;",
+        # Line chart
+        create_chart_card_ui(
+          ns("line_chart"),
+          paste(
+            "Line chart displaying the average revenue balance of the selected LA.",
+            "This includes the selected Local Authority over time compared to England"
+          )
+        ),
+        # Download options
+        # create_download_options_ui(
+        #   ns("download_btn"),
+        #   ns("copybtn")
+        # )
+      ),
+      # Hidden static plot for copy-to-clipboard
+      create_hidden_clipboard_plot(ns("copy_plot"))
+    )
+  }
 
   # Map rendering
   output$mapOut <- renderLeaflet({
@@ -270,6 +366,17 @@ server <- function(input, output, session) {
       write.csv(df_revbal, file)
     }
   )
+  
+  # Wrap a plot with a larger spinner
+  with_gov_spinner <- function(ui_element, spinner_type = 6, size = 1, color = "#1d70b8") {
+    shinycssloaders::withSpinner(
+      ui_element,
+      type = spinner_type,
+      color = color,
+      size = size,
+      proxy.height = paste0(250 * size, "px")
+    )
+  }
 
   # Dynamic label showing custom selections -----------------------------------
   output$dropdown_label <- renderText({
