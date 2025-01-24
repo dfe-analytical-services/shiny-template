@@ -133,7 +133,7 @@ ui <- function(input, output, session) {
     # Footer ------------------------------------------------------------------
     shinyGovstyle::footer(
       full = TRUE,
-      links = c("Accessibility statement")
+      links = c("Accessibility statement", "Cookies", "Support and feedback")
     )
   )
 }
