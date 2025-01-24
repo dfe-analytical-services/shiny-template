@@ -8,7 +8,7 @@ example_tab_1_panel <- function() {
           id = "main_col",
           h1("Overall content title for this dashboard page"),
         ),
-        # Non-Expandable section --------------------------------------------------
+        # Inputs section --------------------------------------------------
         column(
           width = 12,
           gov_box(
