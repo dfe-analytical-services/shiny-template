@@ -83,8 +83,14 @@ example_tab_1_panel <- function() {
               #     h2("An example line chart using ggplot and ggiraph"),
               #     girafeOutput("lineRevBal", width = "100%", height = "100%")
               #   )
-              # ),
-              uiOutput('lineRevBalUI')
+              # )
+              fluidRow(
+                column(
+                  width = 12,
+                  h2("An example line chart using ggplot and ggiraph"),
+                  uiOutput('lineRevBalUI')
+                )
+              )
             ),
             # Map tab --------------------------------------------------
             tabPanel(
