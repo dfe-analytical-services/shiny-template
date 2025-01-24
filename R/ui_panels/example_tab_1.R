@@ -13,7 +13,7 @@ example_tab_1_panel <- function() {
           width = 12,
           gov_box(
             column(
-              width = 4,
+              width = 5,
               selectizeInput(
                 "selectPhase",
                 "Select a school phase:",
@@ -23,7 +23,7 @@ example_tab_1_panel <- function() {
               )
             ),
             column(
-              width = 4,
+              width = 5,
               selectizeInput(
                 "selectArea",
                 "Choose an area:",
@@ -34,9 +34,7 @@ example_tab_1_panel <- function() {
             ),
             # Download button -------------------------------------------
             column(
-              width = 4,
-              h4("Download the data:", style = 'font-family: "Arial", sans-serif !important;
-                   font-size: 19px;'),
+              width = 2,
               downloadButton(
                 outputId = "download_data",
                 label = "Download data",
