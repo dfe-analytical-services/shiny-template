@@ -17,40 +17,39 @@ example_tab_1_panel <- function() {
               div(
                 id = "div_a",
                 # User selection dropdowns ------------------------------------
-                gov_row(
-                  column(
-                    width = 6,
-                    shinyGovstyle::select_Input(
-                      inputId = "selectPhase",
-                      label = "Select a school phase",
-                      select_text = choices_phase,
-                      select_value = choices_phase
-                    )
+                bslib::layout_column_wrap(
+                  width = 1 / 2, # Each item takes 50% width
+                  gap = "10px", # Adjust spacing between rows and columns
+                  shinyGovstyle::select_Input(
+                    inputId = "selectPhase",
+                    label = "Select a school phase",
+                    select_text = choices_phase,
+                    select_value = choices_phase
                   ),
-                  column(
-                    width = 6,
-                    shinyGovstyle::select_Input(
-                      inputId = "selectArea",
-                      label = "Choose an area:",
-                      select_text = choices_areas$area_name,
-                      select_value = choices_areas$area_name
-                    )
+                  shinyGovstyle::select_Input(
+                    inputId = "selectArea",
+                    label = "Choose an area:",
+                    select_text = choices_areas$area_name,
+                    select_value = choices_areas$area_name
                   ),
-                  # Download button -------------------------------------------
-                  column(
-                    width = 12,
-                    paste("Download the underlying data for this dashboard:"),
-                    br(),
-                    downloadButton(
-                      outputId = "download_data",
-                      label = "Download data",
-                      icon = shiny::icon("download"),
-                      class = "downloadButton"
+                  # Full-width button on a new row
+                  bslib::layout_column_wrap(
+                    width = 1, # Full width for the button
+                    div(
+                      paste("Download the underlying data for this dashboard:"),
+                      br(),
+                      downloadButton(
+                        outputId = "download_data",
+                        label = "Download data",
+                        icon = shiny::icon("download"),
+                        class = "downloadButton",
+                        style = "background-color: white; color: black; border: 1px solid #ddd;"
+                      )
                     )
                   )
                 )
               )
-          ),
+          )
         ),
         # Tabset under dropdowns ----------------------------------------------
         column(
@@ -60,18 +59,11 @@ example_tab_1_panel <- function() {
             # Value boxes tab -------------------------------------------------
             tabPanel(
               "Valuebox example",
-              fluidRow(
-                column(
-                  width = 12,
-                  h2("Examples of producing value boxes in R-Shiny"),
-                  fluidRow(
-                    column(
-                      width = 12,
-                      valueBoxOutput("box_balance_latest", width = 6),
-                      valueBoxOutput("box_balance_change", width = 6)
-                    )
-                  )
-                )
+              h2("Examples of producing value boxes in R-Shiny"),
+              bslib::layout_column_wrap(
+                width = 1 / 2,
+                valueBoxOutput("box_balance_latest"),
+                valueBoxOutput("box_balance_change")
               )
             ),
             # Timeseries tab --------------------------------------------------
@@ -88,44 +80,27 @@ example_tab_1_panel <- function() {
             # Map tab --------------------------------------------------
             tabPanel(
               "Map example",
-              fluidRow(
-                column(
-                  width = 12,
-                  h2("An example map using leaflet"),
-                  # map output here ---------------------------------------
-                  column(
-                    width = 6,
-                    leafletOutput(
-                      "mapOut"
-                    )
+              h2("An example map using leaflet"),
+              bslib::layout_column_wrap(
+                width = 1 / 2, # Two columns of equal width
+                # heights_equal = "none",  # Disable equal column heights
+                leafletOutput("mapOut"),
+                div(
+                  class = "well dynamic-height",
+                  style = "min-height: auto; height: auto; overflow-y: visible;",
+                  selectizeInput(
+                    "selectMapYear",
+                    "Select Year",
+                    choices = df_revbal_years,
+                    multiple = FALSE,
+                    selected = max(df_revbal_years)
                   ),
-                  column(
-                    width = 6,
-                    div(
-                      class = "well",
-                      style = "min-height: 100%; height: 100%; overflow-y:
-                      visible",
-                      fluidRow(
-                        # Map dropdown selection ---------------------
-                        column(
-                          width = 12,
-                          selectizeInput(
-                            "selectMapYear",
-                            "Select Year",
-                            choices = df_revbal_years,
-                            multiple = FALSE,
-                            selected = max(df_revbal_years)
-                          ),
-                          selectizeInput(
-                            "selectMapPhase",
-                            "Select School Phase",
-                            choices = choices_phase,
-                            multiple = FALSE,
-                            selected = "All Local authority maintained schools"
-                          )
-                        )
-                      )
-                    )
+                  selectizeInput(
+                    "selectMapPhase",
+                    "Select School Phase",
+                    choices = choices_phase,
+                    multiple = FALSE,
+                    selected = "All Local authority maintained schools"
                   )
                 )
               )
@@ -133,41 +108,32 @@ example_tab_1_panel <- function() {
             # Benchmarking tab ------------------------------------------------
             tabPanel(
               "Benchmarking example",
-              fluidRow(
-                column(
-                  width = 12,
-                  h2("An example bar chart using ggplot and ggiraph"),
-                  p("This is the standard paragraph style for adding guiding
-                    info around data content."),
-                  # Bar chart for benchmarking --------------------------------
-                  column(
-                    width = 6,
-                    girafeOutput("colBenchmark",
-                      width = "100%", height = "100%"
+              h2("An example bar chart using ggplot and ggiraph"),
+              p("This is the standard paragraph style for adding guiding info around data content."),
+              bslib::layout_column_wrap(
+                width = 1 / 2, # Two equal-width columns for the bar chart and the inputs
+                heights_equal = "row",
+                girafeOutput(
+                  "colBenchmark",
+                  width = "100%",
+                  height = "100%"
+                ),
+                bslib::layout_column_wrap(
+                  width = 1, # Single-column layout for the input and table
+                  div(
+                    class = "well", # Add dynamic-height for the well panel
+                    style = "min-height: auto; height: auto; overflow-y: visible;",
+                    selectizeInput(
+                      "selectBenchLAs",
+                      "Select benchmark local authorities",
+                      choices = choices_las$area_name,
+                      multiple = TRUE,
+                      options = list(maxItems = 3)
                     )
                   ),
-                  column(
-                    width = 6,
-                    div(
-                      class = "well",
-                      style = "min-height: 100%; height: 100%; overflow-y:
-                      visible",
-                      fluidRow(
-                        # Benchmarking dropdown selection ---------------------
-                        column(
-                          width = 12,
-                          selectizeInput("selectBenchLAs",
-                            "Select benchmark local authorities",
-                            choices = choices_las$area_name,
-                            multiple = TRUE,
-                            options = list(maxItems = 3)
-                          )
-                        )
-                      )
-                    ),
-                    # Benchmarking table --------------------------------------
-                    h2("An example Reactable"),
-                    reactableOutput("tabBenchmark2")
+                  h2("An example Reactable"),
+                  reactableOutput(
+                    "tabBenchmark2"
                   )
                 )
               )
