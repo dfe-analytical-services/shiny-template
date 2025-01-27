@@ -118,19 +118,23 @@ example_tab_1_panel <- function() {
               "Benchmarking example",
               h2("An example bar chart using ggplot and ggiraph"),
               p("This is the standard paragraph style for adding guiding info around data content."),
-              bslib::layout_column_wrap(
-                width = 1 / 2, # Two equal-width columns for the bar chart and the inputs
-                heights_equal = "row",
-                girafeOutput(
-                  "colBenchmark",
-                  width = "100%",
-                  height = "100%"
+              fluidRow(
+                column(
+                  width = 6, # First column for the bar chart
+                  girafeOutput(
+                    "colBenchmark",
+                    width = "100%",
+                    height = "100%"
+                  )
                 ),
-                bslib::layout_column_wrap(
-                  width = 1, # Single-column layout for the input and table
+                column(
+                  width = 6, # Second column for the input and table
                   div(
-                    class = "well", # Add dynamic-height for the well panel
-                    style = "min-height: auto; height: auto; overflow-y: visible;",
+                    class = "well",
+                    style = "min-height: auto;
+                             height: auto;
+                             overflow-y: visible;
+                             margin-bottom: 10px;", # Adjusted margin
                     selectizeInput(
                       "selectBenchLAs",
                       "Select benchmark local authorities",
@@ -139,10 +143,8 @@ example_tab_1_panel <- function() {
                       options = list(maxItems = 3)
                     )
                   ),
-                  h2("An example Reactable"),
-                  reactableOutput(
-                    "tabBenchmark2"
-                  )
+                  h2("An Example Reactable"),
+                  reactableOutput("tabBenchmark2")
                 )
               )
             )

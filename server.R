@@ -184,14 +184,14 @@ server <- function(input, output, session) {
       reactive_benchmark() %>%
         select(
           Area = area_name,
-          `Average Revenue Balance (<U+00A3>)` = average_revenue_balance,
-          `Total Revenue Balance (<U+00A3>m)` = total_revenue_balance_million
+          `Average Revenue Balance (£)` = average_revenue_balance,
+          `Total Revenue Balance (£m)` = total_revenue_balance_million
         ),
       defaultPageSize = 4,
       minRows = 4,
       searchable = TRUE, # uncomment line if you want a search box
       filterable = TRUE, # uncomment line if you want filters at the top
-      defaultSorted = list("Total Revenue Balance (<U+00A3>m)" = "desc"),
+      defaultSorted = list("Total Revenue Balance (£m)" = "desc"),
       defaultColDef = colDef(
         headerClass = "bar-sort-header",
         style = JS("function(rowInfo, column, state) {
