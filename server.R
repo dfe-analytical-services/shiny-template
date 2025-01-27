@@ -280,11 +280,11 @@ server <- function(input, output, session) {
   shiny::observeEvent(input$accessibility_statement, {
     shiny::updateTabsetPanel(session, "navlistPanel", selected = "a11y_panel")
   })
-  
+
   shiny::observeEvent(input$cookies, {
     shiny::updateTabsetPanel(session, "navlistPanel", selected = "cookies_panel_ui")
   })
-  
+
   shiny::observeEvent(input$support_and_feedback, {
     shiny::updateTabsetPanel(session, "navlistPanel", selected = "support_panel_ui")
   })
