@@ -151,22 +151,25 @@ server <- function(input, output, session) {
   # Line chart for revenue balance over time
 
   line_chart_basic <- reactive({
-    timeseries_LineChartServer_basic(reactive_rev_bal())
+    timeseries_linechart_basic(reactive_rev_bal())
   })
-  
+
   output$rev_line_chart <- renderGirafe({
     ggiraph::girafe(
-      ggobj = (line_chart_basic() + 
-                 geom_vline_interactive(aes(
-                   xintercept = year,
-                   tooltip = paste(year, tooltip, sep = "\n\n"),
-                   data_id = year,
-                   hover_nearest = TRUE,
-                   linetype = "dashed",
-                   color = "transparent"),
-                   color = "transparent",
-                   linetype = "dashed",
-                   size = 3)),
+      ggobj = (line_chart_basic() +
+        geom_vline_interactive(
+          aes(
+            xintercept = year,
+            tooltip = paste(year, tooltip, sep = "\n\n"),
+            data_id = year,
+            hover_nearest = TRUE,
+            linetype = "dashed",
+            color = "transparent"
+          ),
+          color = "transparent",
+          linetype = "dashed",
+          size = 3
+        )),
       width_svg = 6,
       height_svg = 3,
       options = generic_ggiraph_options(
@@ -178,7 +181,7 @@ server <- function(input, output, session) {
       )
     )
   })
-  
+
   output$lineRevBalUI <- renderUI({
     div(
       style = "display: flex; justify-content: space-between; align-items: center; background: white;",
@@ -186,9 +189,9 @@ server <- function(input, output, session) {
       bslib::card(
         bslib::card_body(
           div(
-            ggiraph::girafeOutput('rev_line_chart', width = "100%", height = "100%"),
+            ggiraph::girafeOutput("rev_line_chart", width = "100%", height = "100%"),
             role = "img",
-            `aria-label` = 'Line chart showing average revenue balance by region'
+            `aria-label` = "Line chart showing average revenue balance by region"
           )
         ),
         full_screen = TRUE,
@@ -217,26 +220,29 @@ server <- function(input, output, session) {
         style = "display: flex; flex-direction: column; align-self: flex-start; margin: 15px;"
       )
     )
-    
   })
-  
+
   output$download_chart <- downloadHandler(
     filename = function() {
       # Use the selected dataset as the suggested file name
-      paste0("line_chart_download_",Sys.Date(),".jpeg")
+      paste0("line_chart_download_", Sys.Date(), ".jpeg")
     },
     content = function(file) {
       # Write the dataset to the `file` that will be downloaded
-      file.copy(ggplot2::ggsave(filename = tempfile(paste0("line_chart_download_",Sys.Date(),".jpeg")),
-                      plot = line_chart_basic(), device = 'jpeg'),
-                file)
+      file.copy(
+        ggplot2::ggsave(
+          filename = tempfile(paste0("line_chart_download_", Sys.Date(), ".jpeg")),
+          plot = line_chart_basic(), device = "jpeg"
+        ),
+        file
+      )
     }
   )
-  
+
   output$download_table <- downloadHandler(
     filename = function() {
       # Use the selected dataset as the suggested file name
-      paste0("line_chart_data_download_",Sys.Date(),".csv")
+      paste0("line_chart_data_download_", Sys.Date(), ".csv")
     },
     content = function(con) {
       write.csv(reactive_rev_bal(), con)
@@ -352,7 +358,7 @@ server <- function(input, output, session) {
       write.csv(df_revbal, file)
     }
   )
-  
+
   # Wrap a plot with a larger spinner
   with_gov_spinner <- function(ui_element, spinner_type = 6, size = 1, color = "#1d70b8") {
     shinycssloaders::withSpinner(

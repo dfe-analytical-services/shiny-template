@@ -139,4 +139,3 @@ choices_phase <- unique(df_revbal$school_phase)
 
 # List of years
 df_revbal_years <- sort(unique(df_revbal$year))
-

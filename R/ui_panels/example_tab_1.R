@@ -88,7 +88,7 @@ example_tab_1_panel <- function() {
                 column(
                   width = 12,
                   h2("An example line chart using ggplot and ggiraph"),
-                  uiOutput('lineRevBalUI')
+                  uiOutput("lineRevBalUI")
                 )
               )
             ),

@@ -86,11 +86,9 @@ plot_avg_rev_benchmark <- function(df_revenue_balance, input_area) {
 }
 
 # Timeseries Linechart server
-timeseries_LineChartServer_basic <- function(df){
+timeseries_linechart_basic <- function(df) {
   # Long format LA data with tooltip included
   la_long <- tooltip_func(df)
-  
-  # Build main static plot
   # Build main static plot
   line_chart <- ggplot2::ggplot(la_long) +
     ggiraph::geom_line_interactive(
@@ -109,9 +107,11 @@ timeseries_LineChartServer_basic <- function(df){
         create_show_point(la_long),
         show_point
       ),
-      ggplot2::aes(x = year,
-                   y = average_revenue_balance, 
-                   color = area_name),
+      ggplot2::aes(
+        x = year,
+        y = average_revenue_balance,
+        color = area_name
+      ),
       shape = 15,
       size = 1,
       na.rm = TRUE
@@ -137,20 +137,19 @@ timeseries_LineChartServer_basic <- function(df){
       breaks = unique(c("England", unique(la_long$area_name))),
       values = gss_colour_pallette
     )
-  
   return(line_chart)
 }
 
 create_show_point <- function(data) {
- 
   data %>%
     dplyr::group_by(
-      area_name) %>%
+      area_name
+    ) %>%
     dplyr::arrange(area_name, year) %>%
     dplyr::mutate(
       # Helper: Is the current value NA
       is_na = is.na(average_revenue_balance),
-      
+
       # General NA show point conditions to show isolated points
       show_point = dplyr::if_else(
         # Isolated in middle of plot
@@ -169,42 +168,47 @@ create_show_point <- function(data) {
 }
 
 
-tooltip_func <- function(data){
-  master_tooltip <- data.frame(year = character(),
-                               tooltip = character())
-  
+tooltip_func <- function(data) {
+  master_tooltip <- data.frame(
+    year = character(),
+    tooltip = character()
+  )
+
   years <- data %>%
     dplyr::select(year) %>%
     unique()
-  
-  for(i in 1:nrow(years)){
+
+  for (i in 1:nrow(years)) {
     rel_data <- data %>%
       dplyr::filter(year == years$year[i])
-    
-    next_row <- data.frame(year = years$year[i],
-                           tooltip = paste(sapply(seq_len(nrow(rel_data)), function(i) {
-                             row <- rel_data[i, ]
-                             geography <- row$area_name
-                             value <- row$average_revenue_balance
-                             
-                             # Apply styling for geography
-                             if (geography == "England") {
-                               paste0(
-                                 "<span style='color:", gss_colour_pallette[1], "; font-weight: bold;'>",
-                                 geography, ": £", formatC(as.numeric(value), format="f", digits=0, big.mark=","), "</span>"
-                               )
-                             } else {
-                               paste0(geography, ": £", formatC(as.numeric(value), format="f", digits=0, big.mark=","))
-                             }
-                           }), collapse = "\n"))
-    
+
+    next_row <- data.frame(
+      year = years$year[i],
+      tooltip = paste(sapply(seq_len(nrow(rel_data)), function(i) {
+        row <- rel_data[i, ]
+        geography <- row$area_name
+        value <- row$average_revenue_balance
+
+        # Apply styling for geography
+        if (geography == "England") {
+          paste0(
+            "<span style='color:", gss_colour_pallette[1], "; font-weight: bold;'>",
+            geography, ": £", formatC(as.numeric(value), format = "f", digits = 0, big.mark = ","), "</span>"
+          )
+        } else {
+          paste0(geography, ": £", formatC(as.numeric(value), format = "f", digits = 0, big.mark = ","))
+        }
+      }), collapse = "\n")
+    )
+
     master_tooltip <- master_tooltip %>%
       rbind(next_row)
   }
-  
+
   data_with_tooltip <- data %>%
     left_join(master_tooltip,
-              by = 'year')
+      by = "year"
+    )
   return(data_with_tooltip)
 }
 
@@ -234,6 +238,6 @@ custom_ggiraph_tooltip <- function() {
     "border:1px solid black;",
     "z-index: 99999 !important;"
   )
-  
+
   tooltip_css
 }
