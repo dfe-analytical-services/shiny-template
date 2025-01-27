@@ -62,8 +62,16 @@ example_tab_1_panel <- function() {
               h2("Examples of producing value boxes in R-Shiny"),
               bslib::layout_column_wrap(
                 width = 1 / 2,
-                valueBoxOutput("box_balance_latest"),
-                valueBoxOutput("box_balance_change")
+                bslib::value_box(
+                  title = "Average revenue balance",
+                  value = textOutput("average_revenue_balance"),
+                  theme = value_box_theme(bg = "#1d70b8")
+                ),
+                bslib::value_box(
+                  title = "Change from previous year",
+                  value = textOutput("balance_change"),
+                  theme = value_box_theme(bg = "#1d70b8")
+                )
               )
             ),
             # Timeseries tab --------------------------------------------------

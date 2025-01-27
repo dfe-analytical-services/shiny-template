@@ -184,14 +184,14 @@ server <- function(input, output, session) {
       reactive_benchmark() %>%
         select(
           Area = area_name,
-          `Average Revenue Balance (£)` = average_revenue_balance,
-          `Total Revenue Balance (£m)` = total_revenue_balance_million
+          `Average Revenue Balance (<U+00A3>)` = average_revenue_balance,
+          `Total Revenue Balance (<U+00A3>m)` = total_revenue_balance_million
         ),
       defaultPageSize = 4,
       minRows = 4,
       searchable = TRUE, # uncomment line if you want a search box
       filterable = TRUE, # uncomment line if you want filters at the top
-      defaultSorted = list("Total Revenue Balance (£m)" = "desc"),
+      defaultSorted = list("Total Revenue Balance (<U+00A3>m)" = "desc"),
       defaultColDef = colDef(
         headerClass = "bar-sort-header",
         style = JS("function(rowInfo, column, state) {
@@ -236,27 +236,19 @@ server <- function(input, output, session) {
     prev_avg_rev_bal_value = previous_average_balance()
   )
 
-  # Create a value box for average revenue balance
-  output$box_balance_latest <- renderValueBox({
-    value_box(
-      value = dfeR::pretty_num(latest_average_balance(), gbp = TRUE),
-      subtitle = paste0("Average revenue balance"),
-      color = "blue"
-    )
-  })
 
-  # Create a value box for the change on previous year
-  output$box_balance_change <- renderValueBox({
-    value_box(
-      value = dfeR::pretty_num(
-        latest_average_balance() - previous_average_balance(),
-        prefix = "+/-",
-        gbp = TRUE
-      ),
-      subtitle = paste0("Change from previous year"),
-      color = "blue"
+  output$average_revenue_balance <- renderText(
+    dfeR::pretty_num(latest_average_balance(), gbp = TRUE)
+  )
+
+  output$balance_change <- renderText(
+    dfeR::pretty_num(
+      latest_average_balance() - previous_average_balance(),
+      prefix = "+/-",
+      gbp = TRUE
     )
-  })
+  )
+
 
   # Link in the user guide panel back to the main panel -----------------------
   observeEvent(input$link_to_app_content_tab, {

@@ -46,7 +46,6 @@ ui <- function(input, output, session) {
     ),
 
     # Load javascript dependencies --------------------------------------------
-    # useShinydashboard(),
     shinyjs::useShinyjs(),
 
     # Cookies -----------------------------------------------------------------
