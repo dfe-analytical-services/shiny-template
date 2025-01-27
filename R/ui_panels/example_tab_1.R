@@ -77,13 +77,6 @@ example_tab_1_panel <- function() {
             # Timeseries tab --------------------------------------------------
             tabPanel(
               "Line chart example",
-              # fluidRow(
-              #   column(
-              #     width = 12,
-              #     h2("An example line chart using ggplot and ggiraph"),
-              #     girafeOutput("lineRevBal", width = "100%", height = "100%")
-              #   )
-              # )
               fluidRow(
                 column(
                   width = 12,

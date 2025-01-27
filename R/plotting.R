@@ -177,8 +177,8 @@ tooltip_func <- function(data) {
   years <- data %>%
     dplyr::select(year) %>%
     unique()
-
-  for (i in 1:nrow(years)) {
+   
+  for (i in seq_len(nrow(years))) {
     rel_data <- data %>%
       dplyr::filter(year == years$year[i])
 
