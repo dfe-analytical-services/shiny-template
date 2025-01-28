@@ -20,20 +20,22 @@ example_tab_1_panel <- function() {
                 gov_row(
                   column(
                     width = 6,
-                    shinyGovstyle::select_Input(
-                      inputId = "selectPhase",
-                      label = "Select a school phase",
-                      select_text = choices_phase,
-                      select_value = choices_phase
+                    selectizeInput(
+                      "selectPhase",
+                      "Select a school phase",
+                      choices = choices_phase,
+                      multiple = FALSE,
+                      selected = "All Local authority maintained schools"
                     )
                   ),
                   column(
                     width = 6,
-                    shinyGovstyle::select_Input(
-                      inputId = "selectArea",
-                      label = "Choose an area:",
-                      select_text = choices_areas$area_name,
-                      select_value = choices_areas$area_name
+                    selectizeInput(
+                      "selectArea",
+                      "Choose an area",
+                      choices = choices_areas$area_name,
+                      multiple = FALSE,
+                      selected = "England"
                     )
                   ),
                   # Download button -------------------------------------------
