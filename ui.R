@@ -19,7 +19,7 @@
 #
 # -----------------------------------------------------------------------------
 ui <- function(input, output, session) {
-  fluidPage(
+  bslib::page_fluid(
     # Set application metadata ------------------------------------------------
     tags$head(HTML("<title>Department for Education (DfE) Shiny Template</title>")),
     tags$head(tags$link(rel = "shortcut icon", href = "dfefavicon.png")),
@@ -46,7 +46,6 @@ ui <- function(input, output, session) {
     ),
 
     # Load javascript dependencies --------------------------------------------
-    useShinydashboard(),
     shinyjs::useShinyjs(),
 
     # Cookies -----------------------------------------------------------------
