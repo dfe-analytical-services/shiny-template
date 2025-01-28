@@ -276,6 +276,23 @@ server <- function(input, output, session) {
     paste0("Current selections: ", input$selectPhase, ", ", input$selectArea)
   })
 
+  # footer links -----------------------
+  shiny::observeEvent(input$accessibility_statement, {
+    shiny::updateTabsetPanel(session, "navlistPanel", selected = "a11y_panel")
+  })
+
+  shiny::observeEvent(input$cookies, {
+    shiny::updateTabsetPanel(session, "navlistPanel", selected = "cookies_panel_ui")
+  })
+
+  shiny::observeEvent(input$support_and_feedback, {
+    shiny::updateTabsetPanel(session, "navlistPanel", selected = "support_panel_ui")
+  })
+
+  shiny::observeEvent(input$privacy_notice, {
+    browseURL("https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter")
+  })
+
   # Stop app ------------------------------------------------------------------
   session$onSessionEnded(function() {
     stopApp()
