@@ -172,6 +172,21 @@
       ],
       "Hash": "6b868847b365672d6c1677b1608da9ed"
     },
+    "afcharts": {
+      "Package": "afcharts",
+      "Version": "0.4.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+        "dplyr",
+        "ggplot2",
+        "rlang",
+        "scales"
+      ],
+      "Hash": "3023542cadab4a9202d44e41c649f001"
+    },
     "afcolours": {
       "Package": "afcolours",
       "Version": "1.0.0",
