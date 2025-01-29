@@ -29,6 +29,7 @@ shhh(library(leaflet))
 shhh(library(htmltools))
 shhh(library(reactable))
 shhh(library(svglite))
+shhh(library(afcharts))
 
 # Data and string manipulation
 shhh(library(dplyr))

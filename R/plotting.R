@@ -103,10 +103,7 @@ timeseries_linechart_basic <- function(df) {
     ) +
     # Only show point data where line won't appear (NAs)
     ggplot2::geom_point(
-      data = subset(
-        create_show_point(la_long),
-        show_point
-      ),
+      data = la_long,
       ggplot2::aes(
         x = year,
         y = average_revenue_balance,
@@ -116,7 +113,7 @@ timeseries_linechart_basic <- function(df) {
       size = 1,
       na.rm = TRUE
     ) +
-    theme_classic() +
+    afcharts::theme_af() +
     theme(
       text = element_text(size = 12),
       axis.title.x = element_text(margin = margin(t = 12)),
@@ -139,34 +136,6 @@ timeseries_linechart_basic <- function(df) {
     )
   return(line_chart)
 }
-
-create_show_point <- function(data) {
-  data %>%
-    dplyr::group_by(
-      area_name
-    ) %>%
-    dplyr::arrange(area_name, year) %>%
-    dplyr::mutate(
-      # Helper: Is the current value NA
-      is_na = is.na(average_revenue_balance),
-
-      # General NA show point conditions to show isolated points
-      show_point = dplyr::if_else(
-        # Isolated in middle of plot
-        (dplyr::lag(is_na) & dplyr::lead(is_na)) |
-          # Isolated at start of plot
-          (dplyr::row_number() == 1 & dplyr::lead(is_na)) |
-          # Isolated at end of plot
-          (dplyr::row_number() == dplyr::n() & dplyr::lag(is_na)),
-        TRUE,
-        FALSE
-      )
-    ) %>%
-    dplyr::ungroup() %>%
-    # Clean up - remove uneeded cols
-    dplyr::select(-dplyr::starts_with("is_"))
-}
-
 
 tooltip_func <- function(data) {
   master_tooltip <- data.frame(
@@ -218,11 +187,7 @@ generic_ggiraph_options <- function(...) {
     ggiraph::opts_tooltip(
       css = custom_ggiraph_tooltip(),
       opacity = 1
-    ),
-    ggiraph::opts_toolbar(
-      position = "topright",
-      hidden = c("selection", "zoom", "misc")
-    ),
+    )
     ...
   )
 }
