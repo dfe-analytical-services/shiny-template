@@ -187,7 +187,7 @@ generic_ggiraph_options <- function(...) {
     ggiraph::opts_tooltip(
       css = custom_ggiraph_tooltip(),
       opacity = 1
-    )
+    ),
     ...
   )
 }

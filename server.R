@@ -193,18 +193,20 @@ server <- function(input, output, session) {
             fill = FALSE,
             style = css(grid_template_columns = "4fr 1fr"),
             card(ggiraph::girafeOutput("rev_line_chart", width = "100%", height = "100%"),
-                 role = "img",
-                 `aria-label` = "Line chart showing average revenue balance by region"
+              role = "img",
+              `aria-label` = "Line chart showing average revenue balance by region"
             ),
-            card(shiny::tagAppendAttributes(
-              shiny::downloadButton(
-                "download_chart",
-                label = "Download Chart",
-                icon = NULL,
-                class = "govuk-button--secondary",
-                style = "margin-left: 15px; align-self: flex-start;"
+            card(
+              shiny::tagAppendAttributes(
+                shiny::downloadButton(
+                  "download_chart",
+                  label = "Download Chart",
+                  icon = NULL,
+                  class = "govuk-button--secondary",
+                  style = "margin-left: 15px; align-self: flex-start;"
+                ),
+                style = "max-width: none; margin-left: 0; align-self: auto;"
               ),
-              style = "max-width: none; margin-left: 0; align-self: auto;"),
               br(),
               shiny::tagAppendAttributes(
                 shiny::downloadButton(
