@@ -296,6 +296,19 @@ html {
   color: #fff;
 }
 
+/* Ensure the dynamic-height class adjusts to fit its content */
+.well.dynamic-height {
+  min-height: auto !important; /* Override default min-height */
+  height: auto !important;     /* Adjust height dynamically */
+  display: block !important;   /* Ensure it wraps its content */
+  padding: 15px;               /* Adjust padding for proper spacing */
+  margin-bottom: 20px;
+  background-color: #1d70b8;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  color: #fff;
+}
+
 /* Custom value boxes CSS -------------------------------------------------- */
 /* Set the font sizes */
 #vboxhead-small {

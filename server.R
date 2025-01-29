@@ -236,27 +236,19 @@ server <- function(input, output, session) {
     prev_avg_rev_bal_value = previous_average_balance()
   )
 
-  # Create a value box for average revenue balance
-  output$box_balance_latest <- renderValueBox({
-    value_box(
-      value = dfeR::pretty_num(latest_average_balance(), gbp = TRUE),
-      subtitle = paste0("Average revenue balance"),
-      color = "blue"
-    )
-  })
 
-  # Create a value box for the change on previous year
-  output$box_balance_change <- renderValueBox({
-    value_box(
-      value = dfeR::pretty_num(
-        latest_average_balance() - previous_average_balance(),
-        prefix = "+/-",
-        gbp = TRUE
-      ),
-      subtitle = paste0("Change from previous year"),
-      color = "blue"
+  output$average_revenue_balance <- renderText(
+    dfeR::pretty_num(latest_average_balance(), gbp = TRUE)
+  )
+
+  output$balance_change <- renderText(
+    dfeR::pretty_num(
+      latest_average_balance() - previous_average_balance(),
+      prefix = "+/-",
+      gbp = TRUE
     )
-  })
+  )
+
 
   # Link in the user guide panel back to the main panel -----------------------
   observeEvent(input$link_to_app_content_tab, {
@@ -274,6 +266,19 @@ server <- function(input, output, session) {
   # Dynamic label showing custom selections -----------------------------------
   output$dropdown_label <- renderText({
     paste0("Current selections: ", input$selectPhase, ", ", input$selectArea)
+  })
+
+  # footer links -----------------------
+  shiny::observeEvent(input$accessibility_statement, {
+    shiny::updateTabsetPanel(session, "navlistPanel", selected = "a11y_panel")
+  })
+
+  shiny::observeEvent(input$cookies, {
+    shiny::updateTabsetPanel(session, "navlistPanel", selected = "cookies_panel_ui")
+  })
+
+  shiny::observeEvent(input$support_and_feedback, {
+    shiny::updateTabsetPanel(session, "navlistPanel", selected = "support_panel_ui")
   })
 
   # Stop app ------------------------------------------------------------------
