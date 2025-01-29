@@ -440,3 +440,33 @@ html {
     font-size: 0.7rem !important; /* Even smaller font size for mobile */
   }
 }
+
+/* selectize dropdown options */
+.selectize-input {
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  font-size: 1.188rem;
+  color: #000000;
+}
+
+/* dropdowns CSS ----------------------------------------------------------- */
+.selectize-input:hover,
+.selectize-input:active,
+.selectize-input:focus {
+  box-shadow: inset 0 -0.188rem 0 0 #1d70b8;
+}
+
+
+/* Change focus border color to yellow */
+.selectize-input.focus {
+    border-color: #fd0 !important;
+    box-shadow: 0 0 0.313rem #fd0 !important;
+}
+
+
+/* Change focus color to bright yellow */
+.selectize-dropdown-content .option:hover,
+.selectize-dropdown-content .option:focus,
+.selectize-dropdown-content .option.active {
+    background-color: #fd0 !important;
+    color: black !important;
+}
