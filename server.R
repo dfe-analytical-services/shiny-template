@@ -290,6 +290,7 @@ server <- function(input, output, session) {
   })
 
   shiny::observeEvent(input$privacy_notice, {
+    # regular link
     browseURL("https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter")
   })
 
