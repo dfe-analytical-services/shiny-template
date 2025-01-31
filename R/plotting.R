@@ -84,3 +84,125 @@ plot_avg_rev_benchmark <- function(df_revenue_balance, input_area) {
       values = gss_colour_pallette
     )
 }
+
+# Timeseries Linechart server
+timeseries_linechart_basic <- function(df) {
+  # Long format LA data with tooltip included
+  la_long <- tooltip_func(df)
+  # Build main static plot
+  line_chart <- ggplot2::ggplot(la_long) +
+    ggiraph::geom_line_interactive(
+      ggplot2::aes(
+        x = year,
+        y = average_revenue_balance,
+        color = area_name,
+        data_id = area_name
+      ),
+      na.rm = TRUE,
+      linewidth = 1
+    ) +
+    # Only show point data where line won't appear (NAs)
+    ggplot2::geom_point(
+      data = la_long,
+      ggplot2::aes(
+        x = year,
+        y = average_revenue_balance,
+        color = area_name
+      ),
+      shape = 15,
+      size = 1,
+      na.rm = TRUE
+    ) +
+    afcharts::theme_af() +
+    theme(
+      text = element_text(size = 12),
+      axis.title.x = element_text(margin = margin(t = 12)),
+      axis.title.y = element_text(
+        angle = 0, vjust = 0.5,
+        margin = margin(r = 12)
+      ),
+      axis.line = element_line(linewidth = 0.75),
+      legend.position = "none"
+    ) +
+    scale_y_continuous(
+      labels = scales::number_format(accuracy = 1, big = ",", prefix = "£")
+    ) +
+    xlab("Academic year end") +
+    ylab(str_wrap("Average revenue balance", 12)) +
+    scale_color_manual(
+      "Area",
+      breaks = unique(c("England", unique(la_long$area_name))),
+      values = gss_colour_pallette
+    )
+  return(line_chart)
+}
+
+tooltip_func <- function(data) {
+  master_tooltip <- data.frame(
+    year = character(),
+    tooltip = character()
+  )
+
+  years <- data %>%
+    dplyr::select(year) %>%
+    unique()
+
+  for (i in seq_len(nrow(years))) {
+    rel_data <- data %>%
+      dplyr::filter(year == years$year[i])
+
+    next_row <- data.frame(
+      year = years$year[i],
+      tooltip = paste(sapply(seq_len(nrow(rel_data)), function(i) {
+        row <- rel_data[i, ]
+        geography <- row$area_name
+        value <- row$average_revenue_balance
+
+        # Apply styling for geography
+        if (geography == "England") {
+          paste0(
+            "<span style='color:", gss_colour_pallette[1], "; font-weight: bold;'>",
+            geography, ": £", formatC(as.numeric(value), format = "f", digits = 0, big.mark = ","), "</span>"
+          )
+        } else {
+          paste0(geography, ": £", formatC(as.numeric(value), format = "f", digits = 0, big.mark = ","))
+        }
+      }), collapse = "\n")
+    )
+
+    master_tooltip <- master_tooltip %>%
+      rbind(next_row)
+  }
+
+  data_with_tooltip <- data %>%
+    left_join(master_tooltip,
+      by = "year"
+    )
+  return(data_with_tooltip)
+}
+
+
+generic_ggiraph_options <- function(...) {
+  list(
+    ggiraph::opts_tooltip(
+      css = custom_ggiraph_tooltip(),
+      opacity = 1
+    ),
+    ...
+  )
+}
+
+custom_ggiraph_tooltip <- function() {
+  tooltip_css <- paste0(
+    "background-color:#ECECEC;",
+    "color:black;",
+    "padding:5px;",
+    "border-radius:3px;",
+    "font-family:Arial;",
+    "font-weight:500;",
+    "border:1px solid black;",
+    "z-index: 99999 !important;"
+  )
+
+  tooltip_css
+}
