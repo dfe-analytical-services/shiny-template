@@ -9,40 +9,27 @@ example_tab_1_panel <- function() {
           h1("Overall content title for this dashboard page"),
         ),
         # Inputs section --------------------------------------------------
-        column(
-          width = 12,
-          gov_box(
-            column(
-              width = 5,
-              selectizeInput(
-                "selectPhase",
-                "Select a school phase:",
-                choices = choices_phase,
-                multiple = FALSE,
-                selected = "All Local authority maintained schools"
-              )
-            ),
-            column(
-              width = 5,
-              selectizeInput(
-                "selectArea",
-                "Choose an area:",
-                choices = choices_areas$area_name,
-                multiple = FALSE,
-                selected = "England"
-              )
-            ),
-            # Download button -------------------------------------------
-            column(
-              width = 2,
-              downloadButton(
-                outputId = "download_data",
-                label = "Download data",
-                icon = shiny::icon("download"),
-                class = "downloadButton"
-              )
-            )
+        layout_column_wrap(
+          selectizeInput(
+            "selectPhase",
+            "Select a school phase:",
+            choices = choices_phase,
+            multiple = FALSE,
+            selected = "All Local authority maintained schools"
           ),
+          selectizeInput(
+            "selectArea",
+            "Choose an area:",
+            choices = choices_areas$area_name,
+            multiple = FALSE,
+            selected = "England"
+          ),
+          downloadButton(
+            outputId = "download_data",
+            label = "Download data",
+            icon = shiny::icon("download"),
+            class = "downloadButton"
+          )
         ),
         # Tabset under dropdowns ----------------------------------------------
         column(
