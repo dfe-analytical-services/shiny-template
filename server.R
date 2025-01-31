@@ -281,6 +281,11 @@ server <- function(input, output, session) {
     shiny::updateTabsetPanel(session, "navlistPanel", selected = "support_panel_ui")
   })
 
+  shiny::observeEvent(input$privacy_notice, {
+    # regular link
+    browseURL("https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter")
+  })
+
   # Stop app ------------------------------------------------------------------
   session$onSessionEnded(function() {
     stopApp()
