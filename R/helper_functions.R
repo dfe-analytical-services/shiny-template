@@ -5,21 +5,6 @@
 # app to keep the rest of the app code easier to read.
 # -----------------------------------------------------------------------------
 
-# Expandable function ---------------------------------------------------------
-expandable <- function(input_id, label, contents) {
-  gov_details <- shiny::tags$details(
-    class = "govuk-details", id = input_id,
-    shiny::tags$summary(
-      class = "govuk-details__summary",
-      shiny::tags$span(
-        class = "govuk-details__summary-text",
-        label
-      )
-    ),
-    shiny::tags$div(contents)
-  )
-}
-
 # Value box function ----------------------------------------------------------
 # fontsize: can be small, medium or large
 value_box <- function(value, subtitle, icon = NULL,
