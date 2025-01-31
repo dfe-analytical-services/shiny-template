@@ -17,20 +17,26 @@ example_tab_1_panel <- function() {
               div(
                 id = "div_a",
                 # User selection dropdowns ------------------------------------
-                bslib::layout_column_wrap(
-                  width = 1 / 2, # Each item takes 50% width
-                  gap = "10px", # Adjust spacing between rows and columns
-                  shinyGovstyle::select_Input(
-                    inputId = "selectPhase",
-                    label = "Select a school phase",
-                    select_text = choices_phase,
-                    select_value = choices_phase
+                gov_row(
+                  column(
+                    width = 6,
+                    selectizeInput(
+                      "selectPhase",
+                      "Select a school phase",
+                      choices = choices_phase,
+                      multiple = FALSE,
+                      selected = "All Local authority maintained schools"
+                    )
                   ),
-                  shinyGovstyle::select_Input(
-                    inputId = "selectArea",
-                    label = "Choose an area:",
-                    select_text = choices_areas$area_name,
-                    select_value = choices_areas$area_name
+                  column(
+                    width = 6,
+                    selectizeInput(
+                      "selectArea",
+                      "Choose an area",
+                      choices = choices_areas$area_name,
+                      multiple = FALSE,
+                      selected = "England"
+                    )
                   ),
                   # Full-width button on a new row
                   bslib::layout_column_wrap(
