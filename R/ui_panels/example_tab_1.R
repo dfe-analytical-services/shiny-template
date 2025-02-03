@@ -27,6 +27,7 @@ example_tab_1_panel <- function() {
           ),
           downloadButton(
             outputId = "download_data",
+            icon = NULL,
             label = "Download data",
             class = "downloadButton"
           )
