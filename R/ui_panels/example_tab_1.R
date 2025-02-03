@@ -28,7 +28,6 @@ example_tab_1_panel <- function() {
           downloadButton(
             outputId = "download_data",
             label = "Download data",
-            icon = shiny::icon("download"),
             class = "downloadButton"
           )
         ),
