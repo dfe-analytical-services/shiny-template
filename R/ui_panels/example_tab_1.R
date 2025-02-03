@@ -10,6 +10,7 @@ example_tab_1_panel <- function() {
         ),
         # Inputs section --------------------------------------------------
         layout_column_wrap(
+          width = 0.5,
           selectizeInput(
             "selectPhase",
             "Select a school phase:",
