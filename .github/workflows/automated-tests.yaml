@@ -44,6 +44,9 @@ jobs:
       
       - uses: r-lib/actions/setup-renv@v2
           
+      - name: Set Chromote to new headless mode
+        run: export CHROMOTE_HEADLESS="new"
+
       - name: Run tests 
         shell: Rscript {0}
         run: |
