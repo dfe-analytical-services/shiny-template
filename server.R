@@ -177,7 +177,10 @@ server <- function(input, output, session) {
           css = "stroke-dasharray:5,5;stroke:black;stroke-width:2px;"
         ),
         opts_sizing(rescale = TRUE, width = 1.0),
-        opts_toolbar(saveaspng = FALSE)
+        opts_toolbar(saveaspng = FALSE),
+        opts_selection(
+          type = "single", 
+          only_shiny = FALSE)
       )
     )
   })
