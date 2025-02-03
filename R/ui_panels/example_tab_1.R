@@ -8,53 +8,28 @@ example_tab_1_panel <- function() {
           id = "main_col",
           h1("Overall content title for this dashboard page"),
         ),
-        # Expandable section --------------------------------------------------
-        column(
-          width = 12,
-          expandable(
-            input_id = "details", label = textOutput("dropdown_label"),
-            contents =
-              div(
-                id = "div_a",
-                # User selection dropdowns ------------------------------------
-                gov_row(
-                  column(
-                    width = 6,
-                    selectizeInput(
-                      "selectPhase",
-                      "Select a school phase",
-                      choices = choices_phase,
-                      multiple = FALSE,
-                      selected = "All Local authority maintained schools"
-                    )
-                  ),
-                  column(
-                    width = 6,
-                    selectizeInput(
-                      "selectArea",
-                      "Choose an area",
-                      choices = choices_areas$area_name,
-                      multiple = FALSE,
-                      selected = "England"
-                    )
-                  ),
-                  # Full-width button on a new row
-                  bslib::layout_column_wrap(
-                    width = 1, # Full width for the button
-                    div(
-                      paste("Download the underlying data for this dashboard:"),
-                      br(),
-                      downloadButton(
-                        outputId = "download_data",
-                        label = "Download data",
-                        icon = shiny::icon("download"),
-                        class = "downloadButton",
-                        style = "background-color: white; color: black; border: 1px solid #ddd;"
-                      )
-                    )
-                  )
-                )
-              )
+        # Inputs section --------------------------------------------------
+        layout_column_wrap(
+          width = 0.5,
+          selectizeInput(
+            "selectPhase",
+            "Select a school phase:",
+            choices = choices_phase,
+            multiple = FALSE,
+            selected = "All Local authority maintained schools"
+          ),
+          selectizeInput(
+            "selectArea",
+            "Choose an area:",
+            choices = choices_areas$area_name,
+            multiple = FALSE,
+            selected = "England"
+          ),
+          downloadButton(
+            outputId = "download_data",
+            icon = NULL,
+            label = "Download data",
+            class = "downloadButton"
           )
         ),
         # Tabset under dropdowns ----------------------------------------------
