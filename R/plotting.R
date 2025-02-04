@@ -21,7 +21,7 @@ create_avg_rev_timeseries <- function(df, input_area) {
       aes(
         tooltip = paste0(
           "<p><b>", area_name, ", ", year, "</b></p>",
-          unlist(lapply(average_revenue_balance, pretty_num, prefix = "£")), "</p>"
+          unlist(lapply(average_revenue_balance, pretty_num, prefix = gbp)), "</p>"
         )
       ),
       size = 0.5
@@ -38,7 +38,7 @@ create_avg_rev_timeseries <- function(df, input_area) {
       legend.position = "top"
     ) +
     scale_y_continuous(
-      labels = scales::number_format(accuracy = 1, big = ",", prefix = "£")
+      labels = scales::number_format(accuracy = 1, big = ",", prefix = gbp)
     ) +
     xlab("Academic year end") +
     ylab(str_wrap("Average revenue balance", 16)) +
@@ -58,7 +58,7 @@ plot_avg_rev_benchmark <- function(df_revenue_balance, input_area) {
     id = area_name,
     tooltip = paste(
       "<p><b>", area_name, "</b></p>",
-      unlist(lapply(average_revenue_balance, pretty_num, prefix = "£")), "</p>"
+      unlist(lapply(average_revenue_balance, pretty_num, prefix = gbp)), "</p>"
     )
   )) +
     geom_col_interactive() +
@@ -74,7 +74,7 @@ plot_avg_rev_benchmark <- function(df_revenue_balance, input_area) {
       legend.position = "none"
     ) +
     scale_y_continuous(
-      labels = scales::number_format(accuracy = 1, big = ",", prefix = "£")
+      labels = scales::number_format(accuracy = 1, big = ",", prefix = gbp)
     ) +
     xlab("Area") +
     ylab(str_wrap("Average revenue balance", 12)) +
