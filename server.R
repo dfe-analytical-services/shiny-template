@@ -381,7 +381,7 @@ server <- function(input, output, session) {
     shiny::updateTabsetPanel(session, "navlistPanel", selected = "a11y_panel")
   })
 
-  shiny::observeEvent(input$cookies, {
+  shiny::observeEvent(input$use_of_cookies, {
     shiny::updateTabsetPanel(session, "navlistPanel", selected = "cookies_panel_ui")
   })
 

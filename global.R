@@ -66,6 +66,8 @@ source("R/read_data.R")
 # Source custom functions script
 source("R/helper_functions.R")
 
+gbp <- enc2utf8("\u00A3")
+
 # Source all files in the ui_panels folder
 lapply(list.files("R/ui_panels/", full.names = TRUE), source)
 
