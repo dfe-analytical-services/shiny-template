@@ -179,8 +179,9 @@ server <- function(input, output, session) {
         opts_sizing(rescale = TRUE, width = 1.0),
         opts_toolbar(saveaspng = FALSE),
         opts_selection(
-          type = "single", 
-          only_shiny = FALSE)
+          type = "single",
+          only_shiny = FALSE
+        )
       )
     )
   })
