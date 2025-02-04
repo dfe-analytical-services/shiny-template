@@ -282,8 +282,8 @@ server <- function(input, output, session) {
   })
 
   shiny::observeEvent(input$privacy_notice, {
-    # regular link
-    browseURL("https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter")
+    # regular link to open in same window
+    shinyjs::runjs(paste0('window.top.location.href = "https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter";'))
   })
 
   # Stop app ------------------------------------------------------------------
