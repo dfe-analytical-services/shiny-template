@@ -397,9 +397,4 @@ server <- function(input, output, session) {
       'personal-information-charter";'
     ))
   })
-
-  # Stop app ------------------------------------------------------------------
-  session$onSessionEnded(function() {
-    stopApp()
-  })
 }
