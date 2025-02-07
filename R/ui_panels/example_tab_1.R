@@ -62,7 +62,52 @@ example_tab_1_panel <- function() {
                 column(
                   width = 12,
                   h2("An example line chart using ggplot and ggiraph"),
-                  girafeOutput("lineRevBal", width = "100%", height = "100%")
+                  uiOutput("lineRevBalUI")
+                )
+              )
+            ),
+            # Map tab --------------------------------------------------
+            tabPanel(
+              "Map example",
+              fluidRow(
+                column(
+                  width = 12,
+                  h2("An example map using leaflet"),
+                  # map output here ---------------------------------------
+                  column(
+                    width = 6,
+                    leafletOutput(
+                      "mapOut"
+                    )
+                  ),
+                  column(
+                    width = 6,
+                    div(
+                      class = "well",
+                      style = "min-height: 100%; height: 100%; overflow-y:
+                      visible",
+                      fluidRow(
+                        # Map dropdown selection ---------------------
+                        column(
+                          width = 12,
+                          selectizeInput(
+                            "selectMapYear",
+                            "Select Year",
+                            choices = df_revbal_years,
+                            multiple = FALSE,
+                            selected = max(df_revbal_years)
+                          ),
+                          selectizeInput(
+                            "selectMapPhase",
+                            "Select School Phase",
+                            choices = choices_phase,
+                            multiple = FALSE,
+                            selected = "All Local authority maintained schools"
+                          )
+                        )
+                      )
+                    )
+                  )
                 )
               )
             ),

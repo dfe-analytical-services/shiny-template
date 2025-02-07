@@ -149,17 +149,114 @@ server <- function(input, output, session) {
 
   # Charts --------------------------------------------------------------------
   # Line chart for revenue balance over time
-  output$lineRevBal <- renderGirafe({
-    girafe(
-      ggobj = create_avg_rev_timeseries(reactive_rev_bal(), input$selectArea),
-      options = list(
+
+  line_chart_basic <- reactive({
+    timeseries_linechart_basic(reactive_rev_bal())
+  })
+
+  output$rev_line_chart <- renderGirafe({
+    ggiraph::girafe(
+      ggobj = (line_chart_basic() +
+        geom_vline_interactive(
+          aes(
+            xintercept = year,
+            tooltip = paste(year, tooltip, sep = "\n\n"),
+            data_id = year,
+            hover_nearest = TRUE,
+            linetype = "dashed",
+            color = "transparent"
+          ),
+          color = "transparent",
+          linetype = "dashed",
+          size = 3
+        )),
+      width_svg = 6,
+      height_svg = 3,
+      options = generic_ggiraph_options(
+        opts_hover(
+          css = "stroke-dasharray:5,5;stroke:black;stroke-width:2px;"
+        ),
         opts_sizing(rescale = TRUE, width = 1.0),
-        opts_toolbar(saveaspng = FALSE)
-      ),
-      width_svg = 9.6,
-      height_svg = 5.0
+        opts_toolbar(saveaspng = FALSE),
+        opts_selection(
+          type = "single",
+          only_shiny = FALSE
+        )
+      )
     )
   })
+
+  output$lineRevBalUI <- renderUI({
+    div(
+      style = "display: flex; justify-content: space-between; align-items: center; background: white;",
+      # Line chart
+      bslib::card(
+        bslib::card_body(
+          bslib::layout_column_wrap(
+            width = NULL,
+            fill = FALSE,
+            style = css(grid_template_columns = "4fr 1fr"),
+            card(ggiraph::girafeOutput("rev_line_chart", width = "100%", height = "100%"),
+              role = "img",
+              `aria-label` = "Line chart showing average revenue balance by region"
+            ),
+            card(
+              shiny::tagAppendAttributes(
+                shiny::downloadButton(
+                  "download_chart",
+                  label = "Download Chart",
+                  icon = NULL,
+                  class = "govuk-button--secondary",
+                  style = "margin-left: 15px; align-self: flex-start;"
+                ),
+                style = "max-width: none; margin-left: 0; align-self: auto;"
+              ),
+              br(),
+              shiny::tagAppendAttributes(
+                shiny::downloadButton(
+                  "download_table",
+                  label = "Download Data",
+                  icon = NULL,
+                  class = "govuk-button--secondary",
+                  style = "margin-left: 15px; align-self: flex-start;"
+                ),
+                style = "max-width: none; margin-left: 0; align-self: auto;"
+              )
+            )
+          )
+        ),
+        full_screen = TRUE,
+        style = "flex-grow: 1; display: flex; justify-content: center; padding: 0 10px;"
+      )
+    )
+  })
+
+  output$download_chart <- downloadHandler(
+    filename = function() {
+      # Use the selected dataset as the suggested file name
+      paste0("line_chart_download_", Sys.Date(), ".jpeg")
+    },
+    content = function(file) {
+      # Write the dataset to the `file` that will be downloaded
+      file.copy(
+        ggplot2::ggsave(
+          filename = tempfile(paste0("line_chart_download_", Sys.Date(), ".jpeg")),
+          plot = line_chart_basic(), device = "jpeg"
+        ),
+        file
+      )
+    }
+  )
+
+  output$download_table <- downloadHandler(
+    filename = function() {
+      # Use the selected dataset as the suggested file name
+      paste0("line_chart_data_download_", Sys.Date(), ".csv")
+    },
+    content = function(con) {
+      write.csv(reactive_rev_bal(), con)
+    }
+  )
 
   # Map rendering
   output$mapOut <- renderLeaflet({
@@ -262,6 +359,17 @@ server <- function(input, output, session) {
       write.csv(df_revbal, file)
     }
   )
+
+  # Wrap a plot with a larger spinner
+  with_gov_spinner <- function(ui_element, spinner_type = 6, size = 1, color = "#1d70b8") {
+    shinycssloaders::withSpinner(
+      ui_element,
+      type = spinner_type,
+      color = color,
+      size = size,
+      proxy.height = paste0(250 * size, "px")
+    )
+  }
 
   # Dynamic label showing custom selections -----------------------------------
   output$dropdown_label <- renderText({
