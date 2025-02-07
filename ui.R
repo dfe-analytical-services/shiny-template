@@ -24,6 +24,7 @@ ui <- function(input, output, session) {
     tags$head(HTML("<title>Department for Education (DfE) Shiny Template</title>")),
     tags$head(tags$link(rel = "shortcut icon", href = "dfefavicon.png")),
     use_shiny_title(),
+    useShinyjs(),
     tags$html(lang = "en"),
     # Add meta description for search engines
     meta() %>%
@@ -124,7 +125,7 @@ ui <- function(input, output, session) {
     # Footer ------------------------------------------------------------------
     shinyGovstyle::footer(
       full = TRUE,
-      links = c("Accessibility statement", "Use of cookies", "Support and feedback")
+      links = c("Accessibility statement", "Use of cookies", "Support and feedback", "Privacy notice")
     )
   )
 }
