@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.4.1",
+    "Version": "4.4.2",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -460,11 +460,11 @@
       "Version": "0.6.1.9000",
       "Source": "GitHub",
       "RemoteType": "github",
+      "RemoteHost": "api.github.com",
       "RemoteUsername": "dfe-analytical-services",
       "RemoteRepo": "dfeR",
       "RemoteRef": "main",
       "RemoteSha": "6695f5d8be563fc3891f02161706c496ca44be8e",
-      "RemoteHost": "api.github.com",
       "Requirements": [
         "R",
         "dplyr",
@@ -1134,6 +1134,23 @@
       ],
       "Hash": "5bfe2927efa9f87766ca9605301ea48f"
     },
+    "openxlsx": {
+      "Package": "openxlsx",
+      "Version": "4.2.8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "Rcpp",
+        "grDevices",
+        "methods",
+        "stats",
+        "stringi",
+        "utils",
+        "zip"
+      ],
+      "Hash": "0dae94b258dc5abc4713eacdbbebcb51"
+    },
     "pillar": {
       "Package": "pillar",
       "Version": "1.10.0",
@@ -1719,6 +1736,7 @@
       "Version": "1.8-11",
       "Source": "Repository",
       "Repository": "https://rspatial.r-universe.dev",
+      "RemoteType": "repository",
       "RemoteUrl": "https://github.com/rspatial/terra",
       "RemoteSha": "4556133d34a974663ce2192ff369695c01b33e83",
       "Requirements": [
@@ -1726,7 +1744,7 @@
         "Rcpp",
         "methods"
       ],
-      "Hash": "d239689d81430bb493787ec826921186"
+      "Hash": "6b729765d2b9ebbc63a1d9d2719870df"
     },
     "testthat": {
       "Package": "testthat",

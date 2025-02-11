@@ -161,10 +161,93 @@ server <- function(input, output, session) {
     )
   })
 
+  # Table for revenue balance chart
+  output$tableRevBal <- renderReactable({
+    reactable(reactive_rev_bal(),
+      defaultPageSize = 7,
+      defaultColDef = colDef(
+        headerClass = "bar-sort-header",
+        style = JS("function(rowInfo, column, state) {
+      // Highlight sorted columns
+      for (let i = 0; i < state.sorted.length; i++) {
+        if (state.sorted[i].id === column.id) {
+          return { background: 'rgba(0, 0, 0, 0.03)' }
+        }
+      }
+    }")
+      )
+    )
+  })
+
+  # Data download revenue balance table
+  output$download_RevBal <- downloadHandler(
+    filename = function(name) {
+      raw_name <- "revenue_balance_raw_data"
+      extension <- if (input$file_type_RevBal == "CSV (Up to 5.47 MB)") {
+        ".csv"
+      } else {
+        ".xlsx"
+      }
+      paste0(tolower(gsub(" ", "", raw_name)), extension)
+    },
+    ## Generate downloaded file ---------------------------------------------
+    content = function(file) {
+      if (input$file_type_RevBal == "CSV (Up to 5.47 MB)") {
+        write.csv(reactive_rev_bal(), file)
+      } else {
+        # Added a basic pop up notification as the Excel file can take time to generate
+        pop_up <- showNotification("Generating download file", duration = NULL)
+        openxlsx::write.xlsx(reactive_rev_bal(), file, colWidths = "Auto")
+        on.exit(removeNotification(pop_up), add = TRUE)
+      }
+    }
+  )
+
   # Map rendering
   output$mapOut <- renderLeaflet({
     reactive_map_to_display()
   })
+
+  # Table for map chart
+  output$tableMap <- renderReactable({
+    reactable(reactive_map_dataset(),
+      defaultPageSize = 7,
+      defaultColDef = colDef(
+        headerClass = "bar-sort-header",
+        style = JS("function(rowInfo, column, state) {
+      // Highlight sorted columns
+      for (let i = 0; i < state.sorted.length; i++) {
+        if (state.sorted[i].id === column.id) {
+          return { background: 'rgba(0, 0, 0, 0.03)' }
+        }
+      }
+    }")
+      )
+    )
+  })
+
+  # Download Map data
+  output$download_Map <- downloadHandler(
+    filename = function(name) {
+      raw_name <- "map_raw_data"
+      extension <- if (input$file_type_Map == "CSV (Up to 5.47 MB)") {
+        ".csv"
+      } else {
+        ".xlsx"
+      }
+      paste0(tolower(gsub(" ", "", raw_name)), extension)
+    },
+    ## Generate downloaded file ---------------------------------------------
+    content = function(file) {
+      if (input$file_type_Map == "CSV (Up to 5.47 MB)") {
+        write.csv(reactive_map_dataset(), file)
+      } else {
+        pop_up <- showNotification("Generating download file", duration = NULL)
+        openxlsx::write.xlsx(reactive_map_dataset(), file, colWidths = "Auto")
+        on.exit(removeNotification(pop_up), add = TRUE)
+      }
+    }
+  )
 
   # Benchmarking bar chart
   output$colBenchmark <- renderGirafe({

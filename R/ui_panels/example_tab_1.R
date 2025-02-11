@@ -57,31 +57,47 @@ example_tab_1_panel <- function() {
           width = 12,
           tabsetPanel(
             id = "tabsetpanels",
-            # Value boxes tab -------------------------------------------------
+            # valuebox tab ------------------------------------------------
             tabPanel(
               "Valuebox example",
               fluidRow(
                 column(
-                  width = 12,
-                  h2("Examples of producing value boxes in R-Shiny"),
-                  fluidRow(
-                    column(
-                      width = 12,
-                      valueBoxOutput("box_balance_latest", width = 6),
-                      valueBoxOutput("box_balance_change", width = 6)
-                    )
+                  width = 6,
+                  create_output_tabs(
+                    chart_output = {
+                      h2("An example line chart using ggplot and ggiraph")
+                      girafeOutput("lineRevBal", width = "100%", height = "100%")
+                    },
+                    table_output = reactableOutput("tableRevBal"),
+                    download_output = {
+                      list(
+                        radioButtons(
+                          inputId = "file_type_RevBal",
+                          label = "Choose download file format",
+                          choices = c("CSV (Up to 5.47 MB)", "XLSX (Up to 1.75 MB)"),
+                          selected = "CSV (Up to 5.47 MB)"
+                        ),
+                        downloadButton(
+                          outputId = "download_RevBal",
+                          label = "Download data",
+                          icon = shiny::icon("download"),
+                          class = "downloadButton"
+                        )
+                      )
+                    }
                   )
-                )
-              )
-            ),
-            # Timeseries tab --------------------------------------------------
-            tabPanel(
-              "Line chart example",
-              fluidRow(
+                ),
                 column(
-                  width = 12,
-                  h2("An example line chart using ggplot and ggiraph"),
-                  girafeOutput("lineRevBal", width = "100%", height = "100%")
+                  br(),
+                  br(),
+                  br(),
+                  width = 6,
+                  fluidRow(
+                    valueBoxOutput("box_balance_latest", width = 6)
+                  ),
+                  fluidRow(
+                    valueBoxOutput("box_balance_change", width = 6)
+                  )
                 )
               )
             ),
@@ -89,40 +105,58 @@ example_tab_1_panel <- function() {
             tabPanel(
               "Map example",
               fluidRow(
+                # map output here ---------------------------------------
                 column(
-                  width = 12,
-                  h2("An example map using leaflet"),
-                  # map output here ---------------------------------------
-                  column(
-                    width = 6,
-                    leafletOutput(
-                      "mapOut"
-                    )
-                  ),
-                  column(
-                    width = 6,
-                    div(
-                      class = "well",
-                      style = "min-height: 100%; height: 100%; overflow-y:
+                  width = 6,
+                  create_output_tabs(
+                    chart_output = {
+                      h2("An example map using leaflet")
+                      leafletOutput(
+                        "mapOut"
+                      )
+                    },
+                    table_output = reactableOutput("tableMap"),
+                    download_output = {
+                      list(
+                        radioButtons(
+                          inputId = "file_type_Map",
+                          label = "Choose download file format",
+                          choices = c("CSV (Up to 5.47 MB)", "XLSX (Up to 1.75 MB)"),
+                          selected = "CSV (Up to 5.47 MB)"
+                        ),
+                        downloadButton(
+                          outputId = "download_Map",
+                          label = "Download data",
+                          icon = shiny::icon("download"),
+                          class = "downloadButton"
+                        )
+                      )
+                    }
+                  )
+                ),
+                column(
+                  width = 6,
+                  div(
+                    class = "well",
+                    style = "min-height: 100%; height: 100%; overflow-y:
                       visible",
-                      fluidRow(
-                        # Map dropdown selection ---------------------
-                        column(
-                          width = 12,
-                          selectizeInput(
-                            "selectMapYear",
-                            "Select Year",
-                            choices = df_revbal_years,
-                            multiple = FALSE,
-                            selected = max(df_revbal_years)
-                          ),
-                          selectizeInput(
-                            "selectMapPhase",
-                            "Select School Phase",
-                            choices = choices_phase,
-                            multiple = FALSE,
-                            selected = "All Local authority maintained schools"
-                          )
+                    fluidRow(
+                      # Map dropdown selection ---------------------
+                      column(
+                        width = 12,
+                        selectizeInput(
+                          "selectMapYear",
+                          "Select Year",
+                          choices = df_revbal_years,
+                          multiple = FALSE,
+                          selected = max(df_revbal_years)
+                        ),
+                        selectizeInput(
+                          "selectMapPhase",
+                          "Select School Phase",
+                          choices = choices_phase,
+                          multiple = FALSE,
+                          selected = "All Local authority maintained schools"
                         )
                       )
                     )

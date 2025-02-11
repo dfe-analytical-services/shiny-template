@@ -72,3 +72,30 @@ validate_color <- function(color) {
 suppressMessages(
   gss_colour_pallette <- afcolours::af_colours("categorical", colour_format = "hex", n = 4)
 )
+
+#' Create a Tabset Panel with Optional Tabs
+#'
+#' This function generates a `tabsetPanel` containing up to three tabs: "Chart",
+#' "Table", and "Download".
+#' Only non-NULL inputs will result in corresponding tabs being displayed.
+create_output_tabs <- function(chart_output,
+                               table_output = NULL,
+                               download_output = NULL) {
+  tabs <- Filter(Negate(is.null), list(
+    if (!is.null(chart_output)) tabPanel("Chart", icon = icon("chart-line"), chart_output),
+    if (!is.null(table_output)) {
+      tabPanel("Table",
+        icon = icon("table"),
+        div(style = "margin-top: 20px;", table_output)
+      )
+    },
+    if (!is.null(download_output)) {
+      tabPanel("Download",
+        icon = icon("download"),
+        div(style = "margin-top: 40px;", download_output)
+      )
+    }
+  ))
+
+  do.call(tabsetPanel, c(list(id = "main_tabs"), tabs))
+}
