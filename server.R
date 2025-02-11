@@ -179,8 +179,7 @@ server <- function(input, output, session) {
     ## Generate downloaded file ---------------------------------------------
     content = function(file) {
       if (input$file_type_Map == "CSV (Up to 5.47 MB)") {
-        write.csv(reactive_map_dataset() %>%
-          sf::st_drop_geometry(), file)
+        write.csv(reactive_map_dataset() %>% sf::st_drop_geometry(), file)
       } else {
         pop_up <- showNotification("Generating download file", duration = NULL)
         openxlsx::write.xlsx(reactive_map_dataset(), file, colWidths = "Auto")
