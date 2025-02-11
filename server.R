@@ -150,8 +150,10 @@ server <- function(input, output, session) {
       ) %>%
       addLegend(
         # "topright",
-        colors = paste0(reactive_map_labels()$colour,
-                        "; width: 15px; height: 15px; border:1px solid black; border-radius: square"),
+        colors = paste0(
+          reactive_map_labels()$colour,
+          "; width: 15px; height: 15px; border:1px solid black; border-radius: square"
+        ),
         labels = paste0(reactive_map_labels()$label),
         title = "% Schools with Deficit",
         opacity = 0.5,
