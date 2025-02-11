@@ -88,7 +88,10 @@ plot_avg_rev_benchmark <- function(df_revenue_balance, input_area) {
 # Timeseries Linechart server
 timeseries_linechart_basic <- function(df) {
   # Long format LA data with tooltip included
-  la_long <- tooltip_func(df)
+  la_long <- tooltip_func(df) %>%
+    rowwise %>%
+    mutate(lab = ifelse(year == max(df$year), area_name, ""))
+  
   # Build main static plot
   line_chart <- ggplot2::ggplot(la_long) +
     ggiraph::geom_line_interactive(
@@ -100,6 +103,18 @@ timeseries_linechart_basic <- function(df) {
       ),
       na.rm = TRUE,
       linewidth = 1
+    ) +
+    ggplot2::aes(x = year,
+                 y = average_revenue_balance,
+                 label = lab) +
+    # geom_label_repel(xlim = c(-Inf, Inf), ylim = c(-Inf, Inf)) +
+    geom_text_repel(
+      xlim = c(NA, NA),
+      ylim = c(NA, NA),
+      nudge_x = 1,
+      direction = "y",
+      hjust = "left",
+      min.segment.length = Inf
     ) +
     # Only show point data where line won't appear (NAs)
     ggplot2::geom_point(
