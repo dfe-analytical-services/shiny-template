@@ -40,7 +40,7 @@ example_tab_1_panel <- function() {
             # Value boxes tab -------------------------------------------------
             tabPanel(
               "Valuebox example",
-              h2("Examples of producing value boxes in R-Shiny"),
+              h2("Examples of a line chart and value boxes"),
               bslib::layout_column_wrap(
                 width = 1 / 2,
                 create_output_tabs(
