@@ -43,7 +43,7 @@ example_tab_1_panel <- function() {
               h2("This panel shows how to present data using a chart / table /
                  download tabset alongside some example value boxes."),
               bslib::layout_columns(
-                width = 1 / 2,
+                col_widths = bslib::breakpoints(md = c(12, 12), lg = c(8, 4)),
                 create_output_tabs(
                   chart_output = {
                     h2("An example line chart using ggplot and ggiraph")
