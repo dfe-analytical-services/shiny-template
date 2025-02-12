@@ -210,7 +210,11 @@ server <- function(input, output, session) {
   reactive_benchmark <- reactive({
     df_revbal %>%
       filter(
-        area_name %in% c(input$selectArea, input$selectBenchLAs),
+        area_name %in% c(
+          input$selectArea,
+          input$selectBenchLAs1,
+          input$selectBenchLAs2
+        ),
         school_phase == input$selectPhase,
         year == max(year)
       )
