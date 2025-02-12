@@ -144,9 +144,7 @@ server <- function(input, output, session) {
         sf::st_drop_geometry() %>%
         select(
           Area = area_name,
-          `% Schools with deficit` = PC_schools_with_deficit,
-          Longitude = LONG,
-          Latitude = LAT
+          `% Schools with deficit` = PC_schools_with_deficit
         ),
       defaultPageSize = 7,
       searchable = TRUE,
@@ -182,7 +180,7 @@ server <- function(input, output, session) {
         write.csv(reactive_map_dataset() %>% sf::st_drop_geometry(), file)
       } else {
         pop_up <- showNotification("Generating download file", duration = NULL)
-        openxlsx::write.xlsx(reactive_map_dataset(), file, colWidths = "Auto")
+        openxlsx::write.xlsx(reactive_map_dataset() %>% sf::st_drop_geometry(), file, colWidths = "Auto")
         on.exit(removeNotification(pop_up), add = TRUE)
       }
     }
@@ -293,10 +291,10 @@ server <- function(input, output, session) {
       reactive_rev_bal() %>%
         select(
           `Time Period` = time_period,
-          `Time Identifier` = time_identifier,
-          Country = country_name,
+          `Geographic Level` = geographic_level,
+          Area = area_name,
+          `School Phase` = school_phase,
           `Number of School` = number_schools,
-          `Total Revenue Balance (£ million)` = total_revenue_balance_million,
           `Average Revenue Balance  (£)` = average_revenue_balance
         ),
       defaultPageSize = 7,

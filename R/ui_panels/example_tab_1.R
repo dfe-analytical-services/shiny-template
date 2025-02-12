@@ -40,8 +40,9 @@ example_tab_1_panel <- function() {
             # Value boxes tab -------------------------------------------------
             tabPanel(
               "Valuebox example",
-              h2("Examples of a line chart and value boxes"),
-              bslib::layout_column_wrap(
+              h2("This panel shows how to present data using a chart / table /
+                 download tabset alongside some example value boxes."),
+              bslib::layout_columns(
                 width = 1 / 2,
                 create_output_tabs(
                   chart_output = {
