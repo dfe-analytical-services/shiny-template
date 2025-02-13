@@ -112,7 +112,7 @@ for (file in staged_files) {
 }
 
 if (length(files_to_unstage) > 0) {
-  system(paste0('git reset HEAD ',files_to_unstage))
+  system(paste0('git reset HEAD ',files_to_unstage, collapse = ' '))
   message(paste0(as.character(files_to_unstage), ' was removed from the commit because it was not tidied.\n'))
   message('Please format them using: Rscript -e \"styler::style_file(\\\"your_file.R\\\")\"')
 }
