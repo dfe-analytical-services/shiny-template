@@ -83,18 +83,6 @@ if (grepl("G-Z967JJVQQX", htmltools::includeHTML(("google-analytics.html"))) &
 message("\n")
 
 message("3. Checking code styling...\n")
-# style_output <- eval(styler::style_dir()$changed)
-# if (any(style_output)) {
-#   message("Warning: Code failed styling checks.
-#   \n`styler::style_dir()` has been run for you.
-#   \nPlease check your files and dashboard still work.
-#   \nThen re-stage and try committing again.")
-#   quit(save = "no", status = 1, runLast = FALSE)
-# } else {
-#   message("...code styling checks passed")
-#   message("\n")
-# }
-
 
 # Get list of staged R files
 staged_files <- system("git diff --cached --name-only --diff-filter=ACM | grep '\\.R$'", intern = TRUE)
