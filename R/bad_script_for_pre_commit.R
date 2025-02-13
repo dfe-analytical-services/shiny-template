@@ -5,3 +5,9 @@ badFormatOfVar <- 'not snake format'
 weird_indent <- data.frame("a" = 1,
                               "b" = 2,
                     "c" = 3)
+
+# comments
+# comments
+# comments
+# comments
+# comments
