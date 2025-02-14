@@ -40,73 +40,44 @@ example_tab_1_panel <- function() {
             # Value boxes tab -------------------------------------------------
             tabPanel(
               "Valuebox example",
-              h2("Examples of producing value boxes in R-Shiny"),
-              bslib::layout_column_wrap(
-                width = 1 / 2,
-                bslib::value_box(
-                  title = "Average revenue balance",
-                  value = textOutput("average_revenue_balance"),
-                  theme = value_box_theme(bg = "#1d70b8")
-                ),
-                bslib::value_box(
-                  title = "Change from previous year",
-                  value = textOutput("balance_change"),
-                  theme = value_box_theme(bg = "#1d70b8")
-                )
-              )
-            ),
-            # Timeseries tab --------------------------------------------------
-            tabPanel(
-              "Line chart example",
-              fluidRow(
-                column(
-                  width = 12,
-                  h2("An example line chart using ggplot and ggiraph"),
-                  uiOutput("lineRevBalUI")
-                )
-              )
-            ),
-            # Map tab --------------------------------------------------
-            tabPanel(
-              "Map example",
-              fluidRow(
-                column(
-                  width = 12,
-                  h2("An example map using leaflet"),
-                  # map output here ---------------------------------------
-                  column(
-                    width = 6,
-                    leafletOutput(
-                      "mapOut"
-                    )
-                  ),
-                  column(
-                    width = 6,
-                    div(
-                      class = "well",
-                      style = "min-height: 100%; height: 100%; overflow-y:
-                      visible",
-                      fluidRow(
-                        # Map dropdown selection ---------------------
-                        column(
-                          width = 12,
-                          selectizeInput(
-                            "selectMapYear",
-                            "Select Year",
-                            choices = df_revbal_years,
-                            multiple = FALSE,
-                            selected = max(df_revbal_years)
-                          ),
-                          selectizeInput(
-                            "selectMapPhase",
-                            "Select School Phase",
-                            choices = choices_phase,
-                            multiple = FALSE,
-                            selected = "All Local authority maintained schools"
-                          )
-                        )
+              h2("This panel shows how to present data using a chart / table /
+                 download tabset alongside some example value boxes."),
+              bslib::layout_columns(
+                col_widths = bslib::breakpoints(md = c(12, 12), lg = c(8, 4)),
+                create_output_tabs(
+                  chart_output = {
+                    h2("An example line chart using ggplot and ggiraph")
+                    uiOutput("lineRevBalUI")
+                  },
+                  table_output = reactableOutput("tableRevBal"),
+                  download_output = {
+                    list(
+                      radioButtons(
+                        inputId = "file_type_RevBal",
+                        label = "Choose download file format",
+                        choices = c("CSV (Up to 5.47 MB)", "XLSX (Up to 1.75 MB)"),
+                        selected = "CSV (Up to 5.47 MB)"
+                      ),
+                      downloadButton(
+                        outputId = "download_RevBal",
+                        label = "Download data",
+                        class = "downloadButton"
                       )
                     )
+                  }
+                ),
+                div(
+                  style = "display: flex; flex-direction: column; gap: 1rem;",
+                  br(),
+                  bslib::value_box(
+                    title = "Average revenue balance",
+                    value = textOutput("average_revenue_balance"),
+                    theme = value_box_theme(bg = "#1d70b8")
+                  ),
+                  bslib::value_box(
+                    title = "Change from previous year",
+                    value = textOutput("balance_change"),
+                    theme = value_box_theme(bg = "#1d70b8")
                   )
                 )
               )
@@ -117,8 +88,29 @@ example_tab_1_panel <- function() {
               h2("An example map using leaflet"),
               bslib::layout_column_wrap(
                 width = 1 / 2, # Two columns of equal width
-                # heights_equal = "none",  # Disable equal column heights
-                leafletOutput("mapOut"),
+                create_output_tabs(
+                  chart_output = {
+                    leafletOutput(
+                      "mapOut"
+                    )
+                  },
+                  table_output = reactableOutput("tableMap"),
+                  download_output = {
+                    list(
+                      radioButtons(
+                        inputId = "file_type_Map",
+                        label = "Choose download file format",
+                        choices = c("CSV (Up to 5.47 MB)", "XLSX (Up to 1.75 MB)"),
+                        selected = "CSV (Up to 5.47 MB)"
+                      ),
+                      downloadButton(
+                        outputId = "download_Map",
+                        label = "Download data",
+                        class = "downloadButton"
+                      )
+                    )
+                  }
+                ),
                 div(
                   class = "well dynamic-height",
                   style = "min-height: auto; height: auto; overflow-y: visible;",

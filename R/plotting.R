@@ -134,7 +134,7 @@ timeseries_linechart_basic <- function(df) {
       breaks = unique(c("England", unique(la_long$area_name))),
       values = gss_colour_pallette
     )
-  return(line_chart)
+  line_chart
 }
 
 tooltip_func <- function(data) {
@@ -178,7 +178,7 @@ tooltip_func <- function(data) {
     left_join(master_tooltip,
       by = "year"
     )
-  return(data_with_tooltip)
+  data_with_tooltip
 }
 
 
