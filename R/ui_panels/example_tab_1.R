@@ -66,8 +66,9 @@ example_tab_1_panel <- function() {
                     )
                   }
                 ),
-                bslib::layout_column_wrap(
-                  width = 1,
+                div(
+                  style = "display: flex; flex-direction: column; gap: 1rem;",
+                  br(),
                   bslib::value_box(
                     title = "Average revenue balance",
                     value = textOutput("average_revenue_balance"),
