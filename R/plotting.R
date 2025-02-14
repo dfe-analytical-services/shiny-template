@@ -116,6 +116,7 @@ timeseries_linechart_basic <- function(df) {
       nudge_x = 1,
       direction = "y",
       hjust = "left",
+      size = 3.2,
       min.segment.length = Inf
     ) +
     # Only show point data where line won't appear (NAs)
