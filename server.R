@@ -159,6 +159,54 @@ server <- function(input, output, session) {
       )
   })
 
+  # Table for map chart
+  output$tableMap <- renderReactable({
+    reactable(
+      reactive_map_dataset() %>%
+        sf::st_drop_geometry() %>%
+        select(
+          Area = area_name,
+          `% Schools with deficit` = PC_schools_with_deficit
+        ),
+      defaultPageSize = 7,
+      searchable = TRUE,
+      filterable = TRUE,
+      defaultColDef = colDef(
+        headerClass = "bar-sort-header",
+        style = JS("function(rowInfo, column, state) {
+      // Highlight sorted columns
+      for (let i = 0; i < state.sorted.length; i++) {
+        if (state.sorted[i].id === column.id) {
+          return { background: 'rgba(0, 0, 0, 0.03)' }
+        }
+      }
+    }")
+      )
+    )
+  })
+
+  # Download Map data
+  output$download_Map <- downloadHandler(
+    filename = function(name) {
+      raw_name <- "map_raw_data"
+      extension <- if (input$file_type_Map == "CSV (Up to 5.47 MB)") {
+        ".csv"
+      } else {
+        ".xlsx"
+      }
+      paste0(tolower(gsub(" ", "", raw_name)), extension)
+    },
+    ## Generate downloaded file ---------------------------------------------
+    content = function(file) {
+      if (input$file_type_Map == "CSV (Up to 5.47 MB)") {
+        write.csv(reactive_map_dataset() %>% sf::st_drop_geometry(), file)
+      } else {
+        pop_up <- showNotification("Generating download file", duration = NULL)
+        openxlsx::write.xlsx(reactive_map_dataset() %>% sf::st_drop_geometry(), file, colWidths = "Auto")
+        on.exit(removeNotification(pop_up), add = TRUE)
+      }
+    }
+  )
   # Dataset with benchmark data -----------------------------------------------
   reactive_benchmark <- reactive({
     df_revbal %>%
@@ -232,17 +280,6 @@ server <- function(input, output, session) {
                   style = "margin-left: 15px; align-self: flex-start;"
                 ),
                 style = "max-width: none; margin-left: 0; align-self: auto;"
-              ),
-              br(),
-              shiny::tagAppendAttributes(
-                shiny::downloadButton(
-                  "download_table",
-                  label = "Download Data",
-                  icon = NULL,
-                  class = "govuk-button--secondary",
-                  style = "margin-left: 15px; align-self: flex-start;"
-                ),
-                style = "max-width: none; margin-left: 0; align-self: auto;"
               )
             )
           )
@@ -270,13 +307,56 @@ server <- function(input, output, session) {
     }
   )
 
-  output$download_table <- downloadHandler(
-    filename = function() {
-      # Use the selected dataset as the suggested file name
-      paste0("line_chart_data_download_", Sys.Date(), ".csv")
+  # Table for revenue balance chart
+  output$tableRevBal <- renderReactable({
+    reactable(
+      reactive_rev_bal() %>%
+        select(
+          `Time Period` = time_period,
+          `Geographic Level` = geographic_level,
+          Area = area_name,
+          `School Phase` = school_phase,
+          `Number of School` = number_schools,
+          `Average Revenue Balance  (£)` = average_revenue_balance
+        ),
+      defaultPageSize = 7,
+      searchable = TRUE,
+      filterable = TRUE,
+      defaultColDef = colDef(
+        headerClass = "bar-sort-header",
+        style = JS("function(rowInfo, column, state) {
+      // Highlight sorted columns
+      for (let i = 0; i < state.sorted.length; i++) {
+        if (state.sorted[i].id === column.id) {
+          return { background: 'rgba(0, 0, 0, 0.03)' }
+        }
+      }
+    }")
+      )
+    )
+  })
+
+  # Data download revenue balance table
+  output$download_RevBal <- downloadHandler(
+    filename = function(name) {
+      raw_name <- paste0("line_chart_data_download_", Sys.Date())
+      extension <- if (input$file_type_RevBal == "CSV (Up to 5.47 MB)") {
+        ".csv"
+      } else {
+        ".xlsx"
+      }
+      paste0(raw_name, extension)
     },
-    content = function(con) {
-      write.csv(reactive_rev_bal(), con)
+    ## Generate downloaded file ---------------------------------------------
+    content = function(file) {
+      if (input$file_type_RevBal == "CSV (Up to 5.47 MB)") {
+        write.csv(reactive_rev_bal(), file)
+      } else {
+        # Added a basic pop up notification as the Excel file can take time to generate
+        pop_up <- showNotification("Generating download file", duration = NULL)
+        openxlsx::write.xlsx(reactive_rev_bal(), file, colWidths = "Auto")
+        on.exit(removeNotification(pop_up), add = TRUE)
+      }
     }
   )
 
