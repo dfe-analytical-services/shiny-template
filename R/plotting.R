@@ -90,7 +90,7 @@ timeseries_linechart_basic <- function(df) {
   # Long format LA data with tooltip included
   la_long <- tooltip_func(df) %>%
     rowwise() %>%
-    mutate(lab = ifelse(year == max(df$year), area_name, ""))
+    mutate(lab = ifelse(year == max(df$year), str_wrap(area_name, 12), ""))
 
   # Build main static plot
   line_chart <- ggplot2::ggplot(la_long) +
