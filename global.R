@@ -112,7 +112,6 @@ df_upper_tier_geo <- read_upper_tier_data()
 
 df_upper_tier_all <- df_upper_tier_geo %>%
   dplyr::select(new_la_code, LONG, LAT, geometry) %>%
-  # dplyr::rename("new_la_code" = "LAD24CD") %>%
   inner_join(df_revbal,
     by = "new_la_code"
   ) %>%
