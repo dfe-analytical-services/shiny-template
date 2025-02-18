@@ -25,11 +25,10 @@ example_tab_1_panel <- function() {
             multiple = FALSE,
             selected = "England"
           ),
-          downloadButton(
-            outputId = "download_data",
-            icon = NULL,
-            label = "Download data",
-            class = "downloadButton"
+          shinyGovstyle::download_button(
+            "download_data",
+            "Download Input Data",
+            file_size = "1.4 MB"
           )
         ),
         # Tabset under dropdowns ----------------------------------------------
@@ -58,10 +57,10 @@ example_tab_1_panel <- function() {
                         choices = c("CSV (Up to 5.47 MB)", "XLSX (Up to 1.75 MB)"),
                         selected = "CSV (Up to 5.47 MB)"
                       ),
-                      downloadButton(
-                        outputId = "download_RevBal",
-                        label = "Download data",
-                        class = "downloadButton"
+                      shinyGovstyle::download_button(
+                        "download_RevBal",
+                        "Download Revenue Data",
+                        file_size = " 5.47 MB"
                       )
                     )
                   }
@@ -103,11 +102,7 @@ example_tab_1_panel <- function() {
                         choices = c("CSV (Up to 5.47 MB)", "XLSX (Up to 1.75 MB)"),
                         selected = "CSV (Up to 5.47 MB)"
                       ),
-                      downloadButton(
-                        outputId = "download_Map",
-                        label = "Download data",
-                        class = "downloadButton"
-                      )
+                      uiOutput("download_map_button_ui")
                     )
                   }
                 ),

@@ -163,6 +163,24 @@ server <- function(input, output, session) {
   })
 
   # Download Map data
+
+  output$download_map_button_ui <- renderUI({
+    download_button(
+      "download_Map",
+      "Download Map Data",
+      file_type = substr(
+        input$file_type_Map,
+        1,
+        unlist(gregexpr(" ", input$file_type_Map))[1] - 1
+      ),
+      file_size = substr(
+        input$file_type_Map,
+        nchar(input$file_type_Map) - 7,
+        nchar(input$file_type_Map) - 1
+      )
+    )
+  })
+
   output$download_Map <- downloadHandler(
     filename = function(name) {
       raw_name <- "map_raw_data"
@@ -253,12 +271,11 @@ server <- function(input, output, session) {
             ),
             card(
               shiny::tagAppendAttributes(
-                shiny::downloadButton(
+                shinyGovstyle::download_button(
                   "download_chart",
-                  label = "Download Chart",
-                  icon = NULL,
-                  class = "govuk-button--secondary",
-                  style = "margin-left: 15px; align-self: flex-start;"
+                  "Download Revenue Chart",
+                  file_type = "JPEG",
+                  file_size = "150 KB"
                 ),
                 style = "max-width: none; margin-left: 0; align-self: auto;"
               )
