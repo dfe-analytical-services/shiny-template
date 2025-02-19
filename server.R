@@ -210,10 +210,30 @@ server <- function(input, output, session) {
   reactive_benchmark <- reactive({
     df_revbal %>%
       filter(
-        area_name %in% c(input$selectArea, input$selectBenchLAs),
+        area_name %in% c(
+          input$selectArea,
+          input$selectBenchLAs1,
+          input$selectBenchLAs2
+        ),
         school_phase == input$selectPhase,
         year == max(year)
       )
+  })
+
+  observe({
+    updateSelectizeInput(session,
+      "selectBenchLAs2",
+      choices = c("", choices_las$area_name[choices_las$area_name != input$selectBenchLAs1]),
+      selected = isolate(input$selectBenchLAs2)
+    )
+  })
+
+  observe({
+    updateSelectizeInput(session,
+      "selectBenchLAs1",
+      choices = c("", choices_las$area_name[choices_las$area_name != input$selectBenchLAs2]),
+      selected = isolate(input$selectBenchLAs1)
+    )
   })
 
   # Charts --------------------------------------------------------------------

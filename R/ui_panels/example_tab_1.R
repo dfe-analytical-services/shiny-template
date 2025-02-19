@@ -156,11 +156,18 @@ example_tab_1_panel <- function() {
                              overflow-y: visible;
                              margin-bottom: 10px;", # Adjusted margin
                     selectizeInput(
-                      "selectBenchLAs",
-                      "Select benchmark local authorities",
-                      choices = choices_las$area_name,
-                      multiple = TRUE,
-                      options = list(maxItems = 3)
+                      "selectBenchLAs1",
+                      "Select benchmark local authorities (1)",
+                      choices = c("", choices_las$area_name),
+                      multiple = FALSE,
+                      selected = NULL
+                    ),
+                    selectizeInput(
+                      "selectBenchLAs2",
+                      "Select benchmark local authorities (2)",
+                      choices = c("", choices_las$area_name),
+                      multiple = FALSE,
+                      selected = NULL
                     )
                   ),
                   h2("An Example Reactable"),
