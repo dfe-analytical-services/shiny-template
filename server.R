@@ -112,12 +112,31 @@ server <- function(input, output, session) {
     bins <- unique(bins)
 
     pal <- colorBin("YlOrRd", bins = bins)
+
     return(pal)
+  })
+
+  reactive_map_labels <- reactive({
+    quantile_num <- 5
+    probs <- seq(0, 1, length.out = quantile_num + 1)
+    bins <- quantile(reactive_map_dataset()$PC_schools_with_deficit, probs, na.rm = TRUE, names = FALSE)
+    bins <- unique(bins)
+
+    pal <- colorBin("YlOrRd", bins = bins)
+
+    bins_dset <- as.data.frame(bins) %>%
+      mutate(lower_lim = lag(bins, 1)) %>%
+      dplyr::filter(!is.na(lower_lim)) %>%
+      mutate(label = paste0(lower_lim, " - ", bins)) %>%
+      rowwise() %>%
+      mutate(colour = pal(lower_lim))
+
+    return(bins_dset)
   })
 
   reactive_map_to_display <- reactive({
     leaflet(reactive_map_dataset()) %>%
-      addProviderTiles(providers$CartoDB.Positron) %>%
+      addProviderTiles(providers$CartoDB.PositronNoLabels) %>%
       setView(lng = -3.95, lat = 53, zoom = 5.5) %>%
       addPolygons(
         color = "black",
@@ -129,8 +148,11 @@ server <- function(input, output, session) {
         label = ~lab
       ) %>%
       addLegend(
-        # "topright",
-        pal = reactive_map_pal(), values = ~PC_schools_with_deficit,
+        colors = paste0(
+          reactive_map_labels()$colour,
+          "; width: 15px; height: 15px; border:1px solid black; border-radius: square"
+        ),
+        labels = paste0(reactive_map_labels()$label),
         title = "% Schools with Deficit",
         opacity = 1
       )
