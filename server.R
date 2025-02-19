@@ -238,6 +238,22 @@ server <- function(input, output, session) {
       )
   })
 
+  observe({
+    updateSelectizeInput(session,
+      "selectBenchLAs2",
+      choices = c("", choices_las$area_name[choices_las$area_name != input$selectBenchLAs1]),
+      selected = isolate(input$selectBenchLAs2)
+    )
+  })
+
+  observe({
+    updateSelectizeInput(session,
+      "selectBenchLAs1",
+      choices = c("", choices_las$area_name[choices_las$area_name != input$selectBenchLAs2]),
+      selected = isolate(input$selectBenchLAs1)
+    )
+  })
+
   # Charts --------------------------------------------------------------------
   # Line chart for revenue balance over time
 
