@@ -116,7 +116,12 @@ df_upper_tier_all <- df_upper_tier_geo %>%
     by = "new_la_code"
   ) %>%
   rowwise() %>%
-  mutate(lab = HTML(sprintf("%s <hr> %s </br> %s %s", area_name, "Schools with deficit", PC_schools_with_deficit, "%")))
+  mutate(lab = HTML(sprintf(
+    "<b> %s </b> </br> %s </br> %s %s",
+    strong(area_name),
+    "Schools with deficit",
+    PC_schools_with_deficit, "%"
+  )))
 
 # Extract lists for use in drop downs -----------------------------------------
 # LA list
