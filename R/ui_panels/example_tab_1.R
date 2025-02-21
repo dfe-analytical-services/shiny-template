@@ -54,14 +54,10 @@ example_tab_1_panel <- function() {
                       radioButtons(
                         inputId = "file_type_RevBal",
                         label = "Choose download file format",
-                        choices = c("CSV (Up to 5.47 MB)", "XLSX (Up to 1.75 MB)"),
+                        choices = c("CSV (Up to 5.47 MB)", "XLSX (Up to 1.75 MB)", "JPEG (Up to 153 KB)"),
                         selected = "CSV (Up to 5.47 MB)"
                       ),
-                      shinyGovstyle::download_button(
-                        "download_RevBal",
-                        "Download Revenue Data",
-                        file_size = " 5.47 MB"
-                      )
+                      uiOutput("download_chart_button_ui")
                     )
                   }
                 ),

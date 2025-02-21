@@ -31,6 +31,7 @@ shhh(library(reactable))
 shhh(library(svglite))
 shhh(library(afcharts))
 shhh(library(ggrepel))
+shhh(library(openxlsx))
 
 # Data and string manipulation
 shhh(library(dplyr))

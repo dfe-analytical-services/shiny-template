@@ -165,7 +165,7 @@ server <- function(input, output, session) {
   # Download Map data
 
   output$download_map_button_ui <- renderUI({
-    download_button(
+    shinyGovstyle::download_button(
       "download_Map",
       "Download Map Data",
       file_type = substr(
@@ -255,6 +255,23 @@ server <- function(input, output, session) {
     )
   })
 
+  output$download_chart_button_ui <- renderUI({
+    shinyGovstyle::download_button(
+      "download_RevBal",
+      "Download Chart Data",
+      file_type = substr(
+        input$file_type_RevBal,
+        1,
+        unlist(gregexpr(" ", input$file_type_RevBal))[1] - 1
+      ),
+      file_size = substr(
+        input$file_type_RevBal,
+        nchar(input$file_type_RevBal) - 7,
+        nchar(input$file_type_RevBal) - 1
+      )
+    )
+  })
+
   output$lineRevBalUI <- renderUI({
     div(
       style = "display: flex; justify-content: space-between; align-items: center; background: white;",
@@ -264,21 +281,9 @@ server <- function(input, output, session) {
           bslib::layout_column_wrap(
             width = NULL,
             fill = FALSE,
-            style = css(grid_template_columns = "4fr 1fr"),
             card(ggiraph::girafeOutput("rev_line_chart", width = "100%", height = "100%"),
               role = "img",
               `aria-label` = "Line chart showing average revenue balance by region"
-            ),
-            card(
-              shiny::tagAppendAttributes(
-                shinyGovstyle::download_button(
-                  "download_chart",
-                  "Download Revenue Chart",
-                  file_type = "JPEG",
-                  file_size = "150 KB"
-                ),
-                style = "max-width: none; margin-left: 0; align-self: auto;"
-              )
             )
           )
         ),
@@ -340,8 +345,10 @@ server <- function(input, output, session) {
       raw_name <- paste0("line_chart_data_download_", Sys.Date())
       extension <- if (input$file_type_RevBal == "CSV (Up to 5.47 MB)") {
         ".csv"
-      } else {
+      } else if (input$file_type_RevBal == "XLSX (Up to 1.75 MB)") {
         ".xlsx"
+      } else {
+        ".jpeg"
       }
       paste0(raw_name, extension)
     },
@@ -349,11 +356,19 @@ server <- function(input, output, session) {
     content = function(file) {
       if (input$file_type_RevBal == "CSV (Up to 5.47 MB)") {
         write.csv(reactive_rev_bal(), file)
-      } else {
+      } else if (input$file_type_RevBal == "XLSX (Up to 1.75 MB)") {
         # Added a basic pop up notification as the Excel file can take time to generate
         pop_up <- showNotification("Generating download file", duration = NULL)
         openxlsx::write.xlsx(reactive_rev_bal(), file, colWidths = "Auto")
         on.exit(removeNotification(pop_up), add = TRUE)
+      } else {
+        file.copy(
+          ggplot2::ggsave(
+            filename = tempfile(paste0("line_chart_download_", Sys.Date(), ".jpeg")),
+            plot = line_chart_basic(), device = "jpeg"
+          ),
+          file
+        )
       }
     }
   )
