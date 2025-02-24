@@ -93,10 +93,12 @@ timeseries_linechart_basic <- function(df) {
     afcharts::theme_af() +
     theme(
       text = element_text(size = 12),
-      axis.title.x = element_text(margin = margin(t = 12)),
+      axis.title.x = element_text(margin = margin(t = 12),
+                                  family = 'sans'),
       axis.title.y = element_text(
         angle = 0, vjust = 0.5,
-        margin = margin(r = 12)
+        margin = margin(r = 12),
+        family = 'sans'
       ),
       axis.line = element_line(linewidth = 0.75),
       legend.position = "none"
