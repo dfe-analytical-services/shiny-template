@@ -63,9 +63,11 @@ suppressMessages(
 #' This function generates a `tabsetPanel` containing up to three tabs: "Chart",
 #' "Table", and "Download".
 #' Only non-NULL inputs will result in corresponding tabs being displayed.
-create_output_tabs <- function(chart_output,
-                               table_output = NULL,
-                               download_output = NULL) {
+create_output_tabs <- function(
+    id,
+    chart_output,
+    table_output = NULL,
+    download_output = NULL) {
   tabs <- Filter(Negate(is.null), list(
     if (!is.null(chart_output)) tabPanel("Chart", chart_output),
     if (!is.null(table_output)) {
@@ -82,5 +84,5 @@ create_output_tabs <- function(chart_output,
     }
   ))
 
-  do.call(tabsetPanel, c(list(id = "main_tabs"), tabs))
+  do.call(tabsetPanel, c(list(id = paste0("main_tabs_", id)), tabs))
 }

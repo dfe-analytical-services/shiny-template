@@ -44,6 +44,7 @@ example_tab_1_panel <- function() {
               bslib::layout_columns(
                 col_widths = bslib::breakpoints(md = c(12, 12), lg = c(8, 4)),
                 create_output_tabs(
+                  "line_chart_example",
                   chart_output = {
                     h2("An example line chart using ggplot and ggiraph")
                     uiOutput("lineRevBalUI")
@@ -84,6 +85,7 @@ example_tab_1_panel <- function() {
               bslib::layout_column_wrap(
                 width = 1 / 2, # Two columns of equal width
                 create_output_tabs(
+                  "map_example",
                   chart_output = {
                     leafletOutput(
                       "mapOut"
