@@ -98,8 +98,14 @@ google_analytics_key <- "Z967JJVQQX"
 enableBookmarking("url")
 
 # Fonts for charts ------------------------------------------------------------
-# font_add_google("Open Sans", "opensans")
 font_add("dejavu", "www/fonts/DejaVuSans.ttf")
+register_font(
+  "dejavu",
+  plain = "www/fonts/DejaVuSans.ttf",
+  bold = "www/fonts/DejaVuSans-Bold.ttf",
+  italic = "www/fonts/DejaVuSans-Oblique.ttf",
+  bolditalic = "www/fonts/DejaVuSans-BoldOblique.ttf"
+)
 showtext_auto()
 
 # Read in the data ------------------------------------------------------------
