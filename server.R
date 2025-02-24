@@ -481,6 +481,13 @@ server <- function(input, output, session) {
     ))
   })
 
+  shiny::observeEvent(input$external_link, {
+    # regular link to open in same window
+    shinyjs::runjs(
+      'window.top.location.href = "https://shiny.posit.co/";'
+    )
+  })
+
   # Stop app ------------------------------------------------------------------
   session$onSessionEnded(function() {
     stopApp()
