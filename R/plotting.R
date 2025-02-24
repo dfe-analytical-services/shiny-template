@@ -97,12 +97,12 @@ timeseries_linechart_basic <- function(df) {
       text = element_text(size = 12),
       axis.title.x = element_text(
         margin = margin(t = 12),
-        family = "DejaVu Sans"
+        family = "dejavu"
       ),
       axis.title.y = element_text(
         angle = 0, vjust = 0.5,
         margin = margin(r = 12),
-        family = "DejaVu Sans"
+        family = "dejavu"
       ),
       axis.line = element_line(linewidth = 0.75),
       legend.position = "none"

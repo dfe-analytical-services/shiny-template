@@ -31,7 +31,7 @@ shhh(library(reactable))
 shhh(library(svglite))
 shhh(library(afcharts))
 shhh(library(ggrepel))
-shhh(library(extrafont))
+shhh(library(showtext))
 
 # Data and string manipulation
 shhh(library(dplyr))
@@ -98,7 +98,9 @@ google_analytics_key <- "Z967JJVQQX"
 enableBookmarking("url")
 
 # Fonts for charts ------------------------------------------------------------
-loadfonts(device = "all")
+# font_add_google("Open Sans", "opensans")
+font_add("dejavu", "www/fonts/DejaVuSans.ttf")
+showtext_auto()
 
 # Read in the data ------------------------------------------------------------
 df_revbal <- read_revenue_data()
