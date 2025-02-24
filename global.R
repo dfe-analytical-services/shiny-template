@@ -31,6 +31,7 @@ shhh(library(reactable))
 shhh(library(svglite))
 shhh(library(afcharts))
 shhh(library(ggrepel))
+shhh(library(extrafont))
 
 # Data and string manipulation
 shhh(library(dplyr))
@@ -95,6 +96,9 @@ google_analytics_key <- "Z967JJVQQX"
 
 # Enable bookmarking so that input choices are shown in the url ---------------
 enableBookmarking("url")
+
+# Fonts for charts ------------------------------------------------------------
+loadfonts(device = "all")
 
 # Read in the data ------------------------------------------------------------
 df_revbal <- read_revenue_data()
