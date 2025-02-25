@@ -520,10 +520,27 @@ server <- function(input, output, session) {
   })
 
   shiny::observeEvent(input$external_link, {
-    # regular link to open in same window
-    shinyjs::runjs(
-      'window.top.location.href = "https://shiny.posit.co/";'
-    )
+    showModal(modalDialog(
+      external_link("https://shiny.posit.co/",
+        "External Link",
+        add_warning = FALSE
+      ),
+      easyClose = TRUE,
+      footer = NULL
+    ))
+
+    # JavaScript to auto-click the link and close the modal
+    shinyjs::runjs("
+      setTimeout(function() {
+        var link = document.querySelector('.modal a');
+        if (link) {
+          link.click();
+          setTimeout(function() {
+            $('.modal').modal('hide');
+          }, 20); // Extra delay to avoid any race conditions
+        }
+      }, 400);
+    ")
   })
 
   # Stop app ------------------------------------------------------------------
