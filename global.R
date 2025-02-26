@@ -82,12 +82,11 @@ parent_publication <- # link to source publication
 
 # Set the URLs that the site will be published to
 site_primary <- "https://department-for-education.shinyapps.io/dfe-shiny-template/"
-site_overflow <- "https://department-for-education.shinyapps.io/dfe-shiny-template-overflow/"
 
 # Combine URLs into list for disconnect function
 # We can add further mirrors where necessary. Each one can generally handle
 # about 2,500 users simultaneously
-sites_list <- c(site_primary, site_overflow)
+sites_list <- c(site_primary)
 
 # Set the key for Google Analytics tracking
 google_analytics_key <- "Z967JJVQQX"
