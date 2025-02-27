@@ -165,6 +165,14 @@ example_tab_1_panel <- function() {
                   reactableOutput("tabBenchmark2")
                 )
               )
+            ),
+            # Link in text tab ------------------------------------------------
+            tabPanel(
+              "Link in text example",
+              h2("An example of links within text"),
+              p('This is a link to the ',
+                in_line_nav_link('support panel','support_panel_ui'),
+                ' internal tab')
             )
           )
         )
