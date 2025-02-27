@@ -11,7 +11,6 @@ This template repository is for making accessible apps for published statistics 
 This template app is deployed in the following places for you to view:
 
 - Public production - https://department-for-education.shinyapps.io/dfe-shiny-template/
-- Public overflow - https://department-for-education.shinyapps.io/dfe-shiny-template-overflow/
 
 We have guidance on [creating public dashboards](https://dfe-analytical-services.github.io/analysts-guide/writing-visualising/dashboards.html) and [creating dashboards in R Shiny](https://dfe-analytical-services.github.io/analysts-guide/writing-visualising/dashboards_rshiny.html) that you should familiarise yourself with before using this template.
 
