@@ -91,12 +91,18 @@ timeseries_linechart_basic <- function(df) {
       na.rm = TRUE
     ) +
     afcharts::theme_af() +
+    xlab("Academic year end") +
+    ylab(str_wrap("Average revenue balance", 12)) +
     theme(
       text = element_text(size = 12),
-      axis.title.x = element_text(margin = margin(t = 12)),
+      axis.title.x = element_text(
+        margin = margin(t = 12),
+        family = "dejavu"
+      ),
       axis.title.y = element_text(
         angle = 0, vjust = 0.5,
-        margin = margin(r = 12)
+        margin = margin(r = 12),
+        family = "dejavu"
       ),
       axis.line = element_line(linewidth = 0.75),
       legend.position = "none"
@@ -104,8 +110,6 @@ timeseries_linechart_basic <- function(df) {
     scale_y_continuous(
       labels = scales::number_format(accuracy = 1, big = ",", prefix = "£")
     ) +
-    xlab("Academic year end") +
-    ylab(str_wrap("Average revenue balance", 12)) +
     scale_color_manual(
       "Area",
       breaks = unique(c("England", unique(la_long$area_name))),
