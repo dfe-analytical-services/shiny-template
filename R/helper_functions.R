@@ -89,9 +89,11 @@ create_output_tabs <- function(
 
 # standardise internal links ---------------------------------------------
 in_line_nav_link <- function(link_text, target_link) {
-  HTML(paste0("<a href='#' onclick=\"Shiny.setInputValue('nav_link', '",
-              target_link,
-              "', {priority: 'event'});\">",
-              link_text,
-              "</a>"))
+  HTML(paste0(
+    "<a href='#' onclick=\"Shiny.setInputValue('nav_link', '",
+    target_link,
+    "', {priority: 'event'});\">",
+    link_text,
+    "</a>"
+  ))
 }
