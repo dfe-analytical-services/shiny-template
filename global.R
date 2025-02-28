@@ -31,6 +31,7 @@ shhh(library(reactable))
 shhh(library(svglite))
 shhh(library(afcharts))
 shhh(library(ggrepel))
+shhh(library(showtext))
 shhh(library(openxlsx))
 
 # Data and string manipulation
@@ -95,6 +96,17 @@ google_analytics_key <- "Z967JJVQQX"
 
 # Enable bookmarking so that input choices are shown in the url ---------------
 enableBookmarking("url")
+
+# Fonts for charts ------------------------------------------------------------
+font_add("dejavu", "www/fonts/DejaVuSans.ttf")
+register_font(
+  "dejavu",
+  plain = "www/fonts/DejaVuSans.ttf",
+  bold = "www/fonts/DejaVuSans-Bold.ttf",
+  italic = "www/fonts/DejaVuSans-Oblique.ttf",
+  bolditalic = "www/fonts/DejaVuSans-BoldOblique.ttf"
+)
+showtext_auto()
 
 # Read in the data ------------------------------------------------------------
 df_revbal <- read_revenue_data()
