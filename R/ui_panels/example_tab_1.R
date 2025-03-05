@@ -6,7 +6,7 @@ example_tab_1_panel <- function() {
         column(
           width = 12,
           id = "main_col",
-          h1("Overall content title for this dashboard page"),
+          h1("Overall content title for this dashboard page")
         ),
         # Inputs section --------------------------------------------------
         layout_column_wrap(
