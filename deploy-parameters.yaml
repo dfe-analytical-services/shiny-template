@@ -1,2 +1,2 @@
-dashboard_name: dev-dfe-shiny-template
+dashboard_name: dashboard_name
 deploy_target: shinyapps

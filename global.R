@@ -63,11 +63,6 @@ if (FALSE) {
 #
 # It's best to do this here instead of the server file, to improve performance.
 
-# Source script for loading in data
-source("R/read_data.R")
-
-# Source custom functions script
-source("R/helper_functions.R")
 
 gbp <- enc2utf8("\u00A3")
 
@@ -107,54 +102,3 @@ register_font(
   bolditalic = "www/fonts/DejaVuSans-BoldOblique.ttf"
 )
 showtext_auto()
-
-# Read in the data ------------------------------------------------------------
-df_revbal <- read_revenue_data()
-
-# Get geographical areas from data
-df_areas <- df_revbal %>%
-  select(
-    geographic_level, country_name, country_code,
-    region_name, region_code,
-    la_name, old_la_code, new_la_code
-  ) %>%
-  distinct()
-
-df_upper_tier_geo <- read_upper_tier_data()
-
-df_upper_tier_all <- df_upper_tier_geo %>%
-  dplyr::select(new_la_code, LONG, LAT, geometry) %>%
-  inner_join(df_revbal,
-    by = "new_la_code"
-  ) %>%
-  rowwise() %>%
-  mutate(lab = HTML(sprintf(
-    "<b> %s </b> </br> %s </br> %s %s",
-    strong(area_name),
-    "Schools with deficit",
-    PC_schools_with_deficit, "%"
-  )))
-
-# Extract lists for use in drop downs -----------------------------------------
-# LA list
-choices_las <- df_areas %>%
-  filter(geographic_level == "Local authority") %>%
-  select(geographic_level, area_name = la_name) %>%
-  arrange(area_name)
-
-# Full list of areas
-choices_areas <- df_areas %>%
-  filter(geographic_level == "National") %>%
-  select(geographic_level, area_name = country_name) %>%
-  rbind(
-    df_areas %>%
-      filter(geographic_level == "Regional") %>%
-      select(geographic_level, area_name = region_name)
-  ) %>%
-  rbind(choices_las)
-
-# List of phases
-choices_phase <- unique(df_revbal$school_phase)
-
-# List of years
-df_revbal_years <- sort(unique(df_revbal$year))

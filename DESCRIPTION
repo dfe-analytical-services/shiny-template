@@ -1,12 +1,9 @@
-Title: shiny-template
-Author: c(person(given = "Laura",
-                 family = "Selby",
+Title: dashboard_name
+Author: c(person(given = "first_name",
+                 family = "last_name",
                  role = c("cre", "aut"),
-                 email = "laura.selby@education.gov.uk"),
-          person(given = "Cameron",
-                 family = "Race",
-                 role = "aut",
-                 email = "cameron.race@education.gov.uk"))
+                 email = "first_name.last_name@education.gov.uk")
+                 )
 License: MIT
 Type: Shiny
 Imports:
