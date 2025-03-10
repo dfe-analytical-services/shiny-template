@@ -543,16 +543,15 @@ server <- function(input, output, session) {
   })
 
   shiny::observeEvent(input$privacy_notice, {
-    
     showModal(modalDialog(
-      external_link("https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter",
-                    "Privacy notice",
-                    add_warning = FALSE
+      external_link("https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter", #nolint
+        "Privacy notice",
+        add_warning = FALSE
       ),
       easyClose = TRUE,
       footer = NULL
     ))
-    
+
     # JavaScript to auto-click the link and close the modal
     shinyjs::runjs("
       setTimeout(function() {
