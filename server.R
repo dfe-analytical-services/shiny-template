@@ -544,7 +544,7 @@ server <- function(input, output, session) {
 
   shiny::observeEvent(input$privacy_notice, {
     showModal(modalDialog(
-      external_link("https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter", #nolint
+      external_link("https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter", # nolint
         "Privacy notice",
         add_warning = FALSE
       ),
