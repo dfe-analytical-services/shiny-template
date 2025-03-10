@@ -4,6 +4,10 @@ on:
     branches:
       - main
       - development
+  pull-request:
+    branches:
+      - main
+  
 jobs:
   deploy:
     uses: dfe-analytical-services/dfeshiny/.github/workflows/dashboard_deploy_template.yaml@main
