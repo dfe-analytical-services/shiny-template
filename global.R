@@ -42,7 +42,6 @@ shhh(library(ggiraph))
 # Shiny extensions
 shhh(library(shinyjs))
 shhh(library(tools))
-shhh(library(shinyWidgets))
 shhh(library(shinytitle))
 shhh(library(xfun))
 shhh(library(metathis))
