@@ -38,6 +38,7 @@ shhh(library(openxlsx))
 shhh(library(dplyr))
 shhh(library(stringr))
 shhh(library(ggiraph))
+shhh(library(data.table))
 
 # Shiny extensions
 shhh(library(shinyjs))
