@@ -165,6 +165,28 @@ example_tab_1_panel <- function() {
                   reactableOutput("tabBenchmark2")
                 )
               )
+            ),
+            # Link in text tab ------------------------------------------------
+            tabPanel(
+              "Link examples",
+              h2("An example of links within text"),
+              p(
+                "This is a link to the ",
+                in_line_nav_link("support panel", "support_panel_ui"),
+                " internal tab"
+              ),
+              shinyGovstyle::noti_banner(
+                inputId = "banner",
+                title_txt = "Example Notification Banner",
+                body_txt = "Example body text"
+              ),
+              warning_text(
+                "warn1",
+                "A warning here - something bad will happen"
+              ),
+              shiny::tags$p(
+                "An external link to ", external_link("https://shiny.posit.co/", "R Shiny"), " which is great."
+              )
             )
           )
         )
