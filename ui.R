@@ -24,7 +24,6 @@ ui <- function(input, output, session) {
     tags$head(HTML("<title>Department for Education (DfE) Shiny Template</title>")),
     tags$head(tags$link(rel = "shortcut icon", href = "dfefavicon.png")),
     use_shiny_title(),
-    # useShinyjs(),
     tags$html(lang = "en"),
     # Add meta description for search engines
     meta() %>%
