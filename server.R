@@ -18,6 +18,13 @@
 #
 # -----------------------------------------------------------------------------
 server <- function(input, output, session) {
+  ## Main content left navigation ---------------------------------------------
+  observeEvent(input$example_tab_1, nav_select("left_nav", "example_tab_1"))
+  observeEvent(input$user_guide, nav_select("left_nav", "user_guide"))
+  observeEvent(input$a11y_panel, nav_select("left_nav", "a11y_panel"))
+  observeEvent(input$cookies_panel_ui, nav_select("left_nav", "cookies_panel_ui"))
+  observeEvent(input$support_panel_ui, nav_select("left_nav", "support_panel_ui"))
+
   # Bookmarking ---------------------------------------------------------------
   # The template uses bookmarking to store input choices in the url. You can
   # exclude specific inputs (for example extra info created for a datatable
