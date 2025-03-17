@@ -4,6 +4,7 @@ shhh <- suppressPackageStartupMessages # It's a library, so shhh!
 shhh(library(dplyr))
 shhh(library(xfun))
 shhh(library(dfeshiny))
+shhh(library(styler))
 
 message("\n")
 
@@ -82,16 +83,31 @@ if (grepl("G-Z967JJVQQX", htmltools::includeHTML(("google-analytics.html"))) &
 message("\n")
 
 message("3. Checking code styling...\n")
-style_output <- eval(styler::style_dir()$changed)
-if (any(style_output)) {
-  message("Warning: Code failed styling checks.
-  \n`styler::style_dir()` has been run for you.
-  \nPlease check your files and dashboard still work.
-  \nThen re-stage and try committing again.")
-  quit(save = "no", status = 1, runLast = FALSE)
-} else {
-  message("...code styling checks passed")
-  message("\n")
+
+# Get list of staged R files
+staged_files <- system("git diff --cached --name-only --diff-filter=ACM | grep '\\.R$'", intern = TRUE)
+files_to_unstage <- c()
+
+message("Checking if staged R files are properly tidied...\n")
+for (file in staged_files) {
+  original <- readLines(file, warn = FALSE)
+  styled <- styler::style_text(original)
+
+  if (!identical(original, styled)) {
+    message(paste0("File ", file, " is not properly tidied. Removing from commit."))
+    files_to_unstage <- c(files_to_unstage, file)
+  }
+}
+
+if (length(files_to_unstage) > 0) {
+  system(paste0("git reset HEAD ", files_to_unstage, collapse = " "))
+  message(paste0(as.character(files_to_unstage), " was removed from the commit because it was not tidied.\n"))
+  message('Please format them using: Rscript -e \"styler::style_file(\\\"your_file.R\\\")\"')
+}
+
+if (length(staged_files) == 0) {
+  message("No R files staged for commit.\n")
+  quit(status = 0)
 }
 
 # End of hooks
