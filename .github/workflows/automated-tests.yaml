@@ -8,4 +8,4 @@ name: Automated tests
 
 jobs:
   automatedTests:
-    uses: dfe-analytical-services/dfeshiny/.github/workflows/automated_tests_template.yaml@bugfix/automated-test-workflow
+    uses: dfe-analytical-services/dfeshiny/.github/workflows/automated_tests_template.yaml@main
