@@ -524,6 +524,11 @@ server <- function(input, output, session) {
     )
   }
 
+  # navigation link within text --------------------------------------------
+  observeEvent(input$nav_link, {
+    shiny::updateTabsetPanel(session, "navlistPanel", selected = input$nav_link)
+  })
+
   # Dynamic label showing custom selections -----------------------------------
   output$dropdown_label <- renderText({
     paste0("Current selections: ", input$selectPhase, ", ", input$selectArea)
