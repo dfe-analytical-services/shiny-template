@@ -114,28 +114,19 @@ in_line_nav_link <- function(link_text, target_link) {
 
 # left nav ====================================================================
 dfe_contents_links <- function(links_list) {
-  # Predefined ID mappings
-  custom_ids <- c(
-    "Example tab 1" = "example_tab_1",
-    "User guide" = "user_guide",
-    "Accessibility" = "a11y_panel",
-    "Cookies" = "cookies_panel_ui",
-    "Support and feedback" = "support_panel_ui"
-  )
-
   # Function to create a sidebar link with an ID
   create_sidelink <- function(link_text) {
-    link_id <- custom_ids[[link_text]] %||% tolower(link_text)
+    link_id <- links_list[[link_text]] %||% tolower(link_text)
     tags$li("—", actionLink(link_id, link_text, class = "contents_link"))
   }
 
   # The HTML div to be returned
   tags$div(
-    style = "position: sticky; top: 0.5rem; padding: 0.25rem;",
+    style = "position: sticky; top: 0.5rem; padding: 0.25rem; padding-left: 2rem;",
     h2("Contents"),
     tags$ol(
       style = "list-style-type: none; padding-left: 0; font-size: 1rem;",
-      lapply(links_list, create_sidelink)
+      lapply(names(links_list), create_sidelink)
     )
   )
 }
