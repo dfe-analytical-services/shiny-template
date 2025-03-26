@@ -69,6 +69,18 @@ ui <- function(input, output, session) {
         href = "dfe_shiny_gov_style.css"
       )
     ),
+    tags$head(
+      tags$style(HTML("
+  .govuk-main-wrapper,
+  .govuk-width-container,
+  .main-content,
+  .bslib-grid,
+  .layout-column-wrap {
+    margin-top: 5px !important;
+    padding-top: 0px !important;
+  }
+"))
+    ),
 
     # Header ------------------------------------------------------------------
     dfeshiny::header(
@@ -94,11 +106,11 @@ ui <- function(input, output, session) {
             dfe_contents_links(
               links_list =
                 c(
-                  "Example tab 1",
-                  "User guide",
-                  "Accessibility",
-                  "Cookies",
-                  "Support and feedback"
+                  "Example tab 1" = "example_tab_1",
+                  "User guide" = "user_guide",
+                  "Accessibility" = "a11y_panel",
+                  "Cookies" = "cookies_panel_ui",
+                  "Support and feedback" = "support_panel_ui"
                 )
             ),
             ## Dashboard panels -----------------------------------------------
