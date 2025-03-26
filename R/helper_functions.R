@@ -110,3 +110,23 @@ in_line_nav_link <- function(link_text, target_link) {
     "</a>"
   ))
 }
+
+
+# left nav ====================================================================
+dfe_contents_links <- function(links_list) {
+  # Function to create a sidebar link with an ID
+  create_sidelink <- function(link_text) {
+    link_id <- links_list[[link_text]] %||% tolower(link_text)
+    tags$li("—", actionLink(link_id, link_text, class = "contents_link"))
+  }
+
+  # The HTML div to be returned
+  tags$div(
+    style = "position: sticky; top: 0.5rem; padding: 0.25rem; padding-left: 2rem;",
+    h2("Contents"),
+    tags$ol(
+      style = "list-style-type: none; padding-left: 0; font-size: 1rem;",
+      lapply(names(links_list), create_sidelink)
+    )
+  )
+}

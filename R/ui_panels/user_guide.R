@@ -1,6 +1,6 @@
 user_guide_panel <- function() {
-  tabPanel(
-    "User guide",
+  bslib::nav_panel(
+    "user_guide",
     gov_main_layout(
       gov_row(
         column(
