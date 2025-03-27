@@ -13,38 +13,26 @@ shhh <- suppressPackageStartupMessages # It's a library, so shhh!
 
 # Core shiny and R packages
 shhh(library(shiny))
-shhh(library(bslib))
-shhh(library(rstudioapi))
+# shhh(library(bslib))
+# shhh(library(rstudioapi))
 
 # Custom packages
 shhh(library(dfeR))
 shhh(library(dfeshiny))
 shhh(library(shinyGovstyle))
 
-# Creating charts and tables
-shhh(library(ggplot2))
-shhh(library(DT))
-shhh(library(sf))
-shhh(library(leaflet))
-shhh(library(htmltools))
-shhh(library(reactable))
-shhh(library(svglite))
-shhh(library(afcharts))
-shhh(library(ggrepel))
-shhh(library(showtext))
-shhh(library(openxlsx))
 
 # Data and string manipulation
-shhh(library(dplyr))
+#shhh(library(dplyr))
 shhh(library(stringr))
-shhh(library(ggiraph))
+#shhh(library(ggiraph))
 
 # Shiny extensions
 shhh(library(shinyjs))
-shhh(library(tools))
+#shhh(library(tools))
 shhh(library(shinyWidgets))
 shhh(library(shinytitle))
-shhh(library(xfun))
+# shhh(library(xfun))
 shhh(library(metathis))
 shhh(library(shinyalert))
 
@@ -64,25 +52,8 @@ if (FALSE) {
 # It's best to do this here instead of the server file, to improve performance.
 
 
-gbp <- enc2utf8("\u00A3")
-
-# Source all files in the ui_panels folder
-lapply(list.files("R/ui_panels/", full.names = TRUE), source)
-
 # Set global variables --------------------------------------------------------
 
-site_title <- "Department for Education (DfE) Shiny Template" # name of app
-parent_pub_name <- "Statistical publication" # name of source publication
-parent_publication <- # link to source publication
-  "https://explore-education-statistics.service.gov.uk/find-statistics/apprenticeships"
-
-# Set the URLs that the site will be published to
-site_primary <- "https://department-for-education.shinyapps.io/dfe-shiny-template/"
-
-# Combine URLs into list for disconnect function
-# We can add further mirrors where necessary. Each one can generally handle
-# about 2,500 users simultaneously
-sites_list <- c(site_primary)
 
 # Set the key for Google Analytics tracking
 google_analytics_key <- "Z967JJVQQX"
@@ -92,13 +63,4 @@ google_analytics_key <- "Z967JJVQQX"
 # Enable bookmarking so that input choices are shown in the url ---------------
 enableBookmarking("url")
 
-# Fonts for charts ------------------------------------------------------------
-font_add("dejavu", "www/fonts/DejaVuSans.ttf")
-register_font(
-  "dejavu",
-  plain = "www/fonts/DejaVuSans.ttf",
-  bold = "www/fonts/DejaVuSans-Bold.ttf",
-  italic = "www/fonts/DejaVuSans-Oblique.ttf",
-  bolditalic = "www/fonts/DejaVuSans-BoldOblique.ttf"
-)
-showtext_auto()
+

@@ -76,13 +76,6 @@ ui <- function(input, output, session) {
       header = "Department for Education (DfE) Shiny Template"
     ),
 
-    # Beta banner -------------------------------------------------------------
-    shinyGovstyle::banner(
-      "beta banner",
-      "Beta",
-      "This dashboard is in beta phase and we are still reviewing performance and reliability."
-    ),
-
     # Nav panels --------------------------------------------------------------
     shiny::navlistPanel(
       "",
@@ -90,7 +83,12 @@ ui <- function(input, output, session) {
       widths = c(2, 8),
       well = FALSE,
       # Content for these panels is defined in the R/ui_panels/ folder
-      user_guide_panel(),
+      tabPanel(
+        "Dashboard",
+      ),
+      tabPanel(
+        "Information",
+      ),
       shiny::tabPanel(
         value = "a11y_panel",
         "Accessibility",
