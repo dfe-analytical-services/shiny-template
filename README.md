@@ -20,7 +20,7 @@ We have guidance on [creating public dashboards](https://dfe-analytical-services
 
 If you wish to begin developing an official DfE dashboard, then contact the explore education statistics platforms team to arrange a new dashboard repository based on this template in the dfe-analytical-services GitHub area. 
 
-If you just want to experiment with the template first, you can create your own copy of the template by clicking the green "use this template" button. Though note that all DfE dashboards must be held within the dfe-analytical-services area and you should minimise any code that is held in personal repositories.
+If you just want to experiment with the template first, you can create your own copy of the template by clicking the "<> Code" button and then clicking "Download ZIP". You can then save your dashboard template copy into another repo manually, though note that all DfE dashboards must be held within the dfe-analytical-services area and you should minimise any code that is held in personal repositories.
 
 ---
 
