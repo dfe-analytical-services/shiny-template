@@ -21,7 +21,9 @@
 ui <- function(input, output, session) {
   bslib::page_fluid(
     # Set application metadata ------------------------------------------------
-    tags$head(HTML("<title>Department for Education (DfE) Shiny Template</title>")),
+    tags$head(HTML(
+      "<title>Department for Education (DfE) Shiny Template</title>"
+    )),
     tags$head(tags$link(rel = "shortcut icon", href = "dfefavicon.png")),
     use_shiny_title(),
     tags$html(lang = "en"),
@@ -69,22 +71,12 @@ ui <- function(input, output, session) {
         href = "dfe_shiny_gov_style.css"
       )
     ),
-    tags$head(
-      tags$style(HTML("
-  .govuk-main-wrapper,
-  .govuk-width-container,
-  .main-content,
-  .bslib-grid,
-  .layout-column-wrap {
-    margin-top: 5px !important;
-    padding-top: 0px !important;
-  }
-"))
-    ),
 
     # Header ------------------------------------------------------------------
     dfeshiny::header(
-      header = "Department for Education (DfE) Shiny Template"
+      header = "Department for Education (DfE) Shiny Template",
+      logo_alt_text = "Department for Education",
+      main_alt_text = "Department for Education (DfE) Shiny Template"
     ),
 
     # Beta banner -------------------------------------------------------------
@@ -104,14 +96,13 @@ ui <- function(input, output, session) {
             col_widths = breakpoints(sm = c(4, 8), md = c(3, 9), lg = c(2, 9)),
             ## Left navigation ------------------------------------------------
             dfe_contents_links(
-              links_list =
-                c(
-                  "Example tab 1" = "example_tab_1",
-                  "User guide" = "user_guide",
-                  "Accessibility" = "a11y_panel",
-                  "Cookies" = "cookies_panel_ui",
-                  "Support and feedback" = "support_panel_ui"
-                )
+              links_list = c(
+                "Example tab 1" = "example_tab_1",
+                "User guide" = "user_guide",
+                "Accessibility" = "a11y_panel",
+                "Cookies" = "cookies_panel_ui",
+                "Support and feedback" = "support_panel_ui"
+              )
             ),
             ## Dashboard panels -----------------------------------------------
             bslib::navset_hidden(
@@ -127,7 +118,9 @@ ui <- function(input, output, session) {
                   date_prepared = "1st July 2024",
                   date_reviewed = "1st July 2024",
                   issues_contact = "explore.statistics@education.gov.uk",
-                  non_accessible_components = c("List non-accessible components here"),
+                  non_accessible_components = c(
+                    "List non-accessible components here"
+                  ),
                   specific_issues = c("List specific issues here")
                 )
               ),
