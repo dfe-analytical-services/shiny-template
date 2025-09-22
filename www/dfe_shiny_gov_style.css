@@ -56,26 +56,6 @@ h3 {
   color: #000000;
 }
 
-/* well text */
-label {
-  font-family: "Arial", sans-serif;
-  font-size: 19px;
-}
-
-
-/* Bullet point formatting ------------------------------------------------- */
-li {
-  margin-bottom: 5px;
-  display: list-item;
-  text-align: -webkit-match-parent;
-  unicode-bidi: isolate;
-}
-
-ul {
-  padding-left: 20px;
-  list-style-type: disc;
-}
-
 /* Link text styling ------------------------------------------------------- */
 a {
   font-family: "Arial", sans-serif;
@@ -102,18 +82,6 @@ a:focus {
 .govuk-width-container {
   width: 100% !important;
   max-width: 100% !important;
-}
-
-/*removing white gutters on govheader container */
-.container,
-.container-fluid,
-.container-xxl,
-.container-xl,
-.container-lg,
-.container-md,
-.container-sm {
-  --bs-gutter-x: 0;
-  --bs-gutter-y: 0;
 }
 
 /* This line sets the main area width. Originally set to 66.667% in the GDS 
@@ -182,58 +150,6 @@ template. 80% works well here to reduce white space on the right hand side.*/
 /* This makes it look like the footer extends on shorter pages  */
 html {
   background-color: #f3f2f1;
-}
-
-/* GOV.UK details component ------------------------------------------------ */
-.govuk-details {
-  padding: 19px;
-  font-family: "Arial", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 25px;
-  background-color: #1d70b8;
-  font-weight: 400;
-  color: #fff;
-  margin-bottom: 20px;
-  display: block;
-  border: 1px solid #e3e3e3;
-  border-radius: 4px;
-}
-
-.govuk-details__summary {
-  display: inline-block;
-  position: relative;
-  margin-bottom: 5px;
-  padding-left: 25px;
-  color: #fff;
-  cursor: pointer;
-}
-
-.govuk-details__summary-text:hover {
-  text-decoration: underline;
-  text-decoration-thickness: max(4px, .1875rem, .12em);
-}
-
-.govuk-details__summary:hover {
-  color: #fff;
-}
-
-.govuk-details__summary:focus {
-  outline: 3px solid rgba(0, 0, 0, 0);
-  /* color: #0b0c0c; */
-  background-color: #fd0;
-  box-shadow: 0 -2px #fd0, 0 4px #0b0c0c;
-  color: #0b0c0c;
-  text-decoration: none;
-}
-
-/* GOV.UK select component ------------------------------------------------- */
-
-.govuk-select {
-  color: black;
-}
-
-.govuk-label {
-  color: white !important;
 }
 
 /* Left nav tabs styling --------------------------------------------------- */
