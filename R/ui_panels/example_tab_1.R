@@ -1,6 +1,6 @@
 example_tab_1_panel <- function() {
-  tabPanel(
-    "Example tab 1",
+  bslib::nav_panel(
+    "example_tab_1",
     gov_main_layout(
       gov_row(
         column(
