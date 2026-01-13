@@ -1,0 +1,9 @@
+{
+  "input": {
+    "selectArea": "North East"
+  },
+  "output": {
+    "average_revenue_balance": "£120,880",
+    "balance_change": "£+53,131"
+  }
+}
