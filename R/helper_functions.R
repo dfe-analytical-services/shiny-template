@@ -64,10 +64,11 @@ suppressMessages(
 #' "Table", and "Download".
 #' Only non-NULL inputs will result in corresponding tabs being displayed.
 create_output_tabs <- function(
-    id,
-    chart_output,
-    table_output = NULL,
-    download_output = NULL) {
+  id,
+  chart_output,
+  table_output = NULL,
+  download_output = NULL
+) {
   tabs <- Filter(Negate(is.null), list(
     if (!is.null(chart_output)) tabPanel("Chart", chart_output),
     if (!is.null(table_output)) {
