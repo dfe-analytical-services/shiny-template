@@ -19,7 +19,7 @@ read_revenue_data <- function(file = "data/la_maintained_schools_revenue_reserve
   # the LA expenditure data downloaded from an EES release
   df_revenue <- read.csv(file)
 
-  df_revenue <- df_revenue %>% mutate(
+  df_revenue <- df_revenue |> mutate(
     # Convert 6 digit year to 4 digit for end year
     year = as.numeric(paste0("20", substr(format(time_period), 5, 6))),
 

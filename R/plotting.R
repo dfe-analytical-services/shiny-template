@@ -47,8 +47,8 @@ plot_avg_rev_benchmark <- function(df_revenue_balance, input_area) {
 # Timeseries Linechart server
 timeseries_linechart_basic <- function(df) {
   # Long format LA data with tooltip included
-  la_long <- tooltip_func(df) %>%
-    rowwise() %>%
+  la_long <- tooltip_func(df) |>
+    rowwise() |>
     mutate(lab = ifelse(year == max(df$year), str_wrap(area_name, 12), ""))
 
   # Build main static plot
@@ -124,12 +124,12 @@ tooltip_func <- function(data) {
     tooltip = character()
   )
 
-  years <- data %>%
-    dplyr::select(year) %>%
+  years <- data |>
+    dplyr::select(year) |>
     unique()
 
   for (i in seq_len(nrow(years))) {
-    rel_data <- data %>%
+    rel_data <- data |>
       dplyr::filter(year == years$year[i])
 
     next_row <- data.frame(
@@ -151,11 +151,11 @@ tooltip_func <- function(data) {
       }), collapse = "\n")
     )
 
-    master_tooltip <- master_tooltip %>%
+    master_tooltip <- master_tooltip |>
       rbind(next_row)
   }
 
-  data_with_tooltip <- data %>%
+  data_with_tooltip <- data |>
     left_join(master_tooltip,
       by = "year"
     )

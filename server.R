@@ -81,7 +81,7 @@ server <- function(input, output, session) {
 
   # Dataset with timeseries data ----------------------------------------------
   reactive_rev_bal <- reactive({
-    df_revbal %>% filter(
+    df_revbal |> filter(
       area_name == input$selectArea | area_name == "England",
       school_phase == input$selectPhase
     )
@@ -89,12 +89,12 @@ server <- function(input, output, session) {
 
   # Dataset with map data ----------------------------------------------
   reactive_map_dataset <- reactive({
-    df_upper_tier_all %>%
+    df_upper_tier_all |>
       dplyr::filter(
         year == input$selectMapYear,
         area_name != "England",
         school_phase == input$selectMapPhase
-      ) %>%
+      ) |>
       dplyr::select(
         area_name,
         PC_schools_with_deficit,
@@ -124,20 +124,20 @@ server <- function(input, output, session) {
 
     pal <- colorBin("YlOrRd", bins = bins)
 
-    bins_dset <- as.data.frame(bins) %>%
-      mutate(lower_lim = lag(bins, 1)) %>%
-      dplyr::filter(!is.na(lower_lim)) %>%
-      mutate(label = paste0(lower_lim, " - ", bins)) %>%
-      rowwise() %>%
+    bins_dset <- as.data.frame(bins) |>
+      mutate(lower_lim = lag(bins, 1)) |>
+      dplyr::filter(!is.na(lower_lim)) |>
+      mutate(label = paste0(lower_lim, " - ", bins)) |>
+      rowwise() |>
       mutate(colour = pal(lower_lim))
 
     return(bins_dset)
   })
 
   reactive_map_to_display <- reactive({
-    leaflet(reactive_map_dataset()) %>%
-      addProviderTiles(providers$CartoDB.PositronNoLabels) %>%
-      setView(lng = -3.95, lat = 53, zoom = 5.5) %>%
+    leaflet(reactive_map_dataset()) |>
+      addProviderTiles(providers$CartoDB.PositronNoLabels) |>
+      setView(lng = -3.95, lat = 53, zoom = 5.5) |>
       addPolygons(
         color = "black",
         fillColor = ~ reactive_map_pal()(PC_schools_with_deficit),
@@ -146,7 +146,7 @@ server <- function(input, output, session) {
         weight = 0.2,
         opacity = 0.8,
         label = ~lab
-      ) %>%
+      ) |>
       addLegend(
         colors = paste0(
           reactive_map_labels()$colour,
@@ -161,8 +161,8 @@ server <- function(input, output, session) {
   # Table for map chart
   output$tableMap <- renderReactable({
     reactable(
-      reactive_map_dataset() %>%
-        sf::st_drop_geometry() %>%
+      reactive_map_dataset() |>
+        sf::st_drop_geometry() |>
         select(
           Area = area_name,
           `% Schools with deficit` = PC_schools_with_deficit
@@ -216,17 +216,17 @@ server <- function(input, output, session) {
     ## Generate downloaded file ---------------------------------------------
     content = function(file) {
       if (input$file_type_Map == "CSV (Up to 5.47 MB)") {
-        write.csv(reactive_map_dataset() %>% sf::st_drop_geometry(), file)
+        write.csv(reactive_map_dataset() |> sf::st_drop_geometry(), file)
       } else {
         pop_up <- showNotification("Generating download file", duration = NULL)
-        openxlsx::write.xlsx(reactive_map_dataset() %>% sf::st_drop_geometry(), file, colWidths = "Auto")
+        openxlsx::write.xlsx(reactive_map_dataset() |> sf::st_drop_geometry(), file, colWidths = "Auto")
         on.exit(removeNotification(pop_up), add = TRUE)
       }
     }
   )
   # Dataset with benchmark data -----------------------------------------------
   reactive_benchmark <- reactive({
-    df_revbal %>%
+    df_revbal |>
       filter(
         area_name %in% c(
           input$selectArea,
@@ -351,7 +351,7 @@ server <- function(input, output, session) {
   # Table for revenue balance chart
   output$tableRevBal <- renderReactable({
     reactable(
-      reactive_rev_bal() %>%
+      reactive_rev_bal() |>
         select(
           `Time Period` = time_period,
           `Geographic Level` = geographic_level,
@@ -431,7 +431,7 @@ server <- function(input, output, session) {
 
   output$tabBenchmark2 <- renderReactable({
     reactable(
-      reactive_benchmark() %>%
+      reactive_benchmark() |>
         select(
           Area = area_name,
           `Average Revenue Balance (£)` = average_revenue_balance,
@@ -460,23 +460,23 @@ server <- function(input, output, session) {
   # Value boxes ---------------------------------------------------------------
   # Create a reactive value for average revenue balance
   latest_average_balance <- reactive({
-    reactive_rev_bal() %>%
+    reactive_rev_bal() |>
       filter(
         year == max(year),
         area_name == input$selectArea,
         school_phase == input$selectPhase
-      ) %>%
+      ) |>
       pull(average_revenue_balance)
   })
 
   # Create a reactive value for previous year average
   previous_average_balance <- reactive({
-    previous_year <- reactive_rev_bal() %>%
+    previous_year <- reactive_rev_bal() |>
       filter(
         year == max(year) - 1,
         area_name == input$selectArea,
         school_phase == input$selectPhase
-      ) %>%
+      ) |>
       pull(average_revenue_balance)
   })
 
