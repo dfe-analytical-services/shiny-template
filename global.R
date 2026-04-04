@@ -112,22 +112,22 @@ showtext_auto()
 df_revbal <- read_revenue_data()
 
 # Get geographical areas from data
-df_areas <- df_revbal %>%
+df_areas <- df_revbal |>
   select(
     geographic_level, country_name, country_code,
     region_name, region_code,
     la_name, old_la_code, new_la_code
-  ) %>%
+  ) |>
   distinct()
 
 df_upper_tier_geo <- read_upper_tier_data()
 
-df_upper_tier_all <- df_upper_tier_geo %>%
-  dplyr::select(new_la_code, LONG, LAT, geometry) %>%
+df_upper_tier_all <- df_upper_tier_geo |>
+  dplyr::select(new_la_code, LONG, LAT, geometry) |>
   inner_join(df_revbal,
     by = "new_la_code"
-  ) %>%
-  rowwise() %>%
+  ) |>
+  rowwise() |>
   mutate(lab = HTML(sprintf(
     "<b> %s </b> </br> %s </br> %s %s",
     strong(area_name),
@@ -137,20 +137,20 @@ df_upper_tier_all <- df_upper_tier_geo %>%
 
 # Extract lists for use in drop downs -----------------------------------------
 # LA list
-choices_las <- df_areas %>%
-  filter(geographic_level == "Local authority") %>%
-  select(geographic_level, area_name = la_name) %>%
+choices_las <- df_areas |>
+  filter(geographic_level == "Local authority") |>
+  select(geographic_level, area_name = la_name) |>
   arrange(area_name)
 
 # Full list of areas
-choices_areas <- df_areas %>%
-  filter(geographic_level == "National") %>%
-  select(geographic_level, area_name = country_name) %>%
+choices_areas <- df_areas |>
+  filter(geographic_level == "National") |>
+  select(geographic_level, area_name = country_name) |>
   rbind(
-    df_areas %>%
-      filter(geographic_level == "Regional") %>%
+    df_areas |>
+      filter(geographic_level == "Regional") |>
       select(geographic_level, area_name = region_name)
-  ) %>%
+  ) |>
   rbind(choices_las)
 
 # List of phases

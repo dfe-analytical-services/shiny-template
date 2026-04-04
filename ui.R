@@ -27,7 +27,7 @@ ui <- function(input, output, session) {
     useShinyjs(),
     tags$html(lang = "en"),
     # Add meta description for search engines
-    meta() %>%
+    meta() |>
       meta_general(
         application_name = "Department for Education (DfE) Shiny Template",
         description = "Department for Education (DfE) Shiny Template",

@@ -19,7 +19,7 @@ read_revenue_data <- function(file = "data/la_maintained_schools_revenue_reserve
   # the LA expenditure data downloaded from an EES release
   df_revenue <- read.csv(file)
 
-  df_revenue <- df_revenue %>% mutate(
+  df_revenue <- df_revenue |> mutate(
     # Convert 6 digit year to 4 digit for end year
     year = as.numeric(paste0("20", substr(format(time_period), 5, 6))),
 
@@ -30,12 +30,12 @@ read_revenue_data <- function(file = "data/la_maintained_schools_revenue_reserve
       .default = la_name
     )
   )
-  return(df_revenue)
+  df_revenue
 }
 
 # Upper Tier data ----------------------------------------------------------------
 
 read_upper_tier_data <- function(file = "data/Local_Authority_Districts_All_simplified.geojson") {
   df_upper_tier <- sf::read_sf(file)
-  return(df_upper_tier)
+  df_upper_tier
 }
