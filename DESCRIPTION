@@ -10,8 +10,10 @@ Author: c(person(given = "Laura",
 License: MIT
 Type: Shiny
 Imports:
-    shiny
+    shiny,
+    lifecycle
 Suggests:
     shinytest,
     testthat,
+    rlang,
     styler

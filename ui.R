@@ -72,8 +72,9 @@ ui <- function(input, output, session) {
     ),
 
     # Header ------------------------------------------------------------------
-    dfeshiny::header(
-      header = "Department for Education (DfE) Shiny Template"
+    shinyGovstyle::full_width_overrides(),
+    shinyGovstyle::header(
+      main_text = "Department for Education"
     ),
 
     # Beta banner -------------------------------------------------------------

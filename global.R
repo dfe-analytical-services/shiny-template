@@ -32,12 +32,17 @@ shhh(library(svglite))
 shhh(library(afcharts))
 shhh(library(ggrepel))
 shhh(library(showtext))
+
+# Reading files
 shhh(library(openxlsx))
+shhh(library(readxl)) # added
+shhh(library(arrow)) # added
 
 # Data and string manipulation
 shhh(library(dplyr))
 shhh(library(stringr))
 shhh(library(ggiraph))
+shhh(library(janitor)) # added
 
 # Shiny extensions
 shhh(library(shinyjs))
