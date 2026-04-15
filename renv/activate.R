@@ -2,7 +2,7 @@
 local({
 
   # the requested version of renv
-  version <- "1.2.1"
+  version <- "1.1.2"
   attr(version, "sha") <- NULL
 
   # the project directory
@@ -240,6 +240,7 @@ local({
   
     # add empty line to break up bootstrapping from normal output
     catf("")
+  
     return(invisible())
   }
   
@@ -949,19 +950,19 @@ local({
   }
   
   renv_bootstrap_validate_version_dev <- function(version, description) {
-  
+    
     expected <- description[["RemoteSha"]]
     if (!is.character(expected))
       return(FALSE)
-  
+    
     pattern <- sprintf("^\\Q%s\\E", version)
     grepl(pattern, expected, perl = TRUE)
-  
+    
   }
   
   renv_bootstrap_validate_version_release <- function(version, description) {
     expected <- description[["Version"]]
-    is.character(expected) && identical(c(expected), c(version))
+    is.character(expected) && identical(expected, version)
   }
   
   renv_bootstrap_hash_text <- function(text) {
@@ -1197,89 +1198,86 @@ local({
   }
   
   renv_json_read_patterns <- function() {
-  
+    
     list(
-  
+      
       # objects
-      list("{", "\t\n\tobject(\t\n\t", TRUE),
-      list("}", "\t\n\t)\t\n\t",       TRUE),
-  
+      list("{", "\t\n\tobject(\t\n\t"),
+      list("}", "\t\n\t)\t\n\t"),
+      
       # arrays
-      list("[", "\t\n\tarray(\t\n\t", TRUE),
-      list("]", "\n\t\n)\n\t\n",      TRUE),
-  
+      list("[", "\t\n\tarray(\t\n\t"),
+      list("]", "\n\t\n)\n\t\n"),
+      
       # maps
-      list(":", "\t\n\t=\t\n\t", TRUE),
-  
-      # newlines
-      list("\\u000a", "\n", FALSE)
-  
+      list(":", "\t\n\t=\t\n\t")
+      
     )
-  
+    
   }
   
   renv_json_read_envir <- function() {
   
     envir <- new.env(parent = emptyenv())
-  
+    
     envir[["+"]] <- `+`
     envir[["-"]] <- `-`
-  
+    
     envir[["object"]] <- function(...) {
       result <- list(...)
       names(result) <- as.character(names(result))
       result
     }
-  
+    
     envir[["array"]] <- list
-  
+    
     envir[["true"]]  <- TRUE
     envir[["false"]] <- FALSE
     envir[["null"]]  <- NULL
-  
+    
     envir
-  
+    
   }
   
   renv_json_read_remap <- function(object, patterns) {
-  
+    
     # repair names if necessary
     if (!is.null(names(object))) {
-  
+      
       nms <- names(object)
       for (pattern in patterns)
         nms <- gsub(pattern[[2L]], pattern[[1L]], nms, fixed = TRUE)
       names(object) <- nms
-  
+      
     }
-  
+    
     # repair strings if necessary
     if (is.character(object)) {
       for (pattern in patterns)
         object <- gsub(pattern[[2L]], pattern[[1L]], object, fixed = TRUE)
     }
-  
+    
     # recurse for other objects
     if (is.recursive(object))
       for (i in seq_along(object))
         object[i] <- list(renv_json_read_remap(object[[i]], patterns))
-  
+    
     # return remapped object
     object
-  
+    
   }
   
   renv_json_read_default <- function(file = NULL, text = NULL) {
   
     # read json text
     text <- paste(text %||% readLines(file, warn = FALSE), collapse = "\n")
-  
+    
     # convert into something the R parser will understand
     patterns <- renv_json_read_patterns()
     transformed <- text
     for (pattern in patterns)
       transformed <- gsub(pattern[[1L]], pattern[[2L]], transformed, fixed = TRUE)
-  
+    
     # parse it
     rfile <- tempfile("renv-json-", fileext = ".R")
     on.exit(unlink(rfile), add = TRUE)
@@ -1289,10 +1287,9 @@ local({
     # evaluate in safe environment
     result <- eval(json, envir = renv_json_read_envir())
   
-    # fix up strings if necessary -- do so only with reversible patterns
-    patterns <- Filter(function(pattern) pattern[[3L]], patterns)
+    # fix up strings if necessary
     renv_json_read_remap(result, patterns)
-  
+    
   }
   
 
