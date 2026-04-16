@@ -68,8 +68,7 @@ ui <- function(input, output, session) {
     shinyGovstyle::full_width_overrides(),
     shinyGovstyle::header(
       org_name = "Department for Education",
-      service_name = "Shiny template",
-      main_text = "Department for Education"
+      service_name = "Shiny template"
     ),
 
     # Beta banner -------------------------------------------------------------
