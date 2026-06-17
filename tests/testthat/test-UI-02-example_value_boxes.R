@@ -49,7 +49,9 @@ app$expect_values(
 )
 
 # Get the exported values, defined in server.R file using exportTestValues()
-rev_bal_export <- app$get_values(export = c("avg_rev_bal_value", "prev_avg_rev_bal_value"))
+rev_bal_export <- app$get_values(
+  export = c("avg_rev_bal_value", "prev_avg_rev_bal_value")
+)
 
 # Expect that the exported values used in the boxes are always a number
 # This checks that there is a value present, it hasn't errored, and won't

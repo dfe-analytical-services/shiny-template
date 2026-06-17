@@ -25,14 +25,21 @@ server <- function(input, output, session) {
   # any entries in your own dashboard's bookmarking url that you don't want
   # including.
   setBookmarkExclude(c(
-    "cookies", "link_to_app_content_tab",
-    "tabBenchmark_rows_current", "tabBenchmark_rows_all",
-    "tabBenchmark_columns_selected", "tabBenchmark_cell_clicked",
-    "tabBenchmark_cells_selected", "tabBenchmark_search",
-    "tabBenchmark_rows_selected", "tabBenchmark_row_last_clicked",
+    "cookies",
+    "link_to_app_content_tab",
+    "tabBenchmark_rows_current",
+    "tabBenchmark_rows_all",
+    "tabBenchmark_columns_selected",
+    "tabBenchmark_cell_clicked",
+    "tabBenchmark_cells_selected",
+    "tabBenchmark_search",
+    "tabBenchmark_rows_selected",
+    "tabBenchmark_row_last_clicked",
     "tabBenchmark_state",
     "plotly_relayout-A",
-    "plotly_click-A", "plotly_hover-A", "plotly_afterplot-A",
+    "plotly_click-A",
+    "plotly_hover-A",
+    "plotly_afterplot-A",
     ".clientValue-default-plotlyCrosstalkOpts"
   ))
 
@@ -51,8 +58,10 @@ server <- function(input, output, session) {
       change_window_title(
         session,
         paste0(
-          site_title, " - ",
-          input$selectPhase, ", ",
+          site_title,
+          " - ",
+          input$selectPhase,
+          ", ",
           input$selectArea
         )
       )
@@ -60,7 +69,8 @@ server <- function(input, output, session) {
       change_window_title(
         session,
         paste0(
-          site_title, " - ",
+          site_title,
+          " - ",
           input$navlistPanel
         )
       )
@@ -81,10 +91,11 @@ server <- function(input, output, session) {
 
   # Dataset with timeseries data ----------------------------------------------
   reactive_rev_bal <- reactive({
-    df_revbal |> filter(
-      area_name == input$selectArea | area_name == "England",
-      school_phase == input$selectPhase
-    )
+    df_revbal |>
+      filter(
+        area_name == input$selectArea | area_name == "England",
+        school_phase == input$selectPhase
+      )
   })
 
   # Dataset with map data ----------------------------------------------
@@ -108,7 +119,12 @@ server <- function(input, output, session) {
   reactive_map_pal <- reactive({
     quantile_num <- 5
     probs <- seq(0, 1, length.out = quantile_num + 1)
-    bins <- quantile(reactive_map_dataset()$PC_schools_with_deficit, probs, na.rm = TRUE, names = FALSE)
+    bins <- quantile(
+      reactive_map_dataset()$PC_schools_with_deficit,
+      probs,
+      na.rm = TRUE,
+      names = FALSE
+    )
     bins <- unique(bins)
 
     pal <- colorBin("YlOrRd", bins = bins)
@@ -119,7 +135,12 @@ server <- function(input, output, session) {
   reactive_map_labels <- reactive({
     quantile_num <- 5
     probs <- seq(0, 1, length.out = quantile_num + 1)
-    bins <- quantile(reactive_map_dataset()$PC_schools_with_deficit, probs, na.rm = TRUE, names = FALSE)
+    bins <- quantile(
+      reactive_map_dataset()$PC_schools_with_deficit,
+      probs,
+      na.rm = TRUE,
+      names = FALSE
+    )
     bins <- unique(bins)
 
     pal <- colorBin("YlOrRd", bins = bins)
@@ -172,14 +193,16 @@ server <- function(input, output, session) {
       filterable = TRUE,
       defaultColDef = colDef(
         headerClass = "bar-sort-header",
-        style = JS("function(rowInfo, column, state) {
+        style = JS(
+          "function(rowInfo, column, state) {
       // Highlight sorted columns
       for (let i = 0; i < state.sorted.length; i++) {
         if (state.sorted[i].id === column.id) {
           return { background: 'rgba(0, 0, 0, 0.03)' }
         }
       }
-    }")
+    }"
+        )
       )
     )
   })
@@ -219,7 +242,11 @@ server <- function(input, output, session) {
         write.csv(reactive_map_dataset() |> sf::st_drop_geometry(), file)
       } else {
         pop_up <- showNotification("Generating download file", duration = NULL)
-        openxlsx::write.xlsx(reactive_map_dataset() |> sf::st_drop_geometry(), file, colWidths = "Auto")
+        openxlsx::write.xlsx(
+          reactive_map_dataset() |> sf::st_drop_geometry(),
+          file,
+          colWidths = "Auto"
+        )
         on.exit(removeNotification(pop_up), add = TRUE)
       }
     }
@@ -228,28 +255,37 @@ server <- function(input, output, session) {
   reactive_benchmark <- reactive({
     df_revbal |>
       filter(
-        area_name %in% c(
-          input$selectArea,
-          input$selectBenchLAs1,
-          input$selectBenchLAs2
-        ),
+        area_name %in%
+          c(
+            input$selectArea,
+            input$selectBenchLAs1,
+            input$selectBenchLAs2
+          ),
         school_phase == input$selectPhase,
         year == max(year)
       )
   })
 
   observe({
-    updateSelectizeInput(session,
+    updateSelectizeInput(
+      session,
       "selectBenchLAs2",
-      choices = c("", choices_las$area_name[choices_las$area_name != input$selectBenchLAs1]),
+      choices = c(
+        "",
+        choices_las$area_name[choices_las$area_name != input$selectBenchLAs1]
+      ),
       selected = isolate(input$selectBenchLAs2)
     )
   })
 
   observe({
-    updateSelectizeInput(session,
+    updateSelectizeInput(
+      session,
       "selectBenchLAs1",
-      choices = c("", choices_las$area_name[choices_las$area_name != input$selectBenchLAs2]),
+      choices = c(
+        "",
+        choices_las$area_name[choices_las$area_name != input$selectBenchLAs2]
+      ),
       selected = isolate(input$selectBenchLAs1)
     )
   })
@@ -319,7 +355,12 @@ server <- function(input, output, session) {
           bslib::layout_column_wrap(
             width = NULL,
             fill = FALSE,
-            card(ggiraph::girafeOutput("rev_line_chart", width = "100%", height = "100%"),
+            card(
+              ggiraph::girafeOutput(
+                "rev_line_chart",
+                width = "100%",
+                height = "100%"
+              ),
               role = "img",
               `aria-label` = "Line chart showing average revenue balance by region"
             )
@@ -340,8 +381,13 @@ server <- function(input, output, session) {
       # Write the dataset to the `file` that will be downloaded
       file.copy(
         ggplot2::ggsave(
-          filename = tempfile(paste0("line_chart_download_", Sys.Date(), ".jpeg")),
-          plot = line_chart_basic(), device = "jpeg"
+          filename = tempfile(paste0(
+            "line_chart_download_",
+            Sys.Date(),
+            ".jpeg"
+          )),
+          plot = line_chart_basic(),
+          device = "jpeg"
         ),
         file
       )
@@ -365,14 +411,16 @@ server <- function(input, output, session) {
       filterable = TRUE,
       defaultColDef = colDef(
         headerClass = "bar-sort-header",
-        style = JS("function(rowInfo, column, state) {
+        style = JS(
+          "function(rowInfo, column, state) {
       // Highlight sorted columns
       for (let i = 0; i < state.sorted.length; i++) {
         if (state.sorted[i].id === column.id) {
           return { background: 'rgba(0, 0, 0, 0.03)' }
         }
       }
-    }")
+    }"
+        )
       )
     )
   })
@@ -402,8 +450,13 @@ server <- function(input, output, session) {
       } else {
         file.copy(
           ggplot2::ggsave(
-            filename = tempfile(paste0("line_chart_download_", Sys.Date(), ".jpeg")),
-            plot = line_chart_basic(), device = "jpeg"
+            filename = tempfile(paste0(
+              "line_chart_download_",
+              Sys.Date(),
+              ".jpeg"
+            )),
+            plot = line_chart_basic(),
+            device = "jpeg"
           ),
           file
         )
@@ -444,18 +497,19 @@ server <- function(input, output, session) {
       defaultSorted = list("Total Revenue Balance (£m)" = "desc"),
       defaultColDef = colDef(
         headerClass = "bar-sort-header",
-        style = JS("function(rowInfo, column, state) {
+        style = JS(
+          "function(rowInfo, column, state) {
       // Highlight sorted columns
       for (let i = 0; i < state.sorted.length; i++) {
         if (state.sorted[i].id === column.id) {
           return { background: 'rgba(0, 0, 0, 0.03)' }
         }
       }
-    }")
+    }"
+        )
       )
     )
   })
-
 
   # Value boxes ---------------------------------------------------------------
   # Create a reactive value for average revenue balance
@@ -486,7 +540,6 @@ server <- function(input, output, session) {
     prev_avg_rev_bal_value = previous_average_balance()
   )
 
-
   output$average_revenue_balance <- renderText(
     dfeR::pretty_num(latest_average_balance(), gbp = TRUE)
   )
@@ -498,7 +551,6 @@ server <- function(input, output, session) {
       gbp = TRUE
     )
   )
-
 
   # Link in the user guide panel back to the main panel -----------------------
   observeEvent(input$link_to_app_content_tab, {
@@ -514,7 +566,12 @@ server <- function(input, output, session) {
   )
 
   # Wrap a plot with a larger spinner
-  with_gov_spinner <- function(ui_element, spinner_type = 6, size = 1, color = "#1d70b8") {
+  with_gov_spinner <- function(
+    ui_element,
+    spinner_type = 6,
+    size = 1,
+    color = "#1d70b8"
+  ) {
     shinycssloaders::withSpinner(
       ui_element,
       type = spinner_type,
@@ -536,20 +593,30 @@ server <- function(input, output, session) {
 
   # footer links -----------------------
   shiny::observeEvent(input$accessibility_statement, {
-    shiny::updateTabsetPanel(session, "navlistPanel", selected = "a11y_panel")
+    nav_select(
+      "pages",
+      "a11y_panel"
+    )
   })
 
   shiny::observeEvent(input$use_of_cookies, {
-    shiny::updateTabsetPanel(session, "navlistPanel", selected = "cookies_panel_ui")
+    nav_select(
+      "pages",
+      "cookies_panel_ui"
+    )
   })
 
   shiny::observeEvent(input$support_and_feedback, {
-    shiny::updateTabsetPanel(session, "navlistPanel", selected = "support_panel_ui")
+    nav_select(
+      "pages",
+      "support_panel_ui"
+    )
   })
 
   shiny::observeEvent(input$privacy_notice, {
     showModal(modalDialog(
-      external_link("https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter", # nolint
+      external_link(
+        "https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter", # nolint
         "Privacy notice",
         add_warning = FALSE
       ),
@@ -558,7 +625,8 @@ server <- function(input, output, session) {
     ))
 
     # JavaScript to auto-click the link and close the modal
-    shinyjs::runjs("
+    shinyjs::runjs(
+      "
       setTimeout(function() {
         var link = document.querySelector('.modal a');
         if (link) {
@@ -568,12 +636,14 @@ server <- function(input, output, session) {
           }, 20); // Extra delay to avoid any race conditions
         }
       }, 400);
-    ")
+    "
+    )
   })
 
   shiny::observeEvent(input$external_link, {
     showModal(modalDialog(
-      external_link("https://shiny.posit.co/",
+      external_link(
+        "https://shiny.posit.co/",
         "External Link",
         add_warning = FALSE
       ),
@@ -582,7 +652,8 @@ server <- function(input, output, session) {
     ))
 
     # JavaScript to auto-click the link and close the modal
-    shinyjs::runjs("
+    shinyjs::runjs(
+      "
       setTimeout(function() {
         var link = document.querySelector('.modal a');
         if (link) {
@@ -592,11 +663,21 @@ server <- function(input, output, session) {
           }, 20); // Extra delay to avoid any race conditions
         }
       }, 400);
-    ")
+    "
+    )
   })
 
-  # Stop app ------------------------------------------------------------------
-  session$onSessionEnded(function() {
-    stopApp()
-  })
+  ## Back links to main dashboard ---------------------------------------------
+  observeEvent(
+    input$support_to_dashboard,
+    nav_select("pages", "dashboard")
+  )
+  observeEvent(
+    input$cookies_to_dashboard,
+    nav_select("pages", "dashboard")
+  )
+  observeEvent(
+    input$accessibility_to_dashboard,
+    nav_select("pages", "dashboard")
+  )
 }
