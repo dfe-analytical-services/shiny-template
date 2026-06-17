@@ -39,8 +39,10 @@ example_tab_1_panel <- function() {
             # Value boxes tab -------------------------------------------------
             tabPanel(
               "Valuebox example",
-              h2("This panel shows how to present data using a chart / table /
-                 download tabset alongside some example value boxes."),
+              h2(
+                "This panel shows how to present data using a chart / table /
+                 download tabset alongside some example value boxes."
+              ),
               bslib::layout_columns(
                 col_widths = bslib::breakpoints(md = c(12, 12), lg = c(8, 4)),
                 create_output_tabs(
@@ -55,7 +57,11 @@ example_tab_1_panel <- function() {
                       radioButtons(
                         inputId = "file_type_RevBal",
                         label = "Choose download file format",
-                        choices = c("CSV (Up to 5.47 MB)", "XLSX (Up to 1.75 MB)", "JPEG (Up to 153 KB)"),
+                        choices = c(
+                          "CSV (Up to 5.47 MB)",
+                          "XLSX (Up to 1.75 MB)",
+                          "JPEG (Up to 153 KB)"
+                        ),
                         selected = "CSV (Up to 5.47 MB)"
                       ),
                       uiOutput("download_chart_button_ui")
@@ -97,7 +103,10 @@ example_tab_1_panel <- function() {
                       radioButtons(
                         inputId = "file_type_Map",
                         label = "Choose download file format",
-                        choices = c("CSV (Up to 5.47 MB)", "XLSX (Up to 1.75 MB)"),
+                        choices = c(
+                          "CSV (Up to 5.47 MB)",
+                          "XLSX (Up to 1.75 MB)"
+                        ),
                         selected = "CSV (Up to 5.47 MB)"
                       ),
                       uiOutput("download_map_button_ui")
@@ -128,7 +137,9 @@ example_tab_1_panel <- function() {
             tabPanel(
               "Benchmarking example",
               h2("An example bar chart using ggplot and ggiraph"),
-              p("This is the standard paragraph style for adding guiding info around data content."),
+              p(
+                "This is the standard paragraph style for adding guiding info around data content."
+              ),
               fluidRow(
                 column(
                   width = 6, # First column for the bar chart
@@ -185,7 +196,9 @@ example_tab_1_panel <- function() {
                 "A warning here - something bad will happen"
               ),
               shiny::tags$p(
-                "An external link to ", external_link("https://shiny.posit.co/", "R Shiny"), " which is great."
+                "An external link to ",
+                external_link("https://shiny.posit.co/", "R Shiny"),
+                " which is great."
               )
             )
           )

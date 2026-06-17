@@ -10,23 +10,30 @@
 
 # Revenue balance bar chart ---------------------------------------------------
 plot_avg_rev_benchmark <- function(df_revenue_balance, input_area) {
-  ggplot(df_revenue_balance, aes(
-    x = str_wrap(area_name, width = 12),
-    y = average_revenue_balance,
-    fill = area_name,
-    id = area_name,
-    tooltip = paste(
-      "<p><b>", area_name, "</b></p>",
-      unlist(lapply(average_revenue_balance, pretty_num, prefix = gbp)), "</p>"
+  ggplot(
+    df_revenue_balance,
+    aes(
+      x = str_wrap(area_name, width = 12),
+      y = average_revenue_balance,
+      fill = area_name,
+      id = area_name,
+      tooltip = paste(
+        "<p><b>",
+        area_name,
+        "</b></p>",
+        unlist(lapply(average_revenue_balance, pretty_num, prefix = gbp)),
+        "</p>"
+      )
     )
-  )) +
+  ) +
     geom_col_interactive() +
     theme_classic() +
     theme(
       text = element_text(size = 12),
       axis.title.x = element_blank(),
       axis.title.y = element_text(
-        angle = 0, vjust = 0.5,
+        angle = 0,
+        vjust = 0.5,
         margin = margin(r = 12)
       ),
       axis.line = element_line(linewidth = 0.75),
@@ -100,7 +107,8 @@ timeseries_linechart_basic <- function(df) {
         family = "dejavu"
       ),
       axis.title.y = element_text(
-        angle = 0, vjust = 0.5,
+        angle = 0,
+        vjust = 0.5,
         margin = margin(r = 12),
         family = "dejavu"
       ),
@@ -134,21 +142,43 @@ tooltip_func <- function(data) {
 
     next_row <- data.frame(
       year = years$year[i],
-      tooltip = paste(sapply(seq_len(nrow(rel_data)), function(i) {
-        row <- rel_data[i, ]
-        geography <- row$area_name
-        value <- row$average_revenue_balance
+      tooltip = paste(
+        sapply(seq_len(nrow(rel_data)), function(i) {
+          row <- rel_data[i, ]
+          geography <- row$area_name
+          value <- row$average_revenue_balance
 
-        # Apply styling for geography
-        if (geography == "England") {
-          paste0(
-            "<span style='color:", gss_colour_pallette[1], "; font-weight: bold;'>",
-            geography, ": £", formatC(as.numeric(value), format = "f", digits = 0, big.mark = ","), "</span>"
-          )
-        } else {
-          paste0(geography, ": £", formatC(as.numeric(value), format = "f", digits = 0, big.mark = ","))
-        }
-      }), collapse = "\n")
+          # Apply styling for geography
+          if (geography == "England") {
+            paste0(
+              "<span style='color:",
+              gss_colour_pallette[1],
+              "; font-weight: bold;'>",
+              geography,
+              ": £",
+              formatC(
+                as.numeric(value),
+                format = "f",
+                digits = 0,
+                big.mark = ","
+              ),
+              "</span>"
+            )
+          } else {
+            paste0(
+              geography,
+              ": £",
+              formatC(
+                as.numeric(value),
+                format = "f",
+                digits = 0,
+                big.mark = ","
+              )
+            )
+          }
+        }),
+        collapse = "\n"
+      )
     )
 
     master_tooltip <- master_tooltip |>
@@ -156,9 +186,7 @@ tooltip_func <- function(data) {
   }
 
   data_with_tooltip <- data |>
-    left_join(master_tooltip,
-      by = "year"
-    )
+    left_join(master_tooltip, by = "year")
   data_with_tooltip
 }
 

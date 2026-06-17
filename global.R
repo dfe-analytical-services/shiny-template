@@ -113,9 +113,14 @@ df_revbal <- read_revenue_data()
 # Get geographical areas from data
 df_areas <- df_revbal |>
   select(
-    geographic_level, country_name, country_code,
-    region_name, region_code,
-    la_name, old_la_code, new_la_code
+    geographic_level,
+    country_name,
+    country_code,
+    region_name,
+    region_code,
+    la_name,
+    old_la_code,
+    new_la_code
   ) |>
   distinct()
 
@@ -123,16 +128,17 @@ df_upper_tier_geo <- read_upper_tier_data()
 
 df_upper_tier_all <- df_upper_tier_geo |>
   dplyr::select(new_la_code, LONG, LAT, geometry) |>
-  inner_join(df_revbal,
-    by = "new_la_code"
-  ) |>
+  inner_join(df_revbal, by = "new_la_code") |>
   rowwise() |>
-  mutate(lab = HTML(sprintf(
-    "<b> %s </b> </br> %s </br> %s %s",
-    strong(area_name),
-    "Schools with deficit",
-    PC_schools_with_deficit, "%"
-  )))
+  mutate(
+    lab = HTML(sprintf(
+      "<b> %s </b> </br> %s </br> %s %s",
+      strong(area_name),
+      "Schools with deficit",
+      PC_schools_with_deficit,
+      "%"
+    ))
+  )
 
 # Extract lists for use in drop downs -----------------------------------------
 # LA list
