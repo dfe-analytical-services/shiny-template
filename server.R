@@ -593,22 +593,23 @@ server <- function(input, output, session) {
 
   # footer links -----------------------
   shiny::observeEvent(input$accessibility_statement, {
-    shiny::updateTabsetPanel(session, "navlistPanel", selected = "a11y_panel")
+    nav_select(
+      "pages",
+      "a11y_panel"
+    )
   })
 
   shiny::observeEvent(input$use_of_cookies, {
-    shiny::updateTabsetPanel(
-      session,
-      "navlistPanel",
-      selected = "cookies_panel_ui"
+    nav_select(
+      "pages",
+      "cookies_panel_ui"
     )
   })
 
   shiny::observeEvent(input$support_and_feedback, {
-    shiny::updateTabsetPanel(
-      session,
-      "navlistPanel",
-      selected = "support_panel_ui"
+    nav_select(
+      "pages",
+      "support_panel_ui"
     )
   })
 
@@ -666,8 +667,17 @@ server <- function(input, output, session) {
     )
   })
 
-  # Stop app ------------------------------------------------------------------
-  session$onSessionEnded(function() {
-    stopApp()
-  })
+  ## Back links to main dashboard ---------------------------------------------
+  observeEvent(
+    input$support_to_dashboard,
+    nav_select("pages", "dashboard")
+  )
+  observeEvent(
+    input$cookies_to_dashboard,
+    nav_select("pages", "dashboard")
+  )
+  observeEvent(
+    input$accessibility_to_dashboard,
+    nav_select("pages", "dashboard")
+  )
 }

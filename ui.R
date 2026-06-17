@@ -80,41 +80,86 @@ ui <- function(input, output, session) {
       "This dashboard is in beta phase and we are still reviewing performance and reliability."
     ),
 
-    # Nav panels --------------------------------------------------------------
-    shiny::navlistPanel(
-      "",
-      id = "navlistPanel",
-      widths = c(2, 8),
-      well = FALSE,
-      # Content for these panels is defined in the R/ui_panels/ folder
-      example_tab_1_panel(),
-      user_guide_panel(),
-      shiny::tabPanel(
-        value = "a11y_panel",
-        "Accessibility",
-        dfeshiny::a11y_panel(
-          dashboard_title = site_title,
-          dashboard_url = site_primary,
-          date_tested = "12th March 2024",
-          date_prepared = "1st July 2024",
-          date_reviewed = "1st July 2024",
-          issues_contact = "explore.statistics@education.gov.uk",
-          non_accessible_components = c("List non-accessible components here"),
-          specific_issues = c("List specific issues here")
-        )
-      ),
-      shiny::tabPanel(
-        value = "cookies_panel_ui",
-        "Cookies",
-        cookies_panel_ui(google_analytics_key = google_analytics_key)
-      ),
-      shiny::tabPanel(
-        value = "support_panel_ui",
-        "Support and feedback",
-        support_panel(
-          team_email = "explore.statistics@education.gov.uk",
-          repo_name = "https://github.com/dfe-analytical-services/shiny-template",
-          form_url = "https://forms.office.com"
+    gov_main_layout(
+      bslib::navset_hidden(
+        id = "pages",
+        nav_panel(
+          "dashboard",
+          ## Main dashboard ---------------------------------------------------
+          # Nav panels --------------------------------------------------------------
+          shiny::navlistPanel(
+            "",
+            id = "navlistPanel",
+            widths = c(2, 8),
+            well = FALSE,
+            # Content for these panels is defined in the R/ui_panels/ folder
+            example_tab_1_panel(),
+            user_guide_panel()
+          )
+        ),
+        nav_panel(
+          value = "a11y_panel",
+          "Accessibility",
+          layout_columns(
+            col_widths = c(-2, 8, -2),
+
+            # Add in back link
+            actionLink(
+              class = "govuk-back-link",
+              style = "margin: 0",
+              "accessibility_to_dashboard",
+              "Back to dashboard"
+            ),
+
+            dfeshiny::a11y_panel(
+              dashboard_title = site_title,
+              dashboard_url = site_primary,
+              date_tested = "12th March 2024",
+              date_prepared = "1st July 2024",
+              date_reviewed = "1st July 2024",
+              issues_contact = "explore.statistics@education.gov.uk",
+              non_accessible_components = c(
+                "List non-accessible components here"
+              ),
+              specific_issues = c("List specific issues here")
+            )
+          )
+        ),
+        nav_panel(
+          value = "cookies_panel_ui",
+          "Cookies",
+          layout_columns(
+            col_widths = c(-2, 8, -2),
+
+            # Add backlink
+            actionLink(
+              class = "govuk-back-link",
+              style = "margin: 0",
+              "cookies_to_dashboard",
+              "Back to dashboard"
+            ),
+            cookies_panel_ui(google_analytics_key = google_analytics_key)
+          )
+        ),
+        nav_panel(
+          value = "support_panel_ui",
+          "Support and feedback",
+          layout_columns(
+            col_widths = c(-2, 8, -2),
+
+            # Add in back link
+            actionLink(
+              class = "govuk-back-link",
+              style = "margin: 0",
+              "support_to_dashboard",
+              "Back to dashboard"
+            ),
+            support_panel(
+              team_email = "explore.statistics@education.gov.uk",
+              repo_name = "https://github.com/dfe-analytical-services/shiny-template",
+              form_url = "https://forms.office.com"
+            )
+          )
         )
       )
     ),
