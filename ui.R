@@ -19,14 +19,15 @@
 #
 # -----------------------------------------------------------------------------
 ui <- function(input, output, session) {
-  fluidPage(
+  bslib::page_fluid(
     # Set application metadata ------------------------------------------------
     tags$head(HTML("<title>Department for Education (DfE) Shiny Template</title>")),
     tags$head(tags$link(rel = "shortcut icon", href = "dfefavicon.png")),
     use_shiny_title(),
+    useShinyjs(),
     tags$html(lang = "en"),
     # Add meta description for search engines
-    meta() %>%
+    meta() |>
       meta_general(
         application_name = "Department for Education (DfE) Shiny Template",
         description = "Department for Education (DfE) Shiny Template",
@@ -46,7 +47,6 @@ ui <- function(input, output, session) {
     ),
 
     # Load javascript dependencies --------------------------------------------
-    useShinydashboard(),
     shinyjs::useShinyjs(),
 
     # Cookies -----------------------------------------------------------------
@@ -63,32 +63,19 @@ ui <- function(input, output, session) {
 
     # Google analytics --------------------------------------------------------
     tags$head(includeHTML(("google-analytics.html"))),
-    tags$head(
-      tags$link(
-        rel = "stylesheet",
-        type = "text/css",
-        href = "dfe_shiny_gov_style.css"
-      )
-    ),
 
     # Header ------------------------------------------------------------------
-    dfeshiny::header(
-      header = "Department for Education (DfE) Shiny Template"
+    shinyGovstyle::full_width_overrides(),
+    shinyGovstyle::header(
+      org_name = "Department for Education",
+      service_name = "Shiny template"
     ),
 
     # Beta banner -------------------------------------------------------------
     shinyGovstyle::banner(
       "beta banner",
-      "beta",
-      paste0(
-        "This Dashboard is in beta phase and we are still reviewing performance
-        and reliability. ",
-        "In case of slowdown or connection issues due to high demand, we have
-        produced two instances of this site which can be accessed at the
-        following links: ",
-        "<a href=", site_primary, " id='link_site_1'>Site 1</a> and ",
-        "<a href=", site_overflow, " id='link_site_2'>Site 2</a>."
-      )
+      "Beta",
+      "This dashboard is in beta phase and we are still reviewing performance and reliability."
     ),
 
     # Nav panels --------------------------------------------------------------
@@ -131,6 +118,15 @@ ui <- function(input, output, session) {
     ),
 
     # Footer ------------------------------------------------------------------
-    footer(full = TRUE)
+    shinyGovstyle::footer(
+      full = TRUE,
+      links = c(
+        "Accessibility statement",
+        "Use of cookies",
+        "Support and feedback",
+        "Privacy notice",
+        "External link"
+      )
+    )
   )
 }
