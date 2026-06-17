@@ -1,3 +1,4 @@
+source("renv/activate.R")
 # ---------------------------------------------------------
 # This is the .Rprofile file
 #
