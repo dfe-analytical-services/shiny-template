@@ -23,7 +23,7 @@ shhh(library(shinyGovstyle))
 
 # Creating charts and tables
 shhh(library(ggplot2))
-shhh(library(DT))
+shhh(library(ggiraph))
 shhh(library(sf))
 shhh(library(leaflet))
 shhh(library(htmltools))
@@ -37,7 +37,6 @@ shhh(library(openxlsx))
 # Data and string manipulation
 shhh(library(dplyr))
 shhh(library(stringr))
-shhh(library(ggiraph))
 
 # Shiny extensions
 shhh(library(shinyjs))
