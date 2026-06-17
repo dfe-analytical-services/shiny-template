@@ -5,21 +5,6 @@
 # app to keep the rest of the app code easier to read.
 # -----------------------------------------------------------------------------
 
-# Expandable function ---------------------------------------------------------
-expandable <- function(input_id, label, contents) {
-  gov_details <- shiny::tags$details(
-    class = "govuk-details", id = input_id,
-    shiny::tags$summary(
-      class = "govuk-details__summary",
-      shiny::tags$span(
-        class = "govuk-details__summary-text",
-        label
-      )
-    ),
-    shiny::tags$div(contents)
-  )
-}
-
 # Value box function ----------------------------------------------------------
 # fontsize: can be small, medium or large
 value_box <- function(value, subtitle, icon = NULL,
@@ -72,3 +57,56 @@ validate_color <- function(color) {
 suppressMessages(
   gss_colour_pallette <- afcolours::af_colours("categorical", colour_format = "hex", n = 4)
 )
+
+#' Create a Tabset Panel with Optional Tabs
+#'
+#' This function generates a `tabsetPanel` containing up to three tabs: "Chart",
+#' "Table", and "Download".
+#' Only non-NULL inputs will result in corresponding tabs being displayed.
+create_output_tabs <- function(
+    id,
+    chart_output,
+    table_output = NULL,
+    download_output = NULL) {
+  tabs <- Filter(Negate(is.null), list(
+    if (!is.null(chart_output)) tabPanel("Chart", chart_output),
+    if (!is.null(table_output)) {
+      tabPanel(
+        "Table",
+        div(style = "margin-top: 20px;", table_output)
+      )
+    },
+    if (!is.null(download_output)) {
+      tabPanel(
+        "Download",
+        div(style = "margin-top: 40px;", download_output)
+      )
+    }
+  ))
+
+  do.call(tabsetPanel, c(list(id = paste0("main_tabs_", id)), tabs))
+}
+
+#' Standardise internal links ---------------------------------------------
+#'
+#' This function generates a link to an internal tabPanel (target_link),
+#' with the link text specified in "link_text"
+#' The following is required in the server.R script
+#'
+#'   # navigation link within text --------------------------------------------
+#' observeEvent(input$nav_link, {
+#'   shiny::updateTabsetPanel(session, "navlistPanel", selected = input$nav_link)
+#' })
+#'
+#' The target location could be changed to a different UI element by
+#' changing the "navlistPanel" element of the server code
+
+in_line_nav_link <- function(link_text, target_link) {
+  HTML(paste0(
+    "<a href='#' onclick=\"Shiny.setInputValue('nav_link', '",
+    target_link,
+    "', {priority: 'event'});\">",
+    link_text,
+    "</a>"
+  ))
+}

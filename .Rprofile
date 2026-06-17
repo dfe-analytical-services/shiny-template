@@ -9,7 +9,17 @@
 
 message("Sourcing .Rprofile...")
 
-source("renv/activate.R")
+# Source renv activation with error handling
+tryCatch(
+  source("renv/activate.R"),
+  error = function(e) {
+    warning("Failed to source renv/activate.R: ", e$message)
+    message("Attempting renv::init() to repair environment...")
+    if (requireNamespace("renv", quietly = TRUE)) {
+      renv::restore()
+    }
+  }
+)
 
 if (system.file(package = "dfeshiny") != "") {
   library(dfeshiny)

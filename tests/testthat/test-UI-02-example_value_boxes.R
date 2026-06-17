@@ -39,13 +39,13 @@ app$wait_for_idle(5)
 # Chose a specific location using the drop downs
 app$set_inputs(selectArea = "North East")
 
-# Wait until Shiny is not busy for 50ms so we know any processes are complete
-app$wait_for_idle(5)
+# Wait until Shiny is not busy for 100ms so we know any processes are complete
+app$wait_for_idle(100)
 
 # Capture specified values for average revenue balance box (raw snapshot)
 app$expect_values(
   input = c("selectArea"), # Input selections to snapshot
-  output = c("box_balance_latest", "box_balance_change") # Output to snapshot
+  output = c("average_revenue_balance", "balance_change") # Output to snapshot
 )
 
 # Get the exported values, defined in server.R file using exportTestValues()

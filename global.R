@@ -24,6 +24,15 @@ shhh(library(shinyGovstyle))
 # Creating charts and tables
 shhh(library(ggplot2))
 shhh(library(DT))
+shhh(library(sf))
+shhh(library(leaflet))
+shhh(library(htmltools))
+shhh(library(reactable))
+shhh(library(svglite))
+shhh(library(afcharts))
+shhh(library(ggrepel))
+shhh(library(showtext))
+shhh(library(openxlsx))
 
 # Data and string manipulation
 shhh(library(dplyr))
@@ -33,8 +42,6 @@ shhh(library(ggiraph))
 # Shiny extensions
 shhh(library(shinyjs))
 shhh(library(tools))
-shhh(library(shinydashboard))
-shhh(library(shinyWidgets))
 shhh(library(shinytitle))
 shhh(library(xfun))
 shhh(library(metathis))
@@ -45,6 +52,7 @@ shhh(library(shinyalert))
 # them, saving on load time.
 if (FALSE) {
   shhh(library(shinytest2))
+  shhh(library(chromote))
   shhh(library(testthat))
 }
 
@@ -61,6 +69,8 @@ source("R/read_data.R")
 # Source custom functions script
 source("R/helper_functions.R")
 
+gbp <- enc2utf8("\u00A3")
+
 # Source all files in the ui_panels folder
 lapply(list.files("R/ui_panels/", full.names = TRUE), source)
 
@@ -73,12 +83,11 @@ parent_publication <- # link to source publication
 
 # Set the URLs that the site will be published to
 site_primary <- "https://department-for-education.shinyapps.io/dfe-shiny-template/"
-site_overflow <- "https://department-for-education.shinyapps.io/dfe-shiny-template-overflow/"
 
 # Combine URLs into list for disconnect function
 # We can add further mirrors where necessary. Each one can generally handle
 # about 2,500 users simultaneously
-sites_list <- c(site_primary, site_overflow)
+sites_list <- c(site_primary)
 
 # Set the key for Google Analytics tracking
 google_analytics_key <- "Z967JJVQQX"
@@ -88,35 +97,64 @@ google_analytics_key <- "Z967JJVQQX"
 # Enable bookmarking so that input choices are shown in the url ---------------
 enableBookmarking("url")
 
+# Fonts for charts ------------------------------------------------------------
+font_add("dejavu", "www/fonts/DejaVuSans.ttf")
+register_font(
+  "dejavu",
+  plain = "www/fonts/DejaVuSans.ttf",
+  bold = "www/fonts/DejaVuSans-Bold.ttf",
+  italic = "www/fonts/DejaVuSans-Oblique.ttf",
+  bolditalic = "www/fonts/DejaVuSans-BoldOblique.ttf"
+)
+showtext_auto()
+
 # Read in the data ------------------------------------------------------------
 df_revbal <- read_revenue_data()
 
 # Get geographical areas from data
-df_areas <- df_revbal %>%
+df_areas <- df_revbal |>
   select(
     geographic_level, country_name, country_code,
     region_name, region_code,
     la_name, old_la_code, new_la_code
-  ) %>%
+  ) |>
   distinct()
+
+df_upper_tier_geo <- read_upper_tier_data()
+
+df_upper_tier_all <- df_upper_tier_geo |>
+  dplyr::select(new_la_code, LONG, LAT, geometry) |>
+  inner_join(df_revbal,
+    by = "new_la_code"
+  ) |>
+  rowwise() |>
+  mutate(lab = HTML(sprintf(
+    "<b> %s </b> </br> %s </br> %s %s",
+    strong(area_name),
+    "Schools with deficit",
+    PC_schools_with_deficit, "%"
+  )))
 
 # Extract lists for use in drop downs -----------------------------------------
 # LA list
-choices_las <- df_areas %>%
-  filter(geographic_level == "Local authority") %>%
-  select(geographic_level, area_name = la_name) %>%
+choices_las <- df_areas |>
+  filter(geographic_level == "Local authority") |>
+  select(geographic_level, area_name = la_name) |>
   arrange(area_name)
 
 # Full list of areas
-choices_areas <- df_areas %>%
-  filter(geographic_level == "National") %>%
-  select(geographic_level, area_name = country_name) %>%
+choices_areas <- df_areas |>
+  filter(geographic_level == "National") |>
+  select(geographic_level, area_name = country_name) |>
   rbind(
-    df_areas %>%
-      filter(geographic_level == "Regional") %>%
+    df_areas |>
+      filter(geographic_level == "Regional") |>
       select(geographic_level, area_name = region_name)
-  ) %>%
+  ) |>
   rbind(choices_las)
 
 # List of phases
 choices_phase <- unique(df_revbal$school_phase)
+
+# List of years
+df_revbal_years <- sort(unique(df_revbal$year))
