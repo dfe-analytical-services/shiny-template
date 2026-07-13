@@ -1,7 +1,7 @@
 {
   "version": 1,
   "locale": "en_GB",
-  "platform": "4.6.1",
+  "platform": "4.6.0",
   "metadata": {
     "appmode": "shiny",
     "primary_rmd": null,
@@ -108,7 +108,7 @@
         "Maintainer": "Brian Ripley <Brian.Ripley@R-project.org>",
         "Repository": "CRAN",
         "Date/Publication": "2025-01-01 10:25:36 UTC",
-        "Built": "R 4.6.1; x86_64-w64-mingw32; 2026-06-24 08:32:40 UTC; windows",
+        "Built": "R 4.6.0; x86_64-w64-mingw32; 2026-04-24 08:16:39 UTC; windows",
         "Archs": "x64"
       }
     },
@@ -973,7 +973,7 @@
         "Maintainer": "Brian Ripley <Brian.Ripley@R-project.org>",
         "Repository": "CRAN",
         "Date/Publication": "2025-01-01 10:25:33 UTC",
-        "Built": "R 4.6.1; x86_64-w64-mingw32; 2026-06-24 08:33:04 UTC; windows",
+        "Built": "R 4.6.0; x86_64-w64-mingw32; 2026-04-24 08:16:55 UTC; windows",
         "Archs": "x64"
       }
     },
@@ -2855,7 +2855,7 @@
         "Maintainer": "Deepayan Sarkar <deepayan.sarkar@r-project.org>",
         "Repository": "CRAN",
         "Date/Publication": "2026-02-09 06:10:13 UTC",
-        "Built": "R 4.6.1; x86_64-w64-mingw32; 2026-06-24 08:23:40 UTC; windows",
+        "Built": "R 4.6.0; x86_64-w64-mingw32; 2026-04-24 08:10:45 UTC; windows",
         "Archs": "x64"
       }
     },
@@ -6129,7 +6129,7 @@
       "checksum": "db7c5661bd52696cbed5255f3e4003e4"
     },
     ".hooks/pre-commit.R": {
-      "checksum": "9e27033c4fc518e94153961edc82aa87"
+      "checksum": "b73673ee0975b267b8536d155efd1917"
     },
     ".lintr": {
       "checksum": "21373c552fa1b0b8404341b9e3c127ac"
@@ -6138,10 +6138,10 @@
       "checksum": "87ea1a829872a421170c93a82fa13ec7"
     },
     ".RData": {
-      "checksum": "ed3e76652815cdb3bead7571fe865b13"
+      "checksum": "285db6c171da06fcc8856f02a50fe3e5"
     },
     ".Rprofile": {
-      "checksum": "0d14a40e51457b0ca3c248faf78d2342"
+      "checksum": "72fa79347052d65555f39bcc92a3b879"
     },
     "data/la_maintained_schools_revenue_reserve_final.csv": {
       "checksum": "d31e4cda6ec754b2e67bdb575c86d5ff"
