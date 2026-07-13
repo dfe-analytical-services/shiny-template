@@ -50,6 +50,7 @@ shhh(library(shinyalert))
 # Including them here keeps them in renv but avoids the app needlessly loading
 # them, saving on load time.
 if (FALSE) {
+  shhh(library(rsconnect))
   shhh(library(shinytest2))
   shhh(library(chromote))
   shhh(library(testthat))
