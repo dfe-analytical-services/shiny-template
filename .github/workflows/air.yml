@@ -5,12 +5,15 @@ on:
     branches: [main, master]
   pull_request_target:
 
-name: Reusable
+name: Usable
 
 permissions:
   contents: read
-  packages: write
-  pull-requests: write
+            write
+  packages: read
+            write
+  pull-requests: read
+                 write
 
 jobs:
   air:
