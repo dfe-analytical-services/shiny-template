@@ -21,13 +21,15 @@
 ui <- function(input, output, session) {
   bslib::page_fluid(
     # Set application metadata ------------------------------------------------
-    tags$head(HTML("<title>Department for Education (DfE) Shiny Template</title>")),
+    tags$head(HTML(
+      "<title>Department for Education (DfE) Shiny Template</title>"
+    )),
     tags$head(tags$link(rel = "shortcut icon", href = "dfefavicon.png")),
     use_shiny_title(),
     useShinyjs(),
     tags$html(lang = "en"),
     # Add meta description for search engines
-    meta() %>%
+    meta() |>
       meta_general(
         application_name = "Department for Education (DfE) Shiny Template",
         description = "Department for Education (DfE) Shiny Template",
