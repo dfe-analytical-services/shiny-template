@@ -21,6 +21,9 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
+      - name: Install git-lfs
+        run: apt-get update && apt-get install -y git-lfs
+        
       - uses: actions/checkout@v4
         with:
           lfs: true
