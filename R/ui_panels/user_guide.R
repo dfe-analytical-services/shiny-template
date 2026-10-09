@@ -1,7 +1,8 @@
 user_guide_panel <- function() {
-  tabPanel(
-    "User guide",
+  nav_panel(
+    "user_guide_panel",
     gov_main_layout(
+      width = "standard",
       gov_row(
         column(
           12,

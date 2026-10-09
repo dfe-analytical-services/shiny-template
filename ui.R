@@ -19,7 +19,8 @@
 #
 # -----------------------------------------------------------------------------
 ui <- function(input, output, session) {
-  bslib::page_fluid(
+  gov_page(
+    width = "full",
     # Set application metadata ------------------------------------------------
     tags$head(HTML(
       "<title>Department for Education (DfE) Shiny Template</title>"
@@ -55,7 +56,7 @@ ui <- function(input, output, session) {
     # Setting up cookie consent based on a cookie recording the consent:
     dfeshiny::dfe_cookies_script(),
     dfeshiny::cookies_banner_ui(
-      name = "Department for Education (DfE) Shiny Template"
+      name = site_title
     ),
 
     # Skip_to_main -------------------------------------------------------------
@@ -67,42 +68,39 @@ ui <- function(input, output, session) {
     tags$head(includeHTML(("google-analytics.html"))),
 
     # Header ------------------------------------------------------------------
-    shinyGovstyle::full_width_overrides(),
     shinyGovstyle::header(
-      org_name = "Department for Education",
-      service_name = "Shiny template"
+      org_name = "Department for Education"
     ),
-
-    # Beta banner -------------------------------------------------------------
+    shinyGovstyle::service_navigation(
+      service_name = site_title,
+      c(
+        "Example tab 1",
+        "User guide"
+      )
+    ),
     shinyGovstyle::banner(
       "beta banner",
       "Beta",
-      "This dashboard is in beta phase and we are still reviewing performance and reliability."
+      paste0(
+        "This Dashboard is in beta phase and we are still reviewing performance and reliability."
+      )
     ),
-
-    gov_main_layout(
-      bslib::navset_hidden(
-        id = "pages",
-        nav_panel(
-          "dashboard",
-          ## Main dashboard ---------------------------------------------------
-          # Nav panels --------------------------------------------------------------
-          shiny::navlistPanel(
-            "",
-            id = "navlistPanel",
-            widths = c(2, 8),
-            well = FALSE,
-            # Content for these panels is defined in the R/ui_panels/ folder
-            example_tab_1_panel(),
-            user_guide_panel()
-          )
-        ),
-        nav_panel(
-          value = "a11y_panel",
-          "Accessibility",
-          layout_columns(
-            col_widths = c(-2, 8, -2),
-
+    bslib::navset_hidden(
+      id = "pages",
+      nav_panel(
+        "main_panel",
+        bslib::navset_hidden(
+          id = "main_panels",
+          example_tab_1_panel(),
+          user_guide_panel()
+        )
+      ),
+      nav_panel(
+        value = "a11y_panel",
+        "Accessibility",
+        layout_columns(
+          gov_main_layout(
+            width = "standard",
             # Add in back link
             actionLink(
               class = "govuk-back-link",
@@ -124,41 +122,41 @@ ui <- function(input, output, session) {
               specific_issues = c("List specific issues here")
             )
           )
-        ),
-        nav_panel(
-          value = "cookies_panel_ui",
-          "Cookies",
-          layout_columns(
-            col_widths = c(-2, 8, -2),
+        )
+      ),
+      nav_panel(
+        value = "cookies_panel_ui",
+        "Cookies",
+        gov_main_layout(
+          width = "standard",
 
-            # Add backlink
-            actionLink(
-              class = "govuk-back-link",
-              style = "margin: 0",
-              "cookies_to_dashboard",
-              "Back to dashboard"
-            ),
-            cookies_panel_ui(google_analytics_key = google_analytics_key)
-          )
-        ),
-        nav_panel(
-          value = "support_panel_ui",
-          "Support and feedback",
-          layout_columns(
-            col_widths = c(-2, 8, -2),
+          # Add backlink
+          actionLink(
+            class = "govuk-back-link",
+            style = "margin: 0",
+            "cookies_to_dashboard",
+            "Back to dashboard"
+          ),
+          cookies_panel_ui(google_analytics_key = google_analytics_key)
+        )
+      ),
+      nav_panel(
+        value = "support_panel_ui",
+        "Support and feedback",
+        gov_main_layout(
+          width = "standard",
 
-            # Add in back link
-            actionLink(
-              class = "govuk-back-link",
-              style = "margin: 0",
-              "support_to_dashboard",
-              "Back to dashboard"
-            ),
-            support_panel(
-              team_email = "explore.statistics@education.gov.uk",
-              repo_name = "https://github.com/dfe-analytical-services/shiny-template",
-              form_url = "https://forms.office.com"
-            )
+          # Add in back link
+          actionLink(
+            class = "govuk-back-link",
+            style = "margin: 0",
+            "support_to_dashboard",
+            "Back to dashboard"
+          ),
+          support_panel(
+            team_email = "explore.statistics@education.gov.uk",
+            repo_name = "https://github.com/dfe-analytical-services/shiny-template",
+            form_url = "https://forms.office.com"
           )
         )
       )

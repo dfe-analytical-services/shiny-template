@@ -54,7 +54,7 @@ server <- function(input, output, session) {
   })
 
   observe({
-    if (input$navlistPanel == "Example tab 1") {
+    if (input$example_tab_1 == TRUE) {
       change_window_title(
         session,
         paste0(
@@ -69,13 +69,27 @@ server <- function(input, output, session) {
       change_window_title(
         session,
         paste0(
-          site_title,
-          " - ",
-          input$navlistPanel
+          site_title
         )
       )
     }
   })
+
+  # Top level service navigation actions
+  observeEvent(
+    input$example_tab_1,
+    {
+      bslib::nav_select("pages", "main_panel")
+      bslib::nav_select("main_panels", "example_tab_1_panel")
+    }
+  )
+  observeEvent(
+    input$user_guide,
+    {
+      bslib::nav_select("pages", "main_panel")
+      bslib::nav_select("main_panels", "user_guide_panel")
+    }
+  )
 
   # Cookies logic -------------------------------------------------------------
   output$cookies_status <- dfeshiny::cookies_banner_server(
@@ -552,11 +566,6 @@ server <- function(input, output, session) {
     )
   )
 
-  # Link in the user guide panel back to the main panel -----------------------
-  observeEvent(input$link_to_app_content_tab, {
-    updateTabsetPanel(session, "navlistPanel", selected = "Example tab 1")
-  })
-
   # Download the underlying data button --------------------------------------
   output$download_data <- downloadHandler(
     filename = "shiny_template_underlying_data.csv",
@@ -583,7 +592,7 @@ server <- function(input, output, session) {
 
   # navigation link within text --------------------------------------------
   observeEvent(input$nav_link, {
-    shiny::updateTabsetPanel(session, "navlistPanel", selected = input$nav_link)
+    bslib::nav_select("pages", input$nav_link)
   })
 
   # Dynamic label showing custom selections -----------------------------------
@@ -612,6 +621,16 @@ server <- function(input, output, session) {
       "support_panel_ui"
     )
   })
+
+  ## Back links to main dashboard ---------------------------------------------
+  observeEvent(
+    input$support_to_dashboard |
+      input$cookies_to_dashboard |
+      input$accessibility_to_dashboard,
+    {
+      nav_select("pages", "main_panel")
+    }
+  )
 
   shiny::observeEvent(input$privacy_notice, {
     showModal(modalDialog(
@@ -666,18 +685,4 @@ server <- function(input, output, session) {
     "
     )
   })
-
-  ## Back links to main dashboard ---------------------------------------------
-  observeEvent(
-    input$support_to_dashboard,
-    nav_select("pages", "dashboard")
-  )
-  observeEvent(
-    input$cookies_to_dashboard,
-    nav_select("pages", "dashboard")
-  )
-  observeEvent(
-    input$accessibility_to_dashboard,
-    nav_select("pages", "dashboard")
-  )
 }
