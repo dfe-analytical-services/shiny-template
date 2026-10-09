@@ -6168,7 +6168,7 @@
       "checksum": "3325dee1337dcbdbe33348b7fd275a7e"
     },
     ".github/workflows/automated-tests.yaml": {
-      "checksum": "7fec9834ee9927cf76307a613d0e699e"
+      "checksum": "b4fdd5c7e948aa17268765f51a057199"
     },
     ".github/workflows/deploy-shiny.yaml": {
       "checksum": "703a6549e79ed4c801a2c0f1302bdc24"
@@ -6186,7 +6186,7 @@
       "checksum": "87ea1a829872a421170c93a82fa13ec7"
     },
     ".Rprofile": {
-      "checksum": "ad7148e22404409c4013a8263ee3ea9e"
+      "checksum": "2bc6da981776a638040d373a695dfa63"
     },
     "data/la_maintained_schools_revenue_reserve_final.csv": {
       "checksum": "d31e4cda6ec754b2e67bdb575c86d5ff"
