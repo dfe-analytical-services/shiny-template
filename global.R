@@ -76,7 +76,7 @@ lapply(list.files("R/ui_panels/", full.names = TRUE), source)
 
 # Set global variables --------------------------------------------------------
 
-site_title <- "Department for Education (DfE) Shiny Template" # name of app
+site_title <- "DfE Shiny Template" # name of app
 parent_pub_name <- "Statistical publication" # name of source publication
 parent_publication <- # link to source publication
   "https://explore-education-statistics.service.gov.uk/find-statistics/apprenticeships"
