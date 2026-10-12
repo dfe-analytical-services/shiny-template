@@ -67,7 +67,18 @@ ui <- function(input, output, session) {
     tags$head(includeHTML(("google-analytics.html"))),
 
     # Header ------------------------------------------------------------------
-    shinyGovstyle::full_width_overrides(),
+    # Full width styling overrides (inlined from shinyGovstyle development branch
+    # until full_width_overrides() is released on main)
+    tags$head(tags$style(HTML(
+      ".container-fluid { padding: 0; }",
+      ".govuk-width-container { max-width: 100%; padding-left: 10px; }",
+      ".govuk-grid-row { margin-left: 0; margin-right: 0; }",
+      ".govuk-button-group { margin-right: 0px; }",
+      ".govuk-footer { padding: 2rem; }",
+      "html { background-color: #f3f2f1; }",
+      ".govuk-contents-box { margin-left: 0; margin-right: 0; }",
+      ".govuk-contents-box { padding: 10px; width: fit-content !important; }"
+    ))),
     shinyGovstyle::header(
       org_name = "Department for Education",
       service_name = "Shiny template"
