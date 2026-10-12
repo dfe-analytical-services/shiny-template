@@ -54,7 +54,7 @@ server <- function(input, output, session) {
   })
 
   observe({
-    if (input$example_tab_1 == TRUE) {
+    if (input$main_panels == "example_tab_1_panel") {
       change_window_title(
         session,
         paste0(

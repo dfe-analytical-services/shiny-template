@@ -6395,7 +6395,7 @@
       "checksum": "285db6c171da06fcc8856f02a50fe3e5"
     },
     ".Rprofile": {
-      "checksum": "a5d53814f9583f8df85c07167d079975"
+      "checksum": "484e7d7ddaaf2da50e72f1eb0ef088ff"
     },
     "data/la_maintained_schools_revenue_reserve_final.csv": {
       "checksum": "d31e4cda6ec754b2e67bdb575c86d5ff"
@@ -6455,7 +6455,7 @@
       "checksum": "882ecf073aedc4123ac2309f56df7fad"
     },
     "server.R": {
-      "checksum": "06ebd765c84ec96dd88bbdebbf1dd5ca"
+      "checksum": "f2f8d7c58337b787c5cb39adc9b2b4f6"
     },
     "tests/testthat.R": {
       "checksum": "12e9b09de5275bdc13bde6ae5a82f8b1"
@@ -6473,16 +6473,16 @@
       "checksum": "80dff7f4fe686e5e7b4ef4ba8e52a535"
     },
     "tests/testthat/test-Server-01-example_dropdown_filtering.R": {
-      "checksum": "d427a8961ad13a467fe41dc8e7c8e555"
+      "checksum": "24a045e4f2e058c2f5dd6723fc34ceda"
     },
     "tests/testthat/test-UI-01-basic_load.R": {
-      "checksum": "5ea6062941fcfe89fc65c4c8149ee157"
+      "checksum": "da67bdcb7a8007fac5ea7a250f8cfd1e"
     },
     "tests/testthat/test-UI-02-example_value_boxes.R": {
       "checksum": "46c3dde156378d1489662cfd4edb54f4"
     },
     "ui.R": {
-      "checksum": "a6960bda10580b17b607197eaaf6ba13"
+      "checksum": "972bd05cd6ded0258cf9a9fb2cb7ea78"
     },
     "www/cookie-consent.js": {
       "checksum": "dd507a9ad0d33b3b3f97546ffc357f23"

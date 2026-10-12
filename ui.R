@@ -168,7 +168,7 @@ ui <- function(input, output, session) {
       links = c(
         "Accessibility statement",
         "Use of cookies",
-        "Support and feedback",
+        "Support",
         "Privacy notice",
         "External link"
       )
