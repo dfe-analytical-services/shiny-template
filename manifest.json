@@ -4585,11 +4585,11 @@
         "Authors@R": "c(\n    person(\"Ross\", \"Wyatt\", , \"ross.wyatt@justice.gov.uk\", role = \"aut\"),\n    person(\"Cam\", \"Race\", , \"camrace8@gmail.com\", role = c(\"aut\", \"cre\")),\n    person(\"Sarah\", \"Wong\", role = \"aut\"),\n    person(\"Richard\", \"Bielby\", , \"richard.bielby@education.gov.uk\", role = \"ctb\"),\n    person(\"Charlotte\", \"Foster\", , \"charlotte.foster@education.gov.uk\", role = \"ctb\"),\n    person(\"Jeni\", \"Martin\", role = \"ctb\"),\n    person(\"Andrew\", \"Baker\", , \"andrew.baker1@dhsc.gov.uk\", role = \"ctb\")\n  )",
         "Description": "Collection of 'shiny' application styling that are based on\n    the GOV.UK Design System. See\n    <https://design-system.service.gov.uk/components/> for details.",
         "License": "GPL (>= 3)",
-        "URL": "https://github.com/dfe-analytical-services/shinyGovstyle",
+        "URL": "https://github.com/dfe-analytical-services/shinyGovstyle,\nhttps://dfe-analytical-services.github.io/shinyGovstyle",
         "BugReports": "https://github.com/dfe-analytical-services/shinyGovstyle/issues",
         "Depends": "R (>= 4.1.0)",
-        "Imports": "bslib,\nhtmltools,\njsonlite,\nlifecycle,\npurrr,\nreactable,\nreadODS,\nreadr,\nshiny (>= 0.14),\nshinyjs,\nstringr,\nwritexl",
-        "Suggests": "knitr,\nrlang,\nrmarkdown,\nshinytest2,\ntestthat",
+        "Imports": "bslib (>= 0.9.0),\nhtmltools,\njsonlite,\nlifecycle,\npurrr,\nreactable,\nreadODS,\nreadr,\nshiny (>= 0.14),\nshinyjs,\nstringr,\nwritexl",
+        "Suggests": "brand.yml,\nknitr,\nnanonext (>= 1.8.0),\npkgdown (>= 2.1.1),\nrlang,\nrmarkdown,\nshinytest2,\ntestthat",
         "VignetteBuilder": "knitr",
         "Config/testthat/edition": "3",
         "Encoding": "UTF-8",
@@ -4598,18 +4598,18 @@
         "Config/roxygen2/version": "8.1.0",
         "Author": "Ross Wyatt [aut],\n  Cam Race [aut, cre],\n  Sarah Wong [aut],\n  Richard Bielby [ctb],\n  Charlotte Foster [ctb],\n  Jeni Martin [ctb],\n  Andrew Baker [ctb]",
         "Maintainer": "Cam Race <camrace8@gmail.com>",
-        "Built": "R 4.6.1; ; 2026-09-22 15:59:08 UTC; windows",
+        "Built": "R 4.6.1; ; 2026-10-12 10:33:29 UTC; windows",
         "RemoteType": "github",
+        "RemoteHost": "api.github.com",
         "RemoteUsername": "dfe-analytical-services",
         "RemoteRepo": "shinyGovstyle",
         "RemoteRef": "main",
-        "RemoteSha": "65309fd05adb1db1f888093e5bf1f398c30e3648",
-        "RemoteHost": "api.github.com",
+        "RemoteSha": "b3072cfd9dee687760748f26aafb9ca46e4db552",
         "GithubHost": "api.github.com",
         "GithubRepo": "shinyGovstyle",
         "GithubUsername": "dfe-analytical-services",
         "GithubRef": "main",
-        "GithubSHA1": "65309fd05adb1db1f888093e5bf1f398c30e3648"
+        "GithubSHA1": "b3072cfd9dee687760748f26aafb9ca46e4db552"
       }
     },
     "shinyalert": {
@@ -6186,7 +6186,7 @@
       "checksum": "87ea1a829872a421170c93a82fa13ec7"
     },
     ".Rprofile": {
-      "checksum": "5f2edebbd2a9e5817bd3a7aac47afc92"
+      "checksum": "b6ddc1013eae990f6e4f68abd84831f5"
     },
     "data/la_maintained_schools_revenue_reserve_final.csv": {
       "checksum": "d31e4cda6ec754b2e67bdb575c86d5ff"
@@ -6243,7 +6243,7 @@
       "checksum": "bfa04ac81d04f5d07cffa00a705a30ba"
     },
     "renv.lock": {
-      "checksum": "baa4627f3eeb8da3a1a77880d8353b5c"
+      "checksum": "79be7d74ec4a3c79f679ca6cdda63865"
     },
     "server.R": {
       "checksum": "4e7d45272b6dd51f42eccdcc64c492eb"

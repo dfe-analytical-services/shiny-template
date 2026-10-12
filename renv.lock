@@ -4772,13 +4772,13 @@
       "Authors@R": "c( person(\"Ross\", \"Wyatt\", , \"ross.wyatt@justice.gov.uk\", role = \"aut\"), person(\"Cam\", \"Race\", , \"camrace8@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Sarah\", \"Wong\", role = \"aut\"), person(\"Richard\", \"Bielby\", , \"richard.bielby@education.gov.uk\", role = \"ctb\"), person(\"Charlotte\", \"Foster\", , \"charlotte.foster@education.gov.uk\", role = \"ctb\"), person(\"Jeni\", \"Martin\", role = \"ctb\"), person(\"Andrew\", \"Baker\", , \"andrew.baker1@dhsc.gov.uk\", role = \"ctb\") )",
       "Description": "Collection of 'shiny' application styling that are based on the GOV.UK Design System. See <https://design-system.service.gov.uk/components/> for details.",
       "License": "GPL (>= 3)",
-      "URL": "https://github.com/dfe-analytical-services/shinyGovstyle",
+      "URL": "https://github.com/dfe-analytical-services/shinyGovstyle, https://dfe-analytical-services.github.io/shinyGovstyle",
       "BugReports": "https://github.com/dfe-analytical-services/shinyGovstyle/issues",
       "Depends": [
         "R (>= 4.1.0)"
       ],
       "Imports": [
-        "bslib",
+        "bslib (>= 0.9.0)",
         "htmltools",
         "jsonlite",
         "lifecycle",
@@ -4792,7 +4792,10 @@
         "writexl"
       ],
       "Suggests": [
+        "brand.yml",
         "knitr",
+        "nanonext (>= 1.8.0)",
+        "pkgdown (>= 2.1.1)",
         "rlang",
         "rmarkdown",
         "shinytest2",
@@ -4807,11 +4810,11 @@
       "Author": "Ross Wyatt [aut], Cam Race [aut, cre], Sarah Wong [aut], Richard Bielby [ctb], Charlotte Foster [ctb], Jeni Martin [ctb], Andrew Baker [ctb]",
       "Maintainer": "Cam Race <camrace8@gmail.com>",
       "RemoteType": "github",
+      "RemoteHost": "api.github.com",
       "RemoteUsername": "dfe-analytical-services",
       "RemoteRepo": "shinyGovstyle",
       "RemoteRef": "main",
-      "RemoteSha": "65309fd05adb1db1f888093e5bf1f398c30e3648",
-      "RemoteHost": "api.github.com"
+      "RemoteSha": "b3072cfd9dee687760748f26aafb9ca46e4db552"
     },
     "shinyalert": {
       "Package": "shinyalert",
