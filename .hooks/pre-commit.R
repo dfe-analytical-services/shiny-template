@@ -95,8 +95,8 @@ message("\n")
 message("2. Checking Google Analytics tag...\n")
 
 if (
-  grepl("G-Z967JJVQQX", htmltools::includeHTML(("google-analytics.html")))
-    & !(toupper(Sys.getenv("USERNAME")) %in%
+  grepl("G-Z967JJVQQX", htmltools::includeHTML(("google-analytics.html"))) &
+    !(toupper(Sys.getenv("USERNAME")) %in%
       c("CRACE", "LSELBY", "RBIELBY", "DYING-478"))
 ) {
   message("...cleaning out the template's Google Analytics tag.")

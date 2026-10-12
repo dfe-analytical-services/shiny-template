@@ -108,7 +108,6 @@ ui <- function(input, output, session) {
               "accessibility_to_dashboard",
               "Back to dashboard"
             ),
-
             dfeshiny::a11y_panel(
               dashboard_title = site_title,
               dashboard_url = site_primary,
