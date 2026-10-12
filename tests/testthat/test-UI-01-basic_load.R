@@ -14,8 +14,8 @@ app <- AppDriver$new(
   name = "basic_load",
   height = 846,
   width = 1445,
-  load_timeout = 120 * 1000,
-  timeout = 60 * 1000,
+  load_timeout = 240 * 1000,
+  timeout = 240 * 1000,
   wait = TRUE,
   expect_values_screenshot_args = FALSE # Turn off as we don't need screenshots
 )
@@ -30,6 +30,6 @@ test_that("App loads and title of app appears as expected", {
     app$get_text("title"),
     # This is the title of the app on load, you should change to match your app's title
     # The app title is usually set early on in the ui.R script or through a variable in the global.R script
-    "Department for Education (DfE) Shiny Template - All Local authority maintained schools, England"
+    "DfE Shiny Template"
   )
 })

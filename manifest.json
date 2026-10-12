@@ -6395,7 +6395,7 @@
       "checksum": "285db6c171da06fcc8856f02a50fe3e5"
     },
     ".Rprofile": {
-      "checksum": "7939b88ad6e6c810eaa720f63b229ee4"
+      "checksum": "a5d53814f9583f8df85c07167d079975"
     },
     "data/la_maintained_schools_revenue_reserve_final.csv": {
       "checksum": "d31e4cda6ec754b2e67bdb575c86d5ff"
@@ -6473,10 +6473,10 @@
       "checksum": "80dff7f4fe686e5e7b4ef4ba8e52a535"
     },
     "tests/testthat/test-Server-01-example_dropdown_filtering.R": {
-      "checksum": "0cfb79af7dea96dad763cce87df30522"
+      "checksum": "d427a8961ad13a467fe41dc8e7c8e555"
     },
     "tests/testthat/test-UI-01-basic_load.R": {
-      "checksum": "83dc7b2d028442269f13a0f8d0dc5dd6"
+      "checksum": "5ea6062941fcfe89fc65c4c8149ee157"
     },
     "tests/testthat/test-UI-02-example_value_boxes.R": {
       "checksum": "46c3dde156378d1489662cfd4edb54f4"

@@ -25,7 +25,6 @@ test_data <- read_revenue_data(
 shiny::testServer(expr = {
   # Give the inputs expected on initial load
   session$setInputs(
-    navlistPanel = "Example tab 1",
     selectArea = "England",
     selectPhase = "All Local authority maintained schools"
   )
