@@ -136,10 +136,18 @@
         "Packaged": "2025-02-19 08:49:43 UTC; ripley",
         "Author": "Brian Ripley [aut, cre, cph],\n  Bill Venables [aut, cph],\n  Douglas M. Bates [ctb],\n  Kurt Hornik [trl] (partial port ca 1998),\n  Albrecht Gebhardt [trl] (partial port ca 1998),\n  David Firth [ctb] (support functions for polr)",
         "Maintainer": "Brian Ripley <Brian.Ripley@R-project.org>",
-        "Repository": "CRAN",
+        "Repository": "RSPM",
         "Date/Publication": "2025-02-28 17:44:52 UTC",
-        "Built": "R 4.6.1; x86_64-w64-mingw32; 2026-06-24 08:23:25 UTC; windows",
-        "Archs": "x64"
+        "Encoding": "UTF-8",
+        "Built": "R 4.6.1; x86_64-w64-mingw32; 2026-10-13 08:52:14 UTC; windows",
+        "Archs": "x64",
+        "RemoteType": "standard",
+        "RemoteRef": "MASS",
+        "RemotePkgRef": "MASS",
+        "RemoteRepos": "https://packagemanager.posit.co/cran/latest",
+        "RemoteReposName": "CRAN",
+        "RemotePkgPlatform": "source",
+        "RemoteSha": "7.3-65"
       }
     },
     "R.cache": {
@@ -6177,7 +6185,7 @@
       "checksum": "db7c5661bd52696cbed5255f3e4003e4"
     },
     ".hooks/pre-commit.R": {
-      "checksum": "2bce4bd316ddc37be1ea13edea1d72d1"
+      "checksum": "d6d961355d9a55b81c79d36dc0366f43"
     },
     ".lintr": {
       "checksum": "21373c552fa1b0b8404341b9e3c127ac"
@@ -6186,7 +6194,7 @@
       "checksum": "87ea1a829872a421170c93a82fa13ec7"
     },
     ".Rprofile": {
-      "checksum": "14abb1e2cd722aa8661dcc65a1e2046b"
+      "checksum": "3f3fbf7e23f7752f8947c435f88dae46"
     },
     "data/la_maintained_schools_revenue_reserve_final.csv": {
       "checksum": "d31e4cda6ec754b2e67bdb575c86d5ff"
@@ -6216,7 +6224,7 @@
       "checksum": "9587b92b1c15b0e10b8fc356e3f524ab"
     },
     "google-analytics.html": {
-      "checksum": "c02333cf41d5aaba52c1d832bf6e2135"
+      "checksum": "c0a53bfa2b0835e4caafe09e7dbf6ac5"
     },
     "LICENSE": {
       "checksum": "4ff1ab40947c9cebe66adef6c76f9ba7"
