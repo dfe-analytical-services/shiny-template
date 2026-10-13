@@ -95,9 +95,9 @@ message("\n")
 message("2. Checking Google Analytics tag...\n")
 
 if (
-  grepl("G-Z967JJVQQX", htmltools::includeHTML(("google-analytics.html")))
-    & !(toupper(Sys.getenv("USERNAME")) %in%
-      c("CRACE", "LSELBY", "RBIELBY", "DYING-478"))
+  grepl("G-Z967JJVQQX", htmltools::includeHTML(("google-analytics.html"))) &
+    !(toupper(Sys.getenv("USERNAME")) %in%
+      c("CRACE", "LSELBY", "RBIELBY", "DYING"))
 ) {
   message("...cleaning out the template's Google Analytics tag.")
   gsub_file(
@@ -116,7 +116,10 @@ message("\n3. Rebuilding manifest.json...")
 if (system.file(package = "git2r") == "") {
   renv::install("git2r")
 }
-if (system.file(package = "rsconnect") != "" & system.file(package = "git2r") != "") {
+if (
+  system.file(package = "rsconnect") != "" &
+    system.file(package = "git2r") != ""
+) {
   if (!any(grepl("manifest.json", git2r::status()))) {
     rsconnect::writeManifest()
     git2r::add(path = "manifest.json")
