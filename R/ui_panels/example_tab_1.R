@@ -1,6 +1,6 @@
 example_tab_1_panel <- function() {
-  tabPanel(
-    "Example tab 1",
+  nav_panel(
+    "example_tab_1_panel",
     gov_main_layout(
       gov_row(
         column(

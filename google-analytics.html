@@ -26,38 +26,55 @@ The custom trackers below can be tailored to match the inputs used in your
 dashboard.
 */
 
+/*
+This one captures clicks on the top level service navigation component.
+*/
+   $(document).on('click', 'ul#navigation', function(e) {
+    gtag(
+      'event', 
+      'Service navigation', 
+      {
+        'event_category' : 'Top level navigation',
+        'event_label' : e.target.closest('li').querySelector('a').getAttribute('id')
+      });
+    });
+
   $(document).on('change', 'select#selectPhase', function(e) {
-    gtag('event', 'select phase', {'event_category' : 'choose Phase',
+    gtag('event', 'Select phase', {'event_category' : 'User input',
     'event_label' : document.querySelector('select#selectPhase').value
     });
   });
 
   $(document).on('change', 'select#selectArea', function(e) {
-    gtag('event', 'select area', {'event_category' : 'choose Area',
+    gtag('event', 'Select area', {'event_category' : 'Geographic input',
     'event_label' : document.querySelector('select#selectArea').value
     });
   });
 
-  $(document).on('click', 'ul#navlistPanel', function(e) {
-    gtag('event', 'navlistPanel', {'event_category' : 'navbar click',
-    'event_label' : document.querySelector(
-    'ul#navlistPanel > li.active > a'
-    ).getAttribute('data-value')
-    });
-  });
-
-  $(document).on('click', 'ul#tabsetpanels', function(e) {
-    gtag('event', 'tab panels', {'event_category' : 'tab panel clicks',
-    'event_label' : document.querySelector(
-    'ul#tabsetpanels > li.active > a'
-    ).getAttribute('data-value')
-    });
-  });
+  $(document).on(
+    'click', 'ul#tabsetpanels', function(e) {
+      gtag(
+        'event', 
+        'Example page tabset click', 
+        {
+          'event_category' : 'Mid level navigation',
+          'event_label' : document.querySelector(
+            'ul#tabsetpanels > li > a.active'
+          ).getAttribute('data-value')
+        }
+      );
+    }
+  );
 
 
   $(document).on('click', 'a#download_data', function(e) {
-    gtag('event', 'Download button', {'event_category' : 'Download button click'
-    });
+    gtag(
+      'event', 
+      'Download button', 
+      {
+        'event_category' : 'Download button click'
+    }
+  );
   });
 
   $(document).on('shiny:disconnected', function(e) {
