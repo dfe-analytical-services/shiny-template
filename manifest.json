@@ -6402,7 +6402,7 @@
       "checksum": "db7c5661bd52696cbed5255f3e4003e4"
     },
     ".hooks/pre-commit.R": {
-      "checksum": "7df898c88368ed04c75e7c6d18857a4f"
+      "checksum": "d6d961355d9a55b81c79d36dc0366f43"
     },
     ".lintr": {
       "checksum": "21373c552fa1b0b8404341b9e3c127ac"
@@ -6411,7 +6411,7 @@
       "checksum": "87ea1a829872a421170c93a82fa13ec7"
     },
     ".Rprofile": {
-      "checksum": "24c3d221ff81cf288f7973c4cfdd5ee4"
+      "checksum": "218e75ea1f4d6bb80926818a6a228e05"
     },
     "data/la_maintained_schools_revenue_reserve_final.csv": {
       "checksum": "d31e4cda6ec754b2e67bdb575c86d5ff"
@@ -6441,7 +6441,7 @@
       "checksum": "a2f679b77a0bae450cc304435a59f093"
     },
     "google-analytics.html": {
-      "checksum": "457906717f1c3015a48c10ecfc1820f9"
+      "checksum": "9801d290fdf8335aedd37c76e3025fd0"
     },
     "LICENSE": {
       "checksum": "4ff1ab40947c9cebe66adef6c76f9ba7"
