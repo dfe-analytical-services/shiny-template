@@ -5647,7 +5647,7 @@
     },
     "terra": {
       "Package": "terra",
-      "Version": "1.9-46",
+      "Version": "1.9-34",
       "Source": "Repository",
       "Depends": [
         "R (>= 3.5.0)",
