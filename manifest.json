@@ -4681,7 +4681,7 @@
       "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "sf",
-        "Version": "1.1-3",
+        "Version": "1.1-2",
         "Title": "Simple Features for R",
         "Authors@R": "\n    c(person(given = \"Edzer\",\n             family = \"Pebesma\",\n             role = c(\"aut\", \"cre\"),\n             email = \"edzer.pebesma@uni-muenster.de\",\n             comment = c(ORCID = \"0000-0001-8049-7069\")),\n      person(given = \"Roger\",\n             family = \"Bivand\",\n             role = \"ctb\",\n             comment = c(ORCID = \"0000-0003-2392-6140\")),\n      person(given = \"Etienne\",\n             family = \"Racine\",\n             role = \"ctb\"),\n      person(given = \"Michael\",\n             family = \"Sumner\",\n             role = \"ctb\"),\n      person(given = \"Ian\",\n             family = \"Cook\",\n             role = \"ctb\"),\n      person(given = \"Tim\",\n             family = \"Keitt\",\n             role = \"ctb\"),\n      person(given = \"Robin\",\n             family = \"Lovelace\",\n             role = \"ctb\"),\n      person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = \"ctb\"),\n      person(given = \"Jeroen\",\n             family = \"Ooms\",\n             role = \"ctb\",\n             comment = c(ORCID = \"0000-0002-4035-0289\")),\n      person(given = \"Kirill\",\n             family = \"M\\u00fcller\",\n             role = \"ctb\"),\n      person(given = \"Thomas Lin\",\n             family = \"Pedersen\",\n             role = \"ctb\"),\n      person(given = \"Dan\",\n             family = \"Baston\",\n             role = \"ctb\"),\n      person(given = \"Dewey\",\n             family = \"Dunnington\",\n             role = \"ctb\",\n             comment = c(ORCID = \"0000-0002-9415-4582\")),\n      person(given = \"Alexandre\",\n             family = \"Courtiol\",\n             role = \"ctb\",\n             comment = c(ORCID = \"0000-0003-0637-2959\"))\n\t\t\t )",
         "Description": "Support for simple feature access, a standardized way to\n    encode and analyze spatial vector data. Binds to 'GDAL' \n\t<doi:10.5281/zenodo.5884351> for reading and writing data, to 'GEOS'\n    <doi:10.5281/zenodo.11396894> for geometrical operations,\n    and to 'PROJ' <doi:10.5281/zenodo.5884394> for projection\n    conversions and datum transformations. Uses by default the 's2'\n    package for geometry operations on geodetic (long/lat degree)\n\tcoordinates.",
@@ -4690,31 +4690,30 @@
         "BugReports": "https://github.com/r-spatial/sf/issues",
         "Depends": "methods, R (>= 4.1.0)",
         "Imports": "classInt (>= 0.4-1), DBI (>= 0.8), graphics, grDevices, grid,\ns2 (>= 1.1.0), stats, tools, units (>= 0.7-0), utils",
-        "Suggests": "blob, covr, dplyr (>= 1.0.0), ggplot2, knitr, lwgeom (>=\n0.2-14), maps, mapview, Matrix, microbenchmark, nanoarrow,\nodbc, pbapply, pillar, pool, raster, rlang, rmarkdown,\nRPostgres (>= 1.1.0), RPostgreSQL, RSQLite, sp (>= 1.2-4),\nspatstat (>= 2.0-1), spatstat.geom, spatstat.random,\nspatstat.linnet, spatstat.utils, stars (>= 0.6-0), terra,\ntestthat (>= 3.0.0), tibble (>= 1.4.1), tidyr (>= 1.2.0),\ntidyselect (>= 1.0.0), tmap (>= 2.0), vctrs, wk (>= 0.9.0)",
+        "Suggests": "blob, nanoarrow, covr, dplyr (>= 1.0.0), ggplot2, knitr,\nlwgeom (>= 0.2-14), maps, mapview, Matrix, microbenchmark,\nodbc, pbapply, pillar, pool, raster, rlang, rmarkdown,\nRPostgres (>= 1.1.0), RPostgreSQL, RSQLite, sp (>= 1.2-4),\nspatstat (>= 2.0-1), spatstat.geom, spatstat.random,\nspatstat.linnet, spatstat.utils, stars (>= 0.6-0), terra,\ntestthat (>= 3.0.0), tibble (>= 1.4.1), tidyr (>= 1.2.0),\ntidyselect (>= 1.0.0), tmap (>= 2.0), vctrs, wk (>= 0.9.0)",
         "LinkingTo": "Rcpp",
         "VignetteBuilder": "knitr",
         "Encoding": "UTF-8",
         "Config/testthat/edition": "2",
         "Config/needs/coverage": "XML",
-        "Config/roxygen2/markdown": "TRUE",
-        "Config/roxygen2/version": "8.1.0",
         "SystemRequirements": "GDAL (>= 2.0.1), GEOS (>= 3.4.0), PROJ (>= 4.8.0),\nsqlite3",
         "Collate": "'RcppExports.R' 'init.R' 'import-standalone-s3-register.R'\n'crs.R' 'bbox.R' 'read.R' 'db.R' 'sfc.R' 'sfg.R' 'sf.R'\n'bind.R' 'wkb.R' 'wkt.R' 'plot.R' 'geom-measures.R'\n'geom-predicates.R' 'geom-transformers.R' 'transform.R'\n'proj.R' 'sp.R' 'grid.R' 'arith.R' 'tidyverse.R'\n'tidyverse-vctrs.R' 'cast_sfg.R' 'cast_sfc.R' 'graticule.R'\n'datasets.R' 'aggregate.R' 'agr.R' 'maps.R' 'join.R' 'sample.R'\n'valid.R' 'collection_extract.R' 'jitter.R' 'sgbp.R'\n'spatstat.R' 'stars.R' 'crop.R' 'gdal_utils.R' 'nearest.R'\n'normalize.R' 'sf-package.R' 'defunct.R' 'z_range.R'\n'm_range.R' 'shift_longitude.R' 'make_grid.R' 's2.R' 'terra.R'\n'geos-overlayng.R' 'break_antimeridian.R'",
+        "Config/roxygen2/version": "8.0.0",
         "NeedsCompilation": "yes",
-        "Packaged": "2026-09-10 20:14:11 UTC; edzer",
+        "Packaged": "2026-07-22 10:27:49 UTC; edzer",
         "Author": "Edzer Pebesma [aut, cre] (ORCID:\n    <https://orcid.org/0000-0001-8049-7069>),\n  Roger Bivand [ctb] (ORCID: <https://orcid.org/0000-0003-2392-6140>),\n  Etienne Racine [ctb],\n  Michael Sumner [ctb],\n  Ian Cook [ctb],\n  Tim Keitt [ctb],\n  Robin Lovelace [ctb],\n  Hadley Wickham [ctb],\n  Jeroen Ooms [ctb] (ORCID: <https://orcid.org/0000-0002-4035-0289>),\n  Kirill Müller [ctb],\n  Thomas Lin Pedersen [ctb],\n  Dan Baston [ctb],\n  Dewey Dunnington [ctb] (ORCID: <https://orcid.org/0000-0002-9415-4582>),\n  Alexandre Courtiol [ctb] (ORCID:\n    <https://orcid.org/0000-0003-0637-2959>)",
         "Maintainer": "Edzer Pebesma <edzer.pebesma@uni-muenster.de>",
         "Repository": "CRAN",
-        "Date/Publication": "2026-09-11 06:40:02 UTC",
-        "Built": "R 4.6.1; x86_64-w64-mingw32; 2026-09-15 21:05:09 UTC; windows",
+        "Date/Publication": "2026-07-23 05:30:03 UTC",
+        "Built": "R 4.6.1; x86_64-w64-mingw32; 2026-07-27 23:51:54 UTC; windows",
         "Archs": "x64",
         "RemoteType": "standard",
         "RemoteRef": "sf",
         "RemotePkgRef": "sf",
-        "RemoteRepos": "https://cloud.r-project.org",
+        "RemoteRepos": "https://cran.rstudio.com",
         "RemoteReposName": "CRAN",
         "RemotePkgPlatform": "x86_64-w64-mingw32",
-        "RemoteSha": "1.1-3"
+        "RemoteSha": "1.1-2"
       }
     },
     "shiny": {
@@ -6395,7 +6394,7 @@
       "checksum": "79f10655c18d6fb25652b867e471d20b"
     },
     ".Rprofile": {
-      "checksum": "f9007b746dfe4b0dfb8c84767593a5aa"
+      "checksum": "d7e00deaa61d8dbc5ee4ff890674cf0d"
     },
     "data/la_maintained_schools_revenue_reserve_final.csv": {
       "checksum": "d31e4cda6ec754b2e67bdb575c86d5ff"
@@ -6452,7 +6451,7 @@
       "checksum": "bfa04ac81d04f5d07cffa00a705a30ba"
     },
     "renv.lock": {
-      "checksum": "f1726dbeb101db4b92ad27d6439e4376"
+      "checksum": "801b72645d60d99b932f23263f2cc219"
     },
     "server.R": {
       "checksum": "f2f8d7c58337b787c5cb39adc9b2b4f6"
