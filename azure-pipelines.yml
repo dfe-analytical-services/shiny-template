@@ -1,4 +1,4 @@
-name: Release-$(rev:r)
+name: DfE Shiny Template
 
 pool:
   name: RSConnect
