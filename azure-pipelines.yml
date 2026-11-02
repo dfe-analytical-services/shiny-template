@@ -20,12 +20,11 @@ resources:
 extends:
   template: deploy.yml@posit-deploy
   parameters:
-    appName: Shiny-App # this will need replacing
+    appName: dfe-shiny-template
     environments:
     - name: Pre-Production
       appId: none # this will need replacing if updating an existing app pipeline
     - name: Production
       appId: none # this will need replacing if updating an existing app pipeline
     approvers: | # these will need replacing - can be left empty
-      approver@education.gov.uk
-      another.approver@education.gov.uk
+      
