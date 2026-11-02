@@ -6381,6 +6381,9 @@
     ".github/workflows/lint.yaml": {
       "checksum": "db7c5661bd52696cbed5255f3e4003e4"
     },
+    ".github/workflows/manifest.yaml": {
+      "checksum": "e1f8d41332874a4297b00a16bda73953"
+    },
     ".hooks/pre-commit.R": {
       "checksum": "2bce4bd316ddc37be1ea13edea1d72d1"
     },
@@ -6394,7 +6397,7 @@
       "checksum": "79f10655c18d6fb25652b867e471d20b"
     },
     ".Rprofile": {
-      "checksum": "d7e00deaa61d8dbc5ee4ff890674cf0d"
+      "checksum": "922378b5d056386265078e119d304ca6"
     },
     "data/la_maintained_schools_revenue_reserve_final.csv": {
       "checksum": "d31e4cda6ec754b2e67bdb575c86d5ff"
