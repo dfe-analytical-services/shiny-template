@@ -5,7 +5,7 @@ on:
     branches: [main, master]
   pull_request:
 
-name: Reusable
+name: Manifest check
 
 permissions:
   contents: read
@@ -13,6 +13,6 @@ permissions:
   pull-requests: write
 
 jobs:
-  air:
+  manifest_check:
     name: Manifest check
     uses: dfe-analytical-services/dfeshiny/.github/workflows/manifest_check_reusable.yaml@new-feature/manifest-workflow
