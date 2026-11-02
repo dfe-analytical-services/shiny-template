@@ -6354,36 +6354,6 @@
     }
   },
   "files": {
-    ".github/CODE_OF_CONDUCT.md": {
-      "checksum": "fe8476689d7d505d17bccd2d2ce316ff"
-    },
-    ".github/CONTRIBUTING.md": {
-      "checksum": "bdb66eb6d6f48d99542678a188d840c6"
-    },
-    ".github/ISSUE_TEMPLATE/bug_report.md": {
-      "checksum": "1e6dca425d6b42f784518b1059db902f"
-    },
-    ".github/ISSUE_TEMPLATE/feature_request.md": {
-      "checksum": "2c95cb00ebd7546ccec06638cd813767"
-    },
-    ".github/PULL_REQUEST_TEMPLATE.md": {
-      "checksum": "94d500fe8e3a1b354b217ebd3279ba5c"
-    },
-    ".github/workflows/air.yml": {
-      "checksum": "3325dee1337dcbdbe33348b7fd275a7e"
-    },
-    ".github/workflows/automated-tests.yaml": {
-      "checksum": "7fec9834ee9927cf76307a613d0e699e"
-    },
-    ".github/workflows/deploy-shiny.yaml": {
-      "checksum": "703a6549e79ed4c801a2c0f1302bdc24"
-    },
-    ".github/workflows/lint.yaml": {
-      "checksum": "db7c5661bd52696cbed5255f3e4003e4"
-    },
-    ".github/workflows/manifest.yaml": {
-      "checksum": "77c32fa09f801f771bf9a1d72d43acfb"
-    },
     ".hooks/pre-commit.R": {
       "checksum": "2bce4bd316ddc37be1ea13edea1d72d1"
     },
@@ -6393,11 +6363,8 @@
     ".Rbuildignore": {
       "checksum": "87ea1a829872a421170c93a82fa13ec7"
     },
-    ".RData": {
-      "checksum": "79f10655c18d6fb25652b867e471d20b"
-    },
     ".Rprofile": {
-      "checksum": "22fb8ce1af81291ea8dfa735707040b0"
+      "checksum": "34d24364150dc6d1cffcbb1c7363eaa0"
     },
     "data/la_maintained_schools_revenue_reserve_final.csv": {
       "checksum": "d31e4cda6ec754b2e67bdb575c86d5ff"
