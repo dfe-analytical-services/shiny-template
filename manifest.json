@@ -1496,16 +1496,16 @@
         "Config/roxygen2/version": "8.0.0",
         "Author": "Rich Bielby [aut, cre] (ORCID: <https://orcid.org/0000-0001-9070-9969>),\n  Charlotte Foster [aut],\n  Cam Race [aut],\n  Menna Zayed [ctb],\n  Jen Machin [ctb],\n  Jake Tufts [ctb],\n  Damon Ying [ctb]",
         "Maintainer": "Rich Bielby <richard.bielby@education.gov.uk>",
-        "Built": "R 4.6.1; ; 2026-10-27 15:16:36 UTC; windows",
+        "Built": "R 4.6.1; ; 2026-11-03 16:05:29 UTC; windows",
         "RemoteType": "github",
         "RemoteHost": "api.github.com",
-        "RemoteUsername": "dfe-analytical-services",
+        "RemoteUsername": "rmbielby",
         "RemoteRepo": "dfeshiny",
         "RemoteRef": "main",
         "RemoteSha": "6d992337f0645fdb2691f12221c24afe1f4bf408",
         "GithubHost": "api.github.com",
         "GithubRepo": "dfeshiny",
-        "GithubUsername": "dfe-analytical-services",
+        "GithubUsername": "rmbielby",
         "GithubRef": "main",
         "GithubSHA1": "6d992337f0645fdb2691f12221c24afe1f4bf408"
       }
@@ -6409,7 +6409,7 @@
       "checksum": "87ea1a829872a421170c93a82fa13ec7"
     },
     ".Rprofile": {
-      "checksum": "c787cfa069901e857ffb8acd08f6cae1"
+      "checksum": "198c856c1fca89fe3a1fcf1871dcc752"
     },
     "azure-pipelines.yml": {
       "checksum": "d99e60c80ff3dd172b482d0c0836899b"
