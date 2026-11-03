@@ -27,4 +27,6 @@ extends:
     - name: Production
       appId: none # this will need replacing if updating an existing app pipeline
     approvers: | # these will need replacing - can be left empty
+      damon.ying@education.gov.uk
+      richard.bielby@education.gov.uk
       
