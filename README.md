@@ -38,9 +38,9 @@ Once you have a new repository set up from this template, you should start by ta
 
 #### Update standard variables
 
-3. Update the app title in the `ui.R` script and the `tests/testthat/test-UI-01-basic_load.R` UI test script
+3. Update the app title, set by the `site_title` variable in the `global.R` script (and the HTML `<title>` tag in the `ui.R` script), and the expected title in the `tests/testthat/test-UI-01-basic_load.R` UI test script
 4. Update the rest of the app metadata set in the `ui.R` script
-5. Update the variables set in the `global.R` script
+5. Update the other variables set in the `global.R` script (source publication name and link, `site_primary` URL and `google_analytics_key`)
 6. Test that the app still loads okay in the tests using `shinytest2::test_app()`
 7. Note: You may get a failure for the test in `test-UI-01-basic_load.R`, with a reason similar to `app$get_text("title") not equal to ...`. See this [workaround for the failure of the UI test](#ui-test-fail).
 
@@ -52,7 +52,8 @@ Before publishing there will be a number of other things you wish to set up. You
 
 * User analytics using Google Analytics using `dfeshiny::init_analytics()`
 * Cookies tracking using `dfeshiny::init_cookies()` and following the [guide to using the cookies functions in dfeshiny](https://dfe-analytical-services.github.io/dfeshiny/articles/implementing-cookies.html)
-* Deployment keys, to deploy to shinyapps.io and make a dashboard public, you will need to contact explore.statistics@education.gov.uk for them to add the deployment keys as secure variables in your repository to then allow the `.github/workflows/deploy-shiny.yaml` workflow to run successfully
+* Deployment settings, update `dashboard_name` (and `deploy_target` if needed) in the `deploy-parameters.yaml` file
+* Deployment keys, to deploy to shinyapps.io and make a dashboard public, you will need to contact explore.statistics@education.gov.uk for them to add the deployment keys (`SHINYAPPS_TOKEN` and `SHINYAPPS_SECRET`) as secure variables in your repository to then allow the `.github/workflows/deploy-shiny.yaml` workflow to run successfully
 
 ---
 
@@ -64,9 +65,9 @@ The following requirements are necessary for running the application yourself or
 
 - Installation of R Studio 2024.04.2+764 "Chocolate Cosmos" or higher
 
-- Installation of R 4.4.1 or higher
+- Installation of R 4.6.1 or higher (the version recorded in `renv.lock`)
 
-- Installation of RTools44 or higher
+- Installation of the RTools version that matches your R version
 
 ### ii. Programming skills required (for editing or troubleshooting)
 
@@ -96,7 +97,80 @@ There are no other access requirements as all example data is available in the r
 
 ### Folder structure
 
-All R code outside of the core `global.R`, `server.R`, and `ui.R` files is stored in the `R/` folder. There is a `utils.R` file for common custom functions, and scripts for the different UI panels in the `R/ui_panels/` folder.
+The app is built from three core scripts in the root of the repository: `global.R`, `server.R` and `ui.R`.
+
+#### global.R
+
+Runs once when the app launches, before the server and UI, and is shared across all users. It:
+
+- Loads the packages used by the app (and lists CI/testing-only packages inside `if (FALSE)` so renv records them without the app loading them)
+- Sources `R/read_data.R`, `R/helper_functions.R` and every script in `R/ui_panels/`
+- Sets the global variables, including `site_title`, the parent publication name and link, the `site_primary` URL and `google_analytics_key`
+- Enables URL bookmarking and registers the DejaVu fonts used in charts
+- Reads in the data and builds the lookup lists used in the dropdowns (areas, local authorities, phases and years)
+
+#### server.R
+
+Creates the interactive elements of the app in response to user inputs. It:
+
+- Handles bookmarking, storing input choices in the URL (with a list of inputs to exclude)
+- Updates the browser window title based on the selected phase and area
+- Handles navigation between the main panels
+- Runs the dfeshiny cookies banner and cookies panel server logic
+- Builds the reactive datasets and outputs for the example tab, including the time series and benchmarking charts, the leaflet map, reactable tables, value boxes and data download buttons
+- Exports the value box values with `exportTestValues()` so they can be checked in the UI tests
+
+#### ui.R
+
+Defines the layout of the app and the user inputs, using `shinyGovstyle` and `bslib` components. It:
+
+- Sets the app metadata (page title, favicon, language and meta description)
+- Adds the dfeshiny custom disconnect message, cookies script and banner, and the Google Analytics tag
+- Adds the GOV.UK header, service navigation, beta banner and footer
+- Lays out the main panels (`example_tab_1_panel()` and `user_guide_panel()`) alongside the accessibility statement, cookies and support and feedback pages
+
+#### Other scripts and folders
+
+All R code outside of the core `global.R`, `server.R`, and `ui.R` files is stored in the `R/` folder:
+
+- `R/read_data.R` - functions for loading the example data (`read_revenue_data()` and `read_upper_tier_data()`)
+- `R/helper_functions.R` - common custom functions, such as `value_box()`, `create_output_tabs()` and `in_line_nav_link()`
+- `R/plotting.R` - chart functions built with ggiraph
+- `R/ui_panels/` - scripts for the different UI panels (`example_tab_1.R` and `user_guide.R`), all of which are sourced in `global.R`
+
+Example data, including the GeoJSON boundary files used for the map, is stored in the `data/` folder and every data file must be recorded in `datafiles_log.csv`. Static assets such as CSS, fonts and images are stored in the `www/` folder.
+
+### Connecting your dashboard to data
+
+There are three ways to connect a dashboard to its data. Whichever you choose, remember that anything pushed to a public GitHub repository is immediately public, so never commit unpublished data. Use dummy or already-published data while developing.
+
+#### 1. Store data in the repository
+
+This is the approach used by this template. Data files are saved in the `data/` folder and read in by the functions in `R/read_data.R`, which are called from `global.R`.
+
+- Best for small, published or reference data files that change infrequently
+- Every data file must be recorded in `datafiles_log.csv` with a status of published, reference, dummy or unpublished. The pre-commit hook will block the commit if a file isn't logged, or if unpublished data isn't covered by `.gitignore`
+- Files are bundled with the app when it is deployed, so no extra set-up is needed
+- GitHub warns about files over 50 MB and blocks files over 100 MB, so this isn't suitable for large datasets
+
+#### 2. Use Git Large File Storage (Git LFS)
+
+[Git LFS](https://git-lfs.com/) stores large files outside of the main Git history and keeps a small pointer file in the repository in their place. An example of a dashboard set up to use Git LFS can be found in the [git_lfs branch of this repository](https://github.com/dfe-analytical-services/shiny-template/tree/git_lfs).
+
+- Best for data files too large to store directly in the repository
+- Install Git LFS, run `git lfs install` once, then use `git lfs track` to choose which files to track (for example `git lfs track "data/*.csv"`), and commit the resulting `.gitattributes` file
+- Anyone cloning the repository, and any GitHub Actions workflows that test or deploy the app, need to download the LFS files rather than the pointer files
+- Files stored with Git LFS in a public repository are still public, and the datafiles_log.csv rules still apply
+- Git LFS storage and bandwidth are subject to GitHub quotas
+
+#### 3. Pull data from the EES public API
+
+If your data is published on Explore education statistics (EES) as an API data set, the dashboard can query it directly from the EES public API instead of storing a copy. The [eesyapi R package](https://dfe-analytical-services.github.io/eesyapi.R/) provides functions for finding publications and data sets, reading their metadata and querying the data.
+
+- Best for dashboards built on data that is already published on EES, as the dashboard can pick up new releases without data files being updated in the repository
+- Install eesyapi from GitHub and record it with `renv::snapshot()`
+- The dashboard depends on the API being available, so consider caching results and handling errors gracefully
+- Only published data is available, so you will still need dummy data for development before publication
 
 ### Packages
 
@@ -127,35 +201,45 @@ Be mindful that updating package versions can change behaviour, so make sure to 
 
 ##### UI test fail
 
-Lines 49 to 68 in the `server.R` script are used to change the app title dependent on some selections.
+Lines 56 to 76 in the `server.R` script are used to change the app title dependent on some selections. On load, the title is `site_title` followed by the selected phase and area, for example "DfE Shiny Template - All Local authority maintained schools, England", and the test in `tests/testthat/test-UI-01-basic_load.R` expects this full title.
 
-Updating the app title in the `ui.R` script and the `tests/testthat/test-UI-01-basic_load.R` UI test script may lead to an error when `shinytest2::test_app()` is run. The error may look something similar to:
+Updating the app title in the `global.R` script and the `tests/testthat/test-UI-01-basic_load.R` UI test script may lead to an error when `shinytest2::test_app()` is run. The error may look something similar to:
 
 ```
 ── Failed tests ──────────────────────────────────────────────────────────────────────────────────────────────────────────
-Failure (test-UI-01-basic_load.R:30:3): App loads and title of app appears as expected
+Failure (test-UI-01-basic_load.R:29:3): App loads and title of app appears as expected
 app$get_text("title") not equal to "Your new app title".
 1/1 mismatches
 x[1]: "Your new app title - All Local authority maintained schools, England"
 y[1]: "Your new app title"
 ```
 
-To fix / workaround this, please comment out or delete the lines 49 to 68 in the `server.R` script.
+To fix / workaround this, either include the selection suffix in the expected title in the test, or comment out or delete lines 56 to 76 in the `server.R` script.
 
 However, this feature can be helpful. For example, if you have lots of tabs / pages in your dashboard to switch the title depending on which one a user is looking at. But, its biggest value is for screen readers and assistive tech users, as they will get an announcement every time the title changes.
 So, note this may be a useful feature for later on in your app development.
 
 ### Tests
 
-Automated tests have been created using shinytest2 that test the app loads and also give other examples of ways you can use tests. You should edit the tests as you add new features into the app and continue to add and maintain the tests over time.
+Automated tests have been created using shinytest2 and testthat in the `tests/testthat/` folder. They test that the app loads, and give examples of UI, server and function tests (for example the value boxes, dropdown filtering and `in_line_nav_link()`). You should edit the tests as you add new features into the app and continue to add and maintain the tests over time.
 
-GitHub Actions provide continuous integration (CI) by running the automated tests and checks for code styling on every pull request into the main branch. The yaml files for these workflows can be found in the .github/workflows folder.
+GitHub Actions provide continuous integration (CI) by running the automated tests, lintr checks and Air formatting checks on pull requests. These workflows (`automated-tests.yaml`, `lint.yaml` and `air.yml`) call the reusable workflows maintained in the [dfeshiny repository](https://github.com/dfe-analytical-services/dfeshiny), and can be found in the .github/workflows folder.
 
 You should run `shinytest2::test_app()` regularly to check that the tests are passing against the code you are working on.
 
 ### Deployment
 
-The app is deployed to Department for Education's shinyapps.io subscription using GitHub actions. The yaml file for this can be found in the .github/workflows folder. Maintenance of this is provided by the Explore education statistics platforms team.
+The app is deployed to Department for Education's shinyapps.io subscription using GitHub actions. The `.github/workflows/deploy-shiny.yaml` workflow runs on pushes to the main and development branches and calls the dfeshiny dashboard deploy template, which reads the dashboard name and deploy target from `deploy-parameters.yaml`. Maintenance of this is provided by the Explore education statistics platforms team.
+
+The `manifest.json` file records the app's files and package versions for deployment. It is rebuilt with `rsconnect::writeManifest()` by the pre-commit hook, so keep it in step with `renv.lock`.
+
+### Pre-commit hooks
+
+The `.Rprofile` copies `.hooks/pre-commit.R` into `.git/hooks/` each time the project is opened. Before each commit, the hook:
+
+1. Checks that every data file is recorded in `datafiles_log.csv` and that any unpublished data is listed in `.gitignore`, aborting the commit if not
+2. Replaces the template's Google Analytics tag with a placeholder
+3. Rebuilds `manifest.json` using rsconnect
 
 ### Navigation
 
@@ -163,7 +247,7 @@ In general all .r files will have a usable outline, so make use of that for navi
 
 ### Code styling 
 
-The function `styler::style_dir()` will tidy code according to tidyverse styling using the styler package. Run this regularly as only tidied code will be allowed to be committed. This function also helps to test the running of the code and for basic syntax errors such as missing commas and brackets.
+Code formatting is checked by [Air](https://posit-dev.github.io/air/) on every pull request. Format your code with Air regularly (it is built into Positron and can be run from the command line using `air format .`), as only formatted code will pass the checks. The function `styler::style_dir()` can also be used to tidy code according to tidyverse styling and to catch basic syntax errors such as missing commas and brackets.
 
 You should also run `lintr::lint_dir()` regularly as lintr will check all pull requests for the styling of the code, it does not style the code for you like styler, but is slightly stricter and checks for long lines, variables not using snake case, commented out code and undefined objects amongst other things.
 
