@@ -6417,7 +6417,7 @@
       "checksum": "79f10655c18d6fb25652b867e471d20b"
     },
     ".Rprofile": {
-      "checksum": "42ef6ed839443a2f231347e68099368e"
+      "checksum": "54e8790b2cdfecbdfe789586c15f521b"
     },
     "azure-pipelines.yml": {
       "checksum": "64b13828a412365bdf6304657d45accc"
@@ -6480,7 +6480,7 @@
       "checksum": "e01b4e65840280bcfa1a9ae4d2bd46b6"
     },
     "server.R": {
-      "checksum": "f645f6c80ea021dbbd7f022aaf0ae13c"
+      "checksum": "b04c531a5f4d99aef4ac6fcaa80b3988"
     },
     "tests/testthat.R": {
       "checksum": "12e9b09de5275bdc13bde6ae5a82f8b1"
@@ -6507,7 +6507,7 @@
       "checksum": "46c3dde156378d1489662cfd4edb54f4"
     },
     "ui.R": {
-      "checksum": "c971407f6c53dde802085460f730b789"
+      "checksum": "7e15d656a59e502ee536636f1e2849ab"
     },
     "www/cookie-consent.js": {
       "checksum": "dd507a9ad0d33b3b3f97546ffc357f23"

@@ -600,14 +600,6 @@ server <- function(input, output, session) {
     paste0("Current selections: ", input$selectPhase, ", ", input$selectArea)
   })
 
-  # footer links -----------------------
-  shiny::observeEvent(input$accessibility_statement, {
-    nav_select(
-      "pages",
-      "a11y_panel"
-    )
-  })
-
   shiny::observeEvent(input$use_of_cookies, {
     nav_select(
       "pages",
@@ -625,8 +617,7 @@ server <- function(input, output, session) {
   ## Back links to main dashboard ---------------------------------------------
   observeEvent(
     input$support_to_dashboard |
-      input$cookies_to_dashboard |
-      input$accessibility_to_dashboard,
+      input$cookies_to_dashboard,
     {
       nav_select("pages", "main_panel")
     }
