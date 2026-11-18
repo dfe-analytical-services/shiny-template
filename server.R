@@ -600,14 +600,6 @@ server <- function(input, output, session) {
     paste0("Current selections: ", input$selectPhase, ", ", input$selectArea)
   })
 
-  # footer links -----------------------
-  shiny::observeEvent(input$accessibility_statement, {
-    nav_select(
-      "pages",
-      "a11y_panel"
-    )
-  })
-
   shiny::observeEvent(input$use_of_cookies, {
     nav_select(
       "pages",
@@ -625,64 +617,10 @@ server <- function(input, output, session) {
   ## Back links to main dashboard ---------------------------------------------
   observeEvent(
     input$support_to_dashboard |
-      input$cookies_to_dashboard |
-      input$accessibility_to_dashboard,
+      input$cookies_to_dashboard,
     {
       nav_select("pages", "main_panel")
     }
   )
 
-  shiny::observeEvent(input$privacy_notice, {
-    showModal(modalDialog(
-      external_link(
-        "https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter", # nolint
-        "Privacy notice",
-        add_warning = FALSE
-      ),
-      easyClose = TRUE,
-      footer = NULL
-    ))
-
-    # JavaScript to auto-click the link and close the modal
-    shinyjs::runjs(
-      "
-      setTimeout(function() {
-        var link = document.querySelector('.modal a');
-        if (link) {
-          link.click();
-          setTimeout(function() {
-            $('.modal').modal('hide');
-          }, 20); // Extra delay to avoid any race conditions
-        }
-      }, 400);
-    "
-    )
-  })
-
-  shiny::observeEvent(input$external_link, {
-    showModal(modalDialog(
-      external_link(
-        "https://shiny.posit.co/",
-        "External Link",
-        add_warning = FALSE
-      ),
-      easyClose = TRUE,
-      footer = NULL
-    ))
-
-    # JavaScript to auto-click the link and close the modal
-    shinyjs::runjs(
-      "
-      setTimeout(function() {
-        var link = document.querySelector('.modal a');
-        if (link) {
-          link.click();
-          setTimeout(function() {
-            $('.modal').modal('hide');
-          }, 20); // Extra delay to avoid any race conditions
-        }
-      }, 400);
-    "
-    )
-  })
 }

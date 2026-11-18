@@ -96,35 +96,6 @@ ui <- function(input, output, session) {
         )
       ),
       nav_panel(
-        value = "a11y_panel",
-        "Accessibility",
-        layout_columns(
-          gov_main_layout(
-            width = "standard",
-            # Add in back link
-            actionLink(
-              class = "govuk-back-link",
-              style = "margin: 0",
-              "accessibility_to_dashboard",
-              "Back to dashboard"
-            ),
-
-            dfeshiny::a11y_panel(
-              dashboard_title = site_title,
-              dashboard_url = site_primary,
-              date_tested = "12th March 2024",
-              date_prepared = "1st July 2024",
-              date_reviewed = "1st July 2024",
-              issues_contact = "explore.statistics@education.gov.uk",
-              non_accessible_components = c(
-                "List non-accessible components here"
-              ),
-              specific_issues = c("List specific issues here")
-            )
-          )
-        )
-      ),
-      nav_panel(
         value = "cookies_panel_ui",
         "Cookies",
         gov_main_layout(
@@ -166,11 +137,11 @@ ui <- function(input, output, session) {
     shinyGovstyle::footer(
       full = TRUE,
       links = c(
-        "Accessibility statement",
+        `Accessibility statement` = "https://accessibility-statements.education.gov.uk/statement/73",
         "Use of cookies",
         "Support",
-        "Privacy notice",
-        "External link"
+        `Privacy notice` = "https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter",
+        `External link` = "https://shiny.posit.co/"
       )
     )
   )
