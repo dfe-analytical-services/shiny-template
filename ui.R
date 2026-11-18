@@ -166,11 +166,11 @@ ui <- function(input, output, session) {
     shinyGovstyle::footer(
       full = TRUE,
       links = c(
-        "Accessibility statement",
+        `Accessibility statement` = "https://accessibility-statements.education.gov.uk/statement/73",
         "Use of cookies",
         "Support",
-        "Privacy notice",
-        "External link"
+        `Privacy notice` = "https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter",
+        `External link` = "https://shiny.posit.co/"
       )
     )
   )
